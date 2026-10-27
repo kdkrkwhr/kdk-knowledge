@@ -115,7 +115,7 @@ function render() {
 
 async function start() {
   try {
-    const response = await fetch('../knowledge.json');
+    const response = await fetch('../knowledge.json', {cache: 'no-store'});
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     knowledge = await response.json();
     $('#map-search').addEventListener('input', render);

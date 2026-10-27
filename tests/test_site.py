@@ -61,6 +61,12 @@ class SiteTest(unittest.TestCase):
         self.assertIn("color-scheme:dark", css)
         self.assertIn(".project-ledger", css)
 
+    def test_search_and_map_refresh_generated_data(self):
+        for path in (SITE / "wiki.js", SITE / "architecture/map.js"):
+            with self.subTest(path=path):
+                self.assertIn("cache: 'no-store'", path.read_text(encoding="utf-8"))
+        self.assertNotIn("wiki.js", (SITE / "index.html").read_text(encoding="utf-8"))
+
     def test_public_repository_inventory_has_source_backed_pages(self):
         data = json.loads((SITE / "knowledge.json").read_text(encoding="utf-8"))
         repositories = {source["repository"].split("/", 1)[1]

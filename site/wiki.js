@@ -27,7 +27,7 @@ function showResults() {
   status.textContent = found.length ? `${found.length}개 문서를 찾았습니다.` : '검색 결과가 없습니다. 다른 단어로 찾아보세요.';
 }
 
-fetch(`${root}/search-index.json`).then(response => {
+fetch(`${root}/search-index.json`, {cache: 'no-store'}).then(response => {
   if (!response.ok) throw new Error(`HTTP ${response.status}`);
   return response.json();
 }).then(data => {
