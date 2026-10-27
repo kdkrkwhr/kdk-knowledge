@@ -51,10 +51,17 @@ def validate(root: Path) -> list:
             errors.append(f"Source {sid} needs a full revision SHA")
         if source.get("visibility") != "public":
             errors.append(f"Source {sid} must be public")
+        if source.get("kind") not in {"readme", "code", "criteria"}:
+            errors.append(f"Source {sid} needs a supported kind")
         expected = "https://github.com/{}/blob/{}/{}".format(
             source.get("repository"), revision, source.get("path"))
         if source.get("url") != expected:
             errors.append(f"Source {sid} URL must pin repository/path/revision")
+    page = (site / "index.html").read_text(encoding="utf-8")
+    registered_urls = {source.get("url") for source in sources.values()}
+    for url in re.findall(r'href="([^"]+)"', page):
+        if url.startswith("https://github.com/kdkrkwhr/") and "/blob/" in url and url not in registered_urls:
+            errors.append(f"Unregistered source link: {url}")
     entities = {}
     for entity in data.get("entities", []):
         eid = entity.get("id")

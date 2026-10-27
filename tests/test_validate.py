@@ -53,6 +53,12 @@ class KnowledgeValidationTest(unittest.TestCase):
         self.assertTrue(any("email" in error for error in errors))
         self.assertTrue(any("local path" in error for error in errors))
 
+    def test_project_claim_link_must_be_in_source_register(self):
+        path = self.root / "site/index.html"
+        path.write_text(path.read_text() +
+                        '<a href="https://github.com/kdkrkwhr/notebook-pets/blob/main/README.md">untracked</a>')
+        self.assertTrue(any("Unregistered source link" in error for error in validate(self.root)))
+
 
 if __name__ == "__main__":
     unittest.main()

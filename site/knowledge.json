@@ -3,50 +3,31 @@
   "updatedAt": "2026-10-27",
   "analysis": {"tool": "Graphify", "status": "not-run", "revision": null, "scope": "No extraction has been run for this repository."},
   "sources": [
-    {
-      "id": "notebuddy-readme",
-      "title": "Notebook Pets README",
-      "repository": "kdkrkwhr/notebook-pets",
-      "path": "README.md",
-      "revision": "ca5648b49e6d0a67526856a930090173d0454389",
-      "url": "https://github.com/kdkrkwhr/notebook-pets/blob/ca5648b49e6d0a67526856a930090173d0454389/README.md",
-      "visibility": "public"
-    },
-    {
-      "id": "notebuddy-wiki",
-      "title": "Notebook Pets wiki overview",
-      "repository": "kdkrkwhr/notebook-pets",
-      "path": "docs/wiki/index.md",
-      "revision": "ca5648b49e6d0a67526856a930090173d0454389",
-      "url": "https://github.com/kdkrkwhr/notebook-pets/blob/ca5648b49e6d0a67526856a930090173d0454389/docs/wiki/index.md",
-      "visibility": "public"
-    },
-    {
-      "id": "standards-readme",
-      "title": "Engineering Standards README",
-      "repository": "kdkrkwhr/engineering-standards",
-      "path": "README.md",
-      "revision": "e1c019df54898e928f871602b76fa463d3ec7930",
-      "url": "https://github.com/kdkrkwhr/engineering-standards/blob/e1c019df54898e928f871602b76fa463d3ec7930/README.md",
-      "visibility": "public"
-    },
-    {
-      "id": "standards-core",
-      "title": "Engineering Standards common principles",
-      "repository": "kdkrkwhr/engineering-standards",
-      "path": "standards/core.md",
-      "revision": "e1c019df54898e928f871602b76fa463d3ec7930",
-      "url": "https://github.com/kdkrkwhr/engineering-standards/blob/e1c019df54898e928f871602b76fa463d3ec7930/standards/core.md",
-      "visibility": "public"
-    }
+    {"id":"notebuddy-readme","title":"Notebook Pets README","kind":"readme","repository":"kdkrkwhr/notebook-pets","path":"README.md","revision":"ca5648b49e6d0a67526856a930090173d0454389","url":"https://github.com/kdkrkwhr/notebook-pets/blob/ca5648b49e6d0a67526856a930090173d0454389/README.md","visibility":"public"},
+    {"id":"notebuddy-api","title":"Notebook Pets game API","kind":"code","repository":"kdkrkwhr/notebook-pets","path":"engine/game_api.py","revision":"ca5648b49e6d0a67526856a930090173d0454389","url":"https://github.com/kdkrkwhr/notebook-pets/blob/ca5648b49e6d0a67526856a930090173d0454389/engine/game_api.py","visibility":"public"},
+    {"id":"notebuddy-web","title":"Notebook Pets web Worker","kind":"code","repository":"kdkrkwhr/notebook-pets","path":"web/worker.js","revision":"ca5648b49e6d0a67526856a930090173d0454389","url":"https://github.com/kdkrkwhr/notebook-pets/blob/ca5648b49e6d0a67526856a930090173d0454389/web/worker.js","visibility":"public"},
+    {"id":"notebuddy-anna","title":"Notebook Pets Anna Worker","kind":"code","repository":"kdkrkwhr/notebook-pets","path":"anna/executas/notebuddy/game_worker.py","revision":"ca5648b49e6d0a67526856a930090173d0454389","url":"https://github.com/kdkrkwhr/notebook-pets/blob/ca5648b49e6d0a67526856a930090173d0454389/anna/executas/notebuddy/game_worker.py","visibility":"public"},
+    {"id":"auction-readme","title":"Auction Spot API README","kind":"readme","repository":"kdkrkwhr/auction-spot-api","path":"README.md","revision":"7c2d9496a5ae0f1dcd0345196483c2674ecff140","url":"https://github.com/kdkrkwhr/auction-spot-api/blob/7c2d9496a5ae0f1dcd0345196483c2674ecff140/README.md","visibility":"public"},
+    {"id":"auction-upload","title":"Auction Spot upload controller","kind":"code","repository":"kdkrkwhr/auction-spot-api","path":"src/main/java/com/auctionspot/infra/storage/LocalUploadController.java","revision":"7c2d9496a5ae0f1dcd0345196483c2674ecff140","url":"https://github.com/kdkrkwhr/auction-spot-api/blob/7c2d9496a5ae0f1dcd0345196483c2674ecff140/src/main/java/com/auctionspot/infra/storage/LocalUploadController.java","visibility":"public"},
+    {"id":"auction-storage","title":"Auction Spot local image storage","kind":"code","repository":"kdkrkwhr/auction-spot-api","path":"src/main/java/com/auctionspot/infra/storage/LocalImageStorageService.java","revision":"7c2d9496a5ae0f1dcd0345196483c2674ecff140","url":"https://github.com/kdkrkwhr/auction-spot-api/blob/7c2d9496a5ae0f1dcd0345196483c2674ecff140/src/main/java/com/auctionspot/infra/storage/LocalImageStorageService.java","visibility":"public"},
+    {"id":"auction-files","title":"Auction Spot file serving config","kind":"code","repository":"kdkrkwhr/auction-spot-api","path":"src/main/java/com/auctionspot/infra/storage/LocalFileWebConfig.java","revision":"7c2d9496a5ae0f1dcd0345196483c2674ecff140","url":"https://github.com/kdkrkwhr/auction-spot-api/blob/7c2d9496a5ae0f1dcd0345196483c2674ecff140/src/main/java/com/auctionspot/infra/storage/LocalFileWebConfig.java","visibility":"public"},
+    {"id":"standards-readme","title":"Engineering Standards README","kind":"criteria","repository":"kdkrkwhr/engineering-standards","path":"README.md","revision":"e1c019df54898e928f871602b76fa463d3ec7930","url":"https://github.com/kdkrkwhr/engineering-standards/blob/e1c019df54898e928f871602b76fa463d3ec7930/README.md","visibility":"public"}
   ],
   "entities": [
-    {"id": "hub", "type": "hub", "title": "개인 지식 허브", "summary": "공개 근거와 경험을 연결하는 이 저장소의 출발점", "evidence": []},
-    {"id": "notebuddy", "type": "project", "title": "노트버디", "summary": "그림·사진에서 친구를 만들고 돌봄과 모험을 이어가는 공개 프로젝트", "evidence": ["notebuddy-readme", "notebuddy-wiki"]},
-    {"id": "standards", "type": "criteria", "title": "개발 기준", "summary": "필요한 규칙을 프로젝트별로 선택해 적용하는 공개 기준 자료", "evidence": ["standards-readme", "standards-core"]}
+    {"id":"notebuddy","type":"project","title":"노트버디","summary":"그림·사진으로 친구를 만들고 돌봄·모험을 이어가는 공개 프로젝트","evidence":["notebuddy-readme"]},
+    {"id":"notebuddy-core","type":"technology","title":"Python 게임 전이 함수","summary":"상태와 명령을 받아 결과·다음 상태·이벤트를 계산하는 transition","evidence":["notebuddy-api"]},
+    {"id":"notebuddy-web","type":"technology","title":"브라우저 Pyodide","summary":"웹 Worker가 Pyodide에서 공통 Python 전이 함수를 호출","evidence":["notebuddy-web"]},
+    {"id":"notebuddy-anna","type":"implementation","title":"Anna Worker","summary":"Anna 어댑터가 공통 Python 전이 함수를 호출","evidence":["notebuddy-anna"]},
+    {"id":"auction-spot","type":"project","title":"옥션스팟 API","summary":"동네 기반 실시간 경매 서비스의 공개 백엔드 API","evidence":["auction-readme"]},
+    {"id":"auction-spring","type":"technology","title":"Java · Spring Boot API","summary":"README에 Java 21과 Spring Boot 3.x가 API 구성으로 명시됨","evidence":["auction-readme"]},
+    {"id":"auction-local-storage","type":"implementation","title":"로컬 이미지 저장","summary":"README와 코드에서 확인되는 API 서버 로컬 디스크 저장 및 파일 제공","evidence":["auction-readme","auction-upload","auction-storage","auction-files"]},
+    {"id":"standards","type":"criteria","title":"개발 기준 자료","summary":"참고할 수 있는 공개 기준. 위 프로젝트에 실제 적용됐다는 근거는 아직 없음","evidence":["standards-readme"]}
   ],
   "relations": [
-    {"id": "r-notebuddy", "from": "hub", "to": "notebuddy", "label": "공개 프로젝트 자료로 연결", "origin": "curated", "evidence": ["notebuddy-readme", "notebuddy-wiki"]},
-    {"id": "r-standards", "from": "hub", "to": "standards", "label": "개발 기준 자료로 연결", "origin": "curated", "evidence": ["standards-readme", "standards-core"]}
+    {"id":"r-notebuddy-core","from":"notebuddy","to":"notebuddy-core","label":"행동을 공통 전이 함수에서 계산","origin":"curated","evidence":["notebuddy-api","notebuddy-web","notebuddy-anna"]},
+    {"id":"r-notebuddy-web","from":"notebuddy-core","to":"notebuddy-web","label":"브라우저에서 Pyodide로 호출","origin":"curated","evidence":["notebuddy-web"]},
+    {"id":"r-notebuddy-anna","from":"notebuddy-core","to":"notebuddy-anna","label":"Anna에서 호출","origin":"curated","evidence":["notebuddy-anna"]},
+    {"id":"r-auction-spring","from":"auction-spot","to":"auction-spring","label":"API 기술 구성으로 명시","origin":"curated","evidence":["auction-readme"]},
+    {"id":"r-auction-storage","from":"auction-spot","to":"auction-local-storage","label":"이미지를 로컬 디스크에 저장·제공","origin":"curated","evidence":["auction-readme","auction-upload","auction-storage","auction-files"]}
   ]
 }

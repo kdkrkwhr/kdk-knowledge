@@ -3,24 +3,24 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="공개 근거로 확인한 개인 지식 허브의 관계 지도">
-  <title>구조 지도 · 김동기 개인 지식 허브</title>
+  <meta name="description" content="공개 프로젝트의 기술·구현 연결과 근거를 보는 김동기 개인 지식 지도">
+  <title>프로젝트 연결 · 김동기 지식 허브</title>
   <link rel="icon" href="data:,">
   <link rel="stylesheet" href="../style.css">
   <script src="./map.js" defer></script>
 </head>
 <body>
-  <a class="skip" href="#explore">지도 탐색으로 건너뛰기</a>
-  <header class="top"><a class="brand" href="../">kdk <span>/ 구조 지도</span></a><nav aria-label="사이트 이동"><a href="../">프로젝트 위키 ↗</a><a href="https://github.com/kdkrkwhr/kdk-knowledge">GitHub ↗</a></nav></header>
+  <a class="skip" href="#explore">관계 탐색으로 건너뛰기</a>
+  <header class="top"><a class="brand" href="../">kdk <span>/ knowledge</span></a><nav aria-label="사이트 이동"><a href="../#projects">프로젝트 사례 ↗</a><a href="https://github.com/kdkrkwhr/kdk-knowledge">GitHub ↗</a></nav></header>
   <main class="atlas">
-    <div class="atlas-intro"><div><p class="eyebrow">PERSONAL KNOWLEDGE · EVIDENCE MAP</p><h1>무엇이 무엇과<br>이어져 있을까요?</h1><p class="lead">지금은 공개 출처를 확인한 최소 관계만 보여줍니다. 프로젝트, 역할, 기술 선택과 개발 기준의 연결은 근거가 확인될 때 확장합니다.</p><a class="primary-link" href="#explore">관계 탐색 ↓</a></div><aside class="snapshot"><p class="eyebrow">ANALYSIS STATUS</p><strong>Graphify 분석 미실행</strong><p>이 지도는 사람이 확인한 공개 자료의 <b>편집 관계</b>입니다. 코드에서 자동 추출한 관계로 읽지 마세요.</p><p>분석 기준 커밋 <span id="analysis-revision">없음</span></p></aside></div>
-    <section id="explore" class="atlas-section" aria-labelledby="explore-heading"><p class="eyebrow">01 / EXPLORE THE EVIDENCE</p><h2 id="explore-heading">공개 근거 관계</h2><p class="section-intro">노드를 선택하면 관계와 근거를 확인할 수 있습니다. 검색과 필터는 노드 이름·설명에 적용됩니다.</p>
-      <div class="map-controls"><label for="map-search">항목 검색<input id="map-search" type="search" placeholder="예: 노트버디, 기준" autocomplete="off"></label><label for="type-filter">종류 필터<select id="type-filter"><option value="all">전체</option><option value="hub">허브</option><option value="project">프로젝트</option><option value="criteria">개발 기준</option><option value="career">경력</option><option value="technology">기술</option></select></label><button id="map-reset" type="button">전체 보기</button></div>
+    <div class="atlas-intro"><div><p class="eyebrow">PROJECT EVIDENCE / CONNECTIONS</p><h1>프로젝트가 기술과<br>구현에 닿는 자리</h1><p class="lead">공개 README와 코드 파일에서 확인한 연결을 프로젝트별로 읽습니다. 노드를 고르면 근거 파일과 고정 커밋으로 돌아갈 수 있습니다.</p></div><aside class="snapshot"><p class="eyebrow">분석 상태</p><strong>Graphify 분석 미실행</strong><p>이 지도는 공개 원본을 사람이 대조해 등록한 <b>편집 관계</b>입니다. 자동 코드 추출 결과나 개인의 선택 이유로 읽지 마세요.</p><p>분석 기준 커밋 <span id="analysis-revision">없음</span></p></aside></div>
+    <section id="explore" class="atlas-section" aria-labelledby="explore-heading"><p class="eyebrow">01 / FOLLOW THE EVIDENCE</p><h2 id="explore-heading">프로젝트 연결</h2><p class="section-intro">프로젝트·기술·구현을 선택해 연결과 공개 근거를 확인하세요. 기준 자료는 실제 프로젝트 적용 근거가 확인되기 전까지 별도 항목입니다.</p>
+      <div class="map-controls"><label for="map-search">항목 검색<input id="map-search" type="search" placeholder="예: 노트버디, Pyodide, 이미지 저장" autocomplete="off"></label><label for="type-filter">종류 필터<select id="type-filter"><option value="all">전체</option><option value="project">프로젝트</option><option value="technology">기술</option><option value="implementation">구현</option><option value="criteria">참고 기준</option></select></label><button id="map-reset" type="button">전체 보기</button></div>
       <p id="map-status" class="muted" role="status" aria-live="polite">관계 자료를 불러오는 중입니다.</p>
-      <div class="map-layout"><div class="graph" id="graph" aria-label="근거 관계 지도"><svg viewBox="0 0 760 390" aria-hidden="true" preserveAspectRatio="none"><path d="M380 184 L132 302 M380 184 L628 302"/></svg><div id="graph-nodes" class="graph-nodes"></div><p id="map-empty" class="empty" hidden>일치하는 항목이 없습니다. 검색어나 필터를 바꿔 보세요.</p></div><aside class="map-detail" id="map-detail" aria-live="polite"><h3>항목을 선택해 주세요</h3><p>노드를 선택하면 연결 관계와 원본 링크가 이곳에 나타납니다.</p></aside></div>
+      <div class="map-layout"><div class="graph" id="graph" aria-label="프로젝트와 기술 항목"><div id="graph-nodes" class="graph-nodes"></div><p id="map-empty" class="empty" hidden>일치하는 항목이 없습니다. 검색어나 필터를 바꿔 보세요.</p></div><aside class="map-detail" id="map-detail" aria-live="polite"><h3>항목을 선택해 주세요</h3><p>노드를 선택하면 연결 관계와 원본 파일이 이곳에 나타납니다.</p></aside><div class="relation-list" aria-label="확인된 연결"><h3>확인된 연결</h3><div id="graph-relations"></div></div></div>
     </section>
-    <section class="atlas-section notes"><p class="eyebrow">02 / READ THIS MAP</p><h2>지도가 말하는 범위</h2><p>관계는 공개 저장소의 README와 위키·기준 문서를 근거로 사람이 등록했습니다. <a href="../knowledge.json">관계 JSON</a>에서 출처 URL, 전체 커밋 SHA, 관계의 출처 종류를 확인할 수 있습니다. 연결 수가 적다는 사실은 프로젝트 경험이 적다는 뜻이 아니라 아직 이 허브에 확인된 자료가 적다는 뜻입니다.</p><p>노트버디의 <a href="https://kdkrkwhr.github.io/notebook-pets/architecture/">기존 구조 지도</a>에는 별도로 실행한 Graphify 코드 분석이 있습니다. 그것을 이 허브의 자동 분석 결과로 합치지 않았습니다. 향후 Graphify를 사용할 때는 실행 버전, 입력 파일 범위, 분석 커밋, 외부 전송 여부를 기록하고 편집 관계와 다른 층으로 표시합니다.</p></section>
+    <section class="atlas-section notes"><p class="eyebrow">02 / SCOPE</p><h2>지도가 말하는 범위</h2><p>노트버디는 README와 Python·JavaScript 코드, 옥션스팟 API는 README와 Java 코드에서 읽었습니다. 원본 저장소에 별도 위키가 없어도 이 중앙 위키에 항목을 추가할 수 있습니다. 모든 관계의 출처 URL과 전체 커밋 SHA는 <a href="../knowledge.json">관계 JSON</a>에 있습니다.</p><p>기술을 사용한 사실과 개인이 그 기술을 선택한 이유는 다릅니다. 경력·성과·선택 이유·배움은 공개 가능한 별도 근거가 확인될 때 연결합니다. 다른 저장소의 Graphify 분석은 이 허브의 분석 결과가 아닙니다.</p></section>
   </main>
-  <footer>김동기 · 공개 근거 기반 개인 지식 위키 <span><a href="../">위키로 돌아가기 ↑</a></span></footer>
+  <footer>김동기 · 공개 근거 기반 개인 지식 허브 <span><a href="../">프로젝트 사례로 돌아가기 ↑</a></span></footer>
 </body>
 </html>

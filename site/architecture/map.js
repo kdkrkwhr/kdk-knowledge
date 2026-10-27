@@ -1,8 +1,7 @@
 const $ = selector => document.querySelector(selector);
 let knowledge;
 let selected = null;
-const positions = {hub: 'node-hub', notebuddy: 'node-left', standards: 'node-right'};
-const typeNames = {hub: '허브', project: '프로젝트', criteria: '개발 기준', career: '경력', technology: '기술'};
+const typeNames = {project: '프로젝트', criteria: '참고 기준', technology: '기술', implementation: '구현'};
 
 function sourceLinks(ids) {
   const list = document.createElement('ul');
@@ -49,6 +48,7 @@ function showDetail(id) {
     panel.append(note);
   }
   document.querySelectorAll('.graph-node').forEach(node => node.setAttribute('aria-pressed', String(node.dataset.id === id)));
+  if (window.matchMedia('(max-width: 760px)').matches) panel.scrollIntoView({block: 'start', behavior: 'smooth'});
 }
 
 function render() {
@@ -62,7 +62,7 @@ function render() {
   for (const entity of visible) {
     const button = document.createElement('button');
     button.type = 'button';
-    button.className = `graph-node ${positions[entity.id] || ''}`;
+    button.className = 'graph-node';
     button.dataset.id = entity.id;
     button.setAttribute('aria-pressed', String(selected === entity.id));
     const kind = document.createElement('small');
@@ -76,8 +76,28 @@ function render() {
   $('#map-empty').hidden = visible.length > 0;
   $('#map-status').textContent = visible.length ? `${visible.length} / ${knowledge.entities.length}개 항목` : '검색 결과가 없습니다. 검색어나 필터를 바꿔 보세요.';
   $('#graph').classList.toggle('filtered', Boolean(query) || type !== 'all');
-  // shortcut: larger collections use a readable node grid; add computed edge layout when the corpus grows.
-  $('#graph').classList.toggle('many', visible.length > 3);
+  const edges = $('#graph-relations');
+  edges.replaceChildren();
+  const visibleIds = new Set(visible.map(item => item.id));
+  for (const relation of knowledge.relations.filter(item =>
+    visibleIds.has(item.from) || visibleIds.has(item.to))) {
+    const from = knowledge.entities.find(item => item.id === relation.from);
+    const to = knowledge.entities.find(item => item.id === relation.to);
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'relation-edge';
+    button.textContent = `${from.title} → ${relation.label} → ${to.title}`;
+    button.addEventListener('click', () => showDetail(visibleIds.has(relation.to) ? relation.to : relation.from));
+    edges.append(button);
+  }
+  if (!edges.children.length) {
+    const note = document.createElement('p');
+    note.className = 'muted';
+    note.textContent = visible.length
+      ? '이 항목은 아직 프로젝트에 적용됐다는 근거가 없습니다.'
+      : '일치하는 연결이 없습니다. 검색어나 필터를 바꿔 보세요.';
+    edges.append(note);
+  }
   if (selected && !visible.some(item => item.id === selected)) {
     selected = null;
     $('#map-detail').replaceChildren();
