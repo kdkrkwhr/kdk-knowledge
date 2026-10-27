@@ -15,7 +15,7 @@
   <main class="home" id="article">
     <section class="home-intro" aria-labelledby="home-title">
       <div><p class="eyebrow">PERSONAL KNOWLEDGE / FIELD NOTES</p><h1 id="home-title">프로젝트에서 시작해<br><em>선택의 근거를 따라갑니다.</em></h1><p class="lead">이곳은 김동기의 공개 프로젝트에서 확인한 구현과 기술을 연결하는 중앙 위키입니다. 원본 저장소에는 별도 위키가 없어도 됩니다. README·코드·문서를 읽고 여기에서 질문별로 정리합니다.</p></div>
-      <aside class="scope-note"><strong>현재 읽을 수 있는 범위</strong><p>공개 프로젝트 3개의 상세 문서를 먼저 정리했습니다. 코드는 실제 구현을 보여 주지만, 개인의 역할·성과·기술 선택 이유까지 증명하지는 않습니다.</p><a href="#career">아직 확인되지 않은 기록 ↓</a></aside>
+      <aside class="scope-note"><strong>현재 읽을 수 있는 범위</strong><p>아래 대표 사례를 포함해 공개 저장소 28개의 문서를 위키에서 읽을 수 있습니다. 큰 저장소와 fork는 확인한 파일의 범위를 문서에 표시했습니다. 코드는 개인의 역할·성과·기술 선택 이유까지 증명하지는 않습니다.</p><a href="./wiki/">전체 문서 읽기 →</a></aside>
     </section>
     <section class="project-index" id="projects" aria-labelledby="projects-title">
       <div class="section-head"><div><p class="eyebrow">01 / START WITH A PROJECT</p><h2 id="projects-title">어느 작업에서 시작할까요?</h2></div><a href="./wiki/">전체 위키 문서 읽기 ↗</a></div>
@@ -42,7 +42,7 @@
     </article>
     <section id="connections" class="connections" data-search-entry aria-labelledby="connections-title"><div class="section-head"><div><p class="eyebrow">02 / FOLLOW A THREAD</p><h2 id="connections-title">기술과 구현의 연결</h2></div><a href="./architecture/">전체 근거 지도 ↗</a></div><p>현재 지도는 노트버디의 Python 실행 경계, 옥션스팟의 로컬 이미지 저장, AGENT HUB의 SQLite 작업 큐를 각 프로젝트에 연결합니다. 관계마다 고정 커밋의 README 또는 코드 파일이 있습니다. 구현에서 관찰한 사실과 선택 이유·배움은 구분합니다. <a href="./knowledge.json">관계 데이터 ↗</a></p><div class="connection-rows"><p><span>노트버디</span><strong>Python 전이 함수 → Pyodide / Anna Worker</strong><a href="#notebuddy">사례 ↗</a></p><p><span>옥션스팟 API</span><strong>Java · Spring Boot → 로컬 이미지 저장</strong><a href="#auction-spot">사례 ↗</a></p><p><span>AGENT HUB</span><strong>Python · SQLite → CLI 작업 큐</strong><a href="./wiki/agent-hub.html">문서 ↗</a></p></div></section>
     <section id="career" class="unwritten" data-search-entry aria-labelledby="career-title"><p class="eyebrow">03 / TO BE DOCUMENTED</p><h2 id="career-title">경력·역할·선택 이유·배움</h2><p>이 영역은 아직 공개 가능한 근거가 등록되지 않았습니다. 저장소 소유와 코드만으로 개인 담당 범위나 성과를 추정하지 않습니다. <a href="https://github.com/kdkrkwhr/kdk-knowledge/tree/main/templates">입력 템플릿 ↗</a>에 공개 여부, 원본 URL·커밋, 사실과 해석을 나눠 적은 뒤 이 위키에 반영합니다.</p></section>
-    <section class="site-method" aria-label="자료의 범위"><p><strong>개발 기준은 참고 자료 중 하나입니다.</strong> <a href="https://github.com/kdkrkwhr/engineering-standards/blob/e1c019df54898e928f871602b76fa463d3ec7930/README.md">Engineering Standards · e1c019d ↗</a>는 규칙을 찾아 적용할 때 읽습니다. 위 프로젝트에 적용됐다는 근거는 아직 없습니다.</p><p>이 위키의 문장은 LLM이 공개 소스를 읽고 대조해 작성했습니다. 관계는 사람이 등록한 편집 관계이며 <strong>Graphify 분석은 아직 실행하지 않았습니다.</strong> 공개 원본의 판은 <a href="./knowledge.json">근거 데이터</a>에 고정했습니다. 검색·열람에는 AI API를 호출하지 않습니다.</p></section>
+    <section class="site-method" aria-label="자료의 범위"><p><strong>개발 기준은 참고 자료 중 하나입니다.</strong> <a href="https://github.com/kdkrkwhr/engineering-standards/blob/0ab26dea2102fbb801740ba9f853a004761b7e0c/README.md">Engineering Standards · 0ab26de ↗</a>는 규칙을 찾아 적용할 때 읽습니다. 위 프로젝트에 적용됐다는 근거는 아직 없습니다.</p><p>이 위키의 문장은 LLM이 공개 소스를 읽고 대조해 작성했습니다. 관계는 사람이 등록한 편집 관계이며 <strong>Graphify 분석은 아직 실행하지 않았습니다.</strong> 공개 원본의 판은 <a href="./knowledge.json">근거 데이터</a>에 고정했습니다. 검색·열람에는 AI API를 호출하지 않습니다.</p></section>
   </main>
   <footer>김동기 · 공개 근거 기반 개인 지식 허브 <span>2026-10-27 공개 자료 대조</span></footer>
 </body>

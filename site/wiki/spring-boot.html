@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="공개 저장소의 README와 코드를 대조해 작성한 개인 위키 문서">
+  <title>Spring Boot 기술 예제 모음 · kdk knowledge</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="../style.css">
+  <script src="../wiki.js" defer></script>
+</head>
+<body data-search-root="..">
+  <a class="skip" href="#article">본문으로 건너뛰기</a>
+  <header class="top"><a class="brand" href="../">kdk <span>/ knowledge</span></a><nav aria-label="사이트 이동"><a href="index.html">위키 문서</a><a href="../architecture/">근거 지도</a></nav></header>
+  <div class="wiki-layout">
+    <aside class="wiki-sidebar" aria-label="위키 문서"><p class="eyebrow">DOCUMENTS</p><nav><a href="index.html">프로젝트에서 시작하는 위키</a>
+<a href="notebuddy.html">노트버디: 한 친구의 규칙을 여러 화면에서 실행하기</a>
+<a href="auction-spot.html">옥션스팟 API: 문서의 기술 목록에서 실제 업로드 코드까지</a>
+<a href="auction-spot-front.html">옥션스팟 Flutter: 경매 화면에서 API와 실시간 채널까지</a>
+<a href="agent-hub.html">AGENT HUB: 로컬 CLI 작업을 연결하는 협업 허브</a>
+<a href="hermes-env.html">hermes-env: 작업 환경을 다시 구성하는 부트스트랩</a>
+<a href="hermes-agent-area.html">Hermes Agent Area: 2D 사무실과 로컬 에이전트 상태</a>
+<a href="hermes-team-hub.html">hermes-team-hub: 정적 팀 로그와 로컬 실시간 화면</a>
+<a href="agent-drift-guard.html">agent-drift-guard: 단계 경계에 메시지를 전달하는 연구 코드</a>
+<a href="python-execution.html">Python 실행 경계: 공통 규칙과 서로 다른 호출자</a>
+<a href="attendance-pwa.html">출퇴근 체크 PWA: 로컬 기록과 선택적 연동의 경계</a>
+<a href="image-storage.html">로컬 이미지 저장: 요청에서 파일 URL까지</a>
+<a href="local-queue.html">로컬 작업 큐: 기록한 상태와 CLI 실행의 경계</a>
+<a href="standards.html">Engineering Standards: 선택형 개발 기준과 그 적용 경계</a>
+<a href="repositories.html">공개 저장소 목록과 문서 작성 상태</a>
+<a href="msa-architecture.html">MSA Architecture 실험</a>
+<a href="spring-boot.html">Spring Boot 기술 예제 모음</a>
+<a href="spring-react-template.html">Spring·React 프로젝트 템플릿</a>
+<a href="airport-parking.html">공항 주차 정보 실험</a>
+<a href="flask-leaflet.html">Flask·Leaflet 지도 예제</a>
+<a href="flutter-profile.html">Flutter 프로필 예제</a>
+<a href="dl-object-tracking.html">객체 추적·차량 데이터 실험</a>
+<a href="maintenance.html">문서 작성과 갱신</a>
+<a href="dl-object-detecting.html">YOLO v3 객체 검출 예제</a>
+<a href="dl-data-training.html">차량 이미지 분류 학습 스크립트</a>
+<a href="dl-tesseract.html">Tesseract 번호판 OCR 실험</a>
+<a href="algorithms.html">Java 알고리즘 풀이 기록</a>
+<a href="kdkrkwhr.github.com.html">개인 기술 블로그 저장소</a>
+<a href="resume.html">공개 이력서 페이지의 구현</a>
+<a href="kdkrkwhr.html">GitHub 프로필 README</a>
+<a href="kdk-knowledge.html">중앙 지식 허브 구현</a>
+<a href="spring-ai.html">Spring AI fork 참조</a>
+<a href="hermes-agent.html">Hermes Agent fork 변경 범위</a>
+<a href="AgentRadio.html">AgentRadio fork 참조</a></nav></aside>
+    <main id="article" class="wiki-main"><div class="search" aria-label="문서 검색"><label for="wiki-search">문서 검색</label><div class="search-row"><input id="wiki-search" type="search" placeholder="프로젝트, 기술, 근거 검색" aria-controls="search-results"><button id="clear-search" type="button">지우기</button></div><p id="search-status" class="muted" role="status" aria-live="polite">문서 본문에서 검색합니다. / 키로 검색창에 이동할 수 있어요.</p><ol id="search-results" hidden></ol></div><article class="wiki-article"><h1 id="section-1">Spring Boot 기술 예제 모음</h1>
+<p><strong>분석 기준:</strong> <code>b0a8b227af8ed65ef684a5950d0c97d42bf13d41</code>. 이 문서는 공개 원본 파일을 정적으로 읽어 작성했다. 해당 프로젝트의 설치·실행·테스트를 수행하거나 개인 담당 범위·성과를 확인한 것은 아니다.</p>
+<h2 id="section-2">하나의 서비스가 아닌 예제 모음</h2>
+<p>README는 Spring Boot 기술 모음이라고 소개한다. 루트 아래에는 admin, crawling, Elasticsearch, FCM 클라이언트·서버, JPA, Kafka, MyBatis, Redis, Security 등 별도 Gradle 프로젝트가 있다. 따라서 이 저장소의 기능을 하나의 배포 서비스가 모두 제공한다고 읽지 않는다. <a href="https://github.com/kdkrkwhr/spring-boot/blob/b0a8b227af8ed65ef684a5950d0c97d42bf13d41/README.md">원본: `README.md`</a> <a href="https://github.com/kdkrkwhr/spring-boot/blob/b0a8b227af8ed65ef684a5950d0c97d42bf13d41/spring-kafka/build.gradle">원본: `spring-kafka/build.gradle`</a> <a href="https://github.com/kdkrkwhr/spring-boot/blob/b0a8b227af8ed65ef684a5950d0c97d42bf13d41/spring-security-jwt/build.gradle">원본: `spring-security-jwt/build.gradle`</a></p>
+<h2 id="section-3">대표 구현 두 개</h2>
+<p>크롤링 예제의 <code>CrawlerUtil.findByTag</code>는 Jsoup로 URL의 HTML을 가져와 지정 class의 텍스트 목록을 만든다. 네트워크 오류는 출력한 뒤 빈 결과를 돌릴 수 있다. 실제 대상 사이트의 응답이나 수집 정책은 별도 확인이 필요하다. <a href="https://github.com/kdkrkwhr/spring-boot/blob/b0a8b227af8ed65ef684a5950d0c97d42bf13d41/spring-crawling/src/main/java/com/kdk/util/CrawlerUtil.java">원본: `spring-crawling/src/main/java/com/kdk/util/CrawlerUtil.java`</a></p>
+<p>Elasticsearch 예제의 <code>BookService</code>는 저장소를 통한 책 문서 생성·삭제와 <code>ElasticsearchRestTemplate</code>의 <code>userName</code> 일치 검색을 분리한다. 코드가 표현하는 API 패턴이며 검색 정확도나 운영 인덱스 설계 결과는 아니다. <a href="https://github.com/kdkrkwhr/spring-boot/blob/b0a8b227af8ed65ef684a5950d0c97d42bf13d41/spring-elasticsearch/src/main/java/com/kdk/service/BookService.java">원본: `spring-elasticsearch/src/main/java/com/kdk/service/BookService.java`</a></p>
+<p>FCM 서버 예제에도 별도 서비스 코드가 있다. 알림 전송은 외부 FCM 설정과 자격 증명을 요구하므로 이 정적 검토에서 전달 성공을 주장하지 않는다. <a href="https://github.com/kdkrkwhr/spring-boot/blob/b0a8b227af8ed65ef684a5950d0c97d42bf13d41/spring-fcm-server/src/main/java/com/kdk/service/FcmServerService.java">원본: `spring-fcm-server/src/main/java/com/kdk/service/FcmServerService.java`</a></p>
+<h2 id="section-4">연결해서 읽기</h2>
+<p><a href="msa-architecture.html">MSA Architecture</a>는 복수 서비스 라우팅 구성이고, <a href="spring-react-template.html">Spring·React 템플릿</a>은 출발점 저장소다.</p>
+<h2 id="section-5">확인 범위와 미확인 사항</h2>
+<p>위 구현 설명은 표시한 커밋의 파일에서 확인한 사실과 정적 해석이다. 현재 배포·운영 상태, 실행 성공, 실제 사용량, 개인 선택 이유와 기여 범위는 확인하지 않았다.</p></article><section class="wiki-evidence"><h2>이 문서의 등록 근거</h2><ul><li><a href="https://github.com/kdkrkwhr/spring-boot/blob/b0a8b227af8ed65ef684a5950d0c97d42bf13d41/README.md">spring-boot: README.md · b0a8b22</a></li>
+<li><a href="https://github.com/kdkrkwhr/spring-boot/blob/b0a8b227af8ed65ef684a5950d0c97d42bf13d41/spring-kafka/build.gradle">spring-boot: spring-kafka/build.gradle · b0a8b22</a></li>
+<li><a href="https://github.com/kdkrkwhr/spring-boot/blob/b0a8b227af8ed65ef684a5950d0c97d42bf13d41/spring-security-jwt/build.gradle">spring-boot: spring-security-jwt/build.gradle · b0a8b22</a></li>
+<li><a href="https://github.com/kdkrkwhr/spring-boot/blob/b0a8b227af8ed65ef684a5950d0c97d42bf13d41/spring-crawling/src/main/java/com/kdk/util/CrawlerUtil.java">spring-boot: spring-crawling/src/main/java/com/kdk/util/CrawlerUtil.java · b0a8b22</a></li>
+<li><a href="https://github.com/kdkrkwhr/spring-boot/blob/b0a8b227af8ed65ef684a5950d0c97d42bf13d41/spring-elasticsearch/src/main/java/com/kdk/service/BookService.java">spring-boot: spring-elasticsearch/src/main/java/com/kdk/service/BookService.java · b0a8b22</a></li>
+<li><a href="https://github.com/kdkrkwhr/spring-boot/blob/b0a8b227af8ed65ef684a5950d0c97d42bf13d41/spring-fcm-server/src/main/java/com/kdk/service/FcmServerService.java">spring-boot: spring-fcm-server/src/main/java/com/kdk/service/FcmServerService.java · b0a8b22</a></li></ul><p><a href="markdown/spring-boot.md">Markdown 원문 보기</a> · 문장과 원본 파일을 사람이 대조했습니다.</p></section></main>
+    <aside class="wiki-outline" aria-label="본문 목차"><p class="eyebrow">ON THIS PAGE</p><nav><a href="#section-2">하나의 서비스가 아닌 예제 모음</a>
+<a href="#section-3">대표 구현 두 개</a>
+<a href="#section-4">연결해서 읽기</a>
+<a href="#section-5">확인 범위와 미확인 사항</a></nav></aside>
+  </div>
+  <footer>김동기 · 공개 근거 기반 개인 위키 <span>Graphify 분석 미실행</span></footer>
+</body>
+</html>

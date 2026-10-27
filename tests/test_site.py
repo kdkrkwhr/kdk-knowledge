@@ -61,6 +61,27 @@ class SiteTest(unittest.TestCase):
         self.assertIn("color-scheme:dark", css)
         self.assertIn(".project-ledger", css)
 
+    def test_public_repository_inventory_has_source_backed_pages(self):
+        data = json.loads((SITE / "knowledge.json").read_text(encoding="utf-8"))
+        repositories = {source["repository"].split("/", 1)[1]
+                        for source in data["sources"] if source["repository"].startswith("kdkrkwhr/")}
+        expected = {
+            "notebook-pets", "auction-spot-api", "agent-hub", "auction-spot-front",
+            "hermes-env", "hermes-agent-area", "hermes-team-hub", "agent-drift-guard",
+            "engineering-standards", "attendance-pwa", "msa-architecture", "spring-boot",
+            "spring-react-template", "airport-parking", "flask-leaflet", "flutter-profile",
+            "dl-object-tracking", "dl-object-detecting", "dl-data-training", "dl-tesseract",
+            "algorithms", "kdkrkwhr.github.com", "resume", "kdkrkwhr", "kdk-knowledge",
+            "spring-ai", "hermes-agent", "AgentRadio",
+        }
+        self.assertEqual(repositories, expected)
+        for repo in expected - {"notebook-pets", "auction-spot-api", "agent-hub", "engineering-standards"}:
+            with self.subTest(repo=repo):
+                self.assertTrue((SITE / "wiki" / f"{repo}.html").is_file())
+        for repo in ("spring-ai", "hermes-agent", "AgentRadio"):
+            entity = next(entity for entity in data["entities"] if entity["id"] == repo)
+            self.assertEqual(entity["type"], "reference")
+
 
 if __name__ == "__main__":
     unittest.main()

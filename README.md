@@ -9,9 +9,9 @@
 
 ## 현재 범위
 
-첫 상세 문서는 공개 [Notebook Pets](docs/wiki/notebuddy.md), [Auction Spot API](docs/wiki/auction-spot.md), [AGENT HUB](docs/wiki/agent-hub.md)의 README·코드를 읽어 만들었습니다. 다른 저장소에 위키가 있어야 연결되는 구조가 아닙니다. 원본 저장소는 수정하거나 자동 동기화하지 않습니다. [Engineering Standards](docs/wiki/standards.md)는 참고할 개발 기준으로 별도 기록했으며, 사례 프로젝트에 실제 적용됐다고 표시하지 않습니다. [공개 저장소 28개의 작성 상태](docs/wiki/repositories.md)에서 목록 확인과 상세 분석 완료를 구분합니다.
+첫 대표 사례는 공개 [Notebook Pets](docs/wiki/notebuddy.md), [Auction Spot API](docs/wiki/auction-spot.md), [AGENT HUB](docs/wiki/agent-hub.md)입니다. [공개 저장소 28개의 문서 목록](docs/wiki/repositories.md)에 각 저장소의 정적 검토 범위와 fork 구분을 기록했습니다. 다른 저장소에 위키가 있어야 연결되는 구조가 아닙니다. 원본 저장소는 수정하거나 자동 동기화하지 않습니다. [Engineering Standards](docs/wiki/standards.md)는 참고할 개발 기준으로 별도 기록했으며, 사례 프로젝트에 실제 적용됐다고 표시하지 않습니다.
 
-공개 저장소 목록은 살폈지만 전체 프로젝트·이력 수집을 마친 상태는 아닙니다. 현재 세 프로젝트에 실제 README와 코드 근거를 붙인 상세 문서를 작성했습니다. 나머지 저장소는 작성 상태 문서에 후보로 남겼습니다.
+현재 확인한 공개 저장소 28개 모두 문서를 작성했습니다. 작은 저장소는 단일 파일, 큰 저장소는 대표 구현 파일로 범위를 제한했습니다. 전체 과거 프로젝트·경력 자료의 수집이나 원본 프로젝트의 실행 검증을 마친 상태는 아닙니다. 개인 역할·성과·선택 이유는 별도 근거가 생길 때 보강합니다.
 
 `docs/wiki/*.md`가 해설의 편집 원본입니다. 문서 머리의 메타데이터가 출처·관계를 등록하고, `docs/wiki/sources.json`에 고정 커밋의 공개 URL을 보관합니다. `scripts/build_wiki.py`가 HTML, 원본 Markdown 사본, 본문 검색 색인과 `site/knowledge.json`을 함께 생성합니다. `site/index.html`은 프로젝트 진입 화면이고, `site/architecture/`는 문서에서 파생한 편집 관계를 탐색합니다. **Graphify는 이 저장소에서 설치하거나 실행하지 않았습니다.** 자동 추출 관계는 현재 편집 관계와 혼동하지 않습니다.
 

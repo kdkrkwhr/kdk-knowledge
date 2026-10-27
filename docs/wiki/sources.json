@@ -80,16 +80,6 @@
     "visibility": "public"
   },
   {
-    "id": "standards-readme",
-    "title": "Engineering Standards README",
-    "kind": "criteria",
-    "repository": "kdkrkwhr/engineering-standards",
-    "path": "README.md",
-    "revision": "e1c019df54898e928f871602b76fa463d3ec7930",
-    "url": "https://github.com/kdkrkwhr/engineering-standards/blob/e1c019df54898e928f871602b76fa463d3ec7930/README.md",
-    "visibility": "public"
-  },
-  {
     "id": "notebuddy-ports",
     "title": "Notebook Pets execution ports",
     "kind": "code",
@@ -247,6 +237,1086 @@
     "path": ".github/workflows/tests.yml",
     "revision": "cfe0ac6b341f6edebbf25655fc2e7867492740bd",
     "url": "https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/.github/workflows/tests.yml",
+    "visibility": "public"
+  },
+  {
+    "id": "front-readme",
+    "title": "auction-spot-front · README.md",
+    "kind": "readme",
+    "repository": "kdkrkwhr/auction-spot-front",
+    "path": "README.md",
+    "revision": "abb91bc2abe406e821c55f362e9f209ea61c2db9",
+    "url": "https://github.com/kdkrkwhr/auction-spot-front/blob/abb91bc2abe406e821c55f362e9f209ea61c2db9/README.md",
+    "visibility": "public"
+  },
+  {
+    "id": "front-main",
+    "title": "auction-spot-front · lib/main.dart",
+    "kind": "code",
+    "repository": "kdkrkwhr/auction-spot-front",
+    "path": "lib/main.dart",
+    "revision": "abb91bc2abe406e821c55f362e9f209ea61c2db9",
+    "url": "https://github.com/kdkrkwhr/auction-spot-front/blob/abb91bc2abe406e821c55f362e9f209ea61c2db9/lib/main.dart",
+    "visibility": "public"
+  },
+  {
+    "id": "front-router",
+    "title": "auction-spot-front · lib/core/router/app_router.dart",
+    "kind": "code",
+    "repository": "kdkrkwhr/auction-spot-front",
+    "path": "lib/core/router/app_router.dart",
+    "revision": "abb91bc2abe406e821c55f362e9f209ea61c2db9",
+    "url": "https://github.com/kdkrkwhr/auction-spot-front/blob/abb91bc2abe406e821c55f362e9f209ea61c2db9/lib/core/router/app_router.dart",
+    "visibility": "public"
+  },
+  {
+    "id": "front-dio",
+    "title": "auction-spot-front · lib/core/network/dio_client.dart",
+    "kind": "code",
+    "repository": "kdkrkwhr/auction-spot-front",
+    "path": "lib/core/network/dio_client.dart",
+    "revision": "abb91bc2abe406e821c55f362e9f209ea61c2db9",
+    "url": "https://github.com/kdkrkwhr/auction-spot-front/blob/abb91bc2abe406e821c55f362e9f209ea61c2db9/lib/core/network/dio_client.dart",
+    "visibility": "public"
+  },
+  {
+    "id": "front-auction",
+    "title": "auction-spot-front · lib/features/auction/data/auction_repository.dart",
+    "kind": "code",
+    "repository": "kdkrkwhr/auction-spot-front",
+    "path": "lib/features/auction/data/auction_repository.dart",
+    "revision": "abb91bc2abe406e821c55f362e9f209ea61c2db9",
+    "url": "https://github.com/kdkrkwhr/auction-spot-front/blob/abb91bc2abe406e821c55f362e9f209ea61c2db9/lib/features/auction/data/auction_repository.dart",
+    "visibility": "public"
+  },
+  {
+    "id": "front-ws",
+    "title": "auction-spot-front · lib/features/auction/data/auction_ws_client.dart",
+    "kind": "code",
+    "repository": "kdkrkwhr/auction-spot-front",
+    "path": "lib/features/auction/data/auction_ws_client.dart",
+    "revision": "abb91bc2abe406e821c55f362e9f209ea61c2db9",
+    "url": "https://github.com/kdkrkwhr/auction-spot-front/blob/abb91bc2abe406e821c55f362e9f209ea61c2db9/lib/features/auction/data/auction_ws_client.dart",
+    "visibility": "public"
+  },
+  {
+    "id": "front-upload",
+    "title": "auction-spot-front · lib/features/storage/data/storage_repository.dart",
+    "kind": "code",
+    "repository": "kdkrkwhr/auction-spot-front",
+    "path": "lib/features/storage/data/storage_repository.dart",
+    "revision": "abb91bc2abe406e821c55f362e9f209ea61c2db9",
+    "url": "https://github.com/kdkrkwhr/auction-spot-front/blob/abb91bc2abe406e821c55f362e9f209ea61c2db9/lib/features/storage/data/storage_repository.dart",
+    "visibility": "public"
+  },
+  {
+    "id": "front-pubspec",
+    "title": "auction-spot-front · pubspec.yaml",
+    "kind": "code",
+    "repository": "kdkrkwhr/auction-spot-front",
+    "path": "pubspec.yaml",
+    "revision": "abb91bc2abe406e821c55f362e9f209ea61c2db9",
+    "url": "https://github.com/kdkrkwhr/auction-spot-front/blob/abb91bc2abe406e821c55f362e9f209ea61c2db9/pubspec.yaml",
+    "visibility": "public"
+  },
+  {
+    "id": "front-starter",
+    "title": "auction-spot-front · auction_spot/lib/main.dart",
+    "kind": "code",
+    "repository": "kdkrkwhr/auction-spot-front",
+    "path": "auction_spot/lib/main.dart",
+    "revision": "abb91bc2abe406e821c55f362e9f209ea61c2db9",
+    "url": "https://github.com/kdkrkwhr/auction-spot-front/blob/abb91bc2abe406e821c55f362e9f209ea61c2db9/auction_spot/lib/main.dart",
+    "visibility": "public"
+  },
+  {
+    "id": "front-constants",
+    "title": "auction-spot-front · lib/core/constants/app_constants.dart",
+    "kind": "code",
+    "repository": "kdkrkwhr/auction-spot-front",
+    "path": "lib/core/constants/app_constants.dart",
+    "revision": "abb91bc2abe406e821c55f362e9f209ea61c2db9",
+    "url": "https://github.com/kdkrkwhr/auction-spot-front/blob/abb91bc2abe406e821c55f362e9f209ea61c2db9/lib/core/constants/app_constants.dart",
+    "visibility": "public"
+  },
+  {
+    "id": "env-readme",
+    "title": "hermes-env · README.md",
+    "kind": "readme",
+    "repository": "kdkrkwhr/hermes-env",
+    "path": "README.md",
+    "revision": "ecf8b93ec6e7003bfd640f67b3cb90e25ad61b39",
+    "url": "https://github.com/kdkrkwhr/hermes-env/blob/ecf8b93ec6e7003bfd640f67b3cb90e25ad61b39/README.md",
+    "visibility": "public"
+  },
+  {
+    "id": "env-bootstrap",
+    "title": "hermes-env · bootstrap.sh",
+    "kind": "code",
+    "repository": "kdkrkwhr/hermes-env",
+    "path": "bootstrap.sh",
+    "revision": "ecf8b93ec6e7003bfd640f67b3cb90e25ad61b39",
+    "url": "https://github.com/kdkrkwhr/hermes-env/blob/ecf8b93ec6e7003bfd640f67b3cb90e25ad61b39/bootstrap.sh",
+    "visibility": "public"
+  },
+  {
+    "id": "env-agent-guide",
+    "title": "hermes-env · AGENT_BOOTSTRAP.md",
+    "kind": "readme",
+    "repository": "kdkrkwhr/hermes-env",
+    "path": "AGENT_BOOTSTRAP.md",
+    "revision": "ecf8b93ec6e7003bfd640f67b3cb90e25ad61b39",
+    "url": "https://github.com/kdkrkwhr/hermes-env/blob/ecf8b93ec6e7003bfd640f67b3cb90e25ad61b39/AGENT_BOOTSTRAP.md",
+    "visibility": "public"
+  },
+  {
+    "id": "env-config",
+    "title": "hermes-env · hermes/config.yaml.template",
+    "kind": "code",
+    "repository": "kdkrkwhr/hermes-env",
+    "path": "hermes/config.yaml.template",
+    "revision": "ecf8b93ec6e7003bfd640f67b3cb90e25ad61b39",
+    "url": "https://github.com/kdkrkwhr/hermes-env/blob/ecf8b93ec6e7003bfd640f67b3cb90e25ad61b39/hermes/config.yaml.template",
+    "visibility": "public"
+  },
+  {
+    "id": "env-conventions",
+    "title": "hermes-env · docs/conventions.md",
+    "kind": "readme",
+    "repository": "kdkrkwhr/hermes-env",
+    "path": "docs/conventions.md",
+    "revision": "ecf8b93ec6e7003bfd640f67b3cb90e25ad61b39",
+    "url": "https://github.com/kdkrkwhr/hermes-env/blob/ecf8b93ec6e7003bfd640f67b3cb90e25ad61b39/docs/conventions.md",
+    "visibility": "public"
+  },
+  {
+    "id": "area-readme",
+    "title": "hermes-agent-area · README.md",
+    "kind": "readme",
+    "repository": "kdkrkwhr/hermes-agent-area",
+    "path": "README.md",
+    "revision": "e3e118fa7eb3fcfcd1fd8ca1d88d63763ddb67a5",
+    "url": "https://github.com/kdkrkwhr/hermes-agent-area/blob/e3e118fa7eb3fcfcd1fd8ca1d88d63763ddb67a5/README.md",
+    "visibility": "public"
+  },
+  {
+    "id": "area-package",
+    "title": "hermes-agent-area · package.json",
+    "kind": "code",
+    "repository": "kdkrkwhr/hermes-agent-area",
+    "path": "package.json",
+    "revision": "e3e118fa7eb3fcfcd1fd8ca1d88d63763ddb67a5",
+    "url": "https://github.com/kdkrkwhr/hermes-agent-area/blob/e3e118fa7eb3fcfcd1fd8ca1d88d63763ddb67a5/package.json",
+    "visibility": "public"
+  },
+  {
+    "id": "area-front",
+    "title": "hermes-agent-area · src/main.js",
+    "kind": "code",
+    "repository": "kdkrkwhr/hermes-agent-area",
+    "path": "src/main.js",
+    "revision": "e3e118fa7eb3fcfcd1fd8ca1d88d63763ddb67a5",
+    "url": "https://github.com/kdkrkwhr/hermes-agent-area/blob/e3e118fa7eb3fcfcd1fd8ca1d88d63763ddb67a5/src/main.js",
+    "visibility": "public"
+  },
+  {
+    "id": "area-connect",
+    "title": "hermes-agent-area · src/connectPanel.js",
+    "kind": "code",
+    "repository": "kdkrkwhr/hermes-agent-area",
+    "path": "src/connectPanel.js",
+    "revision": "e3e118fa7eb3fcfcd1fd8ca1d88d63763ddb67a5",
+    "url": "https://github.com/kdkrkwhr/hermes-agent-area/blob/e3e118fa7eb3fcfcd1fd8ca1d88d63763ddb67a5/src/connectPanel.js",
+    "visibility": "public"
+  },
+  {
+    "id": "area-server",
+    "title": "hermes-agent-area · server/main.py",
+    "kind": "code",
+    "repository": "kdkrkwhr/hermes-agent-area",
+    "path": "server/main.py",
+    "revision": "e3e118fa7eb3fcfcd1fd8ca1d88d63763ddb67a5",
+    "url": "https://github.com/kdkrkwhr/hermes-agent-area/blob/e3e118fa7eb3fcfcd1fd8ca1d88d63763ddb67a5/server/main.py",
+    "visibility": "public"
+  },
+  {
+    "id": "area-test",
+    "title": "hermes-agent-area · server/test_gateway_busy.py",
+    "kind": "code",
+    "repository": "kdkrkwhr/hermes-agent-area",
+    "path": "server/test_gateway_busy.py",
+    "revision": "e3e118fa7eb3fcfcd1fd8ca1d88d63763ddb67a5",
+    "url": "https://github.com/kdkrkwhr/hermes-agent-area/blob/e3e118fa7eb3fcfcd1fd8ca1d88d63763ddb67a5/server/test_gateway_busy.py",
+    "visibility": "public"
+  },
+  {
+    "id": "team-readme",
+    "title": "hermes-team-hub · README.md",
+    "kind": "readme",
+    "repository": "kdkrkwhr/hermes-team-hub",
+    "path": "README.md",
+    "revision": "1406ee05e3ea21a9e0c53aa0856879c976cd3ac5",
+    "url": "https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/README.md",
+    "visibility": "public"
+  },
+  {
+    "id": "team-web",
+    "title": "hermes-team-hub · js/app.js",
+    "kind": "code",
+    "repository": "kdkrkwhr/hermes-team-hub",
+    "path": "js/app.js",
+    "revision": "1406ee05e3ea21a9e0c53aa0856879c976cd3ac5",
+    "url": "https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/js/app.js",
+    "visibility": "public"
+  },
+  {
+    "id": "team-store",
+    "title": "hermes-team-hub · js/store.js",
+    "kind": "code",
+    "repository": "kdkrkwhr/hermes-team-hub",
+    "path": "js/store.js",
+    "revision": "1406ee05e3ea21a9e0c53aa0856879c976cd3ac5",
+    "url": "https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/js/store.js",
+    "visibility": "public"
+  },
+  {
+    "id": "team-server",
+    "title": "hermes-team-hub · local/app.py",
+    "kind": "code",
+    "repository": "kdkrkwhr/hermes-team-hub",
+    "path": "local/app.py",
+    "revision": "1406ee05e3ea21a9e0c53aa0856879c976cd3ac5",
+    "url": "https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/local/app.py",
+    "visibility": "public"
+  },
+  {
+    "id": "team-cli",
+    "title": "hermes-team-hub · local/team_hub.py",
+    "kind": "code",
+    "repository": "kdkrkwhr/hermes-team-hub",
+    "path": "local/team_hub.py",
+    "revision": "1406ee05e3ea21a9e0c53aa0856879c976cd3ac5",
+    "url": "https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/local/team_hub.py",
+    "visibility": "public"
+  },
+  {
+    "id": "team-model",
+    "title": "hermes-team-hub · local/team_hub/model.py",
+    "kind": "code",
+    "repository": "kdkrkwhr/hermes-team-hub",
+    "path": "local/team_hub/model.py",
+    "revision": "1406ee05e3ea21a9e0c53aa0856879c976cd3ac5",
+    "url": "https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/local/team_hub/model.py",
+    "visibility": "public"
+  },
+  {
+    "id": "drift-readme",
+    "title": "agent-drift-guard · README.md",
+    "kind": "readme",
+    "repository": "kdkrkwhr/agent-drift-guard",
+    "path": "README.md",
+    "revision": "7b655505e4c893590b02f7f391e3bba7f73275be",
+    "url": "https://github.com/kdkrkwhr/agent-drift-guard/blob/7b655505e4c893590b02f7f391e3bba7f73275be/README.md",
+    "visibility": "public"
+  },
+  {
+    "id": "drift-buffer",
+    "title": "agent-drift-guard · src/drift_guard/buffer.py",
+    "kind": "code",
+    "repository": "kdkrkwhr/agent-drift-guard",
+    "path": "src/drift_guard/buffer.py",
+    "revision": "7b655505e4c893590b02f7f391e3bba7f73275be",
+    "url": "https://github.com/kdkrkwhr/agent-drift-guard/blob/7b655505e4c893590b02f7f391e3bba7f73275be/src/drift_guard/buffer.py",
+    "visibility": "public"
+  },
+  {
+    "id": "drift-inject",
+    "title": "agent-drift-guard · src/drift_guard/inject.py",
+    "kind": "code",
+    "repository": "kdkrkwhr/agent-drift-guard",
+    "path": "src/drift_guard/inject.py",
+    "revision": "7b655505e4c893590b02f7f391e3bba7f73275be",
+    "url": "https://github.com/kdkrkwhr/agent-drift-guard/blob/7b655505e4c893590b02f7f391e3bba7f73275be/src/drift_guard/inject.py",
+    "visibility": "public"
+  },
+  {
+    "id": "drift-test",
+    "title": "agent-drift-guard · tests/test_buffer.py",
+    "kind": "code",
+    "repository": "kdkrkwhr/agent-drift-guard",
+    "path": "tests/test_buffer.py",
+    "revision": "7b655505e4c893590b02f7f391e3bba7f73275be",
+    "url": "https://github.com/kdkrkwhr/agent-drift-guard/blob/7b655505e4c893590b02f7f391e3bba7f73275be/tests/test_buffer.py",
+    "visibility": "public"
+  },
+  {
+    "id": "drift-hook",
+    "title": "agent-drift-guard · hermes_plugin/agent-drift-guard/inject_hook.py",
+    "kind": "code",
+    "repository": "kdkrkwhr/agent-drift-guard",
+    "path": "hermes_plugin/agent-drift-guard/inject_hook.py",
+    "revision": "7b655505e4c893590b02f7f391e3bba7f73275be",
+    "url": "https://github.com/kdkrkwhr/agent-drift-guard/blob/7b655505e4c893590b02f7f391e3bba7f73275be/hermes_plugin/agent-drift-guard/inject_hook.py",
+    "visibility": "public"
+  },
+  {
+    "id": "drift-session",
+    "title": "agent-drift-guard · hermes_plugin/agent-drift-guard/session_guards.py",
+    "kind": "code",
+    "repository": "kdkrkwhr/agent-drift-guard",
+    "path": "hermes_plugin/agent-drift-guard/session_guards.py",
+    "revision": "7b655505e4c893590b02f7f391e3bba7f73275be",
+    "url": "https://github.com/kdkrkwhr/agent-drift-guard/blob/7b655505e4c893590b02f7f391e3bba7f73275be/hermes_plugin/agent-drift-guard/session_guards.py",
+    "visibility": "public"
+  },
+  {
+    "id": "standards-current",
+    "title": "engineering-standards · README.md",
+    "kind": "criteria",
+    "repository": "kdkrkwhr/engineering-standards",
+    "path": "README.md",
+    "revision": "0ab26dea2102fbb801740ba9f853a004761b7e0c",
+    "url": "https://github.com/kdkrkwhr/engineering-standards/blob/0ab26dea2102fbb801740ba9f853a004761b7e0c/README.md",
+    "visibility": "public"
+  },
+  {
+    "id": "standards-python",
+    "title": "engineering-standards · profiles/languages/python.md",
+    "kind": "criteria",
+    "repository": "kdkrkwhr/engineering-standards",
+    "path": "profiles/languages/python.md",
+    "revision": "0ab26dea2102fbb801740ba9f853a004761b7e0c",
+    "url": "https://github.com/kdkrkwhr/engineering-standards/blob/0ab26dea2102fbb801740ba9f853a004761b7e0c/profiles/languages/python.md",
+    "visibility": "public"
+  },
+  {
+    "id": "standards-spring",
+    "title": "engineering-standards · profiles/frameworks/spring-boot.md",
+    "kind": "criteria",
+    "repository": "kdkrkwhr/engineering-standards",
+    "path": "profiles/frameworks/spring-boot.md",
+    "revision": "0ab26dea2102fbb801740ba9f853a004761b7e0c",
+    "url": "https://github.com/kdkrkwhr/engineering-standards/blob/0ab26dea2102fbb801740ba9f853a004761b7e0c/profiles/frameworks/spring-boot.md",
+    "visibility": "public"
+  },
+  {
+    "id": "standards-build",
+    "title": "engineering-standards · scripts/build_wiki.py",
+    "kind": "code",
+    "repository": "kdkrkwhr/engineering-standards",
+    "path": "scripts/build_wiki.py",
+    "revision": "0ab26dea2102fbb801740ba9f853a004761b7e0c",
+    "url": "https://github.com/kdkrkwhr/engineering-standards/blob/0ab26dea2102fbb801740ba9f853a004761b7e0c/scripts/build_wiki.py",
+    "visibility": "public"
+  },
+  {
+    "id": "standards-check",
+    "title": "engineering-standards · scripts/check_docs.py",
+    "kind": "code",
+    "repository": "kdkrkwhr/engineering-standards",
+    "path": "scripts/check_docs.py",
+    "revision": "0ab26dea2102fbb801740ba9f853a004761b7e0c",
+    "url": "https://github.com/kdkrkwhr/engineering-standards/blob/0ab26dea2102fbb801740ba9f853a004761b7e0c/scripts/check_docs.py",
+    "visibility": "public"
+  },
+  {
+    "id": "standards-ci",
+    "title": "engineering-standards · .github/workflows/docs.yml",
+    "kind": "code",
+    "repository": "kdkrkwhr/engineering-standards",
+    "path": ".github/workflows/docs.yml",
+    "revision": "0ab26dea2102fbb801740ba9f853a004761b7e0c",
+    "url": "https://github.com/kdkrkwhr/engineering-standards/blob/0ab26dea2102fbb801740ba9f853a004761b7e0c/.github/workflows/docs.yml",
+    "visibility": "public"
+  },
+  {
+    "id": "attendance-readme",
+    "title": "attendance-pwa · README.md",
+    "kind": "readme",
+    "repository": "kdkrkwhr/attendance-pwa",
+    "path": "README.md",
+    "revision": "4ee370fad304c5a1b142be72c5109d99a04ac0e3",
+    "url": "https://github.com/kdkrkwhr/attendance-pwa/blob/4ee370fad304c5a1b142be72c5109d99a04ac0e3/README.md",
+    "visibility": "public"
+  },
+  {
+    "id": "attendance-app",
+    "title": "attendance-pwa · js/app.js",
+    "kind": "code",
+    "repository": "kdkrkwhr/attendance-pwa",
+    "path": "js/app.js",
+    "revision": "4ee370fad304c5a1b142be72c5109d99a04ac0e3",
+    "url": "https://github.com/kdkrkwhr/attendance-pwa/blob/4ee370fad304c5a1b142be72c5109d99a04ac0e3/js/app.js",
+    "visibility": "public"
+  },
+  {
+    "id": "attendance-config",
+    "title": "attendance-pwa · config.js",
+    "kind": "code",
+    "repository": "kdkrkwhr/attendance-pwa",
+    "path": "config.js",
+    "revision": "4ee370fad304c5a1b142be72c5109d99a04ac0e3",
+    "url": "https://github.com/kdkrkwhr/attendance-pwa/blob/4ee370fad304c5a1b142be72c5109d99a04ac0e3/config.js",
+    "visibility": "public"
+  },
+  {
+    "id": "attendance-sw",
+    "title": "attendance-pwa · sw.js",
+    "kind": "code",
+    "repository": "kdkrkwhr/attendance-pwa",
+    "path": "sw.js",
+    "revision": "4ee370fad304c5a1b142be72c5109d99a04ac0e3",
+    "url": "https://github.com/kdkrkwhr/attendance-pwa/blob/4ee370fad304c5a1b142be72c5109d99a04ac0e3/sw.js",
+    "visibility": "public"
+  },
+  {
+    "id": "attendance-commute",
+    "title": "attendance-pwa · js/commute-time.js",
+    "kind": "code",
+    "repository": "kdkrkwhr/attendance-pwa",
+    "path": "js/commute-time.js",
+    "revision": "4ee370fad304c5a1b142be72c5109d99a04ac0e3",
+    "url": "https://github.com/kdkrkwhr/attendance-pwa/blob/4ee370fad304c5a1b142be72c5109d99a04ac0e3/js/commute-time.js",
+    "visibility": "public"
+  },
+  {
+    "id": "attendance-news",
+    "title": "attendance-pwa · js/news-brief.js",
+    "kind": "code",
+    "repository": "kdkrkwhr/attendance-pwa",
+    "path": "js/news-brief.js",
+    "revision": "4ee370fad304c5a1b142be72c5109d99a04ac0e3",
+    "url": "https://github.com/kdkrkwhr/attendance-pwa/blob/4ee370fad304c5a1b142be72c5109d99a04ac0e3/js/news-brief.js",
+    "visibility": "public"
+  },
+  {
+    "id": "attendance-ci",
+    "title": "attendance-pwa · .github/workflows/pages.yml",
+    "kind": "code",
+    "repository": "kdkrkwhr/attendance-pwa",
+    "path": ".github/workflows/pages.yml",
+    "revision": "4ee370fad304c5a1b142be72c5109d99a04ac0e3",
+    "url": "https://github.com/kdkrkwhr/attendance-pwa/blob/4ee370fad304c5a1b142be72c5109d99a04ac0e3/.github/workflows/pages.yml",
+    "visibility": "public"
+  },
+  {
+    "id": "msa-architecture-1",
+    "title": "msa-architecture: README.md",
+    "kind": "readme",
+    "repository": "kdkrkwhr/msa-architecture",
+    "path": "README.md",
+    "revision": "daab901385eda3f6cc0c5c7cafb8506affbac1b1",
+    "url": "https://github.com/kdkrkwhr/msa-architecture/blob/daab901385eda3f6cc0c5c7cafb8506affbac1b1/README.md",
+    "visibility": "public"
+  },
+  {
+    "id": "msa-architecture-2",
+    "title": "msa-architecture: spring-eureka/src/main/resources/application.yml",
+    "kind": "code",
+    "repository": "kdkrkwhr/msa-architecture",
+    "path": "spring-eureka/src/main/resources/application.yml",
+    "revision": "daab901385eda3f6cc0c5c7cafb8506affbac1b1",
+    "url": "https://github.com/kdkrkwhr/msa-architecture/blob/daab901385eda3f6cc0c5c7cafb8506affbac1b1/spring-eureka/src/main/resources/application.yml",
+    "visibility": "public"
+  },
+  {
+    "id": "msa-architecture-3",
+    "title": "msa-architecture: spring-eureka-zuul/src/main/resources/application.yml",
+    "kind": "code",
+    "repository": "kdkrkwhr/msa-architecture",
+    "path": "spring-eureka-zuul/src/main/resources/application.yml",
+    "revision": "daab901385eda3f6cc0c5c7cafb8506affbac1b1",
+    "url": "https://github.com/kdkrkwhr/msa-architecture/blob/daab901385eda3f6cc0c5c7cafb8506affbac1b1/spring-eureka-zuul/src/main/resources/application.yml",
+    "visibility": "public"
+  },
+  {
+    "id": "msa-architecture-4",
+    "title": "msa-architecture: flask-eureka-zuul-service/app.py",
+    "kind": "code",
+    "repository": "kdkrkwhr/msa-architecture",
+    "path": "flask-eureka-zuul-service/app.py",
+    "revision": "daab901385eda3f6cc0c5c7cafb8506affbac1b1",
+    "url": "https://github.com/kdkrkwhr/msa-architecture/blob/daab901385eda3f6cc0c5c7cafb8506affbac1b1/flask-eureka-zuul-service/app.py",
+    "visibility": "public"
+  },
+  {
+    "id": "msa-architecture-5",
+    "title": "msa-architecture: spring-eureka-zuul/src/main/java/com/kdk/filter/PreFilter.java",
+    "kind": "code",
+    "repository": "kdkrkwhr/msa-architecture",
+    "path": "spring-eureka-zuul/src/main/java/com/kdk/filter/PreFilter.java",
+    "revision": "daab901385eda3f6cc0c5c7cafb8506affbac1b1",
+    "url": "https://github.com/kdkrkwhr/msa-architecture/blob/daab901385eda3f6cc0c5c7cafb8506affbac1b1/spring-eureka-zuul/src/main/java/com/kdk/filter/PreFilter.java",
+    "visibility": "public"
+  },
+  {
+    "id": "spring-boot-1",
+    "title": "spring-boot: README.md",
+    "kind": "readme",
+    "repository": "kdkrkwhr/spring-boot",
+    "path": "README.md",
+    "revision": "b0a8b227af8ed65ef684a5950d0c97d42bf13d41",
+    "url": "https://github.com/kdkrkwhr/spring-boot/blob/b0a8b227af8ed65ef684a5950d0c97d42bf13d41/README.md",
+    "visibility": "public"
+  },
+  {
+    "id": "spring-boot-2",
+    "title": "spring-boot: spring-kafka/build.gradle",
+    "kind": "code",
+    "repository": "kdkrkwhr/spring-boot",
+    "path": "spring-kafka/build.gradle",
+    "revision": "b0a8b227af8ed65ef684a5950d0c97d42bf13d41",
+    "url": "https://github.com/kdkrkwhr/spring-boot/blob/b0a8b227af8ed65ef684a5950d0c97d42bf13d41/spring-kafka/build.gradle",
+    "visibility": "public"
+  },
+  {
+    "id": "spring-boot-3",
+    "title": "spring-boot: spring-security-jwt/build.gradle",
+    "kind": "code",
+    "repository": "kdkrkwhr/spring-boot",
+    "path": "spring-security-jwt/build.gradle",
+    "revision": "b0a8b227af8ed65ef684a5950d0c97d42bf13d41",
+    "url": "https://github.com/kdkrkwhr/spring-boot/blob/b0a8b227af8ed65ef684a5950d0c97d42bf13d41/spring-security-jwt/build.gradle",
+    "visibility": "public"
+  },
+  {
+    "id": "spring-boot-4",
+    "title": "spring-boot: spring-crawling/src/main/java/com/kdk/util/CrawlerUtil.java",
+    "kind": "code",
+    "repository": "kdkrkwhr/spring-boot",
+    "path": "spring-crawling/src/main/java/com/kdk/util/CrawlerUtil.java",
+    "revision": "b0a8b227af8ed65ef684a5950d0c97d42bf13d41",
+    "url": "https://github.com/kdkrkwhr/spring-boot/blob/b0a8b227af8ed65ef684a5950d0c97d42bf13d41/spring-crawling/src/main/java/com/kdk/util/CrawlerUtil.java",
+    "visibility": "public"
+  },
+  {
+    "id": "spring-boot-5",
+    "title": "spring-boot: spring-elasticsearch/src/main/java/com/kdk/service/BookService.java",
+    "kind": "code",
+    "repository": "kdkrkwhr/spring-boot",
+    "path": "spring-elasticsearch/src/main/java/com/kdk/service/BookService.java",
+    "revision": "b0a8b227af8ed65ef684a5950d0c97d42bf13d41",
+    "url": "https://github.com/kdkrkwhr/spring-boot/blob/b0a8b227af8ed65ef684a5950d0c97d42bf13d41/spring-elasticsearch/src/main/java/com/kdk/service/BookService.java",
+    "visibility": "public"
+  },
+  {
+    "id": "spring-boot-6",
+    "title": "spring-boot: spring-fcm-server/src/main/java/com/kdk/service/FcmServerService.java",
+    "kind": "code",
+    "repository": "kdkrkwhr/spring-boot",
+    "path": "spring-fcm-server/src/main/java/com/kdk/service/FcmServerService.java",
+    "revision": "b0a8b227af8ed65ef684a5950d0c97d42bf13d41",
+    "url": "https://github.com/kdkrkwhr/spring-boot/blob/b0a8b227af8ed65ef684a5950d0c97d42bf13d41/spring-fcm-server/src/main/java/com/kdk/service/FcmServerService.java",
+    "visibility": "public"
+  },
+  {
+    "id": "spring-react-template-1",
+    "title": "spring-react-template: README.md",
+    "kind": "readme",
+    "repository": "kdkrkwhr/spring-react-template",
+    "path": "README.md",
+    "revision": "2624ccc506dcc914325bf0e2aa5442e7c4f89621",
+    "url": "https://github.com/kdkrkwhr/spring-react-template/blob/2624ccc506dcc914325bf0e2aa5442e7c4f89621/README.md",
+    "visibility": "public"
+  },
+  {
+    "id": "spring-react-template-2",
+    "title": "spring-react-template: backend/settings.gradle",
+    "kind": "code",
+    "repository": "kdkrkwhr/spring-react-template",
+    "path": "backend/settings.gradle",
+    "revision": "2624ccc506dcc914325bf0e2aa5442e7c4f89621",
+    "url": "https://github.com/kdkrkwhr/spring-react-template/blob/2624ccc506dcc914325bf0e2aa5442e7c4f89621/backend/settings.gradle",
+    "visibility": "public"
+  },
+  {
+    "id": "spring-react-template-3",
+    "title": "spring-react-template: frontend/src/App.js",
+    "kind": "code",
+    "repository": "kdkrkwhr/spring-react-template",
+    "path": "frontend/src/App.js",
+    "revision": "2624ccc506dcc914325bf0e2aa5442e7c4f89621",
+    "url": "https://github.com/kdkrkwhr/spring-react-template/blob/2624ccc506dcc914325bf0e2aa5442e7c4f89621/frontend/src/App.js",
+    "visibility": "public"
+  },
+  {
+    "id": "spring-react-template-4",
+    "title": "spring-react-template: frontend/package.json",
+    "kind": "code",
+    "repository": "kdkrkwhr/spring-react-template",
+    "path": "frontend/package.json",
+    "revision": "2624ccc506dcc914325bf0e2aa5442e7c4f89621",
+    "url": "https://github.com/kdkrkwhr/spring-react-template/blob/2624ccc506dcc914325bf0e2aa5442e7c4f89621/frontend/package.json",
+    "visibility": "public"
+  },
+  {
+    "id": "spring-react-template-5",
+    "title": "spring-react-template: backend/app/api-server/src/main/java/com/kdk/web/UserController.java",
+    "kind": "code",
+    "repository": "kdkrkwhr/spring-react-template",
+    "path": "backend/app/api-server/src/main/java/com/kdk/web/UserController.java",
+    "revision": "2624ccc506dcc914325bf0e2aa5442e7c4f89621",
+    "url": "https://github.com/kdkrkwhr/spring-react-template/blob/2624ccc506dcc914325bf0e2aa5442e7c4f89621/backend/app/api-server/src/main/java/com/kdk/web/UserController.java",
+    "visibility": "public"
+  },
+  {
+    "id": "spring-react-template-6",
+    "title": "spring-react-template: backend/app/api-server/src/main/java/com/kdk/config/SecurityConfig.java",
+    "kind": "code",
+    "repository": "kdkrkwhr/spring-react-template",
+    "path": "backend/app/api-server/src/main/java/com/kdk/config/SecurityConfig.java",
+    "revision": "2624ccc506dcc914325bf0e2aa5442e7c4f89621",
+    "url": "https://github.com/kdkrkwhr/spring-react-template/blob/2624ccc506dcc914325bf0e2aa5442e7c4f89621/backend/app/api-server/src/main/java/com/kdk/config/SecurityConfig.java",
+    "visibility": "public"
+  },
+  {
+    "id": "airport-parking-1",
+    "title": "airport-parking: src/main/java/com/kdk/scheduler/MainScheduler.java",
+    "kind": "code",
+    "repository": "kdkrkwhr/airport-parking",
+    "path": "src/main/java/com/kdk/scheduler/MainScheduler.java",
+    "revision": "8ff191956a0a8a7746f511810a798754375903e2",
+    "url": "https://github.com/kdkrkwhr/airport-parking/blob/8ff191956a0a8a7746f511810a798754375903e2/src/main/java/com/kdk/scheduler/MainScheduler.java",
+    "visibility": "public"
+  },
+  {
+    "id": "airport-parking-2",
+    "title": "airport-parking: src/main/java/com/kdk/service/RealTimeService.java",
+    "kind": "code",
+    "repository": "kdkrkwhr/airport-parking",
+    "path": "src/main/java/com/kdk/service/RealTimeService.java",
+    "revision": "8ff191956a0a8a7746f511810a798754375903e2",
+    "url": "https://github.com/kdkrkwhr/airport-parking/blob/8ff191956a0a8a7746f511810a798754375903e2/src/main/java/com/kdk/service/RealTimeService.java",
+    "visibility": "public"
+  },
+  {
+    "id": "airport-parking-3",
+    "title": "airport-parking: src/main/java/com/kdk/controller/KakaoSkillRestController.java",
+    "kind": "code",
+    "repository": "kdkrkwhr/airport-parking",
+    "path": "src/main/java/com/kdk/controller/KakaoSkillRestController.java",
+    "revision": "8ff191956a0a8a7746f511810a798754375903e2",
+    "url": "https://github.com/kdkrkwhr/airport-parking/blob/8ff191956a0a8a7746f511810a798754375903e2/src/main/java/com/kdk/controller/KakaoSkillRestController.java",
+    "visibility": "public"
+  },
+  {
+    "id": "airport-parking-4",
+    "title": "airport-parking: build.gradle",
+    "kind": "code",
+    "repository": "kdkrkwhr/airport-parking",
+    "path": "build.gradle",
+    "revision": "8ff191956a0a8a7746f511810a798754375903e2",
+    "url": "https://github.com/kdkrkwhr/airport-parking/blob/8ff191956a0a8a7746f511810a798754375903e2/build.gradle",
+    "visibility": "public"
+  },
+  {
+    "id": "flask-leaflet-1",
+    "title": "flask-leaflet: README.md",
+    "kind": "readme",
+    "repository": "kdkrkwhr/flask-leaflet",
+    "path": "README.md",
+    "revision": "cccfdf98ef0d6205ac007bcfcb338decb9ec7c50",
+    "url": "https://github.com/kdkrkwhr/flask-leaflet/blob/cccfdf98ef0d6205ac007bcfcb338decb9ec7c50/README.md",
+    "visibility": "public"
+  },
+  {
+    "id": "flask-leaflet-2",
+    "title": "flask-leaflet: app.py",
+    "kind": "code",
+    "repository": "kdkrkwhr/flask-leaflet",
+    "path": "app.py",
+    "revision": "cccfdf98ef0d6205ac007bcfcb338decb9ec7c50",
+    "url": "https://github.com/kdkrkwhr/flask-leaflet/blob/cccfdf98ef0d6205ac007bcfcb338decb9ec7c50/app.py",
+    "visibility": "public"
+  },
+  {
+    "id": "flask-leaflet-3",
+    "title": "flask-leaflet: templates/page/cctv_map.html",
+    "kind": "code",
+    "repository": "kdkrkwhr/flask-leaflet",
+    "path": "templates/page/cctv_map.html",
+    "revision": "cccfdf98ef0d6205ac007bcfcb338decb9ec7c50",
+    "url": "https://github.com/kdkrkwhr/flask-leaflet/blob/cccfdf98ef0d6205ac007bcfcb338decb9ec7c50/templates/page/cctv_map.html",
+    "visibility": "public"
+  },
+  {
+    "id": "flask-leaflet-4",
+    "title": "flask-leaflet: static/js/cctvMap.js",
+    "kind": "code",
+    "repository": "kdkrkwhr/flask-leaflet",
+    "path": "static/js/cctvMap.js",
+    "revision": "cccfdf98ef0d6205ac007bcfcb338decb9ec7c50",
+    "url": "https://github.com/kdkrkwhr/flask-leaflet/blob/cccfdf98ef0d6205ac007bcfcb338decb9ec7c50/static/js/cctvMap.js",
+    "visibility": "public"
+  },
+  {
+    "id": "flutter-profile-1",
+    "title": "flutter-profile: README.md",
+    "kind": "readme",
+    "repository": "kdkrkwhr/flutter-profile",
+    "path": "README.md",
+    "revision": "9e396bbddaa0178e2ccb99bebdad2ac27b4726ea",
+    "url": "https://github.com/kdkrkwhr/flutter-profile/blob/9e396bbddaa0178e2ccb99bebdad2ac27b4726ea/README.md",
+    "visibility": "public"
+  },
+  {
+    "id": "flutter-profile-2",
+    "title": "flutter-profile: lib/main.dart",
+    "kind": "code",
+    "repository": "kdkrkwhr/flutter-profile",
+    "path": "lib/main.dart",
+    "revision": "9e396bbddaa0178e2ccb99bebdad2ac27b4726ea",
+    "url": "https://github.com/kdkrkwhr/flutter-profile/blob/9e396bbddaa0178e2ccb99bebdad2ac27b4726ea/lib/main.dart",
+    "visibility": "public"
+  },
+  {
+    "id": "flutter-profile-3",
+    "title": "flutter-profile: lib/sections/portfolio/portfolio.dart",
+    "kind": "code",
+    "repository": "kdkrkwhr/flutter-profile",
+    "path": "lib/sections/portfolio/portfolio.dart",
+    "revision": "9e396bbddaa0178e2ccb99bebdad2ac27b4726ea",
+    "url": "https://github.com/kdkrkwhr/flutter-profile/blob/9e396bbddaa0178e2ccb99bebdad2ac27b4726ea/lib/sections/portfolio/portfolio.dart",
+    "visibility": "public"
+  },
+  {
+    "id": "flutter-profile-4",
+    "title": "flutter-profile: pubspec.yaml",
+    "kind": "code",
+    "repository": "kdkrkwhr/flutter-profile",
+    "path": "pubspec.yaml",
+    "revision": "9e396bbddaa0178e2ccb99bebdad2ac27b4726ea",
+    "url": "https://github.com/kdkrkwhr/flutter-profile/blob/9e396bbddaa0178e2ccb99bebdad2ac27b4726ea/pubspec.yaml",
+    "visibility": "public"
+  },
+  {
+    "id": "flutter-profile-5",
+    "title": "flutter-profile: test/widget_test.dart",
+    "kind": "code",
+    "repository": "kdkrkwhr/flutter-profile",
+    "path": "test/widget_test.dart",
+    "revision": "9e396bbddaa0178e2ccb99bebdad2ac27b4726ea",
+    "url": "https://github.com/kdkrkwhr/flutter-profile/blob/9e396bbddaa0178e2ccb99bebdad2ac27b4726ea/test/widget_test.dart",
+    "visibility": "public"
+  },
+  {
+    "id": "dl-object-tracking-1",
+    "title": "dl-object-tracking: README.md",
+    "kind": "readme",
+    "repository": "kdkrkwhr/dl-object-tracking",
+    "path": "README.md",
+    "revision": "c00e0c9b9632b4a19497395b33208d3c9a08cc5f",
+    "url": "https://github.com/kdkrkwhr/dl-object-tracking/blob/c00e0c9b9632b4a19497395b33208d3c9a08cc5f/README.md",
+    "visibility": "public"
+  },
+  {
+    "id": "dl-object-tracking-2",
+    "title": "dl-object-tracking: custom_vehicle_training/README.md",
+    "kind": "readme",
+    "repository": "kdkrkwhr/dl-object-tracking",
+    "path": "custom_vehicle_training/README.md",
+    "revision": "c00e0c9b9632b4a19497395b33208d3c9a08cc5f",
+    "url": "https://github.com/kdkrkwhr/dl-object-tracking/blob/c00e0c9b9632b4a19497395b33208d3c9a08cc5f/custom_vehicle_training/README.md",
+    "visibility": "public"
+  },
+  {
+    "id": "dl-object-tracking-3",
+    "title": "dl-object-tracking: custom_vehicle_training/generate_tfrecord.py",
+    "kind": "code",
+    "repository": "kdkrkwhr/dl-object-tracking",
+    "path": "custom_vehicle_training/generate_tfrecord.py",
+    "revision": "c00e0c9b9632b4a19497395b33208d3c9a08cc5f",
+    "url": "https://github.com/kdkrkwhr/dl-object-tracking/blob/c00e0c9b9632b4a19497395b33208d3c9a08cc5f/custom_vehicle_training/generate_tfrecord.py",
+    "visibility": "public"
+  },
+  {
+    "id": "dl-object-detecting-1",
+    "title": "dl-object-detecting: demo.py",
+    "kind": "code",
+    "repository": "kdkrkwhr/dl-object-detecting",
+    "path": "demo.py",
+    "revision": "373223b39fdb1401a838cba5b3cf096bc612e71f",
+    "url": "https://github.com/kdkrkwhr/dl-object-detecting/blob/373223b39fdb1401a838cba5b3cf096bc612e71f/demo.py",
+    "visibility": "public"
+  },
+  {
+    "id": "dl-object-detecting-2",
+    "title": "dl-object-detecting: model/yolo_model.py",
+    "kind": "code",
+    "repository": "kdkrkwhr/dl-object-detecting",
+    "path": "model/yolo_model.py",
+    "revision": "373223b39fdb1401a838cba5b3cf096bc612e71f",
+    "url": "https://github.com/kdkrkwhr/dl-object-detecting/blob/373223b39fdb1401a838cba5b3cf096bc612e71f/model/yolo_model.py",
+    "visibility": "public"
+  },
+  {
+    "id": "dl-object-detecting-3",
+    "title": "dl-object-detecting: model/darknet53.py",
+    "kind": "code",
+    "repository": "kdkrkwhr/dl-object-detecting",
+    "path": "model/darknet53.py",
+    "revision": "373223b39fdb1401a838cba5b3cf096bc612e71f",
+    "url": "https://github.com/kdkrkwhr/dl-object-detecting/blob/373223b39fdb1401a838cba5b3cf096bc612e71f/model/darknet53.py",
+    "visibility": "public"
+  },
+  {
+    "id": "dl-object-detecting-4",
+    "title": "dl-object-detecting: README.md",
+    "kind": "readme",
+    "repository": "kdkrkwhr/dl-object-detecting",
+    "path": "README.md",
+    "revision": "373223b39fdb1401a838cba5b3cf096bc612e71f",
+    "url": "https://github.com/kdkrkwhr/dl-object-detecting/blob/373223b39fdb1401a838cba5b3cf096bc612e71f/README.md",
+    "visibility": "public"
+  },
+  {
+    "id": "dl-data-training-1",
+    "title": "dl-data-training: train_car.py",
+    "kind": "code",
+    "repository": "kdkrkwhr/dl-data-training",
+    "path": "train_car.py",
+    "revision": "a6b6af0142a3d57ebeac89c38c89d9dadd614c59",
+    "url": "https://github.com/kdkrkwhr/dl-data-training/blob/a6b6af0142a3d57ebeac89c38c89d9dadd614c59/train_car.py",
+    "visibility": "public"
+  },
+  {
+    "id": "dl-tesseract-1",
+    "title": "dl-tesseract: main.py",
+    "kind": "code",
+    "repository": "kdkrkwhr/dl-tesseract",
+    "path": "main.py",
+    "revision": "d61bd752deb16ef19df40f420a038d81a21519ca",
+    "url": "https://github.com/kdkrkwhr/dl-tesseract/blob/d61bd752deb16ef19df40f420a038d81a21519ca/main.py",
+    "visibility": "public"
+  },
+  {
+    "id": "dl-tesseract-2",
+    "title": "dl-tesseract: README.md",
+    "kind": "readme",
+    "repository": "kdkrkwhr/dl-tesseract",
+    "path": "README.md",
+    "revision": "d61bd752deb16ef19df40f420a038d81a21519ca",
+    "url": "https://github.com/kdkrkwhr/dl-tesseract/blob/d61bd752deb16ef19df40f420a038d81a21519ca/README.md",
+    "visibility": "public"
+  },
+  {
+    "id": "algorithms-1",
+    "title": "algorithms: src/baekjoon/tuto/TutorialSolution.java",
+    "kind": "code",
+    "repository": "kdkrkwhr/algorithms",
+    "path": "src/baekjoon/tuto/TutorialSolution.java",
+    "revision": "e7aacf60b038fff8eb84974d98d138776c46e1c0",
+    "url": "https://github.com/kdkrkwhr/algorithms/blob/e7aacf60b038fff8eb84974d98d138776c46e1c0/src/baekjoon/tuto/TutorialSolution.java",
+    "visibility": "public"
+  },
+  {
+    "id": "kdkrkwhr.github.com-1",
+    "title": "kdkrkwhr.github.com: README.md",
+    "kind": "readme",
+    "repository": "kdkrkwhr/kdkrkwhr.github.com",
+    "path": "README.md",
+    "revision": "02bb498ac183973e58e6b6489f59971e63691ac3",
+    "url": "https://github.com/kdkrkwhr/kdkrkwhr.github.com/blob/02bb498ac183973e58e6b6489f59971e63691ac3/README.md",
+    "visibility": "public"
+  },
+  {
+    "id": "kdkrkwhr.github.com-2",
+    "title": "kdkrkwhr.github.com: _config.yml",
+    "kind": "code",
+    "repository": "kdkrkwhr/kdkrkwhr.github.com",
+    "path": "_config.yml",
+    "revision": "02bb498ac183973e58e6b6489f59971e63691ac3",
+    "url": "https://github.com/kdkrkwhr/kdkrkwhr.github.com/blob/02bb498ac183973e58e6b6489f59971e63691ac3/_config.yml",
+    "visibility": "public"
+  },
+  {
+    "id": "kdkrkwhr.github.com-3",
+    "title": "kdkrkwhr.github.com: _data/projects.yml",
+    "kind": "code",
+    "repository": "kdkrkwhr/kdkrkwhr.github.com",
+    "path": "_data/projects.yml",
+    "revision": "02bb498ac183973e58e6b6489f59971e63691ac3",
+    "url": "https://github.com/kdkrkwhr/kdkrkwhr.github.com/blob/02bb498ac183973e58e6b6489f59971e63691ac3/_data/projects.yml",
+    "visibility": "public"
+  },
+  {
+    "id": "kdkrkwhr.github.com-4",
+    "title": "kdkrkwhr.github.com: scripts/publish_blog.py",
+    "kind": "code",
+    "repository": "kdkrkwhr/kdkrkwhr.github.com",
+    "path": "scripts/publish_blog.py",
+    "revision": "02bb498ac183973e58e6b6489f59971e63691ac3",
+    "url": "https://github.com/kdkrkwhr/kdkrkwhr.github.com/blob/02bb498ac183973e58e6b6489f59971e63691ac3/scripts/publish_blog.py",
+    "visibility": "public"
+  },
+  {
+    "id": "resume-1",
+    "title": "resume: README.md",
+    "kind": "readme",
+    "repository": "kdkrkwhr/resume",
+    "path": "README.md",
+    "revision": "31ca11c24755494362212f4bdc9c5718d49bfc64",
+    "url": "https://github.com/kdkrkwhr/resume/blob/31ca11c24755494362212f4bdc9c5718d49bfc64/README.md",
+    "visibility": "public"
+  },
+  {
+    "id": "resume-2",
+    "title": "resume: index.html",
+    "kind": "code",
+    "repository": "kdkrkwhr/resume",
+    "path": "index.html",
+    "revision": "31ca11c24755494362212f4bdc9c5718d49bfc64",
+    "url": "https://github.com/kdkrkwhr/resume/blob/31ca11c24755494362212f4bdc9c5718d49bfc64/index.html",
+    "visibility": "public"
+  },
+  {
+    "id": "resume-3",
+    "title": "resume: style.css",
+    "kind": "code",
+    "repository": "kdkrkwhr/resume",
+    "path": "style.css",
+    "revision": "31ca11c24755494362212f4bdc9c5718d49bfc64",
+    "url": "https://github.com/kdkrkwhr/resume/blob/31ca11c24755494362212f4bdc9c5718d49bfc64/style.css",
+    "visibility": "public"
+  },
+  {
+    "id": "kdkrkwhr-1",
+    "title": "kdkrkwhr: README.md",
+    "kind": "readme",
+    "repository": "kdkrkwhr/kdkrkwhr",
+    "path": "README.md",
+    "revision": "ce9cc77955a5de3fa114d1eea1288913b23f3c51",
+    "url": "https://github.com/kdkrkwhr/kdkrkwhr/blob/ce9cc77955a5de3fa114d1eea1288913b23f3c51/README.md",
+    "visibility": "public"
+  },
+  {
+    "id": "kdk-knowledge-1",
+    "title": "kdk-knowledge: README.md",
+    "kind": "readme",
+    "repository": "kdkrkwhr/kdk-knowledge",
+    "path": "README.md",
+    "revision": "518ccf03c2b798b64e628eb7e3332561345155ef",
+    "url": "https://github.com/kdkrkwhr/kdk-knowledge/blob/518ccf03c2b798b64e628eb7e3332561345155ef/README.md",
+    "visibility": "public"
+  },
+  {
+    "id": "kdk-knowledge-2",
+    "title": "kdk-knowledge: scripts/build_wiki.py",
+    "kind": "code",
+    "repository": "kdkrkwhr/kdk-knowledge",
+    "path": "scripts/build_wiki.py",
+    "revision": "518ccf03c2b798b64e628eb7e3332561345155ef",
+    "url": "https://github.com/kdkrkwhr/kdk-knowledge/blob/518ccf03c2b798b64e628eb7e3332561345155ef/scripts/build_wiki.py",
+    "visibility": "public"
+  },
+  {
+    "id": "kdk-knowledge-3",
+    "title": "kdk-knowledge: scripts/validate.py",
+    "kind": "code",
+    "repository": "kdkrkwhr/kdk-knowledge",
+    "path": "scripts/validate.py",
+    "revision": "518ccf03c2b798b64e628eb7e3332561345155ef",
+    "url": "https://github.com/kdkrkwhr/kdk-knowledge/blob/518ccf03c2b798b64e628eb7e3332561345155ef/scripts/validate.py",
+    "visibility": "public"
+  },
+  {
+    "id": "spring-ai-1",
+    "title": "spring-ai: README.md",
+    "kind": "readme",
+    "repository": "kdkrkwhr/spring-ai",
+    "path": "README.md",
+    "revision": "c988e72ab7282bcc352b2155e8cb27ff4b5e0fda",
+    "url": "https://github.com/kdkrkwhr/spring-ai/blob/c988e72ab7282bcc352b2155e8cb27ff4b5e0fda/README.md",
+    "visibility": "public"
+  },
+  {
+    "id": "spring-ai-2",
+    "title": "spring-ai: pom.xml",
+    "kind": "code",
+    "repository": "kdkrkwhr/spring-ai",
+    "path": "pom.xml",
+    "revision": "c988e72ab7282bcc352b2155e8cb27ff4b5e0fda",
+    "url": "https://github.com/kdkrkwhr/spring-ai/blob/c988e72ab7282bcc352b2155e8cb27ff4b5e0fda/pom.xml",
+    "visibility": "public"
+  },
+  {
+    "id": "hermes-agent-1",
+    "title": "hermes-agent: README.md",
+    "kind": "readme",
+    "repository": "kdkrkwhr/hermes-agent",
+    "path": "README.md",
+    "revision": "b1e211ddd15cc72e99aa068254b89e4351f8c278",
+    "url": "https://github.com/kdkrkwhr/hermes-agent/blob/b1e211ddd15cc72e99aa068254b89e4351f8c278/README.md",
+    "visibility": "public"
+  },
+  {
+    "id": "hermes-agent-2",
+    "title": "hermes-agent: package.json",
+    "kind": "code",
+    "repository": "kdkrkwhr/hermes-agent",
+    "path": "package.json",
+    "revision": "b1e211ddd15cc72e99aa068254b89e4351f8c278",
+    "url": "https://github.com/kdkrkwhr/hermes-agent/blob/b1e211ddd15cc72e99aa068254b89e4351f8c278/package.json",
+    "visibility": "public"
+  },
+  {
+    "id": "hermes-agent-3",
+    "title": "hermes-agent: .github/workflows/install-e2e.yml",
+    "kind": "code",
+    "repository": "kdkrkwhr/hermes-agent",
+    "path": ".github/workflows/install-e2e.yml",
+    "revision": "b1e211ddd15cc72e99aa068254b89e4351f8c278",
+    "url": "https://github.com/kdkrkwhr/hermes-agent/blob/b1e211ddd15cc72e99aa068254b89e4351f8c278/.github/workflows/install-e2e.yml",
+    "visibility": "public"
+  },
+  {
+    "id": "hermes-agent-4",
+    "title": "hermes-agent: scripts/dev-sandbox.sh",
+    "kind": "code",
+    "repository": "kdkrkwhr/hermes-agent",
+    "path": "scripts/dev-sandbox.sh",
+    "revision": "b1e211ddd15cc72e99aa068254b89e4351f8c278",
+    "url": "https://github.com/kdkrkwhr/hermes-agent/blob/b1e211ddd15cc72e99aa068254b89e4351f8c278/scripts/dev-sandbox.sh",
+    "visibility": "public"
+  },
+  {
+    "id": "hermes-agent-5",
+    "title": "hermes-agent: scripts/sandbox/stage2-run.sh",
+    "kind": "code",
+    "repository": "kdkrkwhr/hermes-agent",
+    "path": "scripts/sandbox/stage2-run.sh",
+    "revision": "b1e211ddd15cc72e99aa068254b89e4351f8c278",
+    "url": "https://github.com/kdkrkwhr/hermes-agent/blob/b1e211ddd15cc72e99aa068254b89e4351f8c278/scripts/sandbox/stage2-run.sh",
+    "visibility": "public"
+  },
+  {
+    "id": "AgentRadio-1",
+    "title": "AgentRadio: README.md",
+    "kind": "readme",
+    "repository": "kdkrkwhr/AgentRadio",
+    "path": "README.md",
+    "revision": "9ea8df12f3c3becc5d9b66c4e3b8d796ca5b9645",
+    "url": "https://github.com/kdkrkwhr/AgentRadio/blob/9ea8df12f3c3becc5d9b66c4e3b8d796ca5b9645/README.md",
+    "visibility": "public"
+  },
+  {
+    "id": "AgentRadio-2",
+    "title": "AgentRadio: multi_agent/coral_multi_agent.py",
+    "kind": "code",
+    "repository": "kdkrkwhr/AgentRadio",
+    "path": "multi_agent/coral_multi_agent.py",
+    "revision": "9ea8df12f3c3becc5d9b66c4e3b8d796ca5b9645",
+    "url": "https://github.com/kdkrkwhr/AgentRadio/blob/9ea8df12f3c3becc5d9b66c4e3b8d796ca5b9645/multi_agent/coral_multi_agent.py",
+    "visibility": "public"
+  },
+  {
+    "id": "AgentRadio-3",
+    "title": "AgentRadio: multi_agent/resume_guard.py",
+    "kind": "code",
+    "repository": "kdkrkwhr/AgentRadio",
+    "path": "multi_agent/resume_guard.py",
+    "revision": "9ea8df12f3c3becc5d9b66c4e3b8d796ca5b9645",
+    "url": "https://github.com/kdkrkwhr/AgentRadio/blob/9ea8df12f3c3becc5d9b66c4e3b8d796ca5b9645/multi_agent/resume_guard.py",
     "visibility": "public"
   }
 ]
