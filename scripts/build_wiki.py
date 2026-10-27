@@ -131,15 +131,18 @@ def build(root: Path) -> dict[str, str]:
         raise ValueError("document filename/id mismatch")
     documents.sort(key=lambda item: (item[0]["order"], item[0]["id"]))
     template = (root / "templates/wiki-page.html").read_text(encoding="utf-8")
-    navigation = "\n".join(
-        f'<a href="{html.escape(meta["id"])}.html">{html.escape(body.splitlines()[0].removeprefix("# "))}</a>'
-        for meta, body, _ in documents
-    )
     outputs = {}
     search = []
     entities, relations = [], []
     ids = {meta["id"] for meta, _, _ in documents}
     for meta, body, raw in documents:
+        navigation = "\n".join(
+            '<a href="{}.html"{}>{}</a>'.format(
+                html.escape(item_meta["id"], quote=True),
+                ' aria-current="page"' if item_meta["id"] == meta["id"] else '',
+                html.escape(item_body.splitlines()[0].removeprefix("# ")),
+            ) for item_meta, item_body, _ in documents
+        )
         for sid in meta["sources"]:
             if sid not in source_by_id:
                 raise ValueError(f"missing source: {sid}")
@@ -157,6 +160,7 @@ def build(root: Path) -> dict[str, str]:
             for sid in meta["sources"]
         ) or "<li>이 안내 문서에는 별도 원본 코드 근거가 없습니다.</li>"
         page = template.replace("{{TITLE}}", html.escape(title)).replace("{{NAV}}", navigation)
+        page = page.replace("{{NAV_COUNT}}", str(len(documents)))
         page = page.replace("{{TOC}}", toc_html).replace("{{BODY}}", rendered)
         page = page.replace("{{EVIDENCE}}", evidence_html).replace("{{SOURCE_MD}}", f'markdown/{meta["id"]}.md')
         outputs[f'wiki/{meta["id"]}.html'] = page

@@ -24,6 +24,12 @@ class WikiBuildTest(unittest.TestCase):
         self.assertTrue(any(edge["from"] == "auction-spot" for edge in graph["relations"]))
         self.assertEqual(graph["analysis"]["status"], "not-run")
 
+    def test_document_navigation_marks_current_page_and_collapses_on_mobile(self):
+        page = build(ROOT)["wiki/agent-hub.html"]
+        self.assertIn('<details class="wiki-mobile-nav">', page)
+        self.assertIn(f'문서 목록 · {len(list((ROOT / "docs/wiki").glob("*.md")))}개', page)
+        self.assertEqual(page.count('href="agent-hub.html" aria-current="page"'), 2)
+
     def test_unregistered_public_source_link_is_rejected(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)
