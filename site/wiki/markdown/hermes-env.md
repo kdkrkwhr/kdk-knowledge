@@ -1,5 +1,5 @@
 ---
-{"id":"hermes-env","type":"project","order":26,"mapTitle":"Hermes 환경 템플릿","summary":"Hermes 작업 환경의 경로·프로필·스킬을 다른 머신에 배치하는 부트스트랩 저장소","sources":["env-readme","env-bootstrap","env-agent-guide","env-config","env-conventions"],"relations":[{"to":"hermes-agent","label":"Hermes 작업 환경을 배치하는 별도 bootstrap","evidence":["env-readme"]}]}
+{"id":"hermes-env","type":"project","order":26,"mapTitle":"Hermes 환경 템플릿","summary":"Hermes 작업 환경의 경로·프로필·스킬을 다른 머신에 배치하는 부트스트랩 저장소","sources":["env-readme","env-bootstrap","env-agent-guide","env-config","env-conventions"],"relations":[]}
 ---
 # hermes-env: 작업 환경을 다시 구성하는 부트스트랩
 

@@ -193,21 +193,21 @@
     "summary": "Jekyll 게시 구조와 Markdown 글·발행 확인 스크립트",
     "body": "# 개인 기술 블로그 저장소\n\n**분석 기준:** `02bb498ac183973e58e6b6489f59971e63691ac3`. 이 문서는 공개 원본 파일을 정적으로 읽어 작성했다. 해당 프로젝트의 설치·실행·테스트를 수행하거나 개인 담당 범위·성과를 확인한 것은 아니다.\n\n## 콘텐츠와 빌드 구조\n\nREADME는 Jekyll·Kramdown을 쓰는 GitHub Pages 기술 블로그라고 설명한다. `_config.yml`은 사이트 설정을, `_posts`는 날짜가 붙은 Markdown 글을, `_data/projects.yml`은 프로젝트 목록 데이터를 담는다. 글에서 표현한 경험은 개인의 해석이 포함될 수 있으므로 이 문서에서는 출판 구조만 기술한다.\n[원본: `README.md`](https://github.com/kdkrkwhr/kdkrkwhr.github.com/blob/02bb498ac183973e58e6b6489f59971e63691ac3/README.md) [원본: `_config.yml`](https://github.com/kdkrkwhr/kdkrkwhr.github.com/blob/02bb498ac183973e58e6b6489f59971e63691ac3/_config.yml) [원본: `_data/projects.yml`](https://github.com/kdkrkwhr/kdkrkwhr.github.com/blob/02bb498ac183973e58e6b6489f59971e63691ac3/_data/projects.yml)\n\n## 게시 확인 경로\n\n`scripts/publish_blog.py`는 한 글의 공개 URL을 최대 세 차례 조회하고 응답 내용에 예상 문자열이 있는지 확인해 로그를 남긴다. 실패해도 종료 코드는 0으로 반환하도록 작성돼 있으므로 이 스크립트가 CI 배포 성공을 엄격하게 보증한다고 설명하지 않는다.\n[원본: `scripts/publish_blog.py`](https://github.com/kdkrkwhr/kdkrkwhr.github.com/blob/02bb498ac183973e58e6b6489f59971e63691ac3/scripts/publish_blog.py)\n\n## 공개 범위\n\n원본 README와 데이터에는 개인 식별·연락 정보가 포함될 수 있다. 이 위키는 이메일·연락처·개별 경력 서술을 복제하지 않고 블로그 구조와 소스 경계만 연결한다.\n[원본: `README.md`](https://github.com/kdkrkwhr/kdkrkwhr.github.com/blob/02bb498ac183973e58e6b6489f59971e63691ac3/README.md) [원본: `_data/projects.yml`](https://github.com/kdkrkwhr/kdkrkwhr.github.com/blob/02bb498ac183973e58e6b6489f59971e63691ac3/_data/projects.yml)\n\n## 연결해서 읽기\n\n블로그에 소개된 [노트버디](notebuddy.md) 등의 기술 글은 프로젝트 코드 자체와 별개의 서술 근거다.\n\n## 확인 범위와 미확인 사항\n\n위 구현 설명은 표시한 커밋의 파일에서 확인한 사실과 정적 해석이다. 현재 배포·운영 상태, 실행 성공, 실제 사용량, 개인 선택 이유와 기여 범위는 확인하지 않았다.\n",
     "url": "wiki/kdkrkwhr.github.com.html",
-    "type": "project"
+    "type": "resource"
   },
   {
     "title": "공개 이력서 페이지의 구현",
     "summary": "HTML·CSS로 구성된 정적 이력서 사이트의 게시 구조",
     "body": "# 공개 이력서 페이지의 구현\n\n**분석 기준:** `31ca11c24755494362212f4bdc9c5718d49bfc64`. 이 문서는 공개 원본 파일을 정적으로 읽어 작성했다. 해당 프로젝트의 설치·실행·테스트를 수행하거나 개인 담당 범위·성과를 확인한 것은 아니다.\n\n## 정적 페이지\n\nREADME는 별도 빌드 없이 GitHub Pages에서 서비스하는 정적 이력서라고 설명한다. 루트 `index.html`이 내용을 담고 `style.css`를 상대 경로로 불러와 project Pages와 사용자 Pages 경로 모두를 고려한다. 실행 파일이나 데이터 서버는 없다.\n[원본: `README.md`](https://github.com/kdkrkwhr/resume/blob/31ca11c24755494362212f4bdc9c5718d49bfc64/README.md) [원본: `index.html`](https://github.com/kdkrkwhr/resume/blob/31ca11c24755494362212f4bdc9c5718d49bfc64/index.html) [원본: `style.css`](https://github.com/kdkrkwhr/resume/blob/31ca11c24755494362212f4bdc9c5718d49bfc64/style.css)\n\n## 게시와 개인정보 경계\n\nREADME는 공개 직책·기간·링크의 사전 확인과 회사 저장소 전체를 복사하지 말라는 주의를 명시한다. 여기서는 이력의 세부 문장, 이름 외 연락처, 성과 수치를 옮기지 않았다. 공개된 이력서가 곧 다른 자료의 재공개 승인이라고 해석하지 않는다.\n[원본: `README.md`](https://github.com/kdkrkwhr/resume/blob/31ca11c24755494362212f4bdc9c5718d49bfc64/README.md)\n\n## 연결해서 읽기\n\n[Flutter 프로필 예제](flutter-profile.md)는 별도 UI 코드이고 [기술 블로그](kdkrkwhr.github.com.md)는 작성 글의 보관소다.\n\n## 확인 범위와 미확인 사항\n\n위 구현 설명은 표시한 커밋의 파일에서 확인한 사실과 정적 해석이다. 현재 배포·운영 상태, 실행 성공, 실제 사용량, 개인 선택 이유와 기여 범위는 확인하지 않았다.\n",
     "url": "wiki/resume.html",
-    "type": "project"
+    "type": "resource"
   },
   {
     "title": "GitHub 프로필 README",
     "summary": "계정 프로필이 공개 프로젝트와 관심 기술을 연결하는 인덱스",
     "body": "# GitHub 프로필 README\n\n**분석 기준:** `ce9cc77955a5de3fa114d1eea1288913b23f3c51`. 이 문서는 공개 원본 파일을 정적으로 읽어 작성했다. 해당 프로젝트의 설치·실행·테스트를 수행하거나 개인 담당 범위·성과를 확인한 것은 아니다.\n\n## 자료의 역할\n\n이 저장소는 프로필용 `README.md` 하나로 구성된다. README는 선택한 공개 프로젝트 세 개와 이력서·블로그 링크를 제시한다. 이는 공개 자기소개 문구이며 각 프로젝트의 개인 담당 범위나 측정된 성과를 독립 검증한 문서는 아니다.\n[원본: `README.md`](https://github.com/kdkrkwhr/kdkrkwhr/blob/ce9cc77955a5de3fa114d1eea1288913b23f3c51/README.md)\n\n## 이 중앙 위키와의 차이\n\n프로필은 방문자를 프로젝트 원본으로 보내는 짧은 입구다. 이 위키는 원본 커밋의 README·설정·코드를 대조한 설명을 저장한다. README의 기술 이름 목록을 특정 프로젝트에서 사용했다는 증거로 자동 연결하지 않는다.\n[원본: `README.md`](https://github.com/kdkrkwhr/kdkrkwhr/blob/ce9cc77955a5de3fa114d1eea1288913b23f3c51/README.md)\n\n## 연결해서 읽기\n\n[공개 저장소 목록](repositories.md)에서 실제 분석 완료와 인덱스만 확인한 대상을 구분한다.\n\n## 확인 범위와 미확인 사항\n\n위 구현 설명은 표시한 커밋의 파일에서 확인한 사실과 정적 해석이다. 현재 배포·운영 상태, 실행 성공, 실제 사용량, 개인 선택 이유와 기여 범위는 확인하지 않았다.\n",
     "url": "wiki/kdkrkwhr.html",
-    "type": "project"
+    "type": "resource"
   },
   {
     "title": "중앙 지식 허브 구현",

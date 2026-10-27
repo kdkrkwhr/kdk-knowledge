@@ -1,5 +1,5 @@
 ---
-{"id":"resume","type":"project","order":76,"mapTitle":"공개 이력서 페이지의 구현","summary":"HTML·CSS로 구성된 정적 이력서 사이트의 게시 구조","sources":["resume-1","resume-2","resume-3"],"relations":[]}
+{"id":"resume","type":"resource","order":76,"mapTitle":"공개 이력서 페이지의 구현","summary":"HTML·CSS로 구성된 정적 이력서 사이트의 게시 구조","sources":["resume-1","resume-2","resume-3"],"relations":[]}
 ---
 # 공개 이력서 페이지의 구현
 

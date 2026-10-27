@@ -1,7 +1,7 @@
 const $ = selector => document.querySelector(selector);
 let knowledge;
 let selected = null;
-const typeNames = {project: '프로젝트', reference: 'Fork / 참조', criteria: '참고 기준', technology: '기술', implementation: '구현'};
+const typeNames = {project: '프로젝트', resource: '공개 자료', reference: 'Fork / 참조', criteria: '참고 기준', technology: '기술', implementation: '구현'};
 
 function sourceLinks(ids) {
   const list = document.createElement('ul');

@@ -1,5 +1,5 @@
 ---
-{"id":"spring-ai","type":"reference","order":79,"mapTitle":"Spring AI fork 참조","summary":"upstream Spring AI 코드를 가리키는 fork; 독자 커밋 확인 안 됨","sources":["spring-ai-1","spring-ai-2"],"relations":[{"to":"spring-boot","label":"upstream README가 Spring Boot 호환성을 설명","evidence":["spring-ai-1"]}]}
+{"id":"spring-ai","type":"reference","order":79,"mapTitle":"Spring AI fork 참조","summary":"upstream Spring AI 코드를 가리키는 fork; 독자 커밋 확인 안 됨","sources":["spring-ai-1","spring-ai-2"],"relations":[]}
 ---
 # Spring AI fork 참조
 

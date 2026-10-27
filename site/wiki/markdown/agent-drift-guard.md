@@ -1,5 +1,5 @@
 ---
-{"id":"agent-drift-guard","type":"project","order":29,"mapTitle":"Agent Drift Guard","summary":"에이전트 메시지를 단계 경계까지 버퍼링하는 실험 코드; README는 Hermes 대상 중단을 명시","sources":["drift-readme","drift-buffer","drift-inject","drift-test","drift-hook","drift-session"],"relations":[{"to":"hermes-agent","label":"README에 Hermes의 steer 경로가 대체한다고 명시","evidence":["drift-readme"]}]}
+{"id":"agent-drift-guard","type":"project","order":29,"mapTitle":"Agent Drift Guard","summary":"에이전트 메시지를 단계 경계까지 버퍼링하는 실험 코드; README는 Hermes 대상 중단을 명시","sources":["drift-readme","drift-buffer","drift-inject","drift-test","drift-hook","drift-session"],"relations":[]}
 ---
 # agent-drift-guard: 단계 경계에 메시지를 전달하는 연구 코드
 

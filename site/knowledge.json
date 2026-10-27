@@ -1673,7 +1673,7 @@
     },
     {
       "id": "kdkrkwhr.github.com",
-      "type": "project",
+      "type": "resource",
       "title": "개인 기술 블로그 저장소",
       "summary": "Jekyll 게시 구조와 Markdown 글·발행 확인 스크립트",
       "evidence": [
@@ -1686,7 +1686,7 @@
     },
     {
       "id": "resume",
-      "type": "project",
+      "type": "resource",
       "title": "공개 이력서 페이지의 구현",
       "summary": "HTML·CSS로 구성된 정적 이력서 사이트의 게시 구조",
       "evidence": [
@@ -1698,7 +1698,7 @@
     },
     {
       "id": "kdkrkwhr",
-      "type": "project",
+      "type": "resource",
       "title": "GitHub 프로필 README",
       "summary": "계정 프로필이 공개 프로젝트와 관심 기술을 연결하는 인덱스",
       "evidence": [
@@ -1807,46 +1807,6 @@
       ]
     },
     {
-      "id": "r-hermes-env-hermes-agent",
-      "from": "hermes-env",
-      "to": "hermes-agent",
-      "label": "Hermes 작업 환경을 배치하는 별도 bootstrap",
-      "origin": "curated",
-      "evidence": [
-        "env-readme"
-      ]
-    },
-    {
-      "id": "r-hermes-agent-area-hermes-agent",
-      "from": "hermes-agent-area",
-      "to": "hermes-agent",
-      "label": "Hermes CLI 상태를 읽는 별도 화면",
-      "origin": "curated",
-      "evidence": [
-        "area-readme"
-      ]
-    },
-    {
-      "id": "r-hermes-team-hub-hermes-agent",
-      "from": "hermes-team-hub",
-      "to": "hermes-agent",
-      "label": "로컬 실행형에서 Hermes 상태를 읽는 별도 허브",
-      "origin": "curated",
-      "evidence": [
-        "team-readme"
-      ]
-    },
-    {
-      "id": "r-agent-drift-guard-hermes-agent",
-      "from": "agent-drift-guard",
-      "to": "hermes-agent",
-      "label": "README에 Hermes의 steer 경로가 대체한다고 명시",
-      "origin": "curated",
-      "evidence": [
-        "drift-readme"
-      ]
-    },
-    {
       "id": "r-msa-architecture-spring-boot",
       "from": "msa-architecture",
       "to": "spring-boot",
@@ -1924,16 +1884,6 @@
       "origin": "curated",
       "evidence": [
         "kdk-knowledge-1"
-      ]
-    },
-    {
-      "id": "r-spring-ai-spring-boot",
-      "from": "spring-ai",
-      "to": "spring-boot",
-      "label": "upstream README가 Spring Boot 호환성을 설명",
-      "origin": "curated",
-      "evidence": [
-        "spring-ai-1"
       ]
     },
     {

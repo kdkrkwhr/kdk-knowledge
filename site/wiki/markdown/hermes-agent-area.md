@@ -1,5 +1,5 @@
 ---
-{"id":"hermes-agent-area","type":"project","order":27,"mapTitle":"Hermes Agent Area","summary":"Hermes 프로필·칸반·로그를 2D 사무실 상태로 표현하는 Phaser 화면과 로컬 FastAPI 서버","sources":["area-readme","area-package","area-front","area-connect","area-server","area-test"],"relations":[{"to":"hermes-agent","label":"Hermes CLI 상태를 읽는 별도 화면","evidence":["area-readme"]}]}
+{"id":"hermes-agent-area","type":"project","order":27,"mapTitle":"Hermes Agent Area","summary":"Hermes 프로필·칸반·로그를 2D 사무실 상태로 표현하는 Phaser 화면과 로컬 FastAPI 서버","sources":["area-readme","area-package","area-front","area-connect","area-server","area-test"],"relations":[]}
 ---
 # Hermes Agent Area: 2D 사무실과 로컬 에이전트 상태
 

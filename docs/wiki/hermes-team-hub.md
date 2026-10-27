@@ -1,5 +1,5 @@
 ---
-{"id":"hermes-team-hub","type":"project","order":28,"mapTitle":"Hermes Team Hub","summary":"역할별 팀 로그의 정적 데모와 Hermes 상태를 읽는 로컬 서버를 분리한 허브","sources":["team-readme","team-web","team-store","team-server","team-cli","team-model"],"relations":[{"to":"hermes-agent","label":"로컬 실행형에서 Hermes 상태를 읽는 별도 허브","evidence":["team-readme"]}]}
+{"id":"hermes-team-hub","type":"project","order":28,"mapTitle":"Hermes Team Hub","summary":"역할별 팀 로그의 정적 데모와 Hermes 상태를 읽는 로컬 서버를 분리한 허브","sources":["team-readme","team-web","team-store","team-server","team-cli","team-model"],"relations":[]}
 ---
 # hermes-team-hub: 정적 팀 로그와 로컬 실시간 화면
 

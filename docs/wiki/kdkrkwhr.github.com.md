@@ -1,5 +1,5 @@
 ---
-{"id":"kdkrkwhr.github.com","type":"project","order":75,"mapTitle":"개인 기술 블로그 저장소","summary":"Jekyll 게시 구조와 Markdown 글·발행 확인 스크립트","sources":["kdkrkwhr.github.com-1","kdkrkwhr.github.com-2","kdkrkwhr.github.com-3","kdkrkwhr.github.com-4"],"relations":[{"to":"agent-hub","label":"블로그 프로젝트 목록이 agent-hub를 연결","evidence":["kdkrkwhr.github.com-3"]}]}
+{"id":"kdkrkwhr.github.com","type":"resource","order":75,"mapTitle":"개인 기술 블로그 저장소","summary":"Jekyll 게시 구조와 Markdown 글·발행 확인 스크립트","sources":["kdkrkwhr.github.com-1","kdkrkwhr.github.com-2","kdkrkwhr.github.com-3","kdkrkwhr.github.com-4"],"relations":[{"to":"agent-hub","label":"블로그 프로젝트 목록이 agent-hub를 연결","evidence":["kdkrkwhr.github.com-3"]}]}
 ---
 # 개인 기술 블로그 저장소
 

@@ -1,5 +1,5 @@
 ---
-{"id":"kdkrkwhr","type":"project","order":77,"mapTitle":"GitHub 프로필 README","summary":"계정 프로필이 공개 프로젝트와 관심 기술을 연결하는 인덱스","sources":["kdkrkwhr-1"],"relations":[{"to":"agent-hub","label":"프로필 README에서 선택 프로젝트로 연결","evidence":["kdkrkwhr-1"]}]}
+{"id":"kdkrkwhr","type":"resource","order":77,"mapTitle":"GitHub 프로필 README","summary":"계정 프로필이 공개 프로젝트와 관심 기술을 연결하는 인덱스","sources":["kdkrkwhr-1"],"relations":[{"to":"agent-hub","label":"프로필 README에서 선택 프로젝트로 연결","evidence":["kdkrkwhr-1"]}]}
 ---
 # GitHub 프로필 README
 
