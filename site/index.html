@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="공개 근거로 프로젝트, 기술 선택과 개발 기준을 연결하는 개인 지식 허브">
+  <title>김동기 · 개인 지식 위키</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="./style.css">
+  <script src="./wiki.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#article">본문으로 건너뛰기</a>
+  <header class="top"><a class="brand" href="./">kdk <span>/ knowledge</span></a><nav aria-label="사이트 이동"><a href="./architecture/">구조 지도 ↗</a><a href="https://github.com/kdkrkwhr/kdk-knowledge">GitHub ↗</a></nav></header>
+  <div class="layout">
+    <aside class="sidebar">
+      <p class="eyebrow">PERSONAL KNOWLEDGE</p><h2>근거에서 경험으로</h2>
+      <p class="side-intro">프로젝트와 선택, 배움을<br>하나씩 연결하는 기록.</p>
+      <details open><summary>위키 목차</summary><nav aria-label="위키 목차">
+        <a href="#start" aria-current="location"><span>00</span> 시작하기</a>
+        <a href="#projects"><span>01</span> 공개 프로젝트</a>
+        <a href="#criteria"><span>02</span> 개발 기준</a>
+        <a href="#career"><span>03</span> 경력과 역할</a>
+        <a href="#technology"><span>04</span> 기술과 선택 이유</a>
+        <a href="#contribute"><span>05</span> 기록을 추가하는 법</a>
+      </nav></details>
+      <p class="sidebar-note">현재 연결: 공개 자료 2곳<br>경력·성과 항목: 근거 수집 전</p>
+    </aside>
+    <main id="article">
+      <section class="search" aria-label="위키 검색">
+        <label for="wiki-search">위키에서 찾아보기</label>
+        <div class="search-row"><input id="wiki-search" type="search" placeholder="예: 노트버디, 개발 기준, 근거" autocomplete="off" aria-controls="search-results"><button id="clear-search" type="button">지우기</button></div>
+        <p id="search-status" class="muted" role="status" aria-live="polite">제목과 본문에서 찾습니다. / 키로 검색창에 이동할 수 있어요.</p>
+        <ol id="search-results" hidden></ol>
+        <noscript><p>검색에는 JavaScript가 필요합니다. 모든 본문은 아래에서 읽을 수 있습니다.</p></noscript>
+      </section>
+      <div class="document-head"><span class="badge">LLM 작성 · 공개 소스 대조</span><a href="./architecture/">근거 관계 보기 ↗</a></div>
+      <article>
+        <section id="start" class="entry">
+          <p class="eyebrow">00 / ORIENTATION</p>
+          <h1>경험을 근거와 함께 남기는 곳</h1>
+          <p class="lead">이 위키는 김동기의 프로젝트, 맡은 역할, 기술 선택과 배움, 그 경험에서 정리한 개발 기준을 연결하기 위한 개인 지식 허브입니다. 지금은 공개된 두 저장소를 출발점으로 삼습니다.</p>
+          <p>각 설명은 확인한 공개 원본으로 돌아갈 수 있어야 합니다. 위키 문장은 LLM이 공개 자료를 읽고 정리한 해설이며, 자동 코드 분석 결과가 아닙니다. 아래에 없는 경력이나 성과를 추측해 채우지 않습니다.</p>
+          <p><a href="./architecture/">구조 지도</a>에서 현재의 연결과 출처를 함께 볼 수 있습니다.</p>
+        </section>
+        <section id="projects" class="entry">
+          <p class="eyebrow">01 / PROJECTS</p><h2>공개 프로젝트</h2>
+          <h3>노트버디 · Notebook Pets</h3>
+          <p>공개 README는 그림이나 사진으로 AI 친구를 만들고, 돌봄과 대화, 산책과 모험으로 함께 성장하는 프로젝트라고 설명합니다. 이 허브에서는 프로젝트의 범위와 구현을 탐색하는 출발점으로 연결합니다. 개인이 맡은 구체적 역할이나 성과는 아직 별도 근거가 없어 적지 않았습니다. <a href="https://github.com/kdkrkwhr/notebook-pets/blob/ca5648b49e6d0a67526856a930090173d0454389/README.md">README 원본 ↗</a></p>
+          <p>기능과 코드의 연결은 기존 <a href="https://kdkrkwhr.github.io/notebook-pets/wiki/">프로젝트 위키</a>에서 읽을 수 있습니다. 그 위키는 LLM 해설과 Graphify 자동 문서를 구분합니다. <a href="https://github.com/kdkrkwhr/notebook-pets/blob/ca5648b49e6d0a67526856a930090173d0454389/docs/wiki/index.md">위키 원본 ↗</a></p>
+        </section>
+        <section id="criteria" class="entry">
+          <p class="eyebrow">02 / CRITERIA</p><h2>개발 기준은 여러 영역 중 하나</h2>
+          <p><a href="https://github.com/kdkrkwhr/engineering-standards/blob/e1c019df54898e928f871602b76fa463d3ec7930/README.md">Engineering Standards</a>는 프로젝트에서 필요한 공통 원칙과 언어·프레임워크별 프로필을 선택해 적용하는 공개 자료입니다. 특정 언어나 구조를 모든 작업에 강제하지 않는다고 명시합니다.</p>
+          <p>공통 원칙에는 요구와 수용 조건의 확인, 책임의 경계, 오류의 구분, 명명, 테스트, 변경 범위와 검증 기록이 있습니다. 이것은 <em>참조할 기준 자료</em>이며, 김동기의 모든 프로젝트에 이미 적용됐다는 뜻은 아닙니다. 실제 적용이나 예외는 해당 프로젝트의 결정 근거와 함께 기록해야 합니다. <a href="https://github.com/kdkrkwhr/engineering-standards/blob/e1c019df54898e928f871602b76fa463d3ec7930/standards/core.md">공통 원칙 원본 ↗</a></p>
+        </section>
+        <section id="career" class="entry">
+          <p class="eyebrow">03 / CAREER</p><h2>경력과 역할</h2>
+          <p class="empty">공개 가능한 역할·기간·성과와 그 근거가 아직 등록되지 않았습니다. 회사 내부 정보나 기억에 의존한 내용을 이 공개 위키에 넣지 않습니다.</p>
+          <p>추가할 때는 <a href="https://github.com/kdkrkwhr/kdk-knowledge/tree/main/templates">경력 템플릿</a>에 공개 가능한 범위와 확인 가능한 원본을 먼저 적습니다.</p>
+        </section>
+        <section id="technology" class="entry">
+          <p class="eyebrow">04 / TECHNOLOGY</p><h2>기술과 선택 이유</h2>
+          <p class="empty">기술을 사용한 프로젝트, 선택 이유, 대안, 배움의 근거가 아직 등록되지 않았습니다. 언어와 프레임워크를 미리 한정하지 않습니다.</p>
+          <p>사용 사실과 선택 이유를 구분해 <a href="https://github.com/kdkrkwhr/kdk-knowledge/tree/main/templates">기술·결정·학습 템플릿</a>으로 추가합니다.</p>
+        </section>
+        <section id="contribute" class="entry">
+          <p class="eyebrow">05 / MAINTENANCE</p><h2>기록을 추가하는 법</h2>
+          <ol><li>원본의 공개 여부를 확인하고, URL과 커밋 또는 문서 버전을 고정합니다.</li><li>사실, 해석, 개인의 배움을 구분해 작성하고 각 관계에 근거를 연결합니다.</li><li>공개해도 되는 내용인지 사람이 검토합니다. 비공개 자료는 공개 저장소에 올리지 않습니다.</li><li><code>python3 scripts/validate.py</code>와 <code>python3 -m unittest discover -s tests -v</code>를 실행한 뒤 변경을 배포합니다.</li></ol>
+          <p>참고 소스의 새 버전이 나오면 이전 SHA를 자동으로 바꾸지 않고, 차이를 읽고 해설을 다시 대조합니다. <a href="https://github.com/kdkrkwhr/kdk-knowledge/blob/main/README.md">관리 안내 ↗</a></p>
+        </section>
+      </article>
+      <section class="provenance" aria-label="문서 근거"><strong>이 판의 근거</strong><p>노트버디 <a href="https://github.com/kdkrkwhr/notebook-pets/tree/ca5648b49e6d0a67526856a930090173d0454389">ca5648b</a> · 개발 기준 <a href="https://github.com/kdkrkwhr/engineering-standards/tree/e1c019df54898e928f871602b76fa463d3ec7930">e1c019d</a> · 2026-10-27 공개 자료 대조</p><p>관계 데이터의 <a href="./knowledge.json">출처·수정 정보</a>와 문장 검토는 별개입니다. Graphify 분석은 아직 실행하지 않았습니다.</p></section>
+    </main>
+    <aside class="outline"><p class="eyebrow">이 페이지에서</p><nav aria-label="본문 목차"><a href="#start">시작하기</a><a href="#projects">공개 프로젝트</a><a href="#criteria">개발 기준</a><a href="#career">경력과 역할</a><a href="#technology">기술과 선택 이유</a><a href="#contribute">기록을 추가하는 법</a></nav><a class="outline-back" href="#article">맨 위로 ↑</a></aside>
+  </div>
+  <footer>김동기 · 공개 근거 기반 개인 지식 위키 <span>검색과 열람에는 AI API를 호출하지 않습니다.</span></footer>
+</body>
+</html>

@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-10-27",
+  "analysis": {"tool": "Graphify", "status": "not-run", "revision": null, "scope": "No extraction has been run for this repository."},
+  "sources": [
+    {
+      "id": "notebuddy-readme",
+      "title": "Notebook Pets README",
+      "repository": "kdkrkwhr/notebook-pets",
+      "path": "README.md",
+      "revision": "ca5648b49e6d0a67526856a930090173d0454389",
+      "url": "https://github.com/kdkrkwhr/notebook-pets/blob/ca5648b49e6d0a67526856a930090173d0454389/README.md",
+      "visibility": "public"
+    },
+    {
+      "id": "notebuddy-wiki",
+      "title": "Notebook Pets wiki overview",
+      "repository": "kdkrkwhr/notebook-pets",
+      "path": "docs/wiki/index.md",
+      "revision": "ca5648b49e6d0a67526856a930090173d0454389",
+      "url": "https://github.com/kdkrkwhr/notebook-pets/blob/ca5648b49e6d0a67526856a930090173d0454389/docs/wiki/index.md",
+      "visibility": "public"
+    },
+    {
+      "id": "standards-readme",
+      "title": "Engineering Standards README",
+      "repository": "kdkrkwhr/engineering-standards",
+      "path": "README.md",
+      "revision": "e1c019df54898e928f871602b76fa463d3ec7930",
+      "url": "https://github.com/kdkrkwhr/engineering-standards/blob/e1c019df54898e928f871602b76fa463d3ec7930/README.md",
+      "visibility": "public"
+    },
+    {
+      "id": "standards-core",
+      "title": "Engineering Standards common principles",
+      "repository": "kdkrkwhr/engineering-standards",
+      "path": "standards/core.md",
+      "revision": "e1c019df54898e928f871602b76fa463d3ec7930",
+      "url": "https://github.com/kdkrkwhr/engineering-standards/blob/e1c019df54898e928f871602b76fa463d3ec7930/standards/core.md",
+      "visibility": "public"
+    }
+  ],
+  "entities": [
+    {"id": "hub", "type": "hub", "title": "개인 지식 허브", "summary": "공개 근거와 경험을 연결하는 이 저장소의 출발점", "evidence": []},
+    {"id": "notebuddy", "type": "project", "title": "노트버디", "summary": "그림·사진에서 친구를 만들고 돌봄과 모험을 이어가는 공개 프로젝트", "evidence": ["notebuddy-readme", "notebuddy-wiki"]},
+    {"id": "standards", "type": "criteria", "title": "개발 기준", "summary": "필요한 규칙을 프로젝트별로 선택해 적용하는 공개 기준 자료", "evidence": ["standards-readme", "standards-core"]}
+  ],
+  "relations": [
+    {"id": "r-notebuddy", "from": "hub", "to": "notebuddy", "label": "공개 프로젝트 자료로 연결", "origin": "curated", "evidence": ["notebuddy-readme", "notebuddy-wiki"]},
+    {"id": "r-standards", "from": "hub", "to": "standards", "label": "개발 기준 자료로 연결", "origin": "curated", "evidence": ["standards-readme", "standards-core"]}
+  ]
+}
