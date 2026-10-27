@@ -1,0 +1,252 @@
+[
+  {
+    "id": "notebuddy-readme",
+    "title": "Notebook Pets README",
+    "kind": "readme",
+    "repository": "kdkrkwhr/notebook-pets",
+    "path": "README.md",
+    "revision": "ca5648b49e6d0a67526856a930090173d0454389",
+    "url": "https://github.com/kdkrkwhr/notebook-pets/blob/ca5648b49e6d0a67526856a930090173d0454389/README.md",
+    "visibility": "public"
+  },
+  {
+    "id": "notebuddy-api",
+    "title": "Notebook Pets game API",
+    "kind": "code",
+    "repository": "kdkrkwhr/notebook-pets",
+    "path": "engine/game_api.py",
+    "revision": "ca5648b49e6d0a67526856a930090173d0454389",
+    "url": "https://github.com/kdkrkwhr/notebook-pets/blob/ca5648b49e6d0a67526856a930090173d0454389/engine/game_api.py",
+    "visibility": "public"
+  },
+  {
+    "id": "notebuddy-web",
+    "title": "Notebook Pets web Worker",
+    "kind": "code",
+    "repository": "kdkrkwhr/notebook-pets",
+    "path": "web/worker.js",
+    "revision": "ca5648b49e6d0a67526856a930090173d0454389",
+    "url": "https://github.com/kdkrkwhr/notebook-pets/blob/ca5648b49e6d0a67526856a930090173d0454389/web/worker.js",
+    "visibility": "public"
+  },
+  {
+    "id": "notebuddy-anna",
+    "title": "Notebook Pets Anna Worker",
+    "kind": "code",
+    "repository": "kdkrkwhr/notebook-pets",
+    "path": "anna/executas/notebuddy/game_worker.py",
+    "revision": "ca5648b49e6d0a67526856a930090173d0454389",
+    "url": "https://github.com/kdkrkwhr/notebook-pets/blob/ca5648b49e6d0a67526856a930090173d0454389/anna/executas/notebuddy/game_worker.py",
+    "visibility": "public"
+  },
+  {
+    "id": "auction-readme",
+    "title": "Auction Spot API README",
+    "kind": "readme",
+    "repository": "kdkrkwhr/auction-spot-api",
+    "path": "README.md",
+    "revision": "7c2d9496a5ae0f1dcd0345196483c2674ecff140",
+    "url": "https://github.com/kdkrkwhr/auction-spot-api/blob/7c2d9496a5ae0f1dcd0345196483c2674ecff140/README.md",
+    "visibility": "public"
+  },
+  {
+    "id": "auction-upload",
+    "title": "Auction Spot upload controller",
+    "kind": "code",
+    "repository": "kdkrkwhr/auction-spot-api",
+    "path": "src/main/java/com/auctionspot/infra/storage/LocalUploadController.java",
+    "revision": "7c2d9496a5ae0f1dcd0345196483c2674ecff140",
+    "url": "https://github.com/kdkrkwhr/auction-spot-api/blob/7c2d9496a5ae0f1dcd0345196483c2674ecff140/src/main/java/com/auctionspot/infra/storage/LocalUploadController.java",
+    "visibility": "public"
+  },
+  {
+    "id": "auction-storage",
+    "title": "Auction Spot local image storage",
+    "kind": "code",
+    "repository": "kdkrkwhr/auction-spot-api",
+    "path": "src/main/java/com/auctionspot/infra/storage/LocalImageStorageService.java",
+    "revision": "7c2d9496a5ae0f1dcd0345196483c2674ecff140",
+    "url": "https://github.com/kdkrkwhr/auction-spot-api/blob/7c2d9496a5ae0f1dcd0345196483c2674ecff140/src/main/java/com/auctionspot/infra/storage/LocalImageStorageService.java",
+    "visibility": "public"
+  },
+  {
+    "id": "auction-files",
+    "title": "Auction Spot file serving config",
+    "kind": "code",
+    "repository": "kdkrkwhr/auction-spot-api",
+    "path": "src/main/java/com/auctionspot/infra/storage/LocalFileWebConfig.java",
+    "revision": "7c2d9496a5ae0f1dcd0345196483c2674ecff140",
+    "url": "https://github.com/kdkrkwhr/auction-spot-api/blob/7c2d9496a5ae0f1dcd0345196483c2674ecff140/src/main/java/com/auctionspot/infra/storage/LocalFileWebConfig.java",
+    "visibility": "public"
+  },
+  {
+    "id": "standards-readme",
+    "title": "Engineering Standards README",
+    "kind": "criteria",
+    "repository": "kdkrkwhr/engineering-standards",
+    "path": "README.md",
+    "revision": "e1c019df54898e928f871602b76fa463d3ec7930",
+    "url": "https://github.com/kdkrkwhr/engineering-standards/blob/e1c019df54898e928f871602b76fa463d3ec7930/README.md",
+    "visibility": "public"
+  },
+  {
+    "id": "notebuddy-ports",
+    "title": "Notebook Pets execution ports",
+    "kind": "code",
+    "repository": "kdkrkwhr/notebook-pets",
+    "path": "engine/ports.py",
+    "revision": "ca5648b49e6d0a67526856a930090173d0454389",
+    "url": "https://github.com/kdkrkwhr/notebook-pets/blob/ca5648b49e6d0a67526856a930090173d0454389/engine/ports.py",
+    "visibility": "public"
+  },
+  {
+    "id": "notebuddy-store",
+    "title": "Notebook Pets browser store",
+    "kind": "code",
+    "repository": "kdkrkwhr/notebook-pets",
+    "path": "web/store.js",
+    "revision": "ca5648b49e6d0a67526856a930090173d0454389",
+    "url": "https://github.com/kdkrkwhr/notebook-pets/blob/ca5648b49e6d0a67526856a930090173d0454389/web/store.js",
+    "visibility": "public"
+  },
+  {
+    "id": "notebuddy-evolution",
+    "title": "Notebook Pets evolution rules",
+    "kind": "code",
+    "repository": "kdkrkwhr/notebook-pets",
+    "path": "engine/evolution.py",
+    "revision": "ca5648b49e6d0a67526856a930090173d0454389",
+    "url": "https://github.com/kdkrkwhr/notebook-pets/blob/ca5648b49e6d0a67526856a930090173d0454389/engine/evolution.py",
+    "visibility": "public"
+  },
+  {
+    "id": "agent-hub-readme",
+    "title": "AGENT HUB README",
+    "kind": "readme",
+    "repository": "kdkrkwhr/agent-hub",
+    "path": "README.md",
+    "revision": "cfe0ac6b341f6edebbf25655fc2e7867492740bd",
+    "url": "https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/README.md",
+    "visibility": "public"
+  },
+  {
+    "id": "agent-hub-entry",
+    "title": "AGENT HUB entry point",
+    "kind": "code",
+    "repository": "kdkrkwhr/agent-hub",
+    "path": "src/agent_hub/__main__.py",
+    "revision": "cfe0ac6b341f6edebbf25655fc2e7867492740bd",
+    "url": "https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/__main__.py",
+    "visibility": "public"
+  },
+  {
+    "id": "agent-hub-server",
+    "title": "AGENT HUB HTTP server",
+    "kind": "code",
+    "repository": "kdkrkwhr/agent-hub",
+    "path": "src/agent_hub/server.py",
+    "revision": "cfe0ac6b341f6edebbf25655fc2e7867492740bd",
+    "url": "https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/server.py",
+    "visibility": "public"
+  },
+  {
+    "id": "agent-hub-engine",
+    "title": "AGENT HUB job engine",
+    "kind": "code",
+    "repository": "kdkrkwhr/agent-hub",
+    "path": "src/agent_hub/engine.py",
+    "revision": "cfe0ac6b341f6edebbf25655fc2e7867492740bd",
+    "url": "https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/engine.py",
+    "visibility": "public"
+  },
+  {
+    "id": "agent-hub-adapters",
+    "title": "AGENT HUB CLI adapters",
+    "kind": "code",
+    "repository": "kdkrkwhr/agent-hub",
+    "path": "src/agent_hub/adapters.py",
+    "revision": "cfe0ac6b341f6edebbf25655fc2e7867492740bd",
+    "url": "https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/adapters.py",
+    "visibility": "public"
+  },
+  {
+    "id": "agent-hub-discussion",
+    "title": "AGENT HUB manual discussion",
+    "kind": "code",
+    "repository": "kdkrkwhr/agent-hub",
+    "path": "src/agent_hub/manual_discussion.py",
+    "revision": "cfe0ac6b341f6edebbf25655fc2e7867492740bd",
+    "url": "https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/manual_discussion.py",
+    "visibility": "public"
+  },
+  {
+    "id": "agent-hub-workspace",
+    "title": "AGENT HUB manual workspace",
+    "kind": "code",
+    "repository": "kdkrkwhr/agent-hub",
+    "path": "src/agent_hub/manual_workspace.py",
+    "revision": "cfe0ac6b341f6edebbf25655fc2e7867492740bd",
+    "url": "https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/manual_workspace.py",
+    "visibility": "public"
+  },
+  {
+    "id": "agent-hub-pipeline",
+    "title": "AGENT HUB pipeline",
+    "kind": "code",
+    "repository": "kdkrkwhr/agent-hub",
+    "path": "src/agent_hub/pipeline.py",
+    "revision": "cfe0ac6b341f6edebbf25655fc2e7867492740bd",
+    "url": "https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/pipeline.py",
+    "visibility": "public"
+  },
+  {
+    "id": "agent-hub-voting",
+    "title": "AGENT HUB voting",
+    "kind": "code",
+    "repository": "kdkrkwhr/agent-hub",
+    "path": "src/agent_hub/voting.py",
+    "revision": "cfe0ac6b341f6edebbf25655fc2e7867492740bd",
+    "url": "https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/voting.py",
+    "visibility": "public"
+  },
+  {
+    "id": "agent-hub-storage",
+    "title": "AGENT HUB storage",
+    "kind": "code",
+    "repository": "kdkrkwhr/agent-hub",
+    "path": "src/agent_hub/storage.py",
+    "revision": "cfe0ac6b341f6edebbf25655fc2e7867492740bd",
+    "url": "https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/storage.py",
+    "visibility": "public"
+  },
+  {
+    "id": "agent-hub-security",
+    "title": "AGENT HUB security notes",
+    "kind": "readme",
+    "repository": "kdkrkwhr/agent-hub",
+    "path": "SECURITY.md",
+    "revision": "cfe0ac6b341f6edebbf25655fc2e7867492740bd",
+    "url": "https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/SECURITY.md",
+    "visibility": "public"
+  },
+  {
+    "id": "agent-hub-project",
+    "title": "AGENT HUB package metadata",
+    "kind": "code",
+    "repository": "kdkrkwhr/agent-hub",
+    "path": "pyproject.toml",
+    "revision": "cfe0ac6b341f6edebbf25655fc2e7867492740bd",
+    "url": "https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/pyproject.toml",
+    "visibility": "public"
+  },
+  {
+    "id": "agent-hub-ci",
+    "title": "AGENT HUB test workflow",
+    "kind": "code",
+    "repository": "kdkrkwhr/agent-hub",
+    "path": ".github/workflows/tests.yml",
+    "revision": "cfe0ac6b341f6edebbf25655fc2e7867492740bd",
+    "url": "https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/.github/workflows/tests.yml",
+    "visibility": "public"
+  }
+]

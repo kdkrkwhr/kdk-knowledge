@@ -6,8 +6,8 @@ import sys
 from pathlib import Path
 
 
-ALLOWED_SITE_FILES = {
-    "index.html", "style.css", "wiki.js", "knowledge.json",
+STATIC_SITE_FILES = {
+    "index.html", "style.css", "wiki.js", "knowledge.json", "search-index.json",
     "architecture/index.html", "architecture/map.js",
 }
 SHA = re.compile(r"^[0-9a-f]{40}$")
@@ -18,15 +18,20 @@ LOCAL_PATH = re.compile(r"/Users/|/home/|[A-Z]:\\\\Users\\", re.I)
 def validate(root: Path) -> list:
     site = root / "site"
     errors = []
+    names = {path.stem for path in (site / "wiki/markdown").glob("*.md")}
+    allowed = STATIC_SITE_FILES | {f"wiki/{name}.html" for name in names} | {
+        f"wiki/markdown/{name}.md" for name in names}
     actual = {str(path.relative_to(site)) for path in site.rglob("*") if path.is_file()}
-    for name in sorted(actual - ALLOWED_SITE_FILES):
+    for name in sorted(actual - allowed):
         errors.append(f"Unexpected public file: {name}")
-    for name in sorted(ALLOWED_SITE_FILES - actual):
+    for name in sorted(allowed - actual):
         errors.append(f"Missing public file: {name}")
+    if not names:
+        errors.append("Missing wiki Markdown documents")
     for path in site.rglob("*"):
         if path.is_symlink():
             errors.append(f"Public symlink: {path.relative_to(site)}")
-        elif path.is_file() and path.suffix in {".html", ".css", ".js", ".json"}:
+        elif path.is_file() and path.suffix in {".html", ".css", ".js", ".json", ".md"}:
             content = path.read_text(encoding="utf-8")
             if EMAIL.search(content):
                 errors.append(f"Public email address in {path.relative_to(site)}")
@@ -59,15 +64,18 @@ def validate(root: Path) -> list:
             errors.append(f"Source {sid} URL must pin repository/path/revision")
     page = (site / "index.html").read_text(encoding="utf-8")
     registered_urls = {source.get("url") for source in sources.values()}
-    for url in re.findall(r'href="([^"]+)"', page):
-        if url.startswith("https://github.com/kdkrkwhr/") and "/blob/" in url and url not in registered_urls:
-            errors.append(f"Unregistered source link: {url}")
+    for path in [site / "index.html", *(site / "wiki").glob("*.html")]:
+        for url in re.findall(r'href="([^"]+)"', path.read_text(encoding="utf-8")):
+            if url.startswith("https://github.com/kdkrkwhr/") and "/blob/" in url and url not in registered_urls:
+                errors.append(f"Unregistered source link: {url}")
     entities = {}
     for entity in data.get("entities", []):
         eid = entity.get("id")
         if not eid or eid in entities:
             errors.append(f"Duplicate or missing entity id: {eid}")
         entities[eid] = entity
+        if entity.get("document") and entity["document"] not in actual:
+            errors.append(f"Entity {eid} has missing wiki document")
         for sid in entity.get("evidence", []):
             if sid not in sources:
                 errors.append(f"Entity {eid} has missing evidence {sid}")

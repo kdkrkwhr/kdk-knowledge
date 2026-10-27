@@ -1,33 +1,404 @@
 {
   "schemaVersion": 1,
   "updatedAt": "2026-10-27",
-  "analysis": {"tool": "Graphify", "status": "not-run", "revision": null, "scope": "No extraction has been run for this repository."},
+  "analysis": {
+    "tool": "Graphify",
+    "status": "not-run",
+    "revision": null,
+    "scope": "No extraction has been run for this repository."
+  },
   "sources": [
-    {"id":"notebuddy-readme","title":"Notebook Pets README","kind":"readme","repository":"kdkrkwhr/notebook-pets","path":"README.md","revision":"ca5648b49e6d0a67526856a930090173d0454389","url":"https://github.com/kdkrkwhr/notebook-pets/blob/ca5648b49e6d0a67526856a930090173d0454389/README.md","visibility":"public"},
-    {"id":"notebuddy-api","title":"Notebook Pets game API","kind":"code","repository":"kdkrkwhr/notebook-pets","path":"engine/game_api.py","revision":"ca5648b49e6d0a67526856a930090173d0454389","url":"https://github.com/kdkrkwhr/notebook-pets/blob/ca5648b49e6d0a67526856a930090173d0454389/engine/game_api.py","visibility":"public"},
-    {"id":"notebuddy-web","title":"Notebook Pets web Worker","kind":"code","repository":"kdkrkwhr/notebook-pets","path":"web/worker.js","revision":"ca5648b49e6d0a67526856a930090173d0454389","url":"https://github.com/kdkrkwhr/notebook-pets/blob/ca5648b49e6d0a67526856a930090173d0454389/web/worker.js","visibility":"public"},
-    {"id":"notebuddy-anna","title":"Notebook Pets Anna Worker","kind":"code","repository":"kdkrkwhr/notebook-pets","path":"anna/executas/notebuddy/game_worker.py","revision":"ca5648b49e6d0a67526856a930090173d0454389","url":"https://github.com/kdkrkwhr/notebook-pets/blob/ca5648b49e6d0a67526856a930090173d0454389/anna/executas/notebuddy/game_worker.py","visibility":"public"},
-    {"id":"auction-readme","title":"Auction Spot API README","kind":"readme","repository":"kdkrkwhr/auction-spot-api","path":"README.md","revision":"7c2d9496a5ae0f1dcd0345196483c2674ecff140","url":"https://github.com/kdkrkwhr/auction-spot-api/blob/7c2d9496a5ae0f1dcd0345196483c2674ecff140/README.md","visibility":"public"},
-    {"id":"auction-upload","title":"Auction Spot upload controller","kind":"code","repository":"kdkrkwhr/auction-spot-api","path":"src/main/java/com/auctionspot/infra/storage/LocalUploadController.java","revision":"7c2d9496a5ae0f1dcd0345196483c2674ecff140","url":"https://github.com/kdkrkwhr/auction-spot-api/blob/7c2d9496a5ae0f1dcd0345196483c2674ecff140/src/main/java/com/auctionspot/infra/storage/LocalUploadController.java","visibility":"public"},
-    {"id":"auction-storage","title":"Auction Spot local image storage","kind":"code","repository":"kdkrkwhr/auction-spot-api","path":"src/main/java/com/auctionspot/infra/storage/LocalImageStorageService.java","revision":"7c2d9496a5ae0f1dcd0345196483c2674ecff140","url":"https://github.com/kdkrkwhr/auction-spot-api/blob/7c2d9496a5ae0f1dcd0345196483c2674ecff140/src/main/java/com/auctionspot/infra/storage/LocalImageStorageService.java","visibility":"public"},
-    {"id":"auction-files","title":"Auction Spot file serving config","kind":"code","repository":"kdkrkwhr/auction-spot-api","path":"src/main/java/com/auctionspot/infra/storage/LocalFileWebConfig.java","revision":"7c2d9496a5ae0f1dcd0345196483c2674ecff140","url":"https://github.com/kdkrkwhr/auction-spot-api/blob/7c2d9496a5ae0f1dcd0345196483c2674ecff140/src/main/java/com/auctionspot/infra/storage/LocalFileWebConfig.java","visibility":"public"},
-    {"id":"standards-readme","title":"Engineering Standards README","kind":"criteria","repository":"kdkrkwhr/engineering-standards","path":"README.md","revision":"e1c019df54898e928f871602b76fa463d3ec7930","url":"https://github.com/kdkrkwhr/engineering-standards/blob/e1c019df54898e928f871602b76fa463d3ec7930/README.md","visibility":"public"}
+    {
+      "id": "notebuddy-readme",
+      "title": "Notebook Pets README",
+      "kind": "readme",
+      "repository": "kdkrkwhr/notebook-pets",
+      "path": "README.md",
+      "revision": "ca5648b49e6d0a67526856a930090173d0454389",
+      "url": "https://github.com/kdkrkwhr/notebook-pets/blob/ca5648b49e6d0a67526856a930090173d0454389/README.md",
+      "visibility": "public"
+    },
+    {
+      "id": "notebuddy-api",
+      "title": "Notebook Pets game API",
+      "kind": "code",
+      "repository": "kdkrkwhr/notebook-pets",
+      "path": "engine/game_api.py",
+      "revision": "ca5648b49e6d0a67526856a930090173d0454389",
+      "url": "https://github.com/kdkrkwhr/notebook-pets/blob/ca5648b49e6d0a67526856a930090173d0454389/engine/game_api.py",
+      "visibility": "public"
+    },
+    {
+      "id": "notebuddy-web",
+      "title": "Notebook Pets web Worker",
+      "kind": "code",
+      "repository": "kdkrkwhr/notebook-pets",
+      "path": "web/worker.js",
+      "revision": "ca5648b49e6d0a67526856a930090173d0454389",
+      "url": "https://github.com/kdkrkwhr/notebook-pets/blob/ca5648b49e6d0a67526856a930090173d0454389/web/worker.js",
+      "visibility": "public"
+    },
+    {
+      "id": "notebuddy-anna",
+      "title": "Notebook Pets Anna Worker",
+      "kind": "code",
+      "repository": "kdkrkwhr/notebook-pets",
+      "path": "anna/executas/notebuddy/game_worker.py",
+      "revision": "ca5648b49e6d0a67526856a930090173d0454389",
+      "url": "https://github.com/kdkrkwhr/notebook-pets/blob/ca5648b49e6d0a67526856a930090173d0454389/anna/executas/notebuddy/game_worker.py",
+      "visibility": "public"
+    },
+    {
+      "id": "auction-readme",
+      "title": "Auction Spot API README",
+      "kind": "readme",
+      "repository": "kdkrkwhr/auction-spot-api",
+      "path": "README.md",
+      "revision": "7c2d9496a5ae0f1dcd0345196483c2674ecff140",
+      "url": "https://github.com/kdkrkwhr/auction-spot-api/blob/7c2d9496a5ae0f1dcd0345196483c2674ecff140/README.md",
+      "visibility": "public"
+    },
+    {
+      "id": "auction-upload",
+      "title": "Auction Spot upload controller",
+      "kind": "code",
+      "repository": "kdkrkwhr/auction-spot-api",
+      "path": "src/main/java/com/auctionspot/infra/storage/LocalUploadController.java",
+      "revision": "7c2d9496a5ae0f1dcd0345196483c2674ecff140",
+      "url": "https://github.com/kdkrkwhr/auction-spot-api/blob/7c2d9496a5ae0f1dcd0345196483c2674ecff140/src/main/java/com/auctionspot/infra/storage/LocalUploadController.java",
+      "visibility": "public"
+    },
+    {
+      "id": "auction-storage",
+      "title": "Auction Spot local image storage",
+      "kind": "code",
+      "repository": "kdkrkwhr/auction-spot-api",
+      "path": "src/main/java/com/auctionspot/infra/storage/LocalImageStorageService.java",
+      "revision": "7c2d9496a5ae0f1dcd0345196483c2674ecff140",
+      "url": "https://github.com/kdkrkwhr/auction-spot-api/blob/7c2d9496a5ae0f1dcd0345196483c2674ecff140/src/main/java/com/auctionspot/infra/storage/LocalImageStorageService.java",
+      "visibility": "public"
+    },
+    {
+      "id": "auction-files",
+      "title": "Auction Spot file serving config",
+      "kind": "code",
+      "repository": "kdkrkwhr/auction-spot-api",
+      "path": "src/main/java/com/auctionspot/infra/storage/LocalFileWebConfig.java",
+      "revision": "7c2d9496a5ae0f1dcd0345196483c2674ecff140",
+      "url": "https://github.com/kdkrkwhr/auction-spot-api/blob/7c2d9496a5ae0f1dcd0345196483c2674ecff140/src/main/java/com/auctionspot/infra/storage/LocalFileWebConfig.java",
+      "visibility": "public"
+    },
+    {
+      "id": "standards-readme",
+      "title": "Engineering Standards README",
+      "kind": "criteria",
+      "repository": "kdkrkwhr/engineering-standards",
+      "path": "README.md",
+      "revision": "e1c019df54898e928f871602b76fa463d3ec7930",
+      "url": "https://github.com/kdkrkwhr/engineering-standards/blob/e1c019df54898e928f871602b76fa463d3ec7930/README.md",
+      "visibility": "public"
+    },
+    {
+      "id": "notebuddy-ports",
+      "title": "Notebook Pets execution ports",
+      "kind": "code",
+      "repository": "kdkrkwhr/notebook-pets",
+      "path": "engine/ports.py",
+      "revision": "ca5648b49e6d0a67526856a930090173d0454389",
+      "url": "https://github.com/kdkrkwhr/notebook-pets/blob/ca5648b49e6d0a67526856a930090173d0454389/engine/ports.py",
+      "visibility": "public"
+    },
+    {
+      "id": "notebuddy-store",
+      "title": "Notebook Pets browser store",
+      "kind": "code",
+      "repository": "kdkrkwhr/notebook-pets",
+      "path": "web/store.js",
+      "revision": "ca5648b49e6d0a67526856a930090173d0454389",
+      "url": "https://github.com/kdkrkwhr/notebook-pets/blob/ca5648b49e6d0a67526856a930090173d0454389/web/store.js",
+      "visibility": "public"
+    },
+    {
+      "id": "notebuddy-evolution",
+      "title": "Notebook Pets evolution rules",
+      "kind": "code",
+      "repository": "kdkrkwhr/notebook-pets",
+      "path": "engine/evolution.py",
+      "revision": "ca5648b49e6d0a67526856a930090173d0454389",
+      "url": "https://github.com/kdkrkwhr/notebook-pets/blob/ca5648b49e6d0a67526856a930090173d0454389/engine/evolution.py",
+      "visibility": "public"
+    },
+    {
+      "id": "agent-hub-readme",
+      "title": "AGENT HUB README",
+      "kind": "readme",
+      "repository": "kdkrkwhr/agent-hub",
+      "path": "README.md",
+      "revision": "cfe0ac6b341f6edebbf25655fc2e7867492740bd",
+      "url": "https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/README.md",
+      "visibility": "public"
+    },
+    {
+      "id": "agent-hub-entry",
+      "title": "AGENT HUB entry point",
+      "kind": "code",
+      "repository": "kdkrkwhr/agent-hub",
+      "path": "src/agent_hub/__main__.py",
+      "revision": "cfe0ac6b341f6edebbf25655fc2e7867492740bd",
+      "url": "https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/__main__.py",
+      "visibility": "public"
+    },
+    {
+      "id": "agent-hub-server",
+      "title": "AGENT HUB HTTP server",
+      "kind": "code",
+      "repository": "kdkrkwhr/agent-hub",
+      "path": "src/agent_hub/server.py",
+      "revision": "cfe0ac6b341f6edebbf25655fc2e7867492740bd",
+      "url": "https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/server.py",
+      "visibility": "public"
+    },
+    {
+      "id": "agent-hub-engine",
+      "title": "AGENT HUB job engine",
+      "kind": "code",
+      "repository": "kdkrkwhr/agent-hub",
+      "path": "src/agent_hub/engine.py",
+      "revision": "cfe0ac6b341f6edebbf25655fc2e7867492740bd",
+      "url": "https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/engine.py",
+      "visibility": "public"
+    },
+    {
+      "id": "agent-hub-adapters",
+      "title": "AGENT HUB CLI adapters",
+      "kind": "code",
+      "repository": "kdkrkwhr/agent-hub",
+      "path": "src/agent_hub/adapters.py",
+      "revision": "cfe0ac6b341f6edebbf25655fc2e7867492740bd",
+      "url": "https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/adapters.py",
+      "visibility": "public"
+    },
+    {
+      "id": "agent-hub-discussion",
+      "title": "AGENT HUB manual discussion",
+      "kind": "code",
+      "repository": "kdkrkwhr/agent-hub",
+      "path": "src/agent_hub/manual_discussion.py",
+      "revision": "cfe0ac6b341f6edebbf25655fc2e7867492740bd",
+      "url": "https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/manual_discussion.py",
+      "visibility": "public"
+    },
+    {
+      "id": "agent-hub-workspace",
+      "title": "AGENT HUB manual workspace",
+      "kind": "code",
+      "repository": "kdkrkwhr/agent-hub",
+      "path": "src/agent_hub/manual_workspace.py",
+      "revision": "cfe0ac6b341f6edebbf25655fc2e7867492740bd",
+      "url": "https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/manual_workspace.py",
+      "visibility": "public"
+    },
+    {
+      "id": "agent-hub-pipeline",
+      "title": "AGENT HUB pipeline",
+      "kind": "code",
+      "repository": "kdkrkwhr/agent-hub",
+      "path": "src/agent_hub/pipeline.py",
+      "revision": "cfe0ac6b341f6edebbf25655fc2e7867492740bd",
+      "url": "https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/pipeline.py",
+      "visibility": "public"
+    },
+    {
+      "id": "agent-hub-voting",
+      "title": "AGENT HUB voting",
+      "kind": "code",
+      "repository": "kdkrkwhr/agent-hub",
+      "path": "src/agent_hub/voting.py",
+      "revision": "cfe0ac6b341f6edebbf25655fc2e7867492740bd",
+      "url": "https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/voting.py",
+      "visibility": "public"
+    },
+    {
+      "id": "agent-hub-storage",
+      "title": "AGENT HUB storage",
+      "kind": "code",
+      "repository": "kdkrkwhr/agent-hub",
+      "path": "src/agent_hub/storage.py",
+      "revision": "cfe0ac6b341f6edebbf25655fc2e7867492740bd",
+      "url": "https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/storage.py",
+      "visibility": "public"
+    },
+    {
+      "id": "agent-hub-security",
+      "title": "AGENT HUB security notes",
+      "kind": "readme",
+      "repository": "kdkrkwhr/agent-hub",
+      "path": "SECURITY.md",
+      "revision": "cfe0ac6b341f6edebbf25655fc2e7867492740bd",
+      "url": "https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/SECURITY.md",
+      "visibility": "public"
+    },
+    {
+      "id": "agent-hub-project",
+      "title": "AGENT HUB package metadata",
+      "kind": "code",
+      "repository": "kdkrkwhr/agent-hub",
+      "path": "pyproject.toml",
+      "revision": "cfe0ac6b341f6edebbf25655fc2e7867492740bd",
+      "url": "https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/pyproject.toml",
+      "visibility": "public"
+    },
+    {
+      "id": "agent-hub-ci",
+      "title": "AGENT HUB test workflow",
+      "kind": "code",
+      "repository": "kdkrkwhr/agent-hub",
+      "path": ".github/workflows/tests.yml",
+      "revision": "cfe0ac6b341f6edebbf25655fc2e7867492740bd",
+      "url": "https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/.github/workflows/tests.yml",
+      "visibility": "public"
+    }
   ],
   "entities": [
-    {"id":"notebuddy","type":"project","title":"노트버디","summary":"그림·사진으로 친구를 만들고 돌봄·모험을 이어가는 공개 프로젝트","evidence":["notebuddy-readme"]},
-    {"id":"notebuddy-core","type":"technology","title":"Python 게임 전이 함수","summary":"상태와 명령을 받아 결과·다음 상태·이벤트를 계산하는 transition","evidence":["notebuddy-api"]},
-    {"id":"notebuddy-web","type":"technology","title":"브라우저 Pyodide","summary":"웹 Worker가 Pyodide에서 공통 Python 전이 함수를 호출","evidence":["notebuddy-web"]},
-    {"id":"notebuddy-anna","type":"implementation","title":"Anna Worker","summary":"Anna 어댑터가 공통 Python 전이 함수를 호출","evidence":["notebuddy-anna"]},
-    {"id":"auction-spot","type":"project","title":"옥션스팟 API","summary":"동네 기반 실시간 경매 서비스의 공개 백엔드 API","evidence":["auction-readme"]},
-    {"id":"auction-spring","type":"technology","title":"Java · Spring Boot API","summary":"README에 Java 21과 Spring Boot 3.x가 API 구성으로 명시됨","evidence":["auction-readme"]},
-    {"id":"auction-local-storage","type":"implementation","title":"로컬 이미지 저장","summary":"README와 코드에서 확인되는 API 서버 로컬 디스크 저장 및 파일 제공","evidence":["auction-readme","auction-upload","auction-storage","auction-files"]},
-    {"id":"standards","type":"criteria","title":"개발 기준 자료","summary":"참고할 수 있는 공개 기준. 위 프로젝트에 실제 적용됐다는 근거는 아직 없음","evidence":["standards-readme"]}
+    {
+      "id": "notebuddy",
+      "type": "project",
+      "title": "노트버디",
+      "summary": "그림·사진에서 시작한 친구의 행동을 공통 Python 규칙으로 계산하는 공개 프로젝트",
+      "evidence": [
+        "notebuddy-readme",
+        "notebuddy-api",
+        "notebuddy-ports",
+        "notebuddy-web",
+        "notebuddy-anna",
+        "notebuddy-store",
+        "notebuddy-evolution"
+      ],
+      "document": "wiki/notebuddy.html"
+    },
+    {
+      "id": "auction-spot",
+      "type": "project",
+      "title": "옥션스팟 API",
+      "summary": "동네 기반 실시간 경매 API에서 이미지 업로드가 실제로 저장·제공되는 경로",
+      "evidence": [
+        "auction-readme",
+        "auction-upload",
+        "auction-storage",
+        "auction-files"
+      ],
+      "document": "wiki/auction-spot.html"
+    },
+    {
+      "id": "agent-hub",
+      "type": "project",
+      "title": "AGENT HUB",
+      "summary": "로컬 CLI 에이전트 호출·지속 작업 큐·검토 가능한 작업 사본을 결합한 협업 허브",
+      "evidence": [
+        "agent-hub-readme",
+        "agent-hub-entry",
+        "agent-hub-server",
+        "agent-hub-engine",
+        "agent-hub-adapters",
+        "agent-hub-discussion",
+        "agent-hub-workspace",
+        "agent-hub-pipeline",
+        "agent-hub-voting",
+        "agent-hub-storage",
+        "agent-hub-security",
+        "agent-hub-project",
+        "agent-hub-ci"
+      ],
+      "document": "wiki/agent-hub.html"
+    },
+    {
+      "id": "python-execution",
+      "type": "technology",
+      "title": "Python 실행 경계",
+      "summary": "노트버디의 공통 Python 전이 함수와 브라우저·Anna 호출 경계",
+      "evidence": [
+        "notebuddy-api",
+        "notebuddy-ports",
+        "notebuddy-web",
+        "notebuddy-anna",
+        "notebuddy-store"
+      ],
+      "document": "wiki/python-execution.html"
+    },
+    {
+      "id": "image-storage",
+      "type": "implementation",
+      "title": "로컬 이미지 저장",
+      "summary": "옥션스팟 API의 multipart 업로드부터 로컬 파일 URL까지 확인한 구현",
+      "evidence": [
+        "auction-readme",
+        "auction-upload",
+        "auction-storage",
+        "auction-files"
+      ],
+      "document": "wiki/image-storage.html"
+    },
+    {
+      "id": "local-queue",
+      "type": "implementation",
+      "title": "로컬 작업 큐",
+      "summary": "AGENT HUB의 SQLite 작업 상태와 CLI 서브프로세스 사이의 처리 경계",
+      "evidence": [
+        "agent-hub-engine",
+        "agent-hub-adapters",
+        "agent-hub-storage",
+        "agent-hub-security"
+      ],
+      "document": "wiki/local-queue.html"
+    },
+    {
+      "id": "standards",
+      "type": "criteria",
+      "title": "개발 기준 자료",
+      "summary": "개발 기준 저장소는 별도 참고 자료이며 프로젝트 적용 여부는 별도 근거가 필요함",
+      "evidence": [
+        "standards-readme"
+      ],
+      "document": "wiki/standards.html"
+    }
   ],
   "relations": [
-    {"id":"r-notebuddy-core","from":"notebuddy","to":"notebuddy-core","label":"행동을 공통 전이 함수에서 계산","origin":"curated","evidence":["notebuddy-api","notebuddy-web","notebuddy-anna"]},
-    {"id":"r-notebuddy-web","from":"notebuddy-core","to":"notebuddy-web","label":"브라우저에서 Pyodide로 호출","origin":"curated","evidence":["notebuddy-web"]},
-    {"id":"r-notebuddy-anna","from":"notebuddy-core","to":"notebuddy-anna","label":"Anna에서 호출","origin":"curated","evidence":["notebuddy-anna"]},
-    {"id":"r-auction-spring","from":"auction-spot","to":"auction-spring","label":"API 기술 구성으로 명시","origin":"curated","evidence":["auction-readme"]},
-    {"id":"r-auction-storage","from":"auction-spot","to":"auction-local-storage","label":"이미지를 로컬 디스크에 저장·제공","origin":"curated","evidence":["auction-readme","auction-upload","auction-storage","auction-files"]}
+    {
+      "id": "r-notebuddy-python-execution",
+      "from": "notebuddy",
+      "to": "python-execution",
+      "label": "웹과 Anna가 Python 전이 함수를 호출",
+      "origin": "curated",
+      "evidence": [
+        "notebuddy-api",
+        "notebuddy-web",
+        "notebuddy-anna"
+      ]
+    },
+    {
+      "id": "r-auction-spot-image-storage",
+      "from": "auction-spot",
+      "to": "image-storage",
+      "label": "이미지를 API 서버의 로컬 디스크에 저장·제공",
+      "origin": "curated",
+      "evidence": [
+        "auction-readme",
+        "auction-upload",
+        "auction-storage",
+        "auction-files"
+      ]
+    },
+    {
+      "id": "r-agent-hub-local-queue",
+      "from": "agent-hub",
+      "to": "local-queue",
+      "label": "에이전트 작업을 SQLite 큐에 기록하고 CLI로 실행",
+      "origin": "curated",
+      "evidence": [
+        "agent-hub-engine",
+        "agent-hub-adapters",
+        "agent-hub-storage"
+      ]
+    }
   ]
 }

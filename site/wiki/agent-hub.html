@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="공개 저장소의 README와 코드를 대조해 작성한 개인 위키 문서">
+  <title>AGENT HUB: 로컬 CLI 작업을 연결하는 협업 허브 · kdk knowledge</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="../style.css">
+  <script src="../wiki.js" defer></script>
+</head>
+<body data-search-root="..">
+  <a class="skip" href="#article">본문으로 건너뛰기</a>
+  <header class="top"><a class="brand" href="../">kdk <span>/ knowledge</span></a><nav aria-label="사이트 이동"><a href="index.html">위키 문서</a><a href="../architecture/">근거 지도</a></nav></header>
+  <div class="wiki-layout">
+    <aside class="wiki-sidebar" aria-label="위키 문서"><p class="eyebrow">DOCUMENTS</p><nav><a href="index.html">프로젝트에서 시작하는 위키</a>
+<a href="notebuddy.html">노트버디: 한 친구의 규칙을 여러 화면에서 실행하기</a>
+<a href="auction-spot.html">옥션스팟 API: 문서의 기술 목록에서 실제 업로드 코드까지</a>
+<a href="agent-hub.html">AGENT HUB: 로컬 CLI 작업을 연결하는 협업 허브</a>
+<a href="python-execution.html">Python 실행 경계: 공통 규칙과 서로 다른 호출자</a>
+<a href="image-storage.html">로컬 이미지 저장: 요청에서 파일 URL까지</a>
+<a href="local-queue.html">로컬 작업 큐: 기록한 상태와 CLI 실행의 경계</a>
+<a href="standards.html">개발 기준 자료의 위치</a>
+<a href="repositories.html">공개 저장소 목록과 문서 작성 상태</a>
+<a href="maintenance.html">문서 작성과 갱신</a></nav></aside>
+    <main id="article" class="wiki-main"><div class="search" aria-label="문서 검색"><label for="wiki-search">문서 검색</label><div class="search-row"><input id="wiki-search" type="search" placeholder="프로젝트, 기술, 근거 검색" aria-controls="search-results"><button id="clear-search" type="button">지우기</button></div><p id="search-status" class="muted" role="status" aria-live="polite">문서 본문에서 검색합니다. / 키로 검색창에 이동할 수 있어요.</p><ol id="search-results" hidden></ol></div><article class="wiki-article"><h1 id="section-1">AGENT HUB: 로컬 CLI 작업을 연결하는 협업 허브</h1>
+<p>AGENT HUB RADIO는 설치·로그인된 Claude Code, Codex CLI, Cursor Agent를 로컬 작업 환경에 연결하는 공개 프로젝트다. 자체 모델이나 인증을 제공하는 서버가 아니라 기존 CLI를 호출한다. 터미널에서는 담당자 전환과 다중 에이전트 토론, 웹에서는 채널 대화·독립 투표·역할 분담 작업·상태 화면을 제공한다. README는 <code>0.3.0 Alpha</code>, Windows 중심 검증으로 소개한다. <strong>터미널의 로컬 Hub 사용과 웹의 Coral 채널 협업은 필요한 외부 조건이 다르다.</strong> <a href="https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/README.md">프로젝트 README</a> · <a href="https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/adapters.py">CLI 어댑터</a></p>
+<p>이 글은 README와 주요 코드를 <code>cfe0ac6b341f6edebbf25655fc2e7867492740bd</code>에서 정적으로 읽은 결과다. 설치·실행·실제 CLI 통합 테스트를 수행했다는 뜻은 아니다. 저장소의 공개 여부만으로 개인 담당 범위나 단독 기여를 추정하지 않는다.</p>
+<h2 id="section-2">해결하려는 흐름과 모듈 경계</h2>
+<p><code>__main__.py</code>가 <code>chat</code> 명령, 데이터 위치, 인스턴스 잠금과 서버 시작을 다룬다. <code>server.py</code>는 정적 웹 화면과 JSON API를 제공하고 요청 출처와 CSRF 토큰을 검사한다. 작업의 지속 상태는 <code>engine.py</code>의 SQLite 큐에 저장된다. <code>adapters.py</code>는 사용 가능한 CLI를 찾고 공급자별 인자를 구성해 프로세스를 실행·취소하며 응답을 해석한다. <a href="https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/__main__.py">진입점</a> · <a href="https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/server.py">HTTP 서버</a> · <a href="https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/engine.py">작업 엔진</a> · <a href="https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/adapters.py">CLI 어댑터</a></p>
+<p><code>pyproject.toml</code>은 Python 3.11 이상을 요구하고 Python 런타임 의존성 목록은 비어 있다. HTTP 서버와 SQLite는 표준 라이브러리를 사용한다. 그렇다고 협업 기능에 외부 CLI나 Coral 연결이 필요 없다는 뜻은 아니다. 이 둘은 Python 패키지 의존성과 별개다. <a href="https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/pyproject.toml">패키지 메타데이터</a> · <a href="https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/README.md">README의 실행 전제</a></p>
+<h2 id="section-3">웹 요청에서 에이전트 응답까지</h2>
+<ol>
+<li>진입점이 데이터 디렉터리와 중복 실행 잠금을 마련한 뒤 Hub와 HTTP 서버를 시작한다. 서버는 루프백 주소 <code>127.0.0.1</code>에 바인딩한다. 화면은 <code>/api/bootstrap</code>에서 설정·CSRF 토큰, <code>/api/state</code>에서 상태를 조회하고 변경은 JSON POST를 사용한다. <a href="https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/__main__.py">진입점</a> · <a href="https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/server.py">API 경로</a></li>
+<li>엔진은 채널 작업을 SQLite에 기록하고 에이전트별 대기 작업을 실행 풀에 넘긴다. 어댑터가 해당 CLI 서브프로세스를 호출한다. 결과는 먼저 DB에 저장한 뒤 채널로 전달하며, 메시지 식별자로 중복 전송 여부를 확인한다. 재시작으로 끊긴 실행은 실패로 기록해 검토 후 재시도할 수 있게 한다. 이는 코드상의 처리 경로이며 실제 장애 복구 성공률을 측정한 결과가 아니다. <a href="https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/engine.py">엔진</a> · <a href="https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/adapters.py">어댑터</a></li>
+</ol>
+<p>이 지속 작업의 저장·실행 경계는 <a href="local-queue.html">로컬 작업 큐</a>에 따로 정리했다. 중앙 위키는 실제 코드 경로와 개인적 선택 이유를 구분한다.</p>
+<h2 id="section-4">터미널 토론과 원본 보호</h2>
+<p>수동 토론은 무제한 상호 호출이 아니다. 호스트가 두 회차를 제어하며, 첫 회차에 참여자가 같은 맥락에서 병렬로 답하고 모두 끝난 뒤 이전 발언을 두 번째 입력에 반영한다. 실행 전후 작업 사본의 지문을 검사하고 일부 실패가 나면 토론을 멈추며 이미 받은 답변은 보존한다. <a href="https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/manual_discussion.py">토론 제어</a></p>
+<p>일반 폴더 작업은 사본과 기준 ZIP, 파일별 SHA-256을 보관한다. 변경 비교로 패치·변경 파일 ZIP·보고서와 추가/수정/삭제 명세를 만들 수 있다. <code>.git</code>, 의존성, 캐시, 일부 인증 경로를 기본적으로 제외한다. 이 export는 <strong>원본에 적용하거나 commit·push하는 작업이 아니다.</strong> 파일 크기와 전체 크기·항목 수 제한 및 symlink/junction 거부도 코드에서 확인된다. <a href="https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/manual_workspace.py">작업 사본과 export</a> · <a href="https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/README.md">사용 범위</a></p>
+<h2 id="section-5">역할, 투표와 실행 증거</h2>
+<p>파이프라인은 준비·계획·구현·검토를 구분한다. CLI 쓰기 설정은 구현 단계에 적용되고, 검증 명령은 호스트가 실행한다. 명령이 없으면 <code>skipped</code> 상태로 남긴다. 검토에는 파일 지문으로 대상 변경을 확인하는 경로가 있다. <a href="https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/pipeline.py">단계 구성</a> · <a href="https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/adapters.py">CLI 실행</a></p>
+<p>독립 투표는 공개 전 선택과 근거를 API에서 숨기고 전원 처리 또는 마감 조건에 따라 공개한다. 투표 결과는 판단 자료이지 정답이나 실행 권한 승인이 아니다. <a href="https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/voting.py">투표 구현</a></p>
+<h2 id="section-6">기술 경계와 확인하지 못한 것</h2>
+<p><code>storage.py</code>는 설정·DB·로그·작업 사본·산출물 경로를 나누고 이전 저장 구조를 읽는 경로를 유지한다. CLI 인증을 이용하는 구현이므로 모델 서비스로 프롬프트와 작업 내용이 전송될 수 있다. <code>local-first</code>를 완전 오프라인이라는 뜻으로 읽으면 안 된다. 보안 문서는 요청 출처·CSRF 보호가 있지만 원격 사용자 인증이 없으므로 공개 프록시 노출을 피하도록 설명한다. 읽기 전용 CLI 설정도 OS 샌드박스와 같지 않다. <a href="https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/storage.py">저장 경로</a> · <a href="https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/SECURITY.md">보안 설명</a> · <a href="https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/adapters.py">CLI 어댑터</a></p>
+<p>저장소의 Actions 파일에는 세 운영체제와 Python 3.11·3.13의 단위 테스트 및 JavaScript 문법 검사 단계가 정의돼 있다. <strong>설정 존재만 확인했고 CI 성공이나 실제 CLI 통합을 검증하지 않았다.</strong> 선택의 개인적 이유, 사용자 규모, 운영 성과, 단독 기여도 공개 파일만으로 알 수 없다. <a href="https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/.github/workflows/tests.yml">테스트 워크플로</a></p></article><section class="wiki-evidence"><h2>이 문서의 등록 근거</h2><ul><li><a href="https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/README.md">AGENT HUB README · cfe0ac6</a></li>
+<li><a href="https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/__main__.py">AGENT HUB entry point · cfe0ac6</a></li>
+<li><a href="https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/server.py">AGENT HUB HTTP server · cfe0ac6</a></li>
+<li><a href="https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/engine.py">AGENT HUB job engine · cfe0ac6</a></li>
+<li><a href="https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/adapters.py">AGENT HUB CLI adapters · cfe0ac6</a></li>
+<li><a href="https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/manual_discussion.py">AGENT HUB manual discussion · cfe0ac6</a></li>
+<li><a href="https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/manual_workspace.py">AGENT HUB manual workspace · cfe0ac6</a></li>
+<li><a href="https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/pipeline.py">AGENT HUB pipeline · cfe0ac6</a></li>
+<li><a href="https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/voting.py">AGENT HUB voting · cfe0ac6</a></li>
+<li><a href="https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/storage.py">AGENT HUB storage · cfe0ac6</a></li>
+<li><a href="https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/SECURITY.md">AGENT HUB security notes · cfe0ac6</a></li>
+<li><a href="https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/pyproject.toml">AGENT HUB package metadata · cfe0ac6</a></li>
+<li><a href="https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/.github/workflows/tests.yml">AGENT HUB test workflow · cfe0ac6</a></li></ul><p><a href="markdown/agent-hub.md">Markdown 원문 보기</a> · 문장과 원본 파일을 사람이 대조했습니다.</p></section></main>
+    <aside class="wiki-outline" aria-label="본문 목차"><p class="eyebrow">ON THIS PAGE</p><nav><a href="#section-2">해결하려는 흐름과 모듈 경계</a>
+<a href="#section-3">웹 요청에서 에이전트 응답까지</a>
+<a href="#section-4">터미널 토론과 원본 보호</a>
+<a href="#section-5">역할, 투표와 실행 증거</a>
+<a href="#section-6">기술 경계와 확인하지 못한 것</a></nav></aside>
+  </div>
+  <footer>김동기 · 공개 근거 기반 개인 위키 <span>Graphify 분석 미실행</span></footer>
+</body>
+</html>

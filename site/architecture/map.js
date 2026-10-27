@@ -33,6 +33,12 @@ function showDetail(id) {
   const summary = document.createElement('p');
   summary.textContent = entity.summary;
   panel.append(kind, title, summary);
+  if (entity.document) {
+    const documentLink = document.createElement('a');
+    documentLink.href = `../${entity.document}`;
+    documentLink.textContent = '이 항목의 위키 문서 읽기 →';
+    panel.append(documentLink);
+  }
   const related = knowledge.relations.filter(relation => relation.from === id || relation.to === id);
   for (const relation of related) {
     const other = knowledge.entities.find(item => item.id === (relation.from === id ? relation.to : relation.from));

@@ -45,4 +45,4 @@
 - 일반화 가능한 기준인지, 해당 프로젝트의 예외인지:
 - 나중에 검증할 질문:
 
-추가 절차: 공개 근거를 고정 → 문장과 관계를 작성 → 공개 여부를 사람이 재검토 → `site/knowledge.json`의 근거 ID와 관계를 갱신 → 위키 해설을 소스와 다시 대조 → `python3 scripts/validate.py` 및 `python3 -m unittest discover -s tests -v` → 화면 확인 → 커밋·배포. Graphify 분석을 새로 실행했다면 버전·입력 범위·분석 커밋·생성 시각·외부 전송 여부를 별도로 기록하고 편집 관계와 섞지 않습니다.
+추가 절차: 공개 근거를 고정 → `docs/wiki/sources.json`에 등록 → `docs/wiki/*.md`에 문장과 관계를 작성 → 공개 여부를 사람이 재검토 → `python3 scripts/build_wiki.py`로 HTML·검색·지도 데이터를 생성 → 원본과 문서를 다시 대조 → `python3 scripts/build_wiki.py --check`, `python3 scripts/validate.py`, `python3 -m unittest discover -s tests -v` → 화면 확인 → 커밋·배포. Graphify 분석을 새로 실행했다면 버전·입력 범위·분석 커밋·생성 시각·외부 전송 여부를 별도로 기록하고 편집 관계와 섞지 않습니다.
