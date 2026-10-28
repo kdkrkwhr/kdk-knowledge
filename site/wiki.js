@@ -1,55 +1,50 @@
-const search = document.querySelector('#wiki-search');
-const results = document.querySelector('#search-results');
-const status = document.querySelector('#search-status');
-const root = document.body.dataset.searchRoot || '.';
-let documents = [];
-
-function showResults() {
-  const query = search.value.trim().toLocaleLowerCase();
-  results.replaceChildren();
-  results.hidden = !query;
-  if (!query) {
-    status.textContent = '문서 본문에서 검색합니다. / 키로 검색창에 이동할 수 있어요.';
-    return;
+// kdk knowledge 위키 — 목차·사이드바 필터(제목·개념) + 본문 전문 검색(search-index.json) + 현재 문서 표시
+(function () {
+  var esc = function (s) { return String(s).replace(/[&<>"]/g, function (c) { return {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]; }); };
+  var here = decodeURIComponent(location.pathname.split('/').pop()) || 'index.html';
+  document.querySelectorAll('.nav a').forEach(function (a) {
+    if (a.getAttribute('href') === here) {
+      a.classList.add('on');
+      var d = a.closest('details'); if (d) d.open = true;
+      var side = a.closest('.side');
+      if (side) setTimeout(function () { side.scrollTop = a.offsetTop - side.clientHeight / 2; }, 0);
+    }
+  });
+  var q = document.querySelector('.search');
+  var hits = document.getElementById('search-results');
+  var root = document.body.getAttribute('data-search-root') || '.';
+  var index = null;
+  function filter() {
+    var t = q ? q.value.trim().toLowerCase() : '';
+    document.querySelectorAll('[data-q]').forEach(function (el) {
+      el.classList.toggle('hidden', !!t && el.getAttribute('data-q').toLowerCase().indexOf(t) < 0);
+    });
+    document.querySelectorAll('.nav details, .group').forEach(function (g) {
+      g.classList.toggle('hidden', !g.querySelector('[data-q]:not(.hidden)'));
+      if (t && g.tagName === 'DETAILS') g.open = true;
+    });
+    var n = document.querySelector('[data-count]');
+    if (n) n.textContent = document.querySelectorAll('.entry:not(.hidden)').length;
   }
-  const found = documents.filter(item =>
-    `${item.title} ${item.summary} ${item.body}`.toLocaleLowerCase().includes(query));
-  for (const entry of found) {
-    const item = document.createElement('li');
-    const link = document.createElement('a');
-    link.href = `${root}/${entry.url}`;
-    link.textContent = entry.title;
-    const summary = document.createElement('small');
-    summary.textContent = entry.summary;
-    item.append(link, summary);
-    results.append(item);
+  function fullText() {
+    if (!hits || !q) return;
+    var t = q.value.trim().toLowerCase();
+    if (t.length < 2 || !index) { hits.hidden = true; hits.innerHTML = ''; return; }
+    var found = index.filter(function (d) { return (d.title + ' ' + d.body).toLowerCase().indexOf(t) >= 0; }).slice(0, 8);
+    hits.innerHTML = found.map(function (d) {
+      var i = d.body.toLowerCase().indexOf(t);
+      var snip = i < 0 ? '' : d.body.slice(Math.max(0, i - 40), i + 70).replace(/\s+/g, ' ');
+      return '<li><a href="' + root + '/' + esc(d.url) + '">' + esc(d.title) + '</a><small>' + esc(snip) + '</small></li>';
+    }).join('') || '<li><small>본문에 일치하는 문장이 없습니다.</small></li>';
+    hits.hidden = false;
   }
-  status.textContent = found.length ? `${found.length}개 문서를 찾았습니다.` : '검색 결과가 없습니다. 다른 단어로 찾아보세요.';
-}
-
-fetch(`${root}/search-index.json`, {cache: 'no-store'}).then(response => {
-  if (!response.ok) throw new Error(`HTTP ${response.status}`);
-  return response.json();
-}).then(data => {
-  documents = data;
-  showResults();
-}).catch(() => {
-  status.textContent = '검색 자료를 불러오지 못했습니다. 문서 목록에서 직접 찾아보세요.';
-});
-
-search.addEventListener('input', showResults);
-document.querySelector('#clear-search').addEventListener('click', () => {
-  search.value = '';
-  showResults();
-  search.focus();
-});
-document.addEventListener('keydown', event => {
-  if (event.key === '/' && !/^(INPUT|TEXTAREA)$/.test(document.activeElement.tagName)) {
-    event.preventDefault();
-    search.focus();
+  if (q) {
+    q.addEventListener('input', function () { filter(); fullText(); });
+    fetch(root + '/search-index.json', {cache: 'no-store'}).then(function (r) { return r.json(); })
+      .then(function (d) { index = d; fullText(); }).catch(function () {});
+    document.addEventListener('keydown', function (e) {
+      if (e.key === '/' && document.activeElement !== q) { e.preventDefault(); q.focus(); }
+    });
   }
-  if (event.key === 'Escape' && document.activeElement === search) {
-    search.value = '';
-    showResults();
-  }
-});
+  filter();
+})();

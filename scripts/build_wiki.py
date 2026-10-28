@@ -122,6 +122,10 @@ RELATION_LABELS = {"references": "참조", "implements": "구현", "cites": "인
                    "conceptually_related_to": "개념 연관", "shares_data_with": "데이터 공유",
                    "semantically_similar_to": "유사 구조", "rationale_for": "설계 근거"}
 ENTITY_TYPES = {"concept": "concept", "rationale": "design"}
+KIND_NAMES = {"project": "프로젝트", "resource": "공개 자료", "reference": "Fork / 참조", "criteria": "참고 기준",
+              "technology": "기술", "implementation": "구현", "guide": "안내"}
+GUIDE_GROUP = "안내·기준"
+UPDATED = "2026-10-28"
 
 
 def load_graph(root: Path):
@@ -186,65 +190,87 @@ def graph_layer(graph, documents):
             "revision": graph.get("built_at_commit")}
 
 
-def related_html(layer, doc_id):
+def doc_concepts(layer, doc_id):
+    """[(entity, other_docs)] for the concepts Graphify tied to this document, most shared first."""
     rows = []
-    for entity in layer["entities"]:
+    for entity in (layer["entities"] if layer else []):
         docs = layer["mentions"][entity["id"]]
         if doc_id in docs:
             rows.append((entity, sorted(doc for doc in docs if doc != doc_id)))
+    rows.sort(key=lambda row: (-len(row[1]), row[0]["title"]))
+    return rows
+
+
+def related_docs(layer, doc_id, limit=6):
+    """Other documents sharing the most extracted concepts with this one."""
+    shared = {}
+    for _, others in doc_concepts(layer, doc_id):
+        for other in others:
+            shared[other] = shared.get(other, 0) + 1
+    return sorted(shared, key=lambda doc: (-shared[doc], doc))[:limit]
+
+
+def related_html(layer, doc_id):
+    rows = doc_concepts(layer, doc_id)
     if not rows:
         return ""
-    rows.sort(key=lambda row: (-len(row[1]), row[0]["title"]))
-    items = []
-    for entity, others in rows[:12]:
-        links = " · ".join(f'<a href="{html.escape(doc, quote=True)}.html">{html.escape(layer["titles"][doc])}</a>'
-                           for doc in others[:4])
-        items.append(f'<li><a href="../architecture/?node={html.escape(entity["id"], quote=True)}">'
-                     f'{html.escape(entity["title"])}</a>{" — 같은 개념: " + links if links else ""}</li>')
-    community = layer["doc_community"].get(doc_id)
-    topic = (f'<p>주제 묶음: <a href="topics.html#topic-{community}">{html.escape(layer["labels"].get(community, ""))}</a></p>'
-             if community is not None else "")
-    return ('<section class="wiki-related"><h2>관련 개념</h2><p class="muted">Graphify가 이 문서에서 추출한 개념과, '
-            '같은 개념이 나오는 다른 문서입니다. 자동 추출 결과이며 위 본문처럼 사람이 대조한 문장은 아닙니다.</p>'
-            f'<ul>{"".join(items)}</ul>{topic}</section>')
+    chips = "".join(
+        f'<a class="chip" href="../graph/?node={html.escape(entity["id"], quote=True)}" title="{html.escape(entity["summary"])}">'
+        f'{html.escape(entity["title"])}{f"<small>{len(others)}</small>" if others else ""}</a>'
+        for entity, others in rows[:16])
+    return ('<section class="wiki-related" id="related"><h2>관련 개념</h2><p class="note" style="margin-top:0">Graphify가 이 문서에서 '
+            '자동 추출한 개념입니다. 숫자는 같은 개념이 나오는 다른 문서 수이고, 누르면 그래프에서 그 개념을 엽니다. '
+            f'위 본문처럼 사람이 대조한 문장은 아닙니다.</p><div class="chips">{chips}</div></section>')
 
 
-def topics_page(template, layer, documents):
-    """One page: a section per Graphify community with its documents and concepts."""
-    by_community = {}
-    for doc, community in layer["doc_community"].items():
-        by_community.setdefault(community, {"docs": [], "concepts": []})["docs"].append(doc)
-    for entity in layer["entities"]:
-        for community, label in layer["labels"].items():
-            if entity["community"] == label:
-                by_community.setdefault(community, {"docs": [], "concepts": []})["concepts"].append(entity)
-    body = ['<h1>주제 지도</h1><p>Graphify가 위키 문서에서 추출한 개념을 연결 구조로 묶은 주제입니다. '
-            '묶음 이름은 사람이 붙였고, 각 항목의 설명은 추출된 요약이라 사람이 대조한 본문과 구분해 읽습니다. '
-            f'기준 커밋 <code>{html.escape((layer["revision"] or "")[:7])}</code>.</p>']
-    toc = []
-    for community, group in sorted(by_community.items(), key=lambda item: -len(item[1]["docs"]) - len(item[1]["concepts"])):
-        label = layer["labels"].get(community, f"주제 {community}")
-        toc.append(f'<a href="#topic-{community}">{html.escape(label)}</a>')
-        body.append(f'<h2 id="topic-{community}">{html.escape(label)}</h2>')
-        if group["docs"]:
-            body.append("<p>문서: " + " · ".join(
-                f'<a href="{html.escape(doc, quote=True)}.html">{html.escape(layer["titles"][doc])}</a>'
-                for doc in sorted(group["docs"])) + "</p>")
-        if group["concepts"]:
-            body.append("<ul>" + "".join(
-                f'<li><strong>{html.escape(entity["title"])}</strong>'
-                f'{" — " + html.escape(entity["summary"]) if entity["summary"] else ""}</li>'
-                for entity in sorted(group["concepts"], key=lambda item: item["title"])) + "</ul>")
-    navigation = "\n".join('<a href="{}.html">{}</a>'.format(html.escape(meta["id"], quote=True),
-                                                           html.escape(doc_body.splitlines()[0].removeprefix("# ")))
-                           for meta, doc_body, _ in documents)
-    page = template.replace("{{TITLE}}", "주제 지도").replace("{{NAV}}", navigation)
-    page = page.replace("{{NAV_COUNT}}", str(len(documents))).replace("{{TOC}}", "\n".join(toc))
-    page = page.replace("{{BODY}}", "\n".join(body)).replace("{{RELATED}}", "")
-    page = page.replace('<a href="{{SOURCE_MD}}">Markdown 원문 보기</a> · 문장과 원본 파일을 사람이 대조했습니다.',
-                        '<a href="../knowledge.json">관계 JSON 보기</a> · 자동 추출 결과이며 사람이 대조한 문장은 아닙니다.')
-    return page.replace("{{EVIDENCE}}", '<li>docs/graph/graph.json · Graphify 추출 · '
-                        f'{html.escape((layer["revision"] or "")[:7])}</li>')
+def group_of(layer, meta):
+    if layer and meta["id"] in layer["doc_community"]:
+        return layer["labels"].get(layer["doc_community"][meta["id"]], GUIDE_GROUP)
+    return GUIDE_GROUP
+
+
+def nav_html(groups, titles, layer, prefix=""):
+    """Sidebar/index grouping: one <details> per Graphify topic, documents inside."""
+    parts = []
+    for group, docs in groups:
+        links = "".join(
+            '<a href="{}{}.html" data-q="{}">{}</a>'.format(
+                prefix, html.escape(doc, quote=True),
+                html.escape(" ".join([titles[doc]] + [e["title"] for e, _ in doc_concepts(layer, doc)[:8]]), quote=True),
+                html.escape(titles[doc]))
+            for doc in docs)
+        parts.append(f'<details><summary>{html.escape(group)}</summary>{links}</details>')
+    return "\n".join(parts)
+
+
+def index_grid(groups, documents, titles, layer):
+    meta_by_id = {meta["id"]: meta for meta, _, _ in documents}
+    cards = []
+    for group, docs in groups:
+        entries = []
+        for doc in docs:
+            concepts = [e["title"] for e, _ in doc_concepts(layer, doc)[:5]]
+            summary = meta_by_id[doc]["summary"]
+            entries.append(
+                '<a class="entry" href="wiki/{}.html" data-q="{}"><span class="cnt">근거 {}</span><b>{}</b><small>{}</small></a>'.format(
+                    html.escape(doc, quote=True), html.escape(" ".join([titles[doc], summary] + concepts), quote=True),
+                    len(meta_by_id[doc]["sources"]), html.escape(titles[doc]),
+                    html.escape(" · ".join(concepts) if concepts else summary)))
+        cards.append(f'<div class="group"><h2>{html.escape(group)}<span>{len(docs)}개</span></h2>{"".join(entries)}</div>')
+    return "\n".join(cards)
+
+
+def info_card(meta, group, layer, titles, evidence_count):
+    concepts = doc_concepts(layer, meta["id"])
+    related = related_docs(layer, meta["id"])
+    chips = "".join(f'<a class="chip" href="{html.escape(doc, quote=True)}.html">{html.escape(titles[doc])}</a>' for doc in related)
+    card = (f'<div class="card"><div class="k">주제</div><div class="v">{html.escape(group)}</div>'
+            f'<div class="k">근거 파일</div><div class="big">{evidence_count}<span> 건</span></div>'
+            f'<div class="k">관련 개념</div><div class="big">{len(concepts)}<span> 개</span></div>'
+            f'<div class="k">작성</div><div class="v">LLM 초안 · 사람 대조 · {UPDATED}</div></div>')
+    if chips:
+        card += f'<div class="card"><div class="k">같은 개념을 다루는 문서</div><div class="chips">{chips}</div></div>'
+    return card
 
 
 def build(root: Path) -> dict[str, str]:
@@ -260,20 +286,20 @@ def build(root: Path) -> dict[str, str]:
         raise ValueError("document filename/id mismatch")
     documents.sort(key=lambda item: (item[0]["order"], item[0]["id"]))
     template = (root / "templates/wiki-page.html").read_text(encoding="utf-8")
+    index_template = (root / "templates/wiki-index.html").read_text(encoding="utf-8")
     outputs = {}
     search = []
     entities, relations = [], []
     ids = {meta["id"] for meta, _, _ in documents}
     graph = load_graph(root)
     layer = graph_layer(graph, documents) if graph else None
+    titles = {meta["id"]: body.splitlines()[0].removeprefix("# ") for meta, body, _ in documents}
+    grouped = {}
+    for meta, _, _ in documents:
+        grouped.setdefault(group_of(layer, meta), []).append(meta["id"])
+    groups = sorted(grouped.items(), key=lambda item: (item[0] == GUIDE_GROUP, -len(item[1]), item[0]))
+    navigation = nav_html(groups, titles, layer)
     for meta, body, raw in documents:
-        navigation = "\n".join(
-            '<a href="{}.html"{}>{}</a>'.format(
-                html.escape(item_meta["id"], quote=True),
-                ' aria-current="page"' if item_meta["id"] == meta["id"] else '',
-                html.escape(item_body.splitlines()[0].removeprefix("# ")),
-            ) for item_meta, item_body, _ in documents
-        )
         for sid in meta["sources"]:
             if sid not in source_by_id:
                 raise ValueError(f"missing source: {sid}")
@@ -281,20 +307,26 @@ def build(root: Path) -> dict[str, str]:
         for link in PUBLIC_BLOB.findall(body):
             if link not in source_urls:
                 raise ValueError(f"unregistered source: {link}")
-        title = body.splitlines()[0].removeprefix("# ")
+        title = titles[meta["id"]]
         if not body.startswith("# "):
             raise ValueError(f"missing title: {meta['id']}")
-        toc_html = "\n".join(f'<a href="#{anchor}">{html.escape(text)}</a>' for anchor, text in toc)
+        group = group_of(layer, meta)
+        lead = f'<div class="lead"><p>{html.escape(meta["summary"])}</p></div>'
+        toc_html = '<div class="toc">' + "".join(f'<a href="#{anchor}">{html.escape(text)}</a>' for anchor, text in toc) + \
+                   ('<a href="#related">관련 개념</a>' if layer and doc_concepts(layer, meta["id"]) else "") + \
+                   '<a href="#sources">근거 문서</a></div>'
+        rendered = rendered.replace("</h1>", "</h1>" + lead + toc_html, 1)
         evidence_html = "\n".join(
-            f'<li><a href="{html.escape(source_by_id[sid]["url"], quote=True)}">'
-            f'{html.escape(source_by_id[sid]["title"])} · {source_by_id[sid]["revision"][:7]}</a></li>'
-            for sid in meta["sources"]
-        ) or "<li>이 안내 문서에는 별도 원본 코드 근거가 없습니다.</li>"
+            f'<li id="s{n}"><span class="n">{n}</span><span><a href="{html.escape(source_by_id[sid]["url"], quote=True)}" target="_blank" rel="noopener">'
+            f'{html.escape(source_by_id[sid]["title"])}</a><span class="p">{html.escape(source_by_id[sid]["repository"])} · '
+            f'{html.escape(source_by_id[sid]["path"])}</span></span><span class="pill ok">커밋 {source_by_id[sid]["revision"][:7]}</span></li>'
+            for n, sid in enumerate(meta["sources"], 1)
+        ) or '<li><span class="n">-</span><span>이 안내 문서에는 별도 원본 코드 근거가 없습니다.</span><span></span></li>'
         page = template.replace("{{TITLE}}", html.escape(title)).replace("{{NAV}}", navigation)
-        page = page.replace("{{NAV_COUNT}}", str(len(documents)))
-        page = page.replace("{{TOC}}", toc_html).replace("{{BODY}}", rendered)
+        page = page.replace("{{GROUP}}", html.escape(group)).replace("{{KIND}}", KIND_NAMES.get(meta["type"], meta["type"]))
+        page = page.replace("{{BODY}}", rendered).replace("{{RELATED}}", related_html(layer, meta["id"]) if layer else "")
         page = page.replace("{{EVIDENCE}}", evidence_html).replace("{{SOURCE_MD}}", f'markdown/{meta["id"]}.md')
-        page = page.replace("{{RELATED}}", related_html(layer, meta["id"]) if layer else "")
+        page = page.replace("{{CARD}}", info_card(meta, group, layer, titles, len(meta["sources"])))
         outputs[f'wiki/{meta["id"]}.html'] = page
         outputs[f'wiki/markdown/{meta["id"]}.md'] = raw
         search.append({"title": title, "summary": meta["summary"], "body": plain,
@@ -318,13 +350,17 @@ def build(root: Path) -> dict[str, str]:
         entities.extend(layer["entities"])
         relations.extend(relation for relation in layer["relations"]
                          if relation["from"] in entity_ids and relation["to"] in entity_ids and relation["evidence"])
-        outputs["wiki/topics.html"] = topics_page(template, layer, documents)
         analysis = {"tool": "Graphify", "status": "run", "revision": layer["revision"],
                     "scope": f"docs/wiki Markdown {len(documents)}개를 입력으로 추출. 노드 {len(graph['nodes'])}, "
                              f"관계 {len(graph['links'])}, 주제 {len(layer['labels'])}. 코드 노드는 문서로 접었고 "
                              "개념·설계 노드만 항목으로 실었다."}
+    index = index_template.replace("{{GRID}}", index_grid(groups, documents, titles, layer))
+    index = index.replace("{{DOC_COUNT}}", str(len(documents))).replace("{{TOPIC_COUNT}}", str(len(groups)))
+    index = index.replace("{{CONCEPT_COUNT}}", str(len(layer["entities"]) if layer else 0))
+    index = index.replace("{{SOURCE_COUNT}}", str(len(sources))).replace("{{UPDATED}}", UPDATED)
+    outputs["index.html"] = index
     outputs["search-index.json"] = json.dumps(search, ensure_ascii=False, indent=2) + "\n"
-    knowledge = {"schemaVersion": 1, "updatedAt": "2026-10-28", "analysis": analysis,
+    knowledge = {"schemaVersion": 1, "updatedAt": UPDATED, "analysis": analysis,
                  "sources": sources, "entities": entities, "relations": relations}
     outputs["knowledge.json"] = json.dumps(knowledge, ensure_ascii=False, indent=2) + "\n"
     return outputs
@@ -355,5 +391,5 @@ if __name__ == "__main__":
             target.parent.mkdir(parents=True, exist_ok=True)
             target.write_text(content, encoding="utf-8")
     if stale:
-        raise SystemExit("Stale generated wiki files: " + ", ".join(stale))
+        raise SystemExit("stale generated files: " + ", ".join(stale))
     print(f"{'Checked' if args.check else 'Built'} {len(generated)} wiki outputs")

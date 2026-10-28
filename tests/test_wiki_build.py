@@ -23,15 +23,17 @@ class WikiBuildTest(unittest.TestCase):
         graph = json.loads(outputs["knowledge.json"])
         self.assertTrue(any(edge["from"] == "auction-spot" for edge in graph["relations"]))
         self.assertEqual(graph["analysis"]["status"], "run")
-        self.assertIn("wiki/topics.html", outputs)
+        self.assertIn("index.html", outputs)
+        self.assertIn('class="group"', outputs["index.html"])
         self.assertIn("관련 개념", outputs["wiki/hermes-agent-area.html"])
         self.assertTrue(any(edge["origin"] == "extracted" and edge["score"] for edge in graph["relations"]))
 
-    def test_document_navigation_marks_current_page_and_collapses_on_mobile(self):
+    def test_document_navigation_groups_by_topic(self):
         page = build(ROOT)["wiki/agent-hub.html"]
-        self.assertIn('<details class="wiki-mobile-nav">', page)
-        self.assertIn(f'문서 목록 · {len(list((ROOT / "docs/wiki").glob("*.md")))}개', page)
-        self.assertEqual(page.count('href="agent-hub.html" aria-current="page"'), 2)
+        self.assertIn("<details><summary>", page)
+        self.assertEqual(page.count('href="agent-hub.html"'), 1)
+        self.assertIn('class="crumb"><span class="tag">', page)
+        self.assertEqual(page.count('class="nav">'), 1)
 
     def test_unregistered_public_source_link_is_rejected(self):
         with tempfile.TemporaryDirectory() as directory:

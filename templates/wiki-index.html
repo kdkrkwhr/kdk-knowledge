@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="공개 GitHub 저장소를 README와 코드로 대조해 정리한 김동기의 개인 위키">
+  <title>kdk knowledge · 공개 근거 기반 개인 위키</title>
+  <link rel="icon" href="data:,">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css?v=wiki-1">
+  <script src="./wiki.js?v=3" defer></script>
+</head>
+<body data-search-root=".">
+  <header class="bar"><a class="brand" href="./"><i>知</i>kdk knowledge</a><nav aria-label="사이트 이동"><a href="./">위키 목차</a><a href="./graph/">그래프</a><a href="./wiki/index.html">사용 안내</a></nav></header>
+  <div class="hero">
+    <h1>kdk knowledge</h1>
+    <p>공개 GitHub 저장소를 README와 코드로 대조해 정리한 개인 위키입니다. 문서는 LLM이 공개 소스를 읽고 대조해 작성했고 사람이 다시 확인했습니다. 주제 묶음과 "관련 개념"은 Graphify가 문서에서 자동 추출한 결과라 본문과 구분해 읽습니다.</p>
+    <input class="search" placeholder="문서·개념·본문 검색 (예: WebSocket, SQLite 큐, Hermes)" autocomplete="off" aria-controls="search-results">
+    <ol id="search-results" class="hits" hidden></ol>
+    <div class="stats"><span><b data-count>{{DOC_COUNT}}</b>문서</span><span><b>{{TOPIC_COUNT}}</b>주제</span><span><b>{{CONCEPT_COUNT}}</b>개념</span><span><b>{{SOURCE_COUNT}}</b>근거 파일</span><span><b>{{UPDATED}}</b>마지막 정리</span></div>
+  </div>
+  <div class="grid">{{GRID}}</div>
+  <footer>김동기 · 공개 근거 기반 개인 위키 · 관계 데이터는 <a href="./knowledge.json">knowledge.json</a>(편집 관계 + Graphify 자동 추출, origin으로 구분)</footer>
+</body>
+</html>

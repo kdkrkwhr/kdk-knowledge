@@ -1,5 +1,5 @@
 ---
-{"id":"kdk-knowledge","type":"project","order":78,"mapTitle":"중앙 지식 허브 구현","summary":"공개 원본 커밋을 Markdown 문서·검색·관계 지도로 빌드하는 저장소","sources":["kdk-knowledge-1","kdk-knowledge-2","kdk-knowledge-3"],"relations":[{"to":"standards","label":"개발 기준을 한 참고 자료로 문서화","evidence":["kdk-knowledge-1"]}]}
+{"id":"kdk-knowledge","type":"project","order":78,"mapTitle":"중앙 지식 허브 구현","summary":"공개 원본 커밋을 Markdown 문서·검색·지식 그래프로 빌드하는 저장소","sources":["kdk-knowledge-1","kdk-knowledge-2","kdk-knowledge-3"],"relations":[{"to":"standards","label":"개발 기준을 한 참고 자료로 문서화","evidence":["kdk-knowledge-1"]}]}
 ---
 # 중앙 지식 허브 구현
 

@@ -2,9 +2,9 @@
 
 김동기의 프로젝트, 경력과 역할, 기술 선택과 배움, 경험에서 나온 개발 기준을 **공개 근거와 연결**하기 위한 개인 지식 허브입니다. 개발 기준은 한 영역입니다. 아직 근거가 등록되지 않은 경력·성과·기술 선택은 공개 위키에 빈 상태로 남깁니다.
 
-- [프로젝트 중심 위키](https://kdkrkwhr.github.io/kdk-knowledge/)
-- [실제 Markdown 위키 문서](https://kdkrkwhr.github.io/kdk-knowledge/wiki/)
-- [근거 관계 지도](https://kdkrkwhr.github.io/kdk-knowledge/architecture/)
+- [위키 목차](https://kdkrkwhr.github.io/kdk-knowledge/) — 주제별 문서 목록과 검색
+- [지식 그래프](https://kdkrkwhr.github.io/kdk-knowledge/graph/) — 검색 패널이 붙은 Graphify 그래프
+- [사용 안내](https://kdkrkwhr.github.io/kdk-knowledge/wiki/index.html)
 - [입력 템플릿](templates/README.md)
 
 ## 현재 범위
@@ -13,7 +13,7 @@
 
 현재 확인한 공개 저장소 28개 모두 문서를 작성했습니다. 작은 저장소는 단일 파일, 큰 저장소는 대표 구현 파일로 범위를 제한했습니다. 전체 과거 프로젝트·경력 자료의 수집이나 원본 프로젝트의 실행 검증을 마친 상태는 아닙니다. 개인 역할·성과·선택 이유는 별도 근거가 생길 때 보강합니다.
 
-`docs/wiki/*.md`가 해설의 편집 원본입니다. 문서 머리의 메타데이터가 출처·관계를 등록하고, `docs/wiki/sources.json`에 고정 커밋의 공개 URL을 보관합니다. `scripts/build_wiki.py`가 HTML, 원본 Markdown 사본, 본문 검색 색인과 `site/knowledge.json`을 함께 생성합니다. `site/index.html`은 프로젝트 진입 화면이고, `site/architecture/`는 문서에서 파생한 편집 관계를 탐색합니다. Graphify는 `docs/wiki/*.md`만 입력으로 실행하며 결과를 `docs/graph/graph.json`에 커밋합니다(`scripts/sync_graph.py`). 빌드는 이 파일에서 개념 항목·자동 추출 관계·`site/wiki/topics.html`(주제 지도)을 만들고, 편집 관계와 `origin`으로 구분합니다. Graphify의 대화형 뷰어는 `site/graph/`에 그대로 싣습니다(vis-network CDN 사용).
+`docs/wiki/*.md`가 해설의 편집 원본입니다. 문서 머리의 메타데이터가 출처·관계를 등록하고, `docs/wiki/sources.json`에 고정 커밋의 공개 URL을 보관합니다. `scripts/build_wiki.py`가 HTML, 원본 Markdown 사본, 본문 검색 색인과 `site/knowledge.json`을 함께 생성합니다. 공개 화면은 둘입니다. `site/index.html`(위키 목차: Graphify 주제별 문서 묶음·검색)과 `site/wiki/*.html`(문서: 사이드바 목차·본문·관련 개념·근거 문서), 그리고 `site/graph/`(검색 패널이 붙은 Graphify 그래프: 추출 요약·출처·위키 미리보기). Graphify는 `docs/wiki/*.md`만 입력으로 실행하며 결과를 `docs/graph/graph.json`에 커밋합니다(`scripts/sync_graph.py`). 빌드는 이 파일에서 주제 묶음·개념 항목·자동 추출 관계를 만들고, 편집 관계와 `origin`으로 구분합니다. Graphify 뷰어는 `scripts/sync_graph.py`가 패널을 덧붙여 `site/graph/`에 싣습니다(vis-network CDN, 글꼴은 Google Fonts).
 
 ## 추가와 검증
 

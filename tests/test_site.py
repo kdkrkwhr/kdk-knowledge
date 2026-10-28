@@ -23,54 +23,49 @@ class PageParser(HTMLParser):
 
 class SiteTest(unittest.TestCase):
     def test_in_page_links_have_targets(self):
-        for path in (SITE / "index.html", SITE / "architecture/index.html"):
+        for path in (SITE / "index.html", SITE / "wiki/hermes-agent-area.html"):
             with self.subTest(path=path):
                 parser = PageParser()
                 parser.feed(path.read_text(encoding="utf-8"))
                 self.assertEqual(set(parser.fragments) - parser.ids, set())
 
+    def test_two_surfaces_wiki_index_and_graph(self):
+        index = (SITE / "index.html").read_text(encoding="utf-8")
+        graph = (SITE / "graph/index.html").read_text(encoding="utf-8")
+        self.assertIn('class="hero"', index)
+        self.assertIn('href="wiki/notebuddy.html"', index)
+        self.assertIn('href="./graph/"', index)
+        self.assertNotIn("architecture/", index)
+        self.assertIn("위키 열기", graph)
+        self.assertIn("kg-modal", graph)
+        self.assertIn('href="../"', graph)
+
     def test_extraction_is_labelled_separately_from_curated_relations(self):
-        wiki = (SITE / "index.html").read_text(encoding="utf-8")
-        map_page = (SITE / "architecture/index.html").read_text(encoding="utf-8")
-        self.assertIn("LLM이 공개 소스를 읽고 대조해 작성", wiki)
-        self.assertIn("Graphify 분석 실행", map_page)
-        self.assertIn("편집 관계", map_page)
-        self.assertIn("자동 추출", map_page)
+        index = (SITE / "index.html").read_text(encoding="utf-8")
+        page = (SITE / "wiki/hermes-agent-area.html").read_text(encoding="utf-8")
+        self.assertIn("자동 추출", index)
+        self.assertIn("사람이 대조", page)
+        self.assertIn("관련 개념", page)
         data = json.loads((SITE / "knowledge.json").read_text(encoding="utf-8"))
         self.assertEqual(data["analysis"]["status"], "run")
         self.assertTrue(any(relation["origin"] == "extracted" for relation in data["relations"]))
         self.assertTrue(any(relation["origin"] == "curated" for relation in data["relations"]))
 
-    def test_project_stories_are_the_primary_navigation(self):
-        page = (SITE / "index.html").read_text(encoding="utf-8")
-        self.assertIn('href="#notebuddy"', page)
-        self.assertIn('href="#auction-spot"', page)
-        self.assertIn('id="notebuddy"', page)
-        self.assertIn('id="auction-spot"', page)
-        self.assertIn('id="career"', page)
-        self.assertNotIn('class="sidebar"', page)
-        self.assertNotIn('class="outline"', page)
+    def test_documents_group_by_graph_topic(self):
+        page = (SITE / "wiki/hermes-agent-area.html").read_text(encoding="utf-8")
+        self.assertIn("<details><summary>", page)
+        self.assertIn('class="tag">', page)
+        self.assertIn('class="srcs"', page)
+        self.assertIn("커밋 e3e118f", page)
 
-    def test_stories_use_pinned_source_files_without_requiring_other_wikis(self):
-        page = (SITE / "index.html").read_text(encoding="utf-8")
-        data = json.loads((SITE / "knowledge.json").read_text(encoding="utf-8"))
-        self.assertIn("LocalImageStorageService.java", page)
-        self.assertIn("game_api.py", page)
-        self.assertNotIn("notebook-pets/wiki/", page)
-        self.assertTrue(any(source["repository"] == "kdkrkwhr/auction-spot-api"
-                            and source["path"].endswith(".java") for source in data["sources"]))
-        self.assertTrue(any(entity["id"] == "auction-spot" for entity in data["entities"]))
-
-    def test_dark_project_theme(self):
+    def test_theme_follows_system_and_keeps_korean_words(self):
         css = (SITE / "style.css").read_text(encoding="utf-8")
-        self.assertIn("color-scheme:dark", css)
-        self.assertIn(".project-ledger", css)
+        self.assertIn("color-scheme:light dark", css)
+        self.assertIn("prefers-color-scheme:dark", css)
+        self.assertIn("word-break:keep-all", css)
 
-    def test_search_and_map_refresh_generated_data(self):
-        for path in (SITE / "wiki.js", SITE / "architecture/map.js"):
-            with self.subTest(path=path):
-                self.assertIn("cache: 'no-store'", path.read_text(encoding="utf-8"))
-        self.assertNotIn("wiki.js", (SITE / "index.html").read_text(encoding="utf-8"))
+    def test_search_refreshes_generated_data(self):
+        self.assertIn("cache: 'no-store'", (SITE / "wiki.js").read_text(encoding="utf-8"))
 
     def test_public_repository_inventory_has_source_backed_pages(self):
         data = json.loads((SITE / "knowledge.json").read_text(encoding="utf-8"))
