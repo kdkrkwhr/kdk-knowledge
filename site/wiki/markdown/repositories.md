@@ -14,11 +14,11 @@
 ## 문서 작성 완료 · non-fork 25
 
 - `notebook-pets` → [노트버디](notebuddy.md): README와 Python·JavaScript 파일을 고정 커밋에서 대조했다.
-- `auction-spot-api` → [옥션스팟 API](auction-spot.md): README와 Java 이미지 저장 경로를 고정 커밋에서 대조했다.
-- `agent-hub` → [AGENT HUB](agent-hub.md): README와 Python CLI·서버·작업 엔진·사본 코드를 고정 커밋에서 정적으로 대조했다.
+- `auction-spot-api` → [옥션스팟 API](auction-spot.md): README와 Java 경매 대기열·입찰·종료·지역 조회·알림·이미지 저장 경로를 고정 커밋에서 대조했다.
+- `agent-hub` → [AGENT HUB](agent-hub.md): README와 Python CLI·서버·작업 엔진·사본·게시 경계, 웹 출력 코드를 고정 커밋에서 정적으로 대조했다.
 - `auction-spot-front` → [옥션스팟 프런트](auction-spot-front.md): Dart 진입점·라우터·네트워크·저장소 코드를 대조했다.
 - `hermes-env` → [Hermes 환경](hermes-env.md): 설치 안내와 부트스트랩·설정 파일을 대조했다.
-- `hermes-agent-area` → [Hermes Agent Area](hermes-agent-area.md): 웹·서버·테스트 코드를 대조했다.
+- `hermes-agent-area` → [Hermes Agent Area](hermes-agent-area.md): 웹·mock 데이터·서버·테스트 코드를 대조했다.
 - `hermes-team-hub` → [Hermes Team Hub](hermes-team-hub.md): 정적 화면과 로컬 서버 코드를 대조했다.
 - `agent-drift-guard` → [Agent Drift Guard](agent-drift-guard.md): 중단 상태와 hook·세션 코드를 대조했다.
 - `engineering-standards` → [개발 기준 참고](standards.md): 현재 README·프로필·검증 코드를 대조했다.

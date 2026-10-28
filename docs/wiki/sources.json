@@ -40,6 +40,16 @@
     "visibility": "public"
   },
   {
+    "id": "notebuddy-anna-plugin",
+    "title": "Notebook Pets Anna Executa bridge",
+    "kind": "code",
+    "repository": "kdkrkwhr/notebook-pets",
+    "path": "anna/executas/notebuddy/notebuddy_plugin.py",
+    "revision": "ca5648b49e6d0a67526856a930090173d0454389",
+    "url": "https://github.com/kdkrkwhr/notebook-pets/blob/ca5648b49e6d0a67526856a930090173d0454389/anna/executas/notebuddy/notebuddy_plugin.py",
+    "visibility": "public"
+  },
+  {
     "id": "auction-readme",
     "title": "Auction Spot API README",
     "kind": "readme",
@@ -77,6 +87,56 @@
     "path": "src/main/java/com/auctionspot/infra/storage/LocalFileWebConfig.java",
     "revision": "7c2d9496a5ae0f1dcd0345196483c2674ecff140",
     "url": "https://github.com/kdkrkwhr/auction-spot-api/blob/7c2d9496a5ae0f1dcd0345196483c2674ecff140/src/main/java/com/auctionspot/infra/storage/LocalFileWebConfig.java",
+    "visibility": "public"
+  },
+  {
+    "id": "auction-bid",
+    "title": "Bid command",
+    "kind": "code",
+    "repository": "kdkrkwhr/auction-spot-api",
+    "path": "src/main/java/com/auctionspot/domain/auction/service/BidCommandService.java",
+    "revision": "7c2d9496a5ae0f1dcd0345196483c2674ecff140",
+    "url": "https://github.com/kdkrkwhr/auction-spot-api/blob/7c2d9496a5ae0f1dcd0345196483c2674ecff140/src/main/java/com/auctionspot/domain/auction/service/BidCommandService.java",
+    "visibility": "public"
+  },
+  {
+    "id": "auction-lifecycle",
+    "title": "Auction lifecycle",
+    "kind": "code",
+    "repository": "kdkrkwhr/auction-spot-api",
+    "path": "src/main/java/com/auctionspot/domain/auction/service/AuctionLifecycleService.java",
+    "revision": "7c2d9496a5ae0f1dcd0345196483c2674ecff140",
+    "url": "https://github.com/kdkrkwhr/auction-spot-api/blob/7c2d9496a5ae0f1dcd0345196483c2674ecff140/src/main/java/com/auctionspot/domain/auction/service/AuctionLifecycleService.java",
+    "visibility": "public"
+  },
+  {
+    "id": "auction-cache",
+    "title": "Redis auction value cache",
+    "kind": "code",
+    "repository": "kdkrkwhr/auction-spot-api",
+    "path": "src/main/java/com/auctionspot/domain/auction/service/RedisAuctionCache.java",
+    "revision": "7c2d9496a5ae0f1dcd0345196483c2674ecff140",
+    "url": "https://github.com/kdkrkwhr/auction-spot-api/blob/7c2d9496a5ae0f1dcd0345196483c2674ecff140/src/main/java/com/auctionspot/domain/auction/service/RedisAuctionCache.java",
+    "visibility": "public"
+  },
+  {
+    "id": "auction-geo",
+    "title": "Geolocation resolver",
+    "kind": "code",
+    "repository": "kdkrkwhr/auction-spot-api",
+    "path": "src/main/java/com/auctionspot/domain/common/service/GeoLocationService.java",
+    "revision": "7c2d9496a5ae0f1dcd0345196483c2674ecff140",
+    "url": "https://github.com/kdkrkwhr/auction-spot-api/blob/7c2d9496a5ae0f1dcd0345196483c2674ecff140/src/main/java/com/auctionspot/domain/common/service/GeoLocationService.java",
+    "visibility": "public"
+  },
+  {
+    "id": "auction-fcm",
+    "title": "FCM notification placeholder",
+    "kind": "code",
+    "repository": "kdkrkwhr/auction-spot-api",
+    "path": "src/main/java/com/auctionspot/infra/fcm/FcmNotificationService.java",
+    "revision": "7c2d9496a5ae0f1dcd0345196483c2674ecff140",
+    "url": "https://github.com/kdkrkwhr/auction-spot-api/blob/7c2d9496a5ae0f1dcd0345196483c2674ecff140/src/main/java/com/auctionspot/infra/fcm/FcmNotificationService.java",
     "visibility": "public"
   },
   {
@@ -177,6 +237,26 @@
     "path": "src/agent_hub/manual_workspace.py",
     "revision": "cfe0ac6b341f6edebbf25655fc2e7867492740bd",
     "url": "https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/manual_workspace.py",
+    "visibility": "public"
+  },
+  {
+    "id": "hub-publication",
+    "title": "AGENT HUB explicit publication",
+    "kind": "code",
+    "repository": "kdkrkwhr/agent-hub",
+    "path": "src/agent_hub/publication.py",
+    "revision": "cfe0ac6b341f6edebbf25655fc2e7867492740bd",
+    "url": "https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/publication.py",
+    "visibility": "public"
+  },
+  {
+    "id": "hub-web-app",
+    "title": "AGENT HUB web UI",
+    "kind": "code",
+    "repository": "kdkrkwhr/agent-hub",
+    "path": "src/agent_hub/static/app.js",
+    "revision": "cfe0ac6b341f6edebbf25655fc2e7867492740bd",
+    "url": "https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/static/app.js",
     "visibility": "public"
   },
   {
@@ -427,6 +507,16 @@
     "path": "src/connectPanel.js",
     "revision": "e3e118fa7eb3fcfcd1fd8ca1d88d63763ddb67a5",
     "url": "https://github.com/kdkrkwhr/hermes-agent-area/blob/e3e118fa7eb3fcfcd1fd8ca1d88d63763ddb67a5/src/connectPanel.js",
+    "visibility": "public"
+  },
+  {
+    "id": "area-mock",
+    "title": "hermes-agent-area · src/mock.js",
+    "kind": "code",
+    "repository": "kdkrkwhr/hermes-agent-area",
+    "path": "src/mock.js",
+    "revision": "e3e118fa7eb3fcfcd1fd8ca1d88d63763ddb67a5",
+    "url": "https://github.com/kdkrkwhr/hermes-agent-area/blob/e3e118fa7eb3fcfcd1fd8ca1d88d63763ddb67a5/src/mock.js",
     "visibility": "public"
   },
   {

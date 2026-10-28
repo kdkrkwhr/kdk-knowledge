@@ -1,5 +1,5 @@
 ---
-{"id":"auction-spot-front","type":"project","order":22,"mapTitle":"옥션스팟 Flutter","summary":"옥션스팟의 Flutter 클라이언트가 REST·STOMP·이미지 업로드를 호출하는 경로","sources":["front-readme","front-main","front-router","front-dio","front-auction","front-ws","front-upload","front-pubspec","front-starter","front-constants","auction-upload"],"relations":[{"to":"auction-spot","label":"이미지 업로드 요청 경로가 API 컨트롤러와 대응","evidence":["front-upload","front-constants","auction-upload"]}]}
+{"id":"auction-spot-front","type":"project","order":22,"mapTitle":"옥션스팟 Flutter","summary":"옥션스팟의 Flutter 클라이언트가 REST·STOMP·이미지 업로드를 호출하는 경로","sources":["front-readme","front-main","front-router","front-dio","front-auction","front-ws","front-upload","front-pubspec","front-starter","front-constants","auction-upload","auction-bid"],"relations":[{"to":"auction-spot","label":"입찰 요청·실시간 경매 이벤트와 이미지 업로드가 API 기능에 대응","evidence":["front-auction","front-ws","front-upload","auction-bid","auction-upload"]}]}
 ---
 # 옥션스팟 Flutter: 경매 화면에서 API와 실시간 채널까지
 
@@ -25,6 +25,8 @@
 `DioClient`는 API 기본 URL과 10초 연결·응답 제한을 설정한다. 요청 인터셉터가 저장된 액세스 토큰을 Bearer 헤더에 넣고, 401 응답에서 리프레시 토큰이 있으면 갱신 뒤 원래 요청을 재시도한다. 로그 인터셉터는 요청·응답 본문 출력으로 설정돼 있다. 이 코드만으로 토큰 갱신 동시성이나 운영 로그의 안전성을 보장할 수 없다. [HTTP 클라이언트](https://github.com/kdkrkwhr/auction-spot-front/blob/abb91bc2abe406e821c55f362e9f209ea61c2db9/lib/core/network/dio_client.dart)
 
 `AuctionRepository`는 오늘의 경매, 상세, 입찰 목록·제출, 결과를 `/auctions/...` REST 경로로 요청하고 응답 모델로 변환한다. `AuctionWsClient`는 STOMP로 `/topic/auctions/{auctionId}`를 구독해 이벤트 스트림에 전달하며 3초 재연결 간격을 설정한다. 경매 결과와 실시간 이벤트가 화면에 어떻게 합쳐지는지는 이 두 파일만으로 모두 확인하지 않았다. [REST 경매 저장소](https://github.com/kdkrkwhr/auction-spot-front/blob/abb91bc2abe406e821c55f362e9f209ea61c2db9/lib/features/auction/data/auction_repository.dart) · [STOMP 클라이언트](https://github.com/kdkrkwhr/auction-spot-front/blob/abb91bc2abe406e821c55f362e9f209ea61c2db9/lib/features/auction/data/auction_ws_client.dart)
+
+입찰 제출 메서드는 경매 ID와 가격을 POST하고, [백엔드 입찰 서비스](auction-spot.md)는 행 잠금·입찰 금액·즉시 낙찰 조건을 검사한 뒤 이벤트를 발행하는 경로를 둔다. 이는 두 저장소의 코드에서 요청과 처리 단계를 나란히 확인한 것이다. 실제 앱 화면에서 서버까지 성공적으로 전달됐는지는 실행 확인하지 않았다. [클라이언트 placeBid 46–57행](https://github.com/kdkrkwhr/auction-spot-front/blob/abb91bc2abe406e821c55f362e9f209ea61c2db9/lib/features/auction/data/auction_repository.dart) · [서버 placeBid 39–117행](https://github.com/kdkrkwhr/auction-spot-api/blob/7c2d9496a5ae0f1dcd0345196483c2674ecff140/src/main/java/com/auctionspot/domain/auction/service/BidCommandService.java)
 
 ## 이미지 업로드와 백엔드 연결
 

@@ -10,11 +10,11 @@
 **평가일:** 2026-10-28 · **근거 커밋:** `1406ee05e3ea21a9e0c53aa0856879c976cd3ac5`. 공개 소스의 정적 평가이며 실제 운영 결과나 개인의 기여 범위를 확정하지 않는다.
 
 - **구조·설계 — 양호** Pages의 브라우저 저장 기록과 로컬 서버의 Hermes 조회를 별도 경로로 둔다. [js/store.js 1–18행](https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/js/store.js) [local/app.py 1–17행](https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/local/app.py)
-- **구현 품질 — 보완 필요** 정적 화면의 칸반 검색·상태 필터가 단일 전역 객체를 공유한다. 역할별 검색값을 저장해도 다른 역할로 이동할 때 필터 상태가 섞일 수 있다. [js/app.js 128–185행](https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/js/app.js)
-- **운영 준비 — 미확인** 로컬 서버의 프로필 기본 위치가 특정 PC 경로로 고정돼 있다. 다른 기기에서 실제 데이터를 읽을지는 설정과 실행 환경을 확인해야 한다. [local/app.py 29–31·233–239행](https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/local/app.py)
+- **구현 품질 — 위험** 로컬 HTTP의 GET 경로가 허용 목록의 일부 상태 변경 Hermes 명령을 실행하고, 응답은 모든 Origin을 허용하며 요청 출처 검사가 보이지 않는다. 루프백 서비스라도 다른 웹 페이지에서 요청을 유도할 가능성을 고려해야 한다. 실제 외부 호출은 확인하지 않았다. [local/app.py의 Handler, 1091–1136·1221–1224행](https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/local/app.py)
+- **운영 준비 — 보완 필요** 서버는 루프백에 바인딩하지만 프로필 기본 위치는 특정 PC 형태다. 다른 기기에서 데이터 위치를 설정해야 하고, 로컬 명령 API의 브라우저 접근 경계도 보완해야 한다. [local/app.py 29–31·1091–1097·1263–1268행](https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/local/app.py)
 - **유지보수 — 보완 필요** 정적 기록은 한 브라우저의 localStorage에만 저장된다. 팀 공유 기록으로 해석하지 않도록 데이터 범위와 백업 방법을 유지해야 한다. [js/store.js 6–31행](https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/js/store.js)
 
-**좋은 점:** 정적 기록과 로컬 실시간 조회의 데이터 경계를 나눴다. **개선 우선순위:** P2 — 역할별 필터 상태를 분리하고 로컬 프로필 위치를 설정값으로 옮겨 화면 결과의 재현성을 높인다.
+**좋은 점:** 정적 기록과 로컬 실시간 조회의 데이터 경계를 나눴고 CLI 명령은 허용 목록으로 제한한다. **개선 우선순위:** P1 — 상태 변경 명령을 읽기 GET에서 분리하고 요청 출처·확인 경계를 두어 로컬 API의 의도하지 않은 호출을 줄인다. P2 — 역할별 칸반 필터 상태와 프로필 기본 위치를 정리한다. [명령 허용 목록 1100–1136행](https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/local/app.py) · [공유 필터 128–185행](https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/js/app.js)
 
 ## Pages 쪽의 기록 흐름
 
@@ -22,9 +22,11 @@
 
 ## 로컬 실행형의 데이터 흐름
 
-`local/app.py`는 Python 표준 라이브러리 `ThreadingHTTPServer`를 루프백 주소에 바인딩한다. `/api/kanban`은 `hermes kanban list --json`을 호출해 결과를 변환하고 5초 메모리 캐시를 둔다. `/api/agents`는 프로필의 SOUL 문서에서 표시 정보를 읽고, `/api/coral`, `/api/logs` 등의 로컬 조회 경로가 있다. 일부 API는 로컬 JSON을 POST로 저장하며 허용된 Hermes 명령을 실행하는 경로도 있다. 이 코드는 개인 PC 자료를 다루므로 Pages 데모의 공개 데이터와 혼동해서는 안 된다. [로컬 HTTP 서버](https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/local/app.py) · [README의 API 설명](https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/README.md)
+`local/app.py`는 Python 표준 라이브러리 `ThreadingHTTPServer`를 루프백 주소에 바인딩한다. `/api/kanban`은 `hermes kanban list --json`을 호출해 결과를 변환하고 5초 메모리 캐시를 둔다. `/api/agents`는 프로필의 SOUL 문서에서 표시 정보를 읽고, `/api/coral`, `/api/logs` 등의 로컬 조회 경로가 있다. 일부 POST API는 로컬 JSON을 저장한다. 별도의 GET 경로는 허용 목록의 Hermes 명령을 실행하며 이 목록에는 상태 변경 명령도 있다. 이는 읽기 전용 상태 조회와 구분해야 한다. 개인 PC 자료를 다루므로 Pages 데모의 공개 데이터와 혼동해서는 안 된다. [로컬 HTTP 서버의 GET·POST, 1162–1257행](https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/local/app.py) · [명령 허용 목록 1100–1136행](https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/local/app.py)
 
 `local/team_hub.py`는 `log`, `view`, `timeline`, `report`, `reset` 명령을 분기한다. 공통 모델의 `append_activity`는 역할을 검사하고 시각을 채워 `activities.jsonl`에 기록하며 `load_activities`는 날짜·역할·카드·태그 필터로 읽는다. JSONL 모델과 정적 Pages의 localStorage는 별도 저장 방식이다. [CLI](https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/local/team_hub.py) · [JSONL 모델](https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/local/team_hub/model.py)
+
+정적 화면의 칸반 검색·상태 필터는 하나의 전역 상태를 공유한다. 역할별 검색 입력은 따로 저장하지만 탭 전환 후 필터가 섞일 수 있다. 이 판단은 코드의 상태 공유에서 나온 것이며 실제 화면 증상을 실행해 확인한 것은 아니다. [js/app.js 128–185행](https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/js/app.js)
 
 ## 아직 확인하지 않은 연결
 

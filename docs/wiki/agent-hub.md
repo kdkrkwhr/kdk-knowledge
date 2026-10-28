@@ -12,6 +12,8 @@
     "agent-hub-adapters",
     "agent-hub-discussion",
     "agent-hub-workspace",
+    "hub-publication",
+    "hub-web-app",
     "agent-hub-pipeline",
     "agent-hub-voting",
     "agent-hub-storage",
@@ -44,11 +46,11 @@ AGENT HUB RADIO는 설치·로그인된 Claude Code, Codex CLI, Cursor Agent를 
 **평가일:** 2026-10-28 · **근거 커밋:** `cfe0ac6b341f6edebbf25655fc2e7867492740bd`. 공개 소스의 정적 평가이며 실제 운영 결과나 개인의 기여 범위를 확정하지 않는다.
 
 - **구조·설계 — 양호** 진입점, HTTP 경계, 지속 작업 엔진, CLI 어댑터가 분리돼 있다. [__main__.py 26–65행](https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/__main__.py) [server.py 11–21행](https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/server.py)
-- **구현 품질 — 양호** 서버는 루프백에 바인딩하고 Host·Origin·CSRF를 확인하며 요청 크기도 제한한다. 이는 로컬 사용 경계에 맞는 방어다. [server.py 15–26·68–75·114행](https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/server.py)
+- **구현 품질 — 양호** 서버는 루프백·Host·Origin·CSRF·요청 크기를 제한한다. 웹 렌더러도 모델 Markdown의 원시 HTML·원격 이미지 로딩·허용 밖 링크를 제한하고, 원본 게시에는 재확인 토큰과 Git 상태 검증이 있다. [server.py 15–26·68–75·114행](https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/server.py) · [static/app.js 7–17행](https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/static/app.js) · [publication.py 80–120행](https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/publication.py)
 - **운영 준비 — 양호** 로컬 도구라는 목적에 맞게 루프백 접근과 원격 인증 부재를 명시한다. 공개 프록시나 다중 사용자 서비스로 확장할 때는 인증·권한 경계를 새로 설계해야 한다. 현재 그런 운영을 한다는 뜻은 아니다. [SECURITY.md](https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/SECURITY.md)
 - **유지보수 — 보완 필요** 하나의 POST 분기에서 설정·토론·파이프라인·투표·메시지까지 처리해 기능 추가 시 변경 범위가 넓다. [server.py의 do_POST, 68–113행](https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/server.py)
 
-**좋은 점:** 실행 경계와 로컬 보안 가정이 코드에 드러난다. **개선 우선순위:** P2 — API 요청 검증과 라우트 처리기를 기능별로 나눠 변경 영향을 줄인다. 원격 제공은 별도 인증 설계 전까지 현재의 루프백 범위를 유지한다.
+**좋은 점:** CLI 실행·웹 표시·작업 사본 export·확인 후 원본 게시가 서로 다른 경계로 드러난다. **개선 우선순위:** P2 — API 요청 검증과 라우트 처리기를 기능별로 나눠 변경 영향을 줄인다. 원격 제공은 별도 인증 설계 전까지 현재의 루프백 범위를 유지한다.
 
 ## 해결하려는 흐름과 모듈 경계
 
@@ -69,6 +71,8 @@ AGENT HUB RADIO는 설치·로그인된 Claude Code, Codex CLI, Cursor Agent를 
 
 일반 폴더 작업은 사본과 기준 ZIP, 파일별 SHA-256을 보관한다. 변경 비교로 패치·변경 파일 ZIP·보고서와 추가/수정/삭제 명세를 만들 수 있다. `.git`, 의존성, 캐시, 일부 인증 경로를 기본적으로 제외한다. 이 export는 **원본에 적용하거나 commit·push하는 작업이 아니다.** 파일 크기와 전체 크기·항목 수 제한 및 symlink/junction 거부도 코드에서 확인된다. [작업 사본과 export](https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/manual_workspace.py) · [사용 범위](https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/README.md)
 
+완료된 **웹 파이프라인**에는 별도 게시 경로가 있다. `Publication.preview`가 원본 Git 상태·기준 커밋·패치·브랜치·원격 주소를 검사해 미리보기 토큰을 만들고, `execute`는 명시적인 확인값과 유효한 토큰이 있을 때만 apply·commit·push 단계로 진행한다. push 직전 원격 브랜치 기준도 다시 비교한다. 따라서 “export는 원본에 반영하지 않는다”는 말은 수동 사본 export에 한정되며, 웹의 별도 확인 동선까지 없다는 뜻이 아니다. 이 코드를 읽은 것이 실제 Git 반영 성공이나 사용자 승인 절차의 운영 증거는 아니다. [publication.py 42–126행](https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/publication.py)
+
 ## 역할, 투표와 실행 증거
 
 파이프라인은 준비·계획·구현·검토를 구분한다. CLI 쓰기 설정은 구현 단계에 적용되고, 검증 명령은 호스트가 실행한다. 명령이 없으면 `skipped` 상태로 남긴다. 검토에는 파일 지문으로 대상 변경을 확인하는 경로가 있다. [단계 구성](https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/pipeline.py) · [CLI 실행](https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/adapters.py)
@@ -78,5 +82,7 @@ AGENT HUB RADIO는 설치·로그인된 Claude Code, Codex CLI, Cursor Agent를 
 ## 기술 경계와 확인하지 못한 것
 
 `storage.py`는 설정·DB·로그·작업 사본·산출물 경로를 나누고 이전 저장 구조를 읽는 경로를 유지한다. CLI 인증을 이용하는 구현이므로 모델 서비스로 프롬프트와 작업 내용이 전송될 수 있다. `local-first`를 완전 오프라인이라는 뜻으로 읽으면 안 된다. 보안 문서는 요청 출처·CSRF 보호가 있지만 원격 사용자 인증이 없으므로 공개 프록시 노출을 피하도록 설명한다. 읽기 전용 CLI 설정도 OS 샌드박스와 같지 않다. [저장 경로](https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/storage.py) · [보안 설명](https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/SECURITY.md) · [CLI 어댑터](https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/adapters.py)
+
+웹 화면은 `/api/state`를 약 3초 간격으로 다시 읽는다. 상태 배지는 허브가 기록한 실행 상황을 보여 줄 뿐, 외부 CLI의 로그인·실행 가능성을 증명하지 않는다고 코드가 명시한다. 모델 응답의 Markdown은 HTML을 허용하지 않고 이미지가 자동으로 원격 요청을 보내지 않도록 텍스트로 바꾼다. 이는 웹 출력 경계의 정적 확인이며 실제 브라우저 운영 상태를 검증한 결과는 아니다. [static/app.js 7–17·193·242–243행](https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/static/app.js)
 
 저장소의 Actions 파일에는 세 운영체제와 Python 3.11·3.13의 단위 테스트 및 JavaScript 문법 검사 단계가 정의돼 있다. **설정 존재만 확인했고 CI 성공이나 실제 CLI 통합을 검증하지 않았다.** 선택의 개인적 이유, 사용자 규모, 운영 성과, 단독 기여도 공개 파일만으로 알 수 없다. [테스트 워크플로](https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/.github/workflows/tests.yml)

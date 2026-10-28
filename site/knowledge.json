@@ -49,6 +49,16 @@
       "visibility": "public"
     },
     {
+      "id": "notebuddy-anna-plugin",
+      "title": "Notebook Pets Anna Executa bridge",
+      "kind": "code",
+      "repository": "kdkrkwhr/notebook-pets",
+      "path": "anna/executas/notebuddy/notebuddy_plugin.py",
+      "revision": "ca5648b49e6d0a67526856a930090173d0454389",
+      "url": "https://github.com/kdkrkwhr/notebook-pets/blob/ca5648b49e6d0a67526856a930090173d0454389/anna/executas/notebuddy/notebuddy_plugin.py",
+      "visibility": "public"
+    },
+    {
       "id": "auction-readme",
       "title": "Auction Spot API README",
       "kind": "readme",
@@ -86,6 +96,56 @@
       "path": "src/main/java/com/auctionspot/infra/storage/LocalFileWebConfig.java",
       "revision": "7c2d9496a5ae0f1dcd0345196483c2674ecff140",
       "url": "https://github.com/kdkrkwhr/auction-spot-api/blob/7c2d9496a5ae0f1dcd0345196483c2674ecff140/src/main/java/com/auctionspot/infra/storage/LocalFileWebConfig.java",
+      "visibility": "public"
+    },
+    {
+      "id": "auction-bid",
+      "title": "Bid command",
+      "kind": "code",
+      "repository": "kdkrkwhr/auction-spot-api",
+      "path": "src/main/java/com/auctionspot/domain/auction/service/BidCommandService.java",
+      "revision": "7c2d9496a5ae0f1dcd0345196483c2674ecff140",
+      "url": "https://github.com/kdkrkwhr/auction-spot-api/blob/7c2d9496a5ae0f1dcd0345196483c2674ecff140/src/main/java/com/auctionspot/domain/auction/service/BidCommandService.java",
+      "visibility": "public"
+    },
+    {
+      "id": "auction-lifecycle",
+      "title": "Auction lifecycle",
+      "kind": "code",
+      "repository": "kdkrkwhr/auction-spot-api",
+      "path": "src/main/java/com/auctionspot/domain/auction/service/AuctionLifecycleService.java",
+      "revision": "7c2d9496a5ae0f1dcd0345196483c2674ecff140",
+      "url": "https://github.com/kdkrkwhr/auction-spot-api/blob/7c2d9496a5ae0f1dcd0345196483c2674ecff140/src/main/java/com/auctionspot/domain/auction/service/AuctionLifecycleService.java",
+      "visibility": "public"
+    },
+    {
+      "id": "auction-cache",
+      "title": "Redis auction value cache",
+      "kind": "code",
+      "repository": "kdkrkwhr/auction-spot-api",
+      "path": "src/main/java/com/auctionspot/domain/auction/service/RedisAuctionCache.java",
+      "revision": "7c2d9496a5ae0f1dcd0345196483c2674ecff140",
+      "url": "https://github.com/kdkrkwhr/auction-spot-api/blob/7c2d9496a5ae0f1dcd0345196483c2674ecff140/src/main/java/com/auctionspot/domain/auction/service/RedisAuctionCache.java",
+      "visibility": "public"
+    },
+    {
+      "id": "auction-geo",
+      "title": "Geolocation resolver",
+      "kind": "code",
+      "repository": "kdkrkwhr/auction-spot-api",
+      "path": "src/main/java/com/auctionspot/domain/common/service/GeoLocationService.java",
+      "revision": "7c2d9496a5ae0f1dcd0345196483c2674ecff140",
+      "url": "https://github.com/kdkrkwhr/auction-spot-api/blob/7c2d9496a5ae0f1dcd0345196483c2674ecff140/src/main/java/com/auctionspot/domain/common/service/GeoLocationService.java",
+      "visibility": "public"
+    },
+    {
+      "id": "auction-fcm",
+      "title": "FCM notification placeholder",
+      "kind": "code",
+      "repository": "kdkrkwhr/auction-spot-api",
+      "path": "src/main/java/com/auctionspot/infra/fcm/FcmNotificationService.java",
+      "revision": "7c2d9496a5ae0f1dcd0345196483c2674ecff140",
+      "url": "https://github.com/kdkrkwhr/auction-spot-api/blob/7c2d9496a5ae0f1dcd0345196483c2674ecff140/src/main/java/com/auctionspot/infra/fcm/FcmNotificationService.java",
       "visibility": "public"
     },
     {
@@ -186,6 +246,26 @@
       "path": "src/agent_hub/manual_workspace.py",
       "revision": "cfe0ac6b341f6edebbf25655fc2e7867492740bd",
       "url": "https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/manual_workspace.py",
+      "visibility": "public"
+    },
+    {
+      "id": "hub-publication",
+      "title": "AGENT HUB explicit publication",
+      "kind": "code",
+      "repository": "kdkrkwhr/agent-hub",
+      "path": "src/agent_hub/publication.py",
+      "revision": "cfe0ac6b341f6edebbf25655fc2e7867492740bd",
+      "url": "https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/publication.py",
+      "visibility": "public"
+    },
+    {
+      "id": "hub-web-app",
+      "title": "AGENT HUB web UI",
+      "kind": "code",
+      "repository": "kdkrkwhr/agent-hub",
+      "path": "src/agent_hub/static/app.js",
+      "revision": "cfe0ac6b341f6edebbf25655fc2e7867492740bd",
+      "url": "https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/static/app.js",
       "visibility": "public"
     },
     {
@@ -436,6 +516,16 @@
       "path": "src/connectPanel.js",
       "revision": "e3e118fa7eb3fcfcd1fd8ca1d88d63763ddb67a5",
       "url": "https://github.com/kdkrkwhr/hermes-agent-area/blob/e3e118fa7eb3fcfcd1fd8ca1d88d63763ddb67a5/src/connectPanel.js",
+      "visibility": "public"
+    },
+    {
+      "id": "area-mock",
+      "title": "hermes-agent-area · src/mock.js",
+      "kind": "code",
+      "repository": "kdkrkwhr/hermes-agent-area",
+      "path": "src/mock.js",
+      "revision": "e3e118fa7eb3fcfcd1fd8ca1d88d63763ddb67a5",
+      "url": "https://github.com/kdkrkwhr/hermes-agent-area/blob/e3e118fa7eb3fcfcd1fd8ca1d88d63763ddb67a5/src/mock.js",
       "visibility": "public"
     },
     {
@@ -1341,6 +1431,7 @@
         "notebuddy-ports",
         "notebuddy-web",
         "notebuddy-anna",
+        "notebuddy-anna-plugin",
         "notebuddy-store",
         "notebuddy-evolution"
       ],
@@ -1350,12 +1441,17 @@
       "id": "auction-spot",
       "type": "project",
       "title": "옥션스팟 API",
-      "summary": "동네 기반 실시간 경매 API에서 이미지 업로드가 실제로 저장·제공되는 경로",
+      "summary": "동네 경매의 대기열·입찰·낙찰 흐름과 로컬 이미지 저장 구현",
       "evidence": [
         "auction-readme",
         "auction-upload",
         "auction-storage",
-        "auction-files"
+        "auction-files",
+        "auction-bid",
+        "auction-lifecycle",
+        "auction-cache",
+        "auction-geo",
+        "auction-fcm"
       ],
       "document": "wiki/auction-spot.html"
     },
@@ -1375,7 +1471,8 @@
         "front-pubspec",
         "front-starter",
         "front-constants",
-        "auction-upload"
+        "auction-upload",
+        "auction-bid"
       ],
       "document": "wiki/auction-spot-front.html"
     },
@@ -1392,6 +1489,8 @@
         "agent-hub-adapters",
         "agent-hub-discussion",
         "agent-hub-workspace",
+        "hub-publication",
+        "hub-web-app",
         "agent-hub-pipeline",
         "agent-hub-voting",
         "agent-hub-storage",
@@ -1425,6 +1524,7 @@
         "area-package",
         "area-front",
         "area-connect",
+        "area-mock",
         "area-server",
         "area-test"
       ],
@@ -1786,11 +1886,13 @@
       "id": "r-auction-spot-front-auction-spot",
       "from": "auction-spot-front",
       "to": "auction-spot",
-      "label": "이미지 업로드 요청 경로가 API 컨트롤러와 대응",
+      "label": "입찰 요청·실시간 경매 이벤트와 이미지 업로드가 API 기능에 대응",
       "origin": "curated",
       "evidence": [
+        "front-auction",
+        "front-ws",
         "front-upload",
-        "front-constants",
+        "auction-bid",
         "auction-upload"
       ]
     },
@@ -1804,6 +1906,16 @@
         "agent-hub-engine",
         "agent-hub-adapters",
         "agent-hub-storage"
+      ]
+    },
+    {
+      "id": "r-hermes-agent-area-attendance-pwa",
+      "from": "hermes-agent-area",
+      "to": "attendance-pwa",
+      "label": "desk-brief가 날씨·뉴스 JSON을 선택적으로 읽고 없으면 cron 결과로 대체",
+      "origin": "curated",
+      "evidence": [
+        "area-server"
       ]
     },
     {

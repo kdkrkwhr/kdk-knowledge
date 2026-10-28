@@ -26,12 +26,12 @@
 Zuul 설정은 `/api/**`를 로컬 8101로, `/craw/**`를 8102로 보내고 Eureka 주소를 별도로 설정한다. 이 경로는 설정값으로 확인되지만 서비스 전체를 실제 기동해 동작을 증명하지는 않았다.
 [원본: `spring-eureka-zuul/src/main/resources/application.yml`](https://github.com/kdkrkwhr/msa-architecture/blob/daab901385eda3f6cc0c5c7cafb8506affbac1b1/spring-eureka-zuul/src/main/resources/application.yml)
 
-Flask `app.py`는 시작 시 `py_eureka_client`로 서비스를 등록하고 `/craw/url`, `/craw/get_data`, `/craw/test`를 제공한다. GET 크롤링 대상은 코드의 공개 GitHub 주소로 고정돼 있다. 이는 Flask가 프록시 뒤에서 호출될 수 있게 구성한 예시이며 보안·확장성 검증 결과는 아니다.
+Flask `app.py`는 시작 시 `py_eureka_client`로 서비스를 등록한다. GET `/craw/url`은 코드에 고정된 공개 GitHub 주소를 크롤링하지만, POST `/craw/get_data`는 요청 본문의 URL·태그를 `crawler_parsing`에 넘긴다. 두 경로의 입력 신뢰도가 다르므로 후자를 외부에 열기 전에는 입력 대상과 오류 응답을 정의해야 한다. `/craw/test`는 받은 파라미터를 응답에 돌려주는 예제다. 이는 코드 흐름의 정적 설명이지 보안·확장성 검증 결과는 아니다.
 [원본: `flask-eureka-zuul-service/app.py`](https://github.com/kdkrkwhr/msa-architecture/blob/daab901385eda3f6cc0c5c7cafb8506affbac1b1/flask-eureka-zuul-service/app.py)
 
 ## 판단할 때의 경계
 
-Zuul에는 요청 전 필터가 별도 구현돼 있다. 공개 설정은 localhost 중심이어서 외부 환경의 서비스 발견, 장애 전환, 배포 자동화까지 확인할 수 없다.
+Zuul의 요청 전 필터는 모든 요청의 URI·메서드를 기록하는 예제이며 인증이나 대상 URL 검증을 수행하지 않는다. 공개 설정은 localhost 중심이어서 외부 환경의 서비스 발견, 장애 전환, 배포 자동화까지 확인할 수 없다.
 [원본: `spring-eureka-zuul/src/main/java/com/kdk/filter/PreFilter.java`](https://github.com/kdkrkwhr/msa-architecture/blob/daab901385eda3f6cc0c5c7cafb8506affbac1b1/spring-eureka-zuul/src/main/java/com/kdk/filter/PreFilter.java) [원본: `spring-eureka-zuul/src/main/resources/application.yml`](https://github.com/kdkrkwhr/msa-architecture/blob/daab901385eda3f6cc0c5c7cafb8506affbac1b1/spring-eureka-zuul/src/main/resources/application.yml)
 
 ## 연결해서 읽기
