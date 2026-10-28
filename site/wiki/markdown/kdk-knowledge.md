@@ -23,7 +23,7 @@ README는 `docs/wiki/*.md`를 사람이 읽고 수정하는 원본으로 지정�
 
 ## 검증 경계
 
-`scripts/validate.py`는 등록된 근거 URL의 저장소·커밋·경로 일치, 공개 여부, 문서 링크와 관계 근거를 검사한다. 이 검사는 원본 코드 실행이나 진술의 의미적 진실 전체를 자동 판정하지 않는다. 관계는 편집 데이터이며 Graphify 추출은 아직 수행하지 않았다.
+`scripts/validate.py`는 등록된 근거 URL의 저장소·커밋·경로 일치, 공개 여부, 문서 링크와 관계 근거를 검사한다. 이 검사는 원본 코드 실행이나 진술의 의미적 진실 전체를 자동 판정하지 않는다. 편집 관계 외에 Graphify 추출 관계는 `origin: extracted`와 신뢰도 표시를 붙여 구분해 싣는다.
 [원본: `scripts/validate.py`](https://github.com/kdkrkwhr/kdk-knowledge/blob/300e554c442c86522e121f7b17dd3ba738fcacd4/scripts/validate.py) [원본: `README.md`](https://github.com/kdkrkwhr/kdk-knowledge/blob/300e554c442c86522e121f7b17dd3ba738fcacd4/README.md)
 
 ## 버전 기준

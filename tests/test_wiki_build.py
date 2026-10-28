@@ -22,7 +22,10 @@ class WikiBuildTest(unittest.TestCase):
         self.assertTrue(any(item["url"] == "wiki/notebuddy.html" for item in search))
         graph = json.loads(outputs["knowledge.json"])
         self.assertTrue(any(edge["from"] == "auction-spot" for edge in graph["relations"]))
-        self.assertEqual(graph["analysis"]["status"], "not-run")
+        self.assertEqual(graph["analysis"]["status"], "run")
+        self.assertIn("wiki/topics.html", outputs)
+        self.assertIn("관련 개념", outputs["wiki/hermes-agent-area.html"])
+        self.assertTrue(any(edge["origin"] == "extracted" and edge["score"] for edge in graph["relations"]))
 
     def test_document_navigation_marks_current_page_and_collapses_on_mobile(self):
         page = build(ROOT)["wiki/agent-hub.html"]

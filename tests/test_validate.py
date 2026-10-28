@@ -32,6 +32,13 @@ class KnowledgeValidationTest(unittest.TestCase):
         self.save(data)
         self.assertTrue(any("missing" in error for error in validate(self.root)))
 
+    def test_extracted_relation_needs_confidence_and_score(self):
+        data = self.data()
+        relation = next(item for item in data["relations"] if item["origin"] == "extracted")
+        del relation["score"]
+        self.save(data)
+        self.assertTrue(any("confidence label and score" in error for error in validate(self.root)))
+
     def test_source_must_be_public_and_pinned(self):
         data = self.data()
         source = data["sources"][0]

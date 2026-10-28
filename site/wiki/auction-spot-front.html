@@ -6,12 +6,12 @@
   <meta name="description" content="공개 저장소의 README와 코드를 대조해 작성한 개인 위키 문서">
   <title>옥션스팟 Flutter: 경매 화면에서 API와 실시간 채널까지 · kdk knowledge</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="../style.css?v=reading-4">
+  <link rel="stylesheet" href="../style.css?v=reading-5">
   <script src="../wiki.js?v=2" defer></script>
 </head>
 <body data-search-root="..">
   <a class="skip" href="#article">본문으로 건너뛰기</a>
-  <header class="top"><a class="brand" href="../">kdk <span>/ knowledge</span></a><nav aria-label="사이트 이동"><a href="index.html">위키 문서</a><a href="../architecture/">근거 지도</a></nav></header>
+  <header class="top"><a class="brand" href="../">kdk <span>/ knowledge</span></a><nav aria-label="사이트 이동"><a href="index.html">위키 문서</a><a href="../architecture/">근거 지도</a><a href="topics.html">주제 지도</a></nav></header>
   <div class="wiki-layout">
     <aside class="wiki-sidebar" aria-label="위키 문서"><p class="eyebrow">DOCUMENTS</p><nav class="wiki-desktop-nav" aria-label="문서 목록"><a href="index.html">프로젝트에서 시작하는 위키</a>
 <a href="notebuddy.html">노트버디: 한 친구의 규칙을 여러 화면에서 실행하기</a>
@@ -101,7 +101,7 @@
 <p><code>StorageRepository.uploadItemImage</code>는 파일 바이트를 multipart <code>file</code> 필드에 담아 <code>/storage/upload</code>로 POST하고 응답의 <code>url</code>을 돌려준다. 파일 확장자로 JPEG·PNG·WebP·GIF MIME을 정한다. <code>AppConstants.baseUrl</code>은 로컬 API의 <code>/api/v1</code>이고 Android 에뮬레이터에서는 호스트 주소를 <code>10.0.2.2</code>로 바꾼다. 따라서 클라이언트가 만드는 전체 경로는 <a href="auction-spot.html">옥션스팟 API</a>의 업로드 컨트롤러 경로와 대응한다. <strong>요청·응답 계약의 정적 대응</strong>을 확인한 것이며 두 저장소의 실제 통합 실행을 확인한 것은 아니다. <a href="https://github.com/kdkrkwhr/auction-spot-front/blob/abb91bc2abe406e821c55f362e9f209ea61c2db9/lib/features/storage/data/storage_repository.dart">업로드 호출</a> · <a href="https://github.com/kdkrkwhr/auction-spot-front/blob/abb91bc2abe406e821c55f362e9f209ea61c2db9/lib/core/constants/app_constants.dart">API 주소</a> · <a href="https://github.com/kdkrkwhr/auction-spot-api/blob/7c2d9496a5ae0f1dcd0345196483c2674ecff140/src/main/java/com/auctionspot/infra/storage/LocalUploadController.java">서버 컨트롤러</a></p>
 <h2 id="section-6">확인한 기술과 한계</h2>
 <p>루트 <code>pubspec.yaml</code>에는 Flutter·Riverpod·go_router·Dio·secure storage·geolocator·STOMP·Firebase Messaging 의존성이 선언돼 있다. 선언은 실제 사용 여부를 각각 증명하지 않으므로 위에서 읽은 코드의 Flutter, Riverpod, Dio, STOMP만 구체적 흐름으로 설명했다. <a href="https://github.com/kdkrkwhr/auction-spot-front/blob/abb91bc2abe406e821c55f362e9f209ea61c2db9/pubspec.yaml">루트 의존성</a></p>
-<p>검토 기준은 <code>abb91bc2abe406e821c55f362e9f209ea61c2db9</code>의 위 파일이다. 앱 빌드, 서버 통합, 입찰 실시간 전달, 푸시 수신은 실행하지 않았다. 개인 담당 범위와 기술 선택 이유·성과도 확인하지 못했다. 루트 README와 실제 앱 코드의 정보량 차이를 남겨 향후 문서 갱신 때 확인할 수 있게 한다.</p></article><section class="wiki-evidence"><h2>이 문서의 등록 근거</h2><ul><li><a href="https://github.com/kdkrkwhr/auction-spot-front/blob/abb91bc2abe406e821c55f362e9f209ea61c2db9/README.md">auction-spot-front · README.md · abb91bc</a></li>
+<p>검토 기준은 <code>abb91bc2abe406e821c55f362e9f209ea61c2db9</code>의 위 파일이다. 앱 빌드, 서버 통합, 입찰 실시간 전달, 푸시 수신은 실행하지 않았다. 개인 담당 범위와 기술 선택 이유·성과도 확인하지 못했다. 루트 README와 실제 앱 코드의 정보량 차이를 남겨 향후 문서 갱신 때 확인할 수 있게 한다.</p></article><section class="wiki-related"><h2>관련 개념</h2><p class="muted">Graphify가 이 문서에서 추출한 개념과, 같은 개념이 나오는 다른 문서입니다. 자동 추출 결과이며 위 본문처럼 사람이 대조한 문장은 아닙니다.</p><ul><li><a href="../architecture/?node=concept_readme_vs_implementation_gap">README 설명과 구현의 불일치</a> — 같은 개념: <a href="attendance-pwa.html">출퇴근 체크 PWA: 로컬 기록과 선택적 연동의 경계</a> · <a href="auction-spot.html">옥션스팟 API: 경매·입찰 흐름과 이미지 저장</a> · <a href="hermes-agent-area.html">Hermes Agent Area: 2D 사무실과 로컬 에이전트 상태</a></li><li><a href="../architecture/?node=concept_firebase">Firebase (Messaging/FCM)</a> — 같은 개념: <a href="auction-spot.html">옥션스팟 API: 경매·입찰 흐름과 이미지 저장</a></li><li><a href="../architecture/?node=concept_flutter">Flutter</a> — 같은 개념: <a href="flutter-profile.html">Flutter 프로필 예제</a></li><li><a href="../architecture/?node=concept_stomp">STOMP</a> — 같은 개념: <a href="auction-spot.html">옥션스팟 API: 경매·입찰 흐름과 이미지 저장</a></li><li><a href="../architecture/?node=concept_dio">Dio</a></li><li><a href="../architecture/?node=concept_riverpod">Riverpod</a></li><li><a href="../architecture/?node=concept_go_router">go_router</a></li><li><a href="../architecture/?node=concept_token_refresh_reentrancy">토큰 갱신 재진입 위험</a></li></ul><p>주제 묶음: <a href="topics.html#topic-4">옥션스팟 경매 API·앱</a></p></section><section class="wiki-evidence"><h2>이 문서의 등록 근거</h2><ul><li><a href="https://github.com/kdkrkwhr/auction-spot-front/blob/abb91bc2abe406e821c55f362e9f209ea61c2db9/README.md">auction-spot-front · README.md · abb91bc</a></li>
 <li><a href="https://github.com/kdkrkwhr/auction-spot-front/blob/abb91bc2abe406e821c55f362e9f209ea61c2db9/lib/main.dart">auction-spot-front · lib/main.dart · abb91bc</a></li>
 <li><a href="https://github.com/kdkrkwhr/auction-spot-front/blob/abb91bc2abe406e821c55f362e9f209ea61c2db9/lib/core/router/app_router.dart">auction-spot-front · lib/core/router/app_router.dart · abb91bc</a></li>
 <li><a href="https://github.com/kdkrkwhr/auction-spot-front/blob/abb91bc2abe406e821c55f362e9f209ea61c2db9/lib/core/network/dio_client.dart">auction-spot-front · lib/core/network/dio_client.dart · abb91bc</a></li>
@@ -119,6 +119,6 @@
 <a href="#section-5">이미지 업로드와 백엔드 연결</a>
 <a href="#section-6">확인한 기술과 한계</a></nav></aside>
   </div>
-  <footer>김동기 · 공개 근거 기반 개인 위키 <span>Graphify 분석 미실행</span></footer>
+  <footer>김동기 · 공개 근거 기반 개인 위키 <span>Graphify 추출 관계는 자동 결과로 구분 표시</span></footer>
 </body>
 </html>

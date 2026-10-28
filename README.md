@@ -13,7 +13,7 @@
 
 현재 확인한 공개 저장소 28개 모두 문서를 작성했습니다. 작은 저장소는 단일 파일, 큰 저장소는 대표 구현 파일로 범위를 제한했습니다. 전체 과거 프로젝트·경력 자료의 수집이나 원본 프로젝트의 실행 검증을 마친 상태는 아닙니다. 개인 역할·성과·선택 이유는 별도 근거가 생길 때 보강합니다.
 
-`docs/wiki/*.md`가 해설의 편집 원본입니다. 문서 머리의 메타데이터가 출처·관계를 등록하고, `docs/wiki/sources.json`에 고정 커밋의 공개 URL을 보관합니다. `scripts/build_wiki.py`가 HTML, 원본 Markdown 사본, 본문 검색 색인과 `site/knowledge.json`을 함께 생성합니다. `site/index.html`은 프로젝트 진입 화면이고, `site/architecture/`는 문서에서 파생한 편집 관계를 탐색합니다. **Graphify는 이 저장소에서 설치하거나 실행하지 않았습니다.** 자동 추출 관계는 현재 편집 관계와 혼동하지 않습니다.
+`docs/wiki/*.md`가 해설의 편집 원본입니다. 문서 머리의 메타데이터가 출처·관계를 등록하고, `docs/wiki/sources.json`에 고정 커밋의 공개 URL을 보관합니다. `scripts/build_wiki.py`가 HTML, 원본 Markdown 사본, 본문 검색 색인과 `site/knowledge.json`을 함께 생성합니다. `site/index.html`은 프로젝트 진입 화면이고, `site/architecture/`는 문서에서 파생한 편집 관계를 탐색합니다. Graphify는 `docs/wiki/*.md`만 입력으로 실행하며 결과를 `docs/graph/graph.json`에 커밋합니다(`scripts/sync_graph.py`). 빌드는 이 파일에서 개념 항목·자동 추출 관계·`site/wiki/topics.html`(주제 지도)을 만들고, 편집 관계와 `origin`으로 구분합니다.
 
 ## 추가와 검증
 
@@ -23,4 +23,4 @@
 4. `python3 scripts/build_wiki.py --check`, `python3 scripts/validate.py`, `python3 -m unittest discover -s tests -v`를 실행합니다. 정적 파일은 `python3 -m http.server 8000 -d site`로 미리 볼 수 있습니다.
 5. GitHub Actions가 공개 산출물 `site/`만 검사 후 Pages에 업로드합니다. 실제 공개 여부는 Actions와 URL 응답을 별도로 확인합니다.
 
-외부 LLM 호출, 유료 API, 실시간 챗봇, Graphify 실행은 현재 흐름에 없습니다.
+외부 LLM 호출, 유료 API, 실시간 챗봇은 현재 흐름에 없습니다. Graphify 추출은 작성자 PC에서 Claude Code 세션으로 실행하고 산출물만 커밋합니다.

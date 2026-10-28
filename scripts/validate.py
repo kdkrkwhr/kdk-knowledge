@@ -8,7 +8,7 @@ from pathlib import Path
 
 STATIC_SITE_FILES = {
     "index.html", "style.css", "wiki.js", "knowledge.json", "search-index.json",
-    "architecture/index.html", "architecture/map.js",
+    "architecture/index.html", "architecture/map.js", "wiki/topics.html",
 }
 SHA = re.compile(r"^[0-9a-f]{40}$")
 EMAIL = re.compile(r"\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b", re.I)
@@ -21,7 +21,7 @@ def validate(root: Path) -> list:
     names = {path.stem for path in (site / "wiki/markdown").glob("*.md")}
     allowed = STATIC_SITE_FILES | {f"wiki/{name}.html" for name in names} | {
         f"wiki/markdown/{name}.md" for name in names}
-    actual = {str(path.relative_to(site)) for path in site.rglob("*") if path.is_file()}
+    actual = {path.relative_to(site).as_posix() for path in site.rglob("*") if path.is_file()}
     for name in sorted(actual - allowed):
         errors.append(f"Unexpected public file: {name}")
     for name in sorted(allowed - actual):
@@ -41,9 +41,12 @@ def validate(root: Path) -> list:
         data = json.loads((site / "knowledge.json").read_text(encoding="utf-8"))
     except (OSError, ValueError) as error:
         return errors + [f"Invalid knowledge.json: {error}"]
-    if data.get("analysis", {}).get("status") != "not-run":
-        errors.append("Analysis status must remain not-run until verified extraction is added")
-    if data.get("analysis", {}).get("revision") is not None:
+    analysis = data.get("analysis", {})
+    if analysis.get("status") not in {"not-run", "run"}:
+        errors.append("Analysis status must be not-run or run")
+    if analysis.get("status") == "run" and not SHA.fullmatch(analysis.get("revision") or ""):
+        errors.append("A Graphify run must name the full commit it was built at")
+    if analysis.get("status") == "not-run" and analysis.get("revision") is not None:
         errors.append("No Graphify revision can be claimed before extraction")
     sources = {}
     for source in data.get("sources", []):
@@ -85,8 +88,12 @@ def validate(root: Path) -> list:
         if not rid or rid in relations:
             errors.append(f"Duplicate or missing relation id: {rid}")
         relations.add(rid)
-        if relation.get("origin") != "curated":
-            errors.append(f"Relation {rid} must be marked curated")
+        if relation.get("origin") not in {"curated", "extracted"}:
+            errors.append(f"Relation {rid} must be marked curated or extracted")
+        if relation.get("origin") == "extracted" and (
+                relation.get("confidence") not in {"EXTRACTED", "INFERRED", "AMBIGUOUS"}
+                or not isinstance(relation.get("score"), (int, float))):
+            errors.append(f"Extracted relation {rid} needs a confidence label and score")
         for endpoint in ("from", "to"):
             if relation.get(endpoint) not in entities:
                 errors.append(f"Relation {rid} has missing {endpoint} entity")

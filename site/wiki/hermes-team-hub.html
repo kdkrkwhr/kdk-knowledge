@@ -6,12 +6,12 @@
   <meta name="description" content="공개 저장소의 README와 코드를 대조해 작성한 개인 위키 문서">
   <title>hermes-team-hub: 정적 팀 로그와 로컬 실시간 화면 · kdk knowledge</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="../style.css?v=reading-4">
+  <link rel="stylesheet" href="../style.css?v=reading-5">
   <script src="../wiki.js?v=2" defer></script>
 </head>
 <body data-search-root="..">
   <a class="skip" href="#article">본문으로 건너뛰기</a>
-  <header class="top"><a class="brand" href="../">kdk <span>/ knowledge</span></a><nav aria-label="사이트 이동"><a href="index.html">위키 문서</a><a href="../architecture/">근거 지도</a></nav></header>
+  <header class="top"><a class="brand" href="../">kdk <span>/ knowledge</span></a><nav aria-label="사이트 이동"><a href="index.html">위키 문서</a><a href="../architecture/">근거 지도</a><a href="topics.html">주제 지도</a></nav></header>
   <div class="wiki-layout">
     <aside class="wiki-sidebar" aria-label="위키 문서"><p class="eyebrow">DOCUMENTS</p><nav class="wiki-desktop-nav" aria-label="문서 목록"><a href="index.html">프로젝트에서 시작하는 위키</a>
 <a href="notebuddy.html">노트버디: 한 친구의 규칙을 여러 화면에서 실행하기</a>
@@ -99,7 +99,7 @@
 <p>정적 화면의 칸반 검색·상태 필터는 하나의 전역 상태를 공유한다. 역할별 검색 입력은 따로 저장하지만 탭 전환 후 필터가 섞일 수 있다. 이 판단은 코드의 상태 공유에서 나온 것이며 실제 화면 증상을 실행해 확인한 것은 아니다. <a href="https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/js/app.js">js/app.js 128–185행</a></p>
 <h2 id="section-5">아직 확인하지 않은 연결</h2>
 <p>README는 <a href="hermes-env.html">hermes-env</a>의 SOUL 파일로 소개 카드를 생성하는 연계를 예정이라고 표현한다. 이것은 완료된 자동 동기화의 근거가 아니다. 로컬 서버를 실행해 실제 Hermes·Coral 연결을 확인하지 않았고, 다른 기기 사이의 동기화도 검증하지 않았다. <a href="https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/README.md">연계 상태 원문</a></p>
-<p>기준 커밋은 <code>1406ee05e3ea21a9e0c53aa0856879c976cd3ac5</code>다. 역할·데이터 분리는 코드로 확인했지만, 김동기의 개인 담당 범위와 설계 선택 이유·운영 성과는 확인하지 못했다.</p></article><section class="wiki-evidence"><h2>이 문서의 등록 근거</h2><ul><li><a href="https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/README.md">hermes-team-hub · README.md · 1406ee0</a></li>
+<p>기준 커밋은 <code>1406ee05e3ea21a9e0c53aa0856879c976cd3ac5</code>다. 역할·데이터 분리는 코드로 확인했지만, 김동기의 개인 담당 범위와 설계 선택 이유·운영 성과는 확인하지 못했다.</p></article><section class="wiki-related"><h2>관련 개념</h2><p class="muted">Graphify가 이 문서에서 추출한 개념과, 같은 개념이 나오는 다른 문서입니다. 자동 추출 결과이며 위 본문처럼 사람이 대조한 문장은 아닙니다.</p><ul><li><a href="../architecture/?node=concept_github_pages">GitHub Pages</a> — 같은 개념: <a href="attendance-pwa.html">출퇴근 체크 PWA: 로컬 기록과 선택적 연동의 경계</a> · <a href="hermes-agent-area.html">Hermes Agent Area: 2D 사무실과 로컬 에이전트 상태</a> · <a href="kdkrkwhr.github.com.html">개인 기술 블로그 저장소</a> · <a href="resume.html">공개 이력서 페이지의 구현</a></li><li><a href="../architecture/?node=concept_coral">Coral</a></li><li><a href="../architecture/?node=hermes_team_hub_get_state_change_risk">GET 경로 상태 변경·Origin 무검사 위험</a></li><li><a href="../architecture/?node=hermes_team_hub_cli_allowlist">Hermes 명령 허용 목록</a></li><li><a href="../architecture/?node=hermes_team_hub_hubstore">HubStore (js/store.js)</a></li><li><a href="../architecture/?node=concept_jsonl">JSONL</a></li><li><a href="../architecture/?node=concept_threadinghttpserver">ThreadingHTTPServer (Python 표준 라이브러리)</a></li><li><a href="../architecture/?node=hermes_team_hub_local_app">local/app.py 로컬 HTTP 서버</a></li><li><a href="../architecture/?node=hermes_team_hub_team_hub_cli">local/team_hub.py CLI (log·view·timeline·report·reset)</a></li><li><a href="../architecture/?node=hermes_team_hub_jsonl_model">team_hub/model.py JSONL 모델 (append_activity·load_activities)</a></li><li><a href="../architecture/?node=hermes_team_hub_static_demo_vs_local_runtime">정적 데모(Pages)와 로컬 실행형(local/app.py)의 데이터 경계</a></li><li><a href="../architecture/?node=hermes_team_hub_shared_filter_state">칸반 검색·상태 필터의 전역 상태 공유</a></li></ul><p>주제 묶음: <a href="topics.html#topic-2">Hermes 환경과 fork 경계</a></p></section><section class="wiki-evidence"><h2>이 문서의 등록 근거</h2><ul><li><a href="https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/README.md">hermes-team-hub · README.md · 1406ee0</a></li>
 <li><a href="https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/js/app.js">hermes-team-hub · js/app.js · 1406ee0</a></li>
 <li><a href="https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/js/store.js">hermes-team-hub · js/store.js · 1406ee0</a></li>
 <li><a href="https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/local/app.py">hermes-team-hub · local/app.py · 1406ee0</a></li>
@@ -110,6 +110,6 @@
 <a href="#section-4">로컬 실행형의 데이터 흐름</a>
 <a href="#section-5">아직 확인하지 않은 연결</a></nav></aside>
   </div>
-  <footer>김동기 · 공개 근거 기반 개인 위키 <span>Graphify 분석 미실행</span></footer>
+  <footer>김동기 · 공개 근거 기반 개인 위키 <span>Graphify 추출 관계는 자동 결과로 구분 표시</span></footer>
 </body>
 </html>

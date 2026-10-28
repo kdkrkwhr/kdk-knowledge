@@ -1,7 +1,8 @@
 const $ = selector => document.querySelector(selector);
 let knowledge;
 let selected = null;
-const typeNames = {project: '프로젝트', resource: '공개 자료', reference: 'Fork / 참조', criteria: '참고 기준', technology: '기술', implementation: '구현'};
+const typeNames = {project: '프로젝트', resource: '공개 자료', reference: 'Fork / 참조', criteria: '참고 기준', technology: '기술', implementation: '구현', concept: '개념 (자동 추출)', design: '설계 개념 (자동 추출)'};
+const originLabel = relation => relation.origin === 'extracted' ? `자동 추출 · ${relation.confidence} ${relation.score}` : '편집 관계';
 
 function sourceLinks(ids) {
   const list = document.createElement('ul');
@@ -33,6 +34,18 @@ function showDetail(id) {
   const summary = document.createElement('p');
   summary.textContent = entity.summary;
   panel.append(kind, title, summary);
+  if (entity.community) {
+    const topic = document.createElement('p');
+    topic.className = 'muted';
+    topic.textContent = `주제 묶음: ${entity.community}`;
+    panel.append(topic);
+  }
+  for (const href of entity.documents || []) {
+    const link = document.createElement('a');
+    link.href = `../${href}`;
+    link.textContent = `문서 읽기: ${href.replace('wiki/', '').replace('.html', '')} →`;
+    panel.append(link, document.createElement('br'));
+  }
   if (entity.document) {
     const documentLink = document.createElement('a');
     documentLink.href = `../${entity.document}`;
@@ -44,7 +57,7 @@ function showDetail(id) {
     const other = knowledge.entities.find(item => item.id === (relation.from === id ? relation.to : relation.from));
     const label = document.createElement('p');
     label.className = 'relation-label';
-    label.textContent = `${relation.label} · ${other.title} (편집 관계)`;
+    label.textContent = `${relation.label} · ${other.title} (${originLabel(relation)})`;
     panel.append(label, sourceLinks(relation.evidence));
   }
   if (!related.length && entity.evidence.length) panel.append(sourceLinks(entity.evidence));
@@ -118,6 +131,9 @@ async function start() {
     const response = await fetch('../knowledge.json', {cache: 'no-store'});
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     knowledge = await response.json();
+    const analysis = knowledge.analysis || {};
+    $('#analysis-revision').textContent = analysis.revision ? analysis.revision.slice(0, 7) : '없음';
+    if (analysis.status === 'run') $('#analysis-status').textContent = 'Graphify 분석 실행';
     $('#map-search').addEventListener('input', render);
     $('#type-filter').addEventListener('change', render);
     $('#map-reset').addEventListener('click', () => {
@@ -127,6 +143,8 @@ async function start() {
       $('#map-search').focus();
     });
     render();
+    const wanted = new URLSearchParams(location.search).get('node');
+    if (wanted && knowledge.entities.some(item => item.id === wanted)) showDetail(wanted);
   } catch {
     $('#map-status').textContent = '관계 자료를 불러오지 못했습니다. 관계 JSON을 직접 확인해 주세요.';
   }

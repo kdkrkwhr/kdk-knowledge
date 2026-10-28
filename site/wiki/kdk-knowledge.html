@@ -6,12 +6,12 @@
   <meta name="description" content="공개 저장소의 README와 코드를 대조해 작성한 개인 위키 문서">
   <title>중앙 지식 허브 구현 · kdk knowledge</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="../style.css?v=reading-4">
+  <link rel="stylesheet" href="../style.css?v=reading-5">
   <script src="../wiki.js?v=2" defer></script>
 </head>
 <body data-search-root="..">
   <a class="skip" href="#article">본문으로 건너뛰기</a>
-  <header class="top"><a class="brand" href="../">kdk <span>/ knowledge</span></a><nav aria-label="사이트 이동"><a href="index.html">위키 문서</a><a href="../architecture/">근거 지도</a></nav></header>
+  <header class="top"><a class="brand" href="../">kdk <span>/ knowledge</span></a><nav aria-label="사이트 이동"><a href="index.html">위키 문서</a><a href="../architecture/">근거 지도</a><a href="topics.html">주제 지도</a></nav></header>
   <div class="wiki-layout">
     <aside class="wiki-sidebar" aria-label="위키 문서"><p class="eyebrow">DOCUMENTS</p><nav class="wiki-desktop-nav" aria-label="문서 목록"><a href="index.html">프로젝트에서 시작하는 위키</a>
 <a href="notebuddy.html">노트버디: 한 친구의 규칙을 여러 화면에서 실행하기</a>
@@ -94,13 +94,13 @@
 <h2 id="section-3">편집 원본과 생성물</h2>
 <p>README는 <code>docs/wiki/*.md</code>를 사람이 읽고 수정하는 원본으로 지정한다. <code>scripts/build_wiki.py</code>가 front matter와 본문을 읽어 정적 HTML·Markdown 원본 복사·검색 인덱스·관계 JSON을 생성한다. 현재 문서와 지도는 원본 저장소의 동작에 대한 사람이 쓴 설명이며 원본 저장소를 자동 변경하지 않는다. <a href="https://github.com/kdkrkwhr/kdk-knowledge/blob/300e554c442c86522e121f7b17dd3ba738fcacd4/README.md">원본: `README.md`</a> <a href="https://github.com/kdkrkwhr/kdk-knowledge/blob/300e554c442c86522e121f7b17dd3ba738fcacd4/scripts/build_wiki.py">원본: `scripts/build_wiki.py`</a></p>
 <h2 id="section-4">검증 경계</h2>
-<p><code>scripts/validate.py</code>는 등록된 근거 URL의 저장소·커밋·경로 일치, 공개 여부, 문서 링크와 관계 근거를 검사한다. 이 검사는 원본 코드 실행이나 진술의 의미적 진실 전체를 자동 판정하지 않는다. 관계는 편집 데이터이며 Graphify 추출은 아직 수행하지 않았다. <a href="https://github.com/kdkrkwhr/kdk-knowledge/blob/300e554c442c86522e121f7b17dd3ba738fcacd4/scripts/validate.py">원본: `scripts/validate.py`</a> <a href="https://github.com/kdkrkwhr/kdk-knowledge/blob/300e554c442c86522e121f7b17dd3ba738fcacd4/README.md">원본: `README.md`</a></p>
+<p><code>scripts/validate.py</code>는 등록된 근거 URL의 저장소·커밋·경로 일치, 공개 여부, 문서 링크와 관계 근거를 검사한다. 이 검사는 원본 코드 실행이나 진술의 의미적 진실 전체를 자동 판정하지 않는다. 편집 관계 외에 Graphify 추출 관계는 <code>origin: extracted</code>와 신뢰도 표시를 붙여 구분해 싣는다. <a href="https://github.com/kdkrkwhr/kdk-knowledge/blob/300e554c442c86522e121f7b17dd3ba738fcacd4/scripts/validate.py">원본: `scripts/validate.py`</a> <a href="https://github.com/kdkrkwhr/kdk-knowledge/blob/300e554c442c86522e121f7b17dd3ba738fcacd4/README.md">원본: `README.md`</a></p>
 <h2 id="section-5">버전 기준</h2>
 <p>이 문서는 평가 작성 직전 공개된 고정 커밋을 근거로 한다. 이후 문서가 늘어나더라도 이 커밋의 구현 설명과 현재 사이트 산출물은 별도 시점일 수 있다. <a href="https://github.com/kdkrkwhr/kdk-knowledge/blob/300e554c442c86522e121f7b17dd3ba738fcacd4/README.md">원본: `README.md`</a> <a href="https://github.com/kdkrkwhr/kdk-knowledge/blob/300e554c442c86522e121f7b17dd3ba738fcacd4/scripts/build_wiki.py">원본: `scripts/build_wiki.py`</a></p>
 <h2 id="section-6">연결해서 읽기</h2>
 <p><a href="maintenance.html">문서 갱신 절차</a>가 새로운 근거를 등록하는 방법을, <a href="repositories.html">공개 저장소 목록</a>이 범위를 설명한다.</p>
 <h2 id="section-7">확인 범위와 미확인 사항</h2>
-<p>위 구현 설명은 표시한 커밋의 파일에서 확인한 사실과 정적 해석이다. 현재 배포·운영 상태, 실행 성공, 실제 사용량, 개인 선택 이유와 기여 범위는 확인하지 않았다.</p></article><section class="wiki-evidence"><h2>이 문서의 등록 근거</h2><ul><li><a href="https://github.com/kdkrkwhr/kdk-knowledge/blob/300e554c442c86522e121f7b17dd3ba738fcacd4/README.md">kdk-knowledge: README.md · 300e554</a></li>
+<p>위 구현 설명은 표시한 커밋의 파일에서 확인한 사실과 정적 해석이다. 현재 배포·운영 상태, 실행 성공, 실제 사용량, 개인 선택 이유와 기여 범위는 확인하지 않았다.</p></article><section class="wiki-related"><h2>관련 개념</h2><p class="muted">Graphify가 이 문서에서 추출한 개념과, 같은 개념이 나오는 다른 문서입니다. 자동 추출 결과이며 위 본문처럼 사람이 대조한 문장은 아닙니다.</p><ul><li><a href="../architecture/?node=concept_graphify">Graphify</a> — 같은 개념: <a href="index.html">프로젝트에서 시작하는 위키</a> · <a href="maintenance.html">문서 작성과 갱신</a> · <a href="standards.html">Engineering Standards: 선택형 개발 기준과 그 적용 경계</a></li><li><a href="../architecture/?node=concept_markdown">Markdown</a> — 같은 개념: <a href="kdkrkwhr.github.com.html">개인 기술 블로그 저장소</a> · <a href="maintenance.html">문서 작성과 갱신</a></li><li><a href="../architecture/?node=kdk_knowledge_build_wiki">scripts/build_wiki.py (kdk-knowledge)</a></li><li><a href="../architecture/?node=kdk_knowledge_validate">scripts/validate.py</a></li><li><a href="../architecture/?node=kdk_knowledge_source_pinning_vs_commentary">출처 고정과 사람의 해설 분리</a></li></ul><p>주제 묶음: <a href="topics.html#topic-7">지식 허브와 문서 기준</a></p></section><section class="wiki-evidence"><h2>이 문서의 등록 근거</h2><ul><li><a href="https://github.com/kdkrkwhr/kdk-knowledge/blob/300e554c442c86522e121f7b17dd3ba738fcacd4/README.md">kdk-knowledge: README.md · 300e554</a></li>
 <li><a href="https://github.com/kdkrkwhr/kdk-knowledge/blob/300e554c442c86522e121f7b17dd3ba738fcacd4/scripts/build_wiki.py">kdk-knowledge: scripts/build_wiki.py · 300e554</a></li>
 <li><a href="https://github.com/kdkrkwhr/kdk-knowledge/blob/300e554c442c86522e121f7b17dd3ba738fcacd4/scripts/validate.py">kdk-knowledge: scripts/validate.py · 300e554</a></li></ul><p><a href="markdown/kdk-knowledge.md">Markdown 원문 보기</a> · 문장과 원본 파일을 사람이 대조했습니다.</p></section></main>
     <aside class="wiki-outline" aria-label="본문 목차"><p class="eyebrow">ON THIS PAGE</p><nav><a href="#section-2">냉정한 기술 평가</a>
@@ -110,6 +110,6 @@
 <a href="#section-6">연결해서 읽기</a>
 <a href="#section-7">확인 범위와 미확인 사항</a></nav></aside>
   </div>
-  <footer>김동기 · 공개 근거 기반 개인 위키 <span>Graphify 분석 미실행</span></footer>
+  <footer>김동기 · 공개 근거 기반 개인 위키 <span>Graphify 추출 관계는 자동 결과로 구분 표시</span></footer>
 </body>
 </html>

@@ -29,12 +29,17 @@ class SiteTest(unittest.TestCase):
                 parser.feed(path.read_text(encoding="utf-8"))
                 self.assertEqual(set(parser.fragments) - parser.ids, set())
 
-    def test_extraction_is_not_claimed(self):
+    def test_extraction_is_labelled_separately_from_curated_relations(self):
         wiki = (SITE / "index.html").read_text(encoding="utf-8")
         map_page = (SITE / "architecture/index.html").read_text(encoding="utf-8")
         self.assertIn("LLM이 공개 소스를 읽고 대조해 작성", wiki)
-        self.assertIn("Graphify 분석 미실행", map_page)
+        self.assertIn("Graphify 분석 실행", map_page)
         self.assertIn("편집 관계", map_page)
+        self.assertIn("자동 추출", map_page)
+        data = json.loads((SITE / "knowledge.json").read_text(encoding="utf-8"))
+        self.assertEqual(data["analysis"]["status"], "run")
+        self.assertTrue(any(relation["origin"] == "extracted" for relation in data["relations"]))
+        self.assertTrue(any(relation["origin"] == "curated" for relation in data["relations"]))
 
     def test_project_stories_are_the_primary_navigation(self):
         page = (SITE / "index.html").read_text(encoding="utf-8")

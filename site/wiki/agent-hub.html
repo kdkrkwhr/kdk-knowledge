@@ -6,12 +6,12 @@
   <meta name="description" content="공개 저장소의 README와 코드를 대조해 작성한 개인 위키 문서">
   <title>AGENT HUB: 로컬 CLI 작업을 연결하는 협업 허브 · kdk knowledge</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="../style.css?v=reading-4">
+  <link rel="stylesheet" href="../style.css?v=reading-5">
   <script src="../wiki.js?v=2" defer></script>
 </head>
 <body data-search-root="..">
   <a class="skip" href="#article">본문으로 건너뛰기</a>
-  <header class="top"><a class="brand" href="../">kdk <span>/ knowledge</span></a><nav aria-label="사이트 이동"><a href="index.html">위키 문서</a><a href="../architecture/">근거 지도</a></nav></header>
+  <header class="top"><a class="brand" href="../">kdk <span>/ knowledge</span></a><nav aria-label="사이트 이동"><a href="index.html">위키 문서</a><a href="../architecture/">근거 지도</a><a href="topics.html">주제 지도</a></nav></header>
   <div class="wiki-layout">
     <aside class="wiki-sidebar" aria-label="위키 문서"><p class="eyebrow">DOCUMENTS</p><nav class="wiki-desktop-nav" aria-label="문서 목록"><a href="index.html">프로젝트에서 시작하는 위키</a>
 <a href="notebuddy.html">노트버디: 한 친구의 규칙을 여러 화면에서 실행하기</a>
@@ -111,7 +111,7 @@
 <h2 id="section-7">기술 경계와 확인하지 못한 것</h2>
 <p><code>storage.py</code>는 설정·DB·로그·작업 사본·산출물 경로를 나누고 이전 저장 구조를 읽는 경로를 유지한다. CLI 인증을 이용하는 구현이므로 모델 서비스로 프롬프트와 작업 내용이 전송될 수 있다. <code>local-first</code>를 완전 오프라인이라는 뜻으로 읽으면 안 된다. 보안 문서는 요청 출처·CSRF 보호가 있지만 원격 사용자 인증이 없으므로 공개 프록시 노출을 피하도록 설명한다. 읽기 전용 CLI 설정도 OS 샌드박스와 같지 않다. <a href="https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/storage.py">저장 경로</a> · <a href="https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/SECURITY.md">보안 설명</a> · <a href="https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/adapters.py">CLI 어댑터</a></p>
 <p>웹 화면은 <code>/api/state</code>를 약 3초 간격으로 다시 읽는다. 상태 배지는 허브가 기록한 실행 상황을 보여 줄 뿐, 외부 CLI의 로그인·실행 가능성을 증명하지 않는다고 코드가 명시한다. 모델 응답의 Markdown은 HTML을 허용하지 않고 이미지가 자동으로 원격 요청을 보내지 않도록 텍스트로 바꾼다. 이는 웹 출력 경계의 정적 확인이며 실제 브라우저 운영 상태를 검증한 결과는 아니다. <a href="https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/static/app.js">static/app.js 7–17·193·242–243행</a></p>
-<p>저장소의 Actions 파일에는 세 운영체제와 Python 3.11·3.13의 단위 테스트 및 JavaScript 문법 검사 단계가 정의돼 있다. <strong>설정 존재만 확인했고 CI 성공이나 실제 CLI 통합을 검증하지 않았다.</strong> 선택의 개인적 이유, 사용자 규모, 운영 성과, 단독 기여도 공개 파일만으로 알 수 없다. <a href="https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/.github/workflows/tests.yml">테스트 워크플로</a></p></article><section class="wiki-evidence"><h2>이 문서의 등록 근거</h2><ul><li><a href="https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/README.md">AGENT HUB README · cfe0ac6</a></li>
+<p>저장소의 Actions 파일에는 세 운영체제와 Python 3.11·3.13의 단위 테스트 및 JavaScript 문법 검사 단계가 정의돼 있다. <strong>설정 존재만 확인했고 CI 성공이나 실제 CLI 통합을 검증하지 않았다.</strong> 선택의 개인적 이유, 사용자 규모, 운영 성과, 단독 기여도 공개 파일만으로 알 수 없다. <a href="https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/.github/workflows/tests.yml">테스트 워크플로</a></p></article><section class="wiki-related"><h2>관련 개념</h2><p class="muted">Graphify가 이 문서에서 추출한 개념과, 같은 개념이 나오는 다른 문서입니다. 자동 추출 결과이며 위 본문처럼 사람이 대조한 문장은 아닙니다.</p><ul><li><a href="../architecture/?node=concept_python">Python</a> — 같은 개념: <a href="AgentRadio.html">AgentRadio fork 참조</a> · <a href="dl-data-training.html">차량 이미지 분류 학습 스크립트</a> · <a href="dl-object-detecting.html">YOLO v3 객체 검출 예제</a> · <a href="dl-object-tracking.html">객체 추적·차량 데이터 실험</a></li><li><a href="../architecture/?node=concept_coral_protocol">Coral Protocol</a> — 같은 개념: <a href="AgentRadio.html">AgentRadio fork 참조</a> · <a href="hermes-env.html">hermes-env: 작업 환경을 다시 구성하는 부트스트랩</a></li><li><a href="../architecture/?node=concept_github_actions">GitHub Actions</a> — 같은 개념: <a href="attendance-pwa.html">출퇴근 체크 PWA: 로컬 기록과 선택적 연동의 경계</a> · <a href="hermes-agent.html">Hermes Agent fork 변경 범위</a></li><li><a href="../architecture/?node=concept_sqlite">SQLite</a> — 같은 개념: <a href="hermes-agent-area.html">Hermes Agent Area: 2D 사무실과 로컬 에이전트 상태</a></li><li><a href="../architecture/?node=concept_claude_code">Claude Code</a></li><li><a href="../architecture/?node=concept_codex_cli">Codex CLI</a></li><li><a href="../architecture/?node=concept_cursor_agent">Cursor Agent</a></li><li><a href="../architecture/?node=concept_local_first_not_offline">local-first는 완전 오프라인이 아님</a></li><li><a href="../architecture/?node=concept_loopback_csrf_boundary">루프백 바인딩·CSRF 요청 경계</a></li><li><a href="../architecture/?node=concept_workspace_copy_export_boundary">작업 사본 export와 원본 반영의 분리</a></li></ul><p>주제 묶음: <a href="topics.html#topic-5">로컬 에이전트 작업 허브</a></p></section><section class="wiki-evidence"><h2>이 문서의 등록 근거</h2><ul><li><a href="https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/README.md">AGENT HUB README · cfe0ac6</a></li>
 <li><a href="https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/__main__.py">AGENT HUB entry point · cfe0ac6</a></li>
 <li><a href="https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/server.py">AGENT HUB HTTP server · cfe0ac6</a></li>
 <li><a href="https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/engine.py">AGENT HUB job engine · cfe0ac6</a></li>
@@ -133,6 +133,6 @@
 <a href="#section-6">역할, 투표와 실행 증거</a>
 <a href="#section-7">기술 경계와 확인하지 못한 것</a></nav></aside>
   </div>
-  <footer>김동기 · 공개 근거 기반 개인 위키 <span>Graphify 분석 미실행</span></footer>
+  <footer>김동기 · 공개 근거 기반 개인 위키 <span>Graphify 추출 관계는 자동 결과로 구분 표시</span></footer>
 </body>
 </html>

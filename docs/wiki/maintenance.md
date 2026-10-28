@@ -13,4 +13,4 @@
 4. 문서 머리의 `sources`와 `relations`에 근거 ID를 연결하고 내부 문서 링크를 건다. 관계는 사람이 읽고 등록한 것으로 표시한다.
 5. `python3 scripts/build_wiki.py`로 산출물을 갱신하고 `python3 scripts/build_wiki.py --check`, `python3 scripts/validate.py`, `python3 -m unittest discover -s tests -v`를 실행한다. HTML을 PC·모바일에서 읽고 원본 링크와 검색을 확인한다.
 
-빌드가 지원하는 Markdown은 제목, 문단, 순서 있는/없는 목록, 링크, 굵게, 인라인 코드와 코드 블록이다. HTML 원문은 허용하지 않는다. 자동 추출을 하지 않은 지금 관계는 편집 관계이며 Graphify 상태는 `not-run`이다. 공개 원본 변경은 자동으로 해설을 수정하지 않으므로 새 커밋과 설명을 다시 대조한다.
+빌드가 지원하는 Markdown은 제목, 문단, 순서 있는/없는 목록, 링크, 굵게, 인라인 코드와 코드 블록이다. HTML 원문은 허용하지 않는다. 관계는 두 층이다. 문서 머리에 등록한 편집 관계와, `docs/graph/graph.json`에 둔 Graphify 추출 관계(위키 Markdown만 입력, 실행 커밋 고정)다. 문서를 고친 뒤에는 `/graphify docs/wiki --update`로 다시 추출하고 `python3 scripts/sync_graph.py`로 복사한 다음 빌드한다. 주제 묶음 이름은 커뮤니티마다 사람이 붙인다. 공개 원본 변경은 자동으로 해설을 수정하지 않으므로 새 커밋과 설명을 다시 대조한다.

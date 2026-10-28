@@ -6,12 +6,12 @@
   <meta name="description" content="공개 저장소의 README와 코드를 대조해 작성한 개인 위키 문서">
   <title>옥션스팟 API: 경매·입찰 흐름과 이미지 저장 · kdk knowledge</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="../style.css?v=reading-4">
+  <link rel="stylesheet" href="../style.css?v=reading-5">
   <script src="../wiki.js?v=2" defer></script>
 </head>
 <body data-search-root="..">
   <a class="skip" href="#article">본문으로 건너뛰기</a>
-  <header class="top"><a class="brand" href="../">kdk <span>/ knowledge</span></a><nav aria-label="사이트 이동"><a href="index.html">위키 문서</a><a href="../architecture/">근거 지도</a></nav></header>
+  <header class="top"><a class="brand" href="../">kdk <span>/ knowledge</span></a><nav aria-label="사이트 이동"><a href="index.html">위키 문서</a><a href="../architecture/">근거 지도</a><a href="topics.html">주제 지도</a></nav></header>
   <div class="wiki-layout">
     <aside class="wiki-sidebar" aria-label="위키 문서"><p class="eyebrow">DOCUMENTS</p><nav class="wiki-desktop-nav" aria-label="문서 목록"><a href="index.html">프로젝트에서 시작하는 위키</a>
 <a href="notebuddy.html">노트버디: 한 친구의 규칙을 여러 화면에서 실행하기</a>
@@ -114,7 +114,7 @@
 <p>입찰 경로에서는 Java·Spring의 트랜잭션과 영속 경매 엔터티, 선택적 Redis 캐시·WebSocket 발행을 확인했다. 이미지 경로는 Spring MVC 컨트롤러·저장 서비스·정적 매핑이다. README의 전체 기술 목록과 각 흐름의 직접 의존성을 구분한다. <a href="https://github.com/kdkrkwhr/auction-spot-api/blob/7c2d9496a5ae0f1dcd0345196483c2674ecff140/src/main/java/com/auctionspot/domain/auction/service/BidCommandService.java">입찰 서비스 39–117행</a> · <a href="https://github.com/kdkrkwhr/auction-spot-api/blob/7c2d9496a5ae0f1dcd0345196483c2674ecff140/src/main/java/com/auctionspot/infra/storage/LocalImageStorageService.java">이미지 저장 서비스</a></p>
 <p><a href="image-storage.html">로컬 이미지 저장</a>은 저장 방식과 코드 근거를 기술 항목으로 모은 문서다. <a href="notebuddy.html">노트버디</a>는 다른 언어·실행 환경에서 하나의 상태 전이 경계를 따라가는 사례다. 두 프로젝트가 같은 개발 기준을 적용했다는 주장은 하지 않는다.</p>
 <h2 id="section-8">확인 범위와 남은 질문</h2>
-<p>검토 기준은 <code>7c2d9496a5ae0f1dcd0345196483c2674ecff140</code> 커밋의 README와 위에서 연결한 경매·지역·알림·저장 Java 파일이다. 개인 담당 범위, 저장 방식 선택 이유, 실제 배포 구조, 처리량·성과는 확인하지 못했다. 이를 채우려면 공개 가능한 결정 문서나 회고가 별도로 필요하다.</p></article><section class="wiki-evidence"><h2>이 문서의 등록 근거</h2><ul><li><a href="https://github.com/kdkrkwhr/auction-spot-api/blob/7c2d9496a5ae0f1dcd0345196483c2674ecff140/README.md">Auction Spot API README · 7c2d949</a></li>
+<p>검토 기준은 <code>7c2d9496a5ae0f1dcd0345196483c2674ecff140</code> 커밋의 README와 위에서 연결한 경매·지역·알림·저장 Java 파일이다. 개인 담당 범위, 저장 방식 선택 이유, 실제 배포 구조, 처리량·성과는 확인하지 못했다. 이를 채우려면 공개 가능한 결정 문서나 회고가 별도로 필요하다.</p></article><section class="wiki-related"><h2>관련 개념</h2><p class="muted">Graphify가 이 문서에서 추출한 개념과, 같은 개념이 나오는 다른 문서입니다. 자동 추출 결과이며 위 본문처럼 사람이 대조한 문장은 아닙니다.</p><ul><li><a href="../architecture/?node=concept_java">Java</a> — 같은 개념: <a href="airport-parking.html">공항 주차 정보 실험</a> · <a href="algorithms.html">Java 알고리즘 풀이 기록</a> · <a href="image-storage.html">로컬 이미지 저장: 요청에서 파일 URL까지</a> · <a href="msa-architecture.html">MSA Architecture 실험</a></li><li><a href="../architecture/?node=concept_spring_boot">Spring Boot</a> — 같은 개념: <a href="airport-parking.html">공항 주차 정보 실험</a> · <a href="msa-architecture.html">MSA Architecture 실험</a> · <a href="spring-boot.html">Spring Boot 기술 예제 모음</a> · <a href="spring-react-template.html">Spring·React 프로젝트 템플릿</a></li><li><a href="../architecture/?node=concept_readme_vs_implementation_gap">README 설명과 구현의 불일치</a> — 같은 개념: <a href="attendance-pwa.html">출퇴근 체크 PWA: 로컬 기록과 선택적 연동의 경계</a> · <a href="auction-spot-front.html">옥션스팟 Flutter: 경매 화면에서 API와 실시간 채널까지</a> · <a href="hermes-agent-area.html">Hermes Agent Area: 2D 사무실과 로컬 에이전트 상태</a></li><li><a href="../architecture/?node=concept_redis">Redis</a> — 같은 개념: <a href="airport-parking.html">공항 주차 정보 실험</a> · <a href="spring-boot.html">Spring Boot 기술 예제 모음</a> · <a href="spring-react-template.html">Spring·React 프로젝트 템플릿</a></li><li><a href="../architecture/?node=concept_local_disk_image_storage">API 서버 로컬 디스크 이미지 저장</a> — 같은 개념: <a href="image-storage.html">로컬 이미지 저장: 요청에서 파일 URL까지</a></li><li><a href="../architecture/?node=concept_firebase">Firebase (Messaging/FCM)</a> — 같은 개념: <a href="auction-spot-front.html">옥션스팟 Flutter: 경매 화면에서 API와 실시간 채널까지</a></li><li><a href="../architecture/?node=concept_jwt">JWT</a> — 같은 개념: <a href="spring-boot.html">Spring Boot 기술 예제 모음</a></li><li><a href="../architecture/?node=concept_kakao_api">Kakao API</a> — 같은 개념: <a href="airport-parking.html">공항 주차 정보 실험</a></li><li><a href="../architecture/?node=concept_stomp">STOMP</a> — 같은 개념: <a href="auction-spot-front.html">옥션스팟 Flutter: 경매 화면에서 API와 실시간 채널까지</a></li><li><a href="../architecture/?node=concept_websocket">WebSocket</a> — 같은 개념: <a href="hermes-agent-area.html">Hermes Agent Area: 2D 사무실과 로컬 에이전트 상태</a></li><li><a href="../architecture/?node=concept_mysql">MySQL</a></li><li><a href="../architecture/?node=concept_geo_fallback_fixed_region_risk">위치 조회 실패를 고정 지역으로 대체하는 위험</a></li></ul><p>주제 묶음: <a href="topics.html#topic-4">옥션스팟 경매 API·앱</a></p></section><section class="wiki-evidence"><h2>이 문서의 등록 근거</h2><ul><li><a href="https://github.com/kdkrkwhr/auction-spot-api/blob/7c2d9496a5ae0f1dcd0345196483c2674ecff140/README.md">Auction Spot API README · 7c2d949</a></li>
 <li><a href="https://github.com/kdkrkwhr/auction-spot-api/blob/7c2d9496a5ae0f1dcd0345196483c2674ecff140/src/main/java/com/auctionspot/infra/storage/LocalUploadController.java">Auction Spot upload controller · 7c2d949</a></li>
 <li><a href="https://github.com/kdkrkwhr/auction-spot-api/blob/7c2d9496a5ae0f1dcd0345196483c2674ecff140/src/main/java/com/auctionspot/infra/storage/LocalImageStorageService.java">Auction Spot local image storage · 7c2d949</a></li>
 <li><a href="https://github.com/kdkrkwhr/auction-spot-api/blob/7c2d9496a5ae0f1dcd0345196483c2674ecff140/src/main/java/com/auctionspot/infra/storage/LocalFileWebConfig.java">Auction Spot file serving config · 7c2d949</a></li>
@@ -131,6 +131,6 @@
 <a href="#section-7">기술과 다른 사례의 연결</a>
 <a href="#section-8">확인 범위와 남은 질문</a></nav></aside>
   </div>
-  <footer>김동기 · 공개 근거 기반 개인 위키 <span>Graphify 분석 미실행</span></footer>
+  <footer>김동기 · 공개 근거 기반 개인 위키 <span>Graphify 추출 관계는 자동 결과로 구분 표시</span></footer>
 </body>
 </html>

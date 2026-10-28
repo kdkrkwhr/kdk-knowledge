@@ -131,6 +131,7 @@
 .wiki-article pre{overflow:auto;padding:17px;background:#14242e;border:1px solid var(--line);border-radius:5px}
 .wiki-article pre code{background:transparent;padding:0;line-height:1.6}
 .wiki-evidence{border-top:1px solid var(--line);margin-top:36px;padding-top:18px;font-size:13px;color:var(--muted)}
+.wiki-related{border-top:1px solid var(--line);margin-top:36px;padding-top:18px}.wiki-related h2{font-size:17px;margin:0 0 6px}.wiki-related ul{padding-left:20px;margin:10px 0}.wiki-related li{font-size:14px;line-height:1.7;margin:5px 0;color:#cfdad8}
 .wiki-evidence h2{font-size:17px;color:var(--ink)}
 .wiki-evidence ul{padding-left:20px;overflow-wrap:anywhere}
 .wiki-evidence li{margin:6px 0}
