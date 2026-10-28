@@ -5,6 +5,17 @@
 
 공개 README는 Hermes 에이전트들을 픽셀아트 사무실에서 보여 주는 데모와 로컬 실시간 연결을 구분한다. 기술 목록은 Phaser 3·Vite 프런트엔드와 Python FastAPI·WebSocket 백엔드다. 이 문서는 정적 데모와 로컬 서버가 어디에서 갈라지는지 코드로 추적했다. 별도의 설치·실행은 하지 않았다. [프로젝트 README](https://github.com/kdkrkwhr/hermes-agent-area/blob/e3e118fa7eb3fcfcd1fd8ca1d88d63763ddb67a5/README.md) · [프런트 설정](https://github.com/kdkrkwhr/hermes-agent-area/blob/e3e118fa7eb3fcfcd1fd8ca1d88d63763ddb67a5/package.json)
 
+## 냉정한 기술 평가
+
+**평가일:** 2026-10-28 · **근거 커밋:** `e3e118fa7eb3fcfcd1fd8ca1d88d63763ddb67a5`. 공개 소스의 정적 평가이며 실제 운영 결과나 개인의 기여 범위를 확정하지 않는다.
+
+- **구조·설계 — 양호** 공개 화면과 로컬 상태 서버를 분리하고, Pages에서 로컬 WebSocket을 바로 연결할 수 없는 조건을 연결 패널에서 설명한다. [connectPanel.js 39–48·77–96행](https://github.com/kdkrkwhr/hermes-agent-area/blob/e3e118fa7eb3fcfcd1fd8ca1d88d63763ddb67a5/src/connectPanel.js)
+- **구현 품질 — 보완 필요** 서버의 여러 데이터 위치가 환경변수로 바뀌지만 기본 경로는 한 OS의 폴더 형태에 묶여 있다. 다른 기기에서는 설정 누락 시 빈 데이터나 잘못된 경로를 읽을 수 있다. [server/main.py 21–37행](https://github.com/kdkrkwhr/hermes-agent-area/blob/e3e118fa7eb3fcfcd1fd8ca1d88d63763ddb67a5/server/main.py)
+- **운영 준비 — 미확인** 실시간 화면은 별도 로컬 서버와 브라우저 연결에 의존한다. 공개 정적 데모와 로컬 동작을 구분해야 하며 서버 운영 상태는 확인하지 않았다. [connectPanel.js 1–5·77–96행](https://github.com/kdkrkwhr/hermes-agent-area/blob/e3e118fa7eb3fcfcd1fd8ca1d88d63763ddb67a5/src/connectPanel.js)
+- **유지보수 — 보완 필요** 연결 URL이 기본값·저장값·수동 입력으로 갈라져 환경별 재현 절차를 문서화할 필요가 있다. [connectPanel.js 34–48·70–92행](https://github.com/kdkrkwhr/hermes-agent-area/blob/e3e118fa7eb3fcfcd1fd8ca1d88d63763ddb67a5/src/connectPanel.js)
+
+**좋은 점:** 데모와 실제 연결 사이의 제약을 숨기지 않는다. **개선 우선순위:** P2 — 플랫폼별 기본 경로를 제거하고 필요한 경로를 설정·시작 화면에서 명시적으로 검증하면 다른 컴퓨터로 옮길 때의 혼동을 줄인다.
+
 ## 화면 진입과 데모 경계
 
 `src/main.js`는 `OfficeScene`을 Phaser 게임으로 시작하고, 연결·알림·카메라·칸반·타임라인 버튼을 붙인다. 서비스 워커 등록 경로도 있다. `connectPanel.js`는 WebSocket과 API 주소를 입력·저장하고 `/api/status`를 조회해 연결 상태를 보여 준다. Pages의 HTTPS에서 로컬 `ws://` 연결이 막히는 경우 안내문을 띄우고 로컬 프런트엔드 또는 별도 `wss://` 연결을 요구한다. 그러므로 공개 Pages 데모를 **실시간 개인 Hermes 데이터가 자동 연결된 화면**이라고 해석하면 안 된다. [프런트 진입](https://github.com/kdkrkwhr/hermes-agent-area/blob/e3e118fa7eb3fcfcd1fd8ca1d88d63763ddb67a5/src/main.js) · [연결 패널](https://github.com/kdkrkwhr/hermes-agent-area/blob/e3e118fa7eb3fcfcd1fd8ca1d88d63763ddb67a5/src/connectPanel.js)

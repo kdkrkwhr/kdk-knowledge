@@ -31,6 +31,17 @@
 
 노트버디는 그림이나 사진에서 친구를 만들고, 돌봄·대화·산책·모험을 이어 가는 공개 프로젝트다. 이 문서는 사용 안내를 다시 나열하기보다 **화면에서 선택한 행동이 어떤 코드에서 판정되고 저장되는지**를 따라간다. 제품 범위는 [프로젝트 README](https://github.com/kdkrkwhr/notebook-pets/blob/ca5648b49e6d0a67526856a930090173d0454389/README.md)를 기준으로 읽었다. 이 문서가 기술 선택의 개인적 동기나 담당 범위를 증명하지는 않는다.
 
+## 냉정한 기술 평가
+
+**평가일:** 2026-10-28 · **근거 커밋:** `ca5648b49e6d0a67526856a930090173d0454389`. 공개 소스의 정적 평가이며 실제 운영 결과나 개인의 기여 범위를 확정하지 않는다.
+
+- **구조·설계 — 양호** 상태 전이와 저장 결정을 분리하고 실행 입력을 주입한다. [game_api.py의 transition·GameApplication, 50–111행](https://github.com/kdkrkwhr/notebook-pets/blob/ca5648b49e6d0a67526856a930090173d0454389/engine/game_api.py)
+- **구현 품질 — 양호** 명령·인자·요청 ID를 제한하고 저장 충돌을 재시도한다. 성공 상태를 저장 전에 확정하지 않는 점이 강하다. [game_api.py 18–47·96–111행](https://github.com/kdkrkwhr/notebook-pets/blob/ca5648b49e6d0a67526856a930090173d0454389/engine/game_api.py)
+- **운영 준비 — 미확인** 이 커밋에서 본 것은 핵심 인터페이스와 웹 실행 경로다. 실제 호스트별 저장소·동시 요청 성질과 운영 규모는 이 근거만으로 판정하지 않는다. [ports.py의 StateRepository, 26–35행](https://github.com/kdkrkwhr/notebook-pets/blob/ca5648b49e6d0a67526856a930090173d0454389/engine/ports.py)
+- **유지보수 — 보완 필요** Dependency가 실행 문맥이 없을 때 다른 모듈로 암묵적으로 넘어간다. 직접 헬퍼 호출과 정상 전이에서 입력 출처가 달라져 추적이 어려울 수 있다. [ports.py의 ContextMapping·Dependency, 71–113행](https://github.com/kdkrkwhr/notebook-pets/blob/ca5648b49e6d0a67526856a930090173d0454389/engine/ports.py)
+
+**좋은 점:** 규칙 계산과 영속화의 경계가 분명해 실행 환경을 바꿔도 같은 전이 API를 쓸 수 있다. **개선 우선순위:** P2 — 호환용 암묵 대체 경로를 명시적 어댑터로 분리하면 입력 출처 혼동을 줄일 수 있다.
+
 ## 해결 대상과 사용자 흐름
 
 공개 README의 사용자 흐름은 그림·사진 또는 랜덤 선택으로 친구를 만나는 데서 시작한다. 이후 먹이, 놀이, 훈련, 수면, 대화로 상태와 경험을 쌓고 산책·던전을 탐색한다. 진화는 레벨만 올랐다고 즉시 일어나지 않는다. 활동 조건을 채운 뒤 사용자가 시점을 정하고 세 방향 중 하나를 고른다. AI는 방향 설명과 외형 제안을 보탤 수 있지만, 어떤 방향을 선택할지는 사용자에게 남는다. [기능 설명 원본](https://github.com/kdkrkwhr/notebook-pets/blob/ca5648b49e6d0a67526856a930090173d0454389/README.md)

@@ -29,6 +29,17 @@
 
 옥션스팟 API는 동네 기반 실시간 경매 서비스의 공개 백엔드 저장소다. README에는 인증, 물품, 경매·입찰, 채팅, 신고, 이미지 업로드가 API 영역으로 제시돼 있다. 이 문서는 **이미지 파일이 들어와 어디에 저장되고 어떤 URL로 제공되는지**를 한 경로로 좁혀 읽는다. 프로젝트의 모든 API나 실제 운영 상태를 조사했다는 뜻은 아니다. [프로젝트 README](https://github.com/kdkrkwhr/auction-spot-api/blob/7c2d9496a5ae0f1dcd0345196483c2674ecff140/README.md)
 
+## 냉정한 기술 평가
+
+**평가일:** 2026-10-28 · **근거 커밋:** `7c2d9496a5ae0f1dcd0345196483c2674ecff140`. 공개 소스의 정적 평가이며 실제 운영 결과나 개인의 기여 범위를 확정하지 않는다.
+
+- **구조·설계 — 양호** 업로드 컨트롤러·저장 서비스·정적 파일 매핑의 책임이 나뉘고 저장 경로는 설정으로 받는다. [LocalUploadController.java 14–27행](https://github.com/kdkrkwhr/auction-spot-api/blob/7c2d9496a5ae0f1dcd0345196483c2674ecff140/src/main/java/com/auctionspot/infra/storage/LocalUploadController.java) [LocalFileWebConfig.java 15–31행](https://github.com/kdkrkwhr/auction-spot-api/blob/7c2d9496a5ae0f1dcd0345196483c2674ecff140/src/main/java/com/auctionspot/infra/storage/LocalFileWebConfig.java)
+- **구현 품질 — 보완 필요** 이미지 허용 여부는 요청의 Content-Type과 크기로 판단한다. 실제 바이트 형식은 이 경로에서 확인하지 않으므로 파일 형식 보증은 약하다. [LocalImageStorageService.java 49–82행](https://github.com/kdkrkwhr/auction-spot-api/blob/7c2d9496a5ae0f1dcd0345196483c2674ecff140/src/main/java/com/auctionspot/infra/storage/LocalImageStorageService.java)
+- **운영 준비 — 보완 필요** 업로드 파일을 애플리케이션 서버의 로컬 디스크에 두고 같은 서버가 제공한다. 여러 인스턴스나 서버 교체 시 파일 공유·보존 방법이 별도로 필요하다. 현재 배포 형태는 미확인이다. [LocalImageStorageService.java 35–43·78–93행](https://github.com/kdkrkwhr/auction-spot-api/blob/7c2d9496a5ae0f1dcd0345196483c2674ecff140/src/main/java/com/auctionspot/infra/storage/LocalImageStorageService.java)
+- **유지보수 — 양호** 저장 URL 접두사와 루트 경로가 속성으로 분리돼 경로 정책을 찾기 쉽다. [LocalFileWebConfig.java 13–31행](https://github.com/kdkrkwhr/auction-spot-api/blob/7c2d9496a5ae0f1dcd0345196483c2674ecff140/src/main/java/com/auctionspot/infra/storage/LocalFileWebConfig.java)
+
+**좋은 점:** 업로드 처리 경계가 작고 입력 크기 제한이 있다. **개선 우선순위:** P1 — 이미지 디코딩 또는 파일 서명 확인을 추가해 잘못 표기된 파일이 이미지 경로에 저장되는 일을 막는다. P2 — 다중 서버 사용 전 공유 저장소·삭제 정책을 정한다.
+
 ## 해결 대상과 공개된 범위
 
 README는 경매 서비스에서 물품 이미지 업로드를 위한 `POST /api/v1/storage/upload`와 파일 조회를 위한 `GET /api/v1/files/**`를 설명한다. 또 설계 문서에 적힌 S3와 달리 **현재 이 API 저장소는 서버 로컬 디스크를 사용한다**고 직접 밝힌다. 이는 현재 구현에 대한 공개 사실이다. S3에서 로컬 저장으로 바꾼 이유나 어느 환경에 배포했는지는 README와 아래 코드만으로 알 수 없다. [업로드·저장 설명](https://github.com/kdkrkwhr/auction-spot-api/blob/7c2d9496a5ae0f1dcd0345196483c2674ecff140/README.md)

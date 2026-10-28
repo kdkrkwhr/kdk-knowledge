@@ -1204,8 +1204,8 @@
       "kind": "readme",
       "repository": "kdkrkwhr/kdk-knowledge",
       "path": "README.md",
-      "revision": "518ccf03c2b798b64e628eb7e3332561345155ef",
-      "url": "https://github.com/kdkrkwhr/kdk-knowledge/blob/518ccf03c2b798b64e628eb7e3332561345155ef/README.md",
+      "revision": "300e554c442c86522e121f7b17dd3ba738fcacd4",
+      "url": "https://github.com/kdkrkwhr/kdk-knowledge/blob/300e554c442c86522e121f7b17dd3ba738fcacd4/README.md",
       "visibility": "public"
     },
     {
@@ -1214,8 +1214,8 @@
       "kind": "code",
       "repository": "kdkrkwhr/kdk-knowledge",
       "path": "scripts/build_wiki.py",
-      "revision": "518ccf03c2b798b64e628eb7e3332561345155ef",
-      "url": "https://github.com/kdkrkwhr/kdk-knowledge/blob/518ccf03c2b798b64e628eb7e3332561345155ef/scripts/build_wiki.py",
+      "revision": "300e554c442c86522e121f7b17dd3ba738fcacd4",
+      "url": "https://github.com/kdkrkwhr/kdk-knowledge/blob/300e554c442c86522e121f7b17dd3ba738fcacd4/scripts/build_wiki.py",
       "visibility": "public"
     },
     {
@@ -1224,8 +1224,8 @@
       "kind": "code",
       "repository": "kdkrkwhr/kdk-knowledge",
       "path": "scripts/validate.py",
-      "revision": "518ccf03c2b798b64e628eb7e3332561345155ef",
-      "url": "https://github.com/kdkrkwhr/kdk-knowledge/blob/518ccf03c2b798b64e628eb7e3332561345155ef/scripts/validate.py",
+      "revision": "300e554c442c86522e121f7b17dd3ba738fcacd4",
+      "url": "https://github.com/kdkrkwhr/kdk-knowledge/blob/300e554c442c86522e121f7b17dd3ba738fcacd4/scripts/validate.py",
       "visibility": "public"
     },
     {

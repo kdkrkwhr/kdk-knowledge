@@ -82,12 +82,21 @@
 <a href="AgentRadio.html">AgentRadio fork 참조</a></nav></details></aside>
     <main id="article" class="wiki-main"><div class="search" aria-label="문서 검색"><label for="wiki-search">문서 검색</label><div class="search-row"><input id="wiki-search" type="search" placeholder="프로젝트, 기술, 근거 검색" aria-controls="search-results"><button id="clear-search" type="button">지우기</button></div><p id="search-status" class="muted" role="status" aria-live="polite">문서 본문에서 검색합니다. / 키로 검색창에 이동할 수 있어요.</p><ol id="search-results" hidden></ol></div><article class="wiki-article"><h1 id="section-1">Engineering Standards: 선택형 개발 기준과 그 적용 경계</h1>
 <p>이 저장소는 프로젝트를 시작하거나 변경할 때 사용할 <strong>선택형 기준</strong>을 제공한다. 개인 지식 허브의 전체 목적이 아니라 프로젝트에서 필요할 때 참조할 한 영역이다. README는 공통 원칙·명명·구조 선택, 언어별 프로필, 프레임워크별 프로필을 구분하고, 특정 언어나 아키텍처를 모든 프로젝트에 강제하지 않는다고 밝힌다. 이 문서를 작성했다는 사실만으로 다른 프로젝트에 적용됐다는 뜻도 아니다. <a href="https://github.com/kdkrkwhr/engineering-standards/blob/0ab26dea2102fbb801740ba9f853a004761b7e0c/README.md">기준 저장소 README</a></p>
-<h2 id="section-2">사람이 선택하는 범위</h2>
+<h2 id="section-2">냉정한 기술 평가</h2>
+<p><strong>평가일:</strong> 2026-10-28 · <strong>근거 커밋:</strong> <code>0ab26dea2102fbb801740ba9f853a004761b7e0c</code>. 공개 소스의 정적 평가이며 실제 운영 결과나 개인의 기여 범위를 확정하지 않는다.</p>
+<ul>
+<li><strong>구조·설계 — 양호</strong> 공통 기준과 언어·프레임워크별 선택형 프로필을 분리해 모든 프로젝트에 한 구조를 강요하지 않는다. <a href="https://github.com/kdkrkwhr/engineering-standards/blob/0ab26dea2102fbb801740ba9f853a004761b7e0c/README.md">README.md 1–40행</a> <a href="https://github.com/kdkrkwhr/engineering-standards/blob/0ab26dea2102fbb801740ba9f853a004761b7e0c/profiles/frameworks/spring-boot.md">spring-boot.md 1–49행</a></li>
+<li><strong>구현 품질 — 양호</strong> 문서 검사는 제목·상대 링크를 확인하고 위키 생성기는 등록된 그래프 자료의 커밋·형식을 검사한다. 문장 내용의 실무 타당성까지 자동 판단하는 것은 아니다. <a href="https://github.com/kdkrkwhr/engineering-standards/blob/0ab26dea2102fbb801740ba9f853a004761b7e0c/scripts/check_docs.py">check_docs.py 14–38행</a> <a href="https://github.com/kdkrkwhr/engineering-standards/blob/0ab26dea2102fbb801740ba9f853a004761b7e0c/scripts/build_wiki.py">build_wiki.py 138–156행</a></li>
+<li><strong>운영 준비 — 미확인</strong> 기준 카탈로그이지 실행 서비스가 아니다. 다른 저장소에 실제 적용됐는지와 현재 사용 현황은 이 문서만으로 판단하지 않는다. <a href="https://github.com/kdkrkwhr/engineering-standards/blob/0ab26dea2102fbb801740ba9f853a004761b7e0c/README.md">README.md 1–40행</a></li>
+<li><strong>유지보수 — 보완 필요</strong> 위키 생성 코드가 용어 HTML, 그래프 자료, 별도 문서 출력을 한 모듈에서 처리해 한 산출물의 변경이 다른 생성 경로를 건드릴 수 있다. <a href="https://github.com/kdkrkwhr/engineering-standards/blob/0ab26dea2102fbb801740ba9f853a004761b7e0c/scripts/build_wiki.py">build_wiki.py 78–135·138–217행</a></li>
+</ul>
+<p><strong>좋은 점:</strong> 선택형 기준과 자동 생성 자료의 출처 경계를 밝힌다. <strong>개선 우선순위:</strong> P2 — 용어 위키와 그래프 자료 처리기를 분리해 기준 문서 변경의 영향 범위를 줄인다. P3 — 실제 프로젝트에 적용할 때 선택 이유와 적용 커밋을 함께 남긴다.</p>
+<h2 id="section-3">사람이 선택하는 범위</h2>
 <p>README의 적용 흐름은 기준 저장소 커밋을 고정한 뒤 필요한 문서를 소비 프로젝트에 배치하고, 프로젝트의 기존 지침과 충돌을 검토하는 것이다. 예를 들어 <code>profiles/languages/python.md</code>는 이름·모듈·테스트 파일 규칙을 다루되 특정 프레임워크나 런타임 버전을 필수로 하지 않는다. <code>profiles/frameworks/spring-boot.md</code>는 새 프로젝트의 네 계층 기본안을 제시하지만 기존 기능별 구조를 먼저 존중한다. 언어 프로필과 프레임워크 프로필은 각각 선택한다. <a href="https://github.com/kdkrkwhr/engineering-standards/blob/0ab26dea2102fbb801740ba9f853a004761b7e0c/README.md">적용 안내</a> · <a href="https://github.com/kdkrkwhr/engineering-standards/blob/0ab26dea2102fbb801740ba9f853a004761b7e0c/profiles/languages/python.md">Python 프로필</a> · <a href="https://github.com/kdkrkwhr/engineering-standards/blob/0ab26dea2102fbb801740ba9f853a004761b7e0c/profiles/frameworks/spring-boot.md">Spring Boot 프로필</a></p>
-<h2 id="section-3">문서와 공개 위키 생성 경로</h2>
+<h2 id="section-4">문서와 공개 위키 생성 경로</h2>
 <p><code>scripts/check_docs.py</code>는 Markdown 제목, 상대 링크, 코드 블록 닫힘을 검사한다. <code>scripts/build_wiki.py</code>는 용어 JSON과 템플릿에서 HTML·Markdown을 생성하고 커밋 SHA를 링크에 넣는다. 이 생성 위키는 기준 저장소의 용어 찾기 도구다. 현재 <code>kdk-knowledge</code>의 프로젝트별 Markdown 해설과는 <strong>편집 원본과 설명 대상이 다르다.</strong> <a href="https://github.com/kdkrkwhr/engineering-standards/blob/0ab26dea2102fbb801740ba9f853a004761b7e0c/scripts/check_docs.py">문서 검사 코드</a> · <a href="https://github.com/kdkrkwhr/engineering-standards/blob/0ab26dea2102fbb801740ba9f853a004761b7e0c/scripts/build_wiki.py">위키 생성 코드</a></p>
 <p><code>.github/workflows/docs.yml</code>은 푸시·PR에 문서·위생·용어·위키·검색 검사를 정의한다. 이는 워크플로 설정의 정적 확인이며, 이 문서에서 해당 커밋의 모든 Actions 결과를 재실행하거나 검증한 것은 아니다. <a href="https://github.com/kdkrkwhr/engineering-standards/blob/0ab26dea2102fbb801740ba9f853a004761b7e0c/.github/workflows/docs.yml">문서 검사 워크플로</a></p>
-<h2 id="section-4">이 허브와 연결할 때</h2>
+<h2 id="section-5">이 허브와 연결할 때</h2>
 <p><a href="notebuddy.html">노트버디</a>, <a href="auction-spot.html">옥션스팟 API</a>, <a href="agent-hub.html">AGENT HUB</a>가 어떤 기준을 적용했는지는 프로젝트별 결정 기록과 적용 커밋이 있어야 한다. 지금은 참조 가능한 기준으로만 둔다. 기준 저장소의 Graphify 자동 코드 분석이 있다 해도 이 개인 지식 허브의 Graphify 분석 결과로 대체할 수 없다. 이 허브의 관계는 사람이 등록한 편집 관계이며 자동 추출 상태는 여전히 <code>not-run</code>이다.</p>
 <p>검토한 기준 커밋은 <code>0ab26dea2102fbb801740ba9f853a004761b7e0c</code>다. 개인의 실무 선택 이유나 다른 프로젝트의 실제 적용 결과는 이 저장소 자체에서 증명되지 않는다.</p></article><section class="wiki-evidence"><h2>이 문서의 등록 근거</h2><ul><li><a href="https://github.com/kdkrkwhr/engineering-standards/blob/0ab26dea2102fbb801740ba9f853a004761b7e0c/README.md">engineering-standards · README.md · 0ab26de</a></li>
 <li><a href="https://github.com/kdkrkwhr/engineering-standards/blob/0ab26dea2102fbb801740ba9f853a004761b7e0c/profiles/languages/python.md">engineering-standards · profiles/languages/python.md · 0ab26de</a></li>
@@ -95,9 +104,10 @@
 <li><a href="https://github.com/kdkrkwhr/engineering-standards/blob/0ab26dea2102fbb801740ba9f853a004761b7e0c/scripts/build_wiki.py">engineering-standards · scripts/build_wiki.py · 0ab26de</a></li>
 <li><a href="https://github.com/kdkrkwhr/engineering-standards/blob/0ab26dea2102fbb801740ba9f853a004761b7e0c/scripts/check_docs.py">engineering-standards · scripts/check_docs.py · 0ab26de</a></li>
 <li><a href="https://github.com/kdkrkwhr/engineering-standards/blob/0ab26dea2102fbb801740ba9f853a004761b7e0c/.github/workflows/docs.yml">engineering-standards · .github/workflows/docs.yml · 0ab26de</a></li></ul><p><a href="markdown/standards.md">Markdown 원문 보기</a> · 문장과 원본 파일을 사람이 대조했습니다.</p></section></main>
-    <aside class="wiki-outline" aria-label="본문 목차"><p class="eyebrow">ON THIS PAGE</p><nav><a href="#section-2">사람이 선택하는 범위</a>
-<a href="#section-3">문서와 공개 위키 생성 경로</a>
-<a href="#section-4">이 허브와 연결할 때</a></nav></aside>
+    <aside class="wiki-outline" aria-label="본문 목차"><p class="eyebrow">ON THIS PAGE</p><nav><a href="#section-2">냉정한 기술 평가</a>
+<a href="#section-3">사람이 선택하는 범위</a>
+<a href="#section-4">문서와 공개 위키 생성 경로</a>
+<a href="#section-5">이 허브와 연결할 때</a></nav></aside>
   </div>
   <footer>김동기 · 공개 근거 기반 개인 위키 <span>Graphify 분석 미실행</span></footer>
 </body>

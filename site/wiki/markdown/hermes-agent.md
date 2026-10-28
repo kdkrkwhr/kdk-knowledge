@@ -5,6 +5,17 @@
 
 **분석 기준:** `b1e211ddd15cc72e99aa068254b89e4351f8c278`. 이 문서는 공개 원본 파일을 정적으로 읽어 작성했다. 해당 프로젝트의 설치·실행·테스트를 수행하거나 개인 담당 범위·성과를 확인한 것은 아니다.
 
+## 냉정한 기술 평가
+
+**평가일:** 2026-10-28 · **근거 커밋:** `b1e211ddd15cc72e99aa068254b89e4351f8c278`. 공개 소스의 정적 평가이며 실제 운영 결과나 개인의 기여 범위를 확정하지 않는다.
+
+- **구조·설계 — 양호** 확인된 fork 변경은 upstream 전체 기능이 아니라 릴리스 태그 수집과 격리 환경의 CA 설정에 한정된다. 변경 목적과 대상 파일이 분명하다. [install-e2e.yml 75–91행](https://github.com/kdkrkwhr/hermes-agent/blob/b1e211ddd15cc72e99aa068254b89e4351f8c278/.github/workflows/install-e2e.yml) [stage2-run.sh 216–223행](https://github.com/kdkrkwhr/hermes-agent/blob/b1e211ddd15cc72e99aa068254b89e4351f8c278/scripts/sandbox/stage2-run.sh)
+- **구현 품질 — 미확인** 격리 환경에만 CA 경로를 주는 구성은 보이지만 실제 네트워크 격리와 설치 결과는 정적 파일만으로 확인할 수 없다. upstream 전체 구현을 계정의 작업으로 평가하지 않는다. [dev-sandbox.sh 75–87행](https://github.com/kdkrkwhr/hermes-agent/blob/b1e211ddd15cc72e99aa068254b89e4351f8c278/scripts/dev-sandbox.sh) [stage2-run.sh 216–230행](https://github.com/kdkrkwhr/hermes-agent/blob/b1e211ddd15cc72e99aa068254b89e4351f8c278/scripts/sandbox/stage2-run.sh)
+- **운영 준비 — 미확인** 설치 E2E 워크플로는 개발 검증 경로이지 개인 서비스 운영 경로가 아니다. [install-e2e.yml 3–23행](https://github.com/kdkrkwhr/hermes-agent/blob/b1e211ddd15cc72e99aa068254b89e4351f8c278/.github/workflows/install-e2e.yml)
+- **유지보수 — 보완 필요** upstream 태그를 조건부로 가져오므로 fork에서 어떤 upstream 기준과 변경분을 유지할지 기록하지 않으면 이후 동기화 판단이 어려워진다. [install-e2e.yml 75–91행](https://github.com/kdkrkwhr/hermes-agent/blob/b1e211ddd15cc72e99aa068254b89e4351f8c278/.github/workflows/install-e2e.yml)
+
+**좋은 점:** fork 전용 변경의 범위가 비교적 작고 CA 신뢰 경로를 격리 환경에 둔다. **개선 우선순위:** P3 — upstream 기준 커밋과 두 fork 변경의 목적을 갱신 기록에 남긴다. 이 평가는 upstream 제품 품질이나 개인 기여 전반의 판정이 아니다.
+
 ## upstream과 fork
 
 GitHub 메타데이터의 원본은 `NousResearch/hermes-agent`다. README는 Nous Research가 만든 에이전트의 모델·채널·도구·학습 경로를 설명하고, `package.json`은 데스크톱·웹·TUI 작업공간을 열거한다. 이 광범위한 upstream 기능을 이 계정의 단독 개발이라고 쓰지 않는다.

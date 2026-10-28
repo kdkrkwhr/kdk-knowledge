@@ -82,24 +82,34 @@
 <a href="AgentRadio.html">AgentRadio fork 참조</a></nav></details></aside>
     <main id="article" class="wiki-main"><div class="search" aria-label="문서 검색"><label for="wiki-search">문서 검색</label><div class="search-row"><input id="wiki-search" type="search" placeholder="프로젝트, 기술, 근거 검색" aria-controls="search-results"><button id="clear-search" type="button">지우기</button></div><p id="search-status" class="muted" role="status" aria-live="polite">문서 본문에서 검색합니다. / 키로 검색창에 이동할 수 있어요.</p><ol id="search-results" hidden></ol></div><article class="wiki-article"><h1 id="section-1">개인 기술 블로그 저장소</h1>
 <p><strong>분석 기준:</strong> <code>02bb498ac183973e58e6b6489f59971e63691ac3</code>. 이 문서는 공개 원본 파일을 정적으로 읽어 작성했다. 해당 프로젝트의 설치·실행·테스트를 수행하거나 개인 담당 범위·성과를 확인한 것은 아니다.</p>
-<h2 id="section-2">콘텐츠와 빌드 구조</h2>
+<h2 id="section-2">냉정한 기술 평가</h2>
+<p><strong>평가일:</strong> 2026-10-28 · <strong>근거 커밋:</strong> <code>02bb498ac183973e58e6b6489f59971e63691ac3</code>. 공개 소스의 정적 평가이며 실제 운영 결과나 개인의 기여 범위를 확정하지 않는다.</p>
+<ul>
+<li><strong>구조·설계 — 양호</strong> Jekyll 설정, 게시 글, 프로젝트 데이터가 분리돼 공개 콘텐츠의 위치를 찾기 쉽다. <a href="https://github.com/kdkrkwhr/kdkrkwhr.github.com/blob/02bb498ac183973e58e6b6489f59971e63691ac3/README.md">README.md 1–22행</a> <a href="https://github.com/kdkrkwhr/kdkrkwhr.github.com/blob/02bb498ac183973e58e6b6489f59971e63691ac3/_data/projects.yml">projects.yml 1–18행</a></li>
+<li><strong>구현 품질 — 보완 필요</strong> 게시 확인 스크립트는 URL·예상 문구를 확인하지만 실패 시에도 종료 코드 0을 사용한다. 이를 실패 차단 단계로 연결하면 오류가 성공처럼 전달될 수 있다. <a href="https://github.com/kdkrkwhr/kdkrkwhr.github.com/blob/02bb498ac183973e58e6b6489f59971e63691ac3/scripts/publish_blog.py">publish_blog.py 26–54행</a></li>
+<li><strong>운영 준비 — 미확인</strong> 설정에 Pages 주소가 있고 게시 확인 경로도 있지만 현재 공개 상태·운영 책임은 고정 파일만으로 판단하지 않는다. <a href="https://github.com/kdkrkwhr/kdkrkwhr.github.com/blob/02bb498ac183973e58e6b6489f59971e63691ac3/_config.yml">config.yml 1–12행</a></li>
+<li><strong>유지보수 — 양호</strong> 프로젝트 목록을 데이터 파일로 분리해 항목 링크를 한곳에서 고칠 수 있다. <a href="https://github.com/kdkrkwhr/kdkrkwhr.github.com/blob/02bb498ac183973e58e6b6489f59971e63691ac3/_data/projects.yml">projects.yml 1–18행</a></li>
+</ul>
+<p><strong>좋은 점:</strong> 콘텐츠와 프로젝트 목록의 편집 위치가 구분돼 있다. <strong>개선 우선순위:</strong> P2 — 게시 확인 스크립트가 검증용으로 쓰일 때 실패 종료 코드를 반환하도록 모드를 분리해 배포 실패를 숨기지 않는다.</p>
+<h2 id="section-3">콘텐츠와 빌드 구조</h2>
 <p>README는 Jekyll·Kramdown을 쓰는 GitHub Pages 기술 블로그라고 설명한다. <code>_config.yml</code>은 사이트 설정을, <code>_posts</code>는 날짜가 붙은 Markdown 글을, <code>_data/projects.yml</code>은 프로젝트 목록 데이터를 담는다. 글에서 표현한 경험은 개인의 해석이 포함될 수 있으므로 이 문서에서는 출판 구조만 기술한다. <a href="https://github.com/kdkrkwhr/kdkrkwhr.github.com/blob/02bb498ac183973e58e6b6489f59971e63691ac3/README.md">원본: `README.md`</a> <a href="https://github.com/kdkrkwhr/kdkrkwhr.github.com/blob/02bb498ac183973e58e6b6489f59971e63691ac3/_config.yml">원본: `_config.yml`</a> <a href="https://github.com/kdkrkwhr/kdkrkwhr.github.com/blob/02bb498ac183973e58e6b6489f59971e63691ac3/_data/projects.yml">원본: `_data/projects.yml`</a></p>
-<h2 id="section-3">게시 확인 경로</h2>
+<h2 id="section-4">게시 확인 경로</h2>
 <p><code>scripts/publish_blog.py</code>는 한 글의 공개 URL을 최대 세 차례 조회하고 응답 내용에 예상 문자열이 있는지 확인해 로그를 남긴다. 실패해도 종료 코드는 0으로 반환하도록 작성돼 있으므로 이 스크립트가 CI 배포 성공을 엄격하게 보증한다고 설명하지 않는다. <a href="https://github.com/kdkrkwhr/kdkrkwhr.github.com/blob/02bb498ac183973e58e6b6489f59971e63691ac3/scripts/publish_blog.py">원본: `scripts/publish_blog.py`</a></p>
-<h2 id="section-4">공개 범위</h2>
+<h2 id="section-5">공개 범위</h2>
 <p>원본 README와 데이터에는 개인 식별·연락 정보가 포함될 수 있다. 이 위키는 이메일·연락처·개별 경력 서술을 복제하지 않고 블로그 구조와 소스 경계만 연결한다. <a href="https://github.com/kdkrkwhr/kdkrkwhr.github.com/blob/02bb498ac183973e58e6b6489f59971e63691ac3/README.md">원본: `README.md`</a> <a href="https://github.com/kdkrkwhr/kdkrkwhr.github.com/blob/02bb498ac183973e58e6b6489f59971e63691ac3/_data/projects.yml">원본: `_data/projects.yml`</a></p>
-<h2 id="section-5">연결해서 읽기</h2>
+<h2 id="section-6">연결해서 읽기</h2>
 <p>블로그에 소개된 <a href="notebuddy.html">노트버디</a> 등의 기술 글은 프로젝트 코드 자체와 별개의 서술 근거다.</p>
-<h2 id="section-6">확인 범위와 미확인 사항</h2>
+<h2 id="section-7">확인 범위와 미확인 사항</h2>
 <p>위 구현 설명은 표시한 커밋의 파일에서 확인한 사실과 정적 해석이다. 현재 배포·운영 상태, 실행 성공, 실제 사용량, 개인 선택 이유와 기여 범위는 확인하지 않았다.</p></article><section class="wiki-evidence"><h2>이 문서의 등록 근거</h2><ul><li><a href="https://github.com/kdkrkwhr/kdkrkwhr.github.com/blob/02bb498ac183973e58e6b6489f59971e63691ac3/README.md">kdkrkwhr.github.com: README.md · 02bb498</a></li>
 <li><a href="https://github.com/kdkrkwhr/kdkrkwhr.github.com/blob/02bb498ac183973e58e6b6489f59971e63691ac3/_config.yml">kdkrkwhr.github.com: _config.yml · 02bb498</a></li>
 <li><a href="https://github.com/kdkrkwhr/kdkrkwhr.github.com/blob/02bb498ac183973e58e6b6489f59971e63691ac3/_data/projects.yml">kdkrkwhr.github.com: _data/projects.yml · 02bb498</a></li>
 <li><a href="https://github.com/kdkrkwhr/kdkrkwhr.github.com/blob/02bb498ac183973e58e6b6489f59971e63691ac3/scripts/publish_blog.py">kdkrkwhr.github.com: scripts/publish_blog.py · 02bb498</a></li></ul><p><a href="markdown/kdkrkwhr.github.com.md">Markdown 원문 보기</a> · 문장과 원본 파일을 사람이 대조했습니다.</p></section></main>
-    <aside class="wiki-outline" aria-label="본문 목차"><p class="eyebrow">ON THIS PAGE</p><nav><a href="#section-2">콘텐츠와 빌드 구조</a>
-<a href="#section-3">게시 확인 경로</a>
-<a href="#section-4">공개 범위</a>
-<a href="#section-5">연결해서 읽기</a>
-<a href="#section-6">확인 범위와 미확인 사항</a></nav></aside>
+    <aside class="wiki-outline" aria-label="본문 목차"><p class="eyebrow">ON THIS PAGE</p><nav><a href="#section-2">냉정한 기술 평가</a>
+<a href="#section-3">콘텐츠와 빌드 구조</a>
+<a href="#section-4">게시 확인 경로</a>
+<a href="#section-5">공개 범위</a>
+<a href="#section-6">연결해서 읽기</a>
+<a href="#section-7">확인 범위와 미확인 사항</a></nav></aside>
   </div>
   <footer>김동기 · 공개 근거 기반 개인 위키 <span>Graphify 분석 미실행</span></footer>
 </body>

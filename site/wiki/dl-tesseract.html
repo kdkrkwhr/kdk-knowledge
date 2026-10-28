@@ -82,20 +82,30 @@
 <a href="AgentRadio.html">AgentRadio fork 참조</a></nav></details></aside>
     <main id="article" class="wiki-main"><div class="search" aria-label="문서 검색"><label for="wiki-search">문서 검색</label><div class="search-row"><input id="wiki-search" type="search" placeholder="프로젝트, 기술, 근거 검색" aria-controls="search-results"><button id="clear-search" type="button">지우기</button></div><p id="search-status" class="muted" role="status" aria-live="polite">문서 본문에서 검색합니다. / 키로 검색창에 이동할 수 있어요.</p><ol id="search-results" hidden></ol></div><article class="wiki-article"><h1 id="section-1">Tesseract 번호판 OCR 실험</h1>
 <p><strong>분석 기준:</strong> <code>d61bd752deb16ef19df40f420a038d81a21519ca</code>. 이 문서는 공개 원본 파일을 정적으로 읽어 작성했다. 해당 프로젝트의 설치·실행·테스트를 수행하거나 개인 담당 범위·성과를 확인한 것은 아니다.</p>
-<h2 id="section-2">이미지 처리 흐름</h2>
+<h2 id="section-2">냉정한 기술 평가</h2>
+<p><strong>평가일:</strong> 2026-10-28 · <strong>근거 커밋:</strong> <code>d61bd752deb16ef19df40f420a038d81a21519ca</code>. 공개 소스의 정적 평가이며 실제 운영 결과나 개인의 기여 범위를 확정하지 않는다.</p>
+<ul>
+<li><strong>구조·설계 — 양호</strong> 흐림·이진화·윤곽 검출·문자 인식의 실험 단계를 함수로 나눴다. <a href="https://github.com/kdkrkwhr/dl-tesseract/blob/d61bd752deb16ef19df40f420a038d81a21519ca/main.py">main.py 9–43·93–125행</a></li>
+<li><strong>구현 품질 — 보완 필요</strong> 이미지 읽기 결과가 없는 경우를 확인하기 전에 전처리를 시작한다. 입력 파일이 없거나 읽을 수 없으면 실패 원인이 흐려진다. <a href="https://github.com/kdkrkwhr/dl-tesseract/blob/d61bd752deb16ef19df40f420a038d81a21519ca/main.py">main.py 120–125행</a></li>
+<li><strong>운영 준비 — 미확인</strong> 한 장의 고정된 로컬 이미지를 GUI로 보여 주는 실험이며 배치·서비스 운영 대상으로 작성된 증거는 없다. <a href="https://github.com/kdkrkwhr/dl-tesseract/blob/d61bd752deb16ef19df40f420a038d81a21519ca/main.py">main.py 117–126행</a></li>
+<li><strong>유지보수 — 보완 필요</strong> 윤곽 함수의 반환값 세 개를 고정으로 받으므로 OpenCV API 형태에 결합돼 있다. 의존성 버전과 입력 예제를 기록하면 재현성이 좋아진다. <a href="https://github.com/kdkrkwhr/dl-tesseract/blob/d61bd752deb16ef19df40f420a038d81a21519ca/main.py">main.py 20–24·37–44행</a></li>
+</ul>
+<p><strong>좋은 점:</strong> 전처리와 인식의 단계가 명시적이다. <strong>개선 우선순위:</strong> P2 — 입력 파일 확인과 윤곽 반환형 처리 경계를 두면 환경·입력 차이에서 원인을 빠르게 알 수 있다.</p>
+<h2 id="section-3">이미지 처리 흐름</h2>
 <p><code>main.py</code>는 고정된 테스트 이미지를 읽고 GaussianBlur, 회색 변환, Canny·임계값, morphology로 후보 윤곽선을 만든다. 사각형의 회전·면적·종횡비를 검사한 뒤 후보 영역을 잘라 Tesseract로 문자를 읽고 화면에 덧쓴다. <a href="https://github.com/kdkrkwhr/dl-tesseract/blob/d61bd752deb16ef19df40f420a038d81a21519ca/main.py">원본: `main.py`</a></p>
 <p>README는 OpenCV·Tesseract 버전과 샘플 이미지를 안내한다. 테스트 이미지 폴더가 있지만 이 정적 분석에서 OCR 결과나 인식률을 재현하지 않았다. <a href="https://github.com/kdkrkwhr/dl-tesseract/blob/d61bd752deb16ef19df40f420a038d81a21519ca/README.md">원본: `README.md`</a> <a href="https://github.com/kdkrkwhr/dl-tesseract/blob/d61bd752deb16ef19df40f420a038d81a21519ca/main.py">원본: `main.py`</a></p>
-<h2 id="section-3">호환성 경계</h2>
+<h2 id="section-4">호환성 경계</h2>
 <p>코드는 <code>cv2.findContours</code>의 반환값 세 개를 받는 형태라 OpenCV 버전에 민감하다. README의 환경을 벗어난 최신 설치에서 동일하게 동작한다고 보장하지 않는다. <a href="https://github.com/kdkrkwhr/dl-tesseract/blob/d61bd752deb16ef19df40f420a038d81a21519ca/main.py">원본: `main.py`</a> <a href="https://github.com/kdkrkwhr/dl-tesseract/blob/d61bd752deb16ef19df40f420a038d81a21519ca/README.md">원본: `README.md`</a></p>
-<h2 id="section-4">연결해서 읽기</h2>
+<h2 id="section-5">연결해서 읽기</h2>
 <p><a href="dl-object-detecting.html">YOLO 객체 검출</a>과는 이미지 처리 목표가 다르다.</p>
-<h2 id="section-5">확인 범위와 미확인 사항</h2>
+<h2 id="section-6">확인 범위와 미확인 사항</h2>
 <p>위 구현 설명은 표시한 커밋의 파일에서 확인한 사실과 정적 해석이다. 현재 배포·운영 상태, 실행 성공, 실제 사용량, 개인 선택 이유와 기여 범위는 확인하지 않았다.</p></article><section class="wiki-evidence"><h2>이 문서의 등록 근거</h2><ul><li><a href="https://github.com/kdkrkwhr/dl-tesseract/blob/d61bd752deb16ef19df40f420a038d81a21519ca/main.py">dl-tesseract: main.py · d61bd75</a></li>
 <li><a href="https://github.com/kdkrkwhr/dl-tesseract/blob/d61bd752deb16ef19df40f420a038d81a21519ca/README.md">dl-tesseract: README.md · d61bd75</a></li></ul><p><a href="markdown/dl-tesseract.md">Markdown 원문 보기</a> · 문장과 원본 파일을 사람이 대조했습니다.</p></section></main>
-    <aside class="wiki-outline" aria-label="본문 목차"><p class="eyebrow">ON THIS PAGE</p><nav><a href="#section-2">이미지 처리 흐름</a>
-<a href="#section-3">호환성 경계</a>
-<a href="#section-4">연결해서 읽기</a>
-<a href="#section-5">확인 범위와 미확인 사항</a></nav></aside>
+    <aside class="wiki-outline" aria-label="본문 목차"><p class="eyebrow">ON THIS PAGE</p><nav><a href="#section-2">냉정한 기술 평가</a>
+<a href="#section-3">이미지 처리 흐름</a>
+<a href="#section-4">호환성 경계</a>
+<a href="#section-5">연결해서 읽기</a>
+<a href="#section-6">확인 범위와 미확인 사항</a></nav></aside>
   </div>
   <footer>김동기 · 공개 근거 기반 개인 위키 <span>Graphify 분석 미실행</span></footer>
 </body>

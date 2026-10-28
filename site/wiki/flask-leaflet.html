@@ -82,21 +82,31 @@
 <a href="AgentRadio.html">AgentRadio fork 참조</a></nav></details></aside>
     <main id="article" class="wiki-main"><div class="search" aria-label="문서 검색"><label for="wiki-search">문서 검색</label><div class="search-row"><input id="wiki-search" type="search" placeholder="프로젝트, 기술, 근거 검색" aria-controls="search-results"><button id="clear-search" type="button">지우기</button></div><p id="search-status" class="muted" role="status" aria-live="polite">문서 본문에서 검색합니다. / 키로 검색창에 이동할 수 있어요.</p><ol id="search-results" hidden></ol></div><article class="wiki-article"><h1 id="section-1">Flask·Leaflet 지도 예제</h1>
 <p><strong>분석 기준:</strong> <code>cccfdf98ef0d6205ac007bcfcb338decb9ec7c50</code>. 이 문서는 공개 원본 파일을 정적으로 읽어 작성했다. 해당 프로젝트의 설치·실행·테스트를 수행하거나 개인 담당 범위·성과를 확인한 것은 아니다.</p>
-<h2 id="section-2">화면 라우팅</h2>
+<h2 id="section-2">냉정한 기술 평가</h2>
+<p><strong>평가일:</strong> 2026-10-28 · <strong>근거 커밋:</strong> <code>cccfdf98ef0d6205ac007bcfcb338decb9ec7c50</code>. 공개 소스의 정적 평가이며 실제 운영 결과나 개인의 기여 범위를 확정하지 않는다.</p>
+<ul>
+<li><strong>구조·설계 — 양호</strong> Flask 라우트가 지도 예제별 HTML을 제공하고 CCTV 지도 스크립트가 위치·레이어 표시를 담당한다. <a href="https://github.com/kdkrkwhr/flask-leaflet/blob/cccfdf98ef0d6205ac007bcfcb338decb9ec7c50/app.py">app.py 5–23행</a> <a href="https://github.com/kdkrkwhr/flask-leaflet/blob/cccfdf98ef0d6205ac007bcfcb338decb9ec7c50/static/js/cctvMap.js">cctvMap.js 47–111행</a></li>
+<li><strong>구현 품질 — 보완 필요</strong> 지도 스크립트는 일부 타일을 HTTP로 요청하고 외부 지도 서비스 키를 클라이언트 코드에 직접 둔다. HTTPS 페이지에서는 지도 자산이 막히거나 키 사용 범위를 통제하기 어려울 수 있다. 키 값은 이 평가에 옮기지 않는다. <a href="https://github.com/kdkrkwhr/flask-leaflet/blob/cccfdf98ef0d6205ac007bcfcb338decb9ec7c50/static/js/cctvMap.js">cctvMap.js 7–29행</a></li>
+<li><strong>운영 준비 — 위험</strong> 직접 실행 경로가 debug 모드로 모든 네트워크 인터페이스에 바인딩한다. 공개 환경에서 그 방식으로 시작하면 개발용 디버거가 노출될 수 있다. 실제 공개 실행 여부는 확인하지 않았다. <a href="https://github.com/kdkrkwhr/flask-leaflet/blob/cccfdf98ef0d6205ac007bcfcb338decb9ec7c50/app.py">app.py 25–26행</a></li>
+<li><strong>유지보수 — 보완 필요</strong> HTML의 인라인 이벤트와 전역 지도 상태가 결합돼 화면을 확장할 때 이벤트 흐름을 추적하기 어렵다. <a href="https://github.com/kdkrkwhr/flask-leaflet/blob/cccfdf98ef0d6205ac007bcfcb338decb9ec7c50/templates/page/cctv_map.html">cctv_map.html 21–52행</a> <a href="https://github.com/kdkrkwhr/flask-leaflet/blob/cccfdf98ef0d6205ac007bcfcb338decb9ec7c50/static/js/cctvMap.js">cctvMap.js 1–5행</a></li>
+</ul>
+<p><strong>좋은 점:</strong> 각 지도 예제의 입구가 작고 CCTV 레이어 조작 흐름이 보인다. <strong>개선 우선순위:</strong> P1 — 외부 노출용 실행 설정에서 debug를 끄고 바인딩을 제한한다. P2 — 타일 HTTPS와 지도 키 제한·교체 정책을 정한다.</p>
+<h2 id="section-3">화면 라우팅</h2>
 <p>README는 바람·3D·CCTV·원형 마커 지도를 소개한다. <code>app.py</code>는 <code>/page/wind</code>, <code>/page/heatDraw</code>, <code>/page/cluster</code>, <code>/page/cctv</code>, <code>/page/3d</code> 요청을 각각 Jinja 템플릿으로 보낸다. 데이터 API 서버라기보다 지도 데모 화면을 제공하는 얇은 Flask 계층이다. <a href="https://github.com/kdkrkwhr/flask-leaflet/blob/cccfdf98ef0d6205ac007bcfcb338decb9ec7c50/README.md">원본: `README.md`</a> <a href="https://github.com/kdkrkwhr/flask-leaflet/blob/cccfdf98ef0d6205ac007bcfcb338decb9ec7c50/app.py">원본: `app.py`</a></p>
-<h2 id="section-3">브라우저 지도 동작</h2>
+<h2 id="section-4">브라우저 지도 동작</h2>
 <p>CCTV 화면은 Leaflet 지도와 별도 JavaScript를 로드한다. <code>cctvMap.js</code>에는 여러 타일 레이어, 현재 위치 요청, 마커·GeoJSON 상태가 있다. 지도 타일과 위치 접근은 브라우저·외부 제공자 조건에 의존한다. <a href="https://github.com/kdkrkwhr/flask-leaflet/blob/cccfdf98ef0d6205ac007bcfcb338decb9ec7c50/templates/page/cctv_map.html">원본: `templates/page/cctv_map.html`</a> <a href="https://github.com/kdkrkwhr/flask-leaflet/blob/cccfdf98ef0d6205ac007bcfcb338decb9ec7c50/static/js/cctvMap.js">원본: `static/js/cctvMap.js`</a></p>
-<h2 id="section-4">공개 소스의 경계</h2>
+<h2 id="section-5">공개 소스의 경계</h2>
 <p>지도 코드에 공개 설정값과 서비스 URL이 있으나 이 문서는 키·정확한 기본 좌표를 복제하지 않는다. README의 그림은 결과 예시이고 현재 타일 제공자·브라우저에서 같은 화면이 열린다는 실행 증거는 아니다. <a href="https://github.com/kdkrkwhr/flask-leaflet/blob/cccfdf98ef0d6205ac007bcfcb338decb9ec7c50/README.md">원본: `README.md`</a> <a href="https://github.com/kdkrkwhr/flask-leaflet/blob/cccfdf98ef0d6205ac007bcfcb338decb9ec7c50/static/js/cctvMap.js">원본: `static/js/cctvMap.js`</a></p>
-<h2 id="section-5">확인 범위와 미확인 사항</h2>
+<h2 id="section-6">확인 범위와 미확인 사항</h2>
 <p>위 구현 설명은 표시한 커밋의 파일에서 확인한 사실과 정적 해석이다. 현재 배포·운영 상태, 실행 성공, 실제 사용량, 개인 선택 이유와 기여 범위는 확인하지 않았다.</p></article><section class="wiki-evidence"><h2>이 문서의 등록 근거</h2><ul><li><a href="https://github.com/kdkrkwhr/flask-leaflet/blob/cccfdf98ef0d6205ac007bcfcb338decb9ec7c50/README.md">flask-leaflet: README.md · cccfdf9</a></li>
 <li><a href="https://github.com/kdkrkwhr/flask-leaflet/blob/cccfdf98ef0d6205ac007bcfcb338decb9ec7c50/app.py">flask-leaflet: app.py · cccfdf9</a></li>
 <li><a href="https://github.com/kdkrkwhr/flask-leaflet/blob/cccfdf98ef0d6205ac007bcfcb338decb9ec7c50/templates/page/cctv_map.html">flask-leaflet: templates/page/cctv_map.html · cccfdf9</a></li>
 <li><a href="https://github.com/kdkrkwhr/flask-leaflet/blob/cccfdf98ef0d6205ac007bcfcb338decb9ec7c50/static/js/cctvMap.js">flask-leaflet: static/js/cctvMap.js · cccfdf9</a></li></ul><p><a href="markdown/flask-leaflet.md">Markdown 원문 보기</a> · 문장과 원본 파일을 사람이 대조했습니다.</p></section></main>
-    <aside class="wiki-outline" aria-label="본문 목차"><p class="eyebrow">ON THIS PAGE</p><nav><a href="#section-2">화면 라우팅</a>
-<a href="#section-3">브라우저 지도 동작</a>
-<a href="#section-4">공개 소스의 경계</a>
-<a href="#section-5">확인 범위와 미확인 사항</a></nav></aside>
+    <aside class="wiki-outline" aria-label="본문 목차"><p class="eyebrow">ON THIS PAGE</p><nav><a href="#section-2">냉정한 기술 평가</a>
+<a href="#section-3">화면 라우팅</a>
+<a href="#section-4">브라우저 지도 동작</a>
+<a href="#section-5">공개 소스의 경계</a>
+<a href="#section-6">확인 범위와 미확인 사항</a></nav></aside>
   </div>
   <footer>김동기 · 공개 근거 기반 개인 위키 <span>Graphify 분석 미실행</span></footer>
 </body>

@@ -82,12 +82,21 @@
 <a href="AgentRadio.html">AgentRadio fork 참조</a></nav></details></aside>
     <main id="article" class="wiki-main"><div class="search" aria-label="문서 검색"><label for="wiki-search">문서 검색</label><div class="search-row"><input id="wiki-search" type="search" placeholder="프로젝트, 기술, 근거 검색" aria-controls="search-results"><button id="clear-search" type="button">지우기</button></div><p id="search-status" class="muted" role="status" aria-live="polite">문서 본문에서 검색합니다. / 키로 검색창에 이동할 수 있어요.</p><ol id="search-results" hidden></ol></div><article class="wiki-article"><h1 id="section-1">hermes-team-hub: 정적 팀 로그와 로컬 실시간 화면</h1>
 <p>이 저장소는 PM·Dev·Infra·QA·Ops 역할별 입력 화면과 팀 로그를 보여 준다. 공개 README는 Pages를 <strong>정적 데모</strong>, <code>local/app.py</code>를 Hermes 칸반·프로필·Coral 상태를 읽는 <strong>로컬 실행형</strong>으로 구분한다. 같은 이름의 허브라도 데이터 출처가 다르므로 두 경로를 합쳐 실시간 서비스로 설명하지 않는다. <a href="https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/README.md">README</a></p>
-<h2 id="section-2">Pages 쪽의 기록 흐름</h2>
+<h2 id="section-2">냉정한 기술 평가</h2>
+<p><strong>평가일:</strong> 2026-10-28 · <strong>근거 커밋:</strong> <code>1406ee05e3ea21a9e0c53aa0856879c976cd3ac5</code>. 공개 소스의 정적 평가이며 실제 운영 결과나 개인의 기여 범위를 확정하지 않는다.</p>
+<ul>
+<li><strong>구조·설계 — 양호</strong> Pages의 브라우저 저장 기록과 로컬 서버의 Hermes 조회를 별도 경로로 둔다. <a href="https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/js/store.js">js/store.js 1–18행</a> <a href="https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/local/app.py">local/app.py 1–17행</a></li>
+<li><strong>구현 품질 — 보완 필요</strong> 정적 화면의 칸반 검색·상태 필터가 단일 전역 객체를 공유한다. 역할별 검색값을 저장해도 다른 역할로 이동할 때 필터 상태가 섞일 수 있다. <a href="https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/js/app.js">js/app.js 128–185행</a></li>
+<li><strong>운영 준비 — 미확인</strong> 로컬 서버의 프로필 기본 위치가 특정 PC 경로로 고정돼 있다. 다른 기기에서 실제 데이터를 읽을지는 설정과 실행 환경을 확인해야 한다. <a href="https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/local/app.py">local/app.py 29–31·233–239행</a></li>
+<li><strong>유지보수 — 보완 필요</strong> 정적 기록은 한 브라우저의 localStorage에만 저장된다. 팀 공유 기록으로 해석하지 않도록 데이터 범위와 백업 방법을 유지해야 한다. <a href="https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/js/store.js">js/store.js 6–31행</a></li>
+</ul>
+<p><strong>좋은 점:</strong> 정적 기록과 로컬 실시간 조회의 데이터 경계를 나눴다. <strong>개선 우선순위:</strong> P2 — 역할별 필터 상태를 분리하고 로컬 프로필 위치를 설정값으로 옮겨 화면 결과의 재현성을 높인다.</p>
+<h2 id="section-3">Pages 쪽의 기록 흐름</h2>
 <p><code>js/app.js</code>는 역할 탭과 대시보드를 렌더링한다. <code>js/store.js</code>의 <code>HubStore</code>는 <code>hermes-team-hub.logs.v1</code> 키로 입력한 기록을 브라우저 <code>localStorage</code>에 추가·조회·삭제하고 날짜·역할로 정렬한다. 이 데이터는 브라우저별 로컬 상태다. 다른 팀원의 기기와 자동 공유되는 DB가 아니다. <a href="https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/js/app.js">화면 로직</a> · <a href="https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/js/store.js">브라우저 저장소</a></p>
-<h2 id="section-3">로컬 실행형의 데이터 흐름</h2>
+<h2 id="section-4">로컬 실행형의 데이터 흐름</h2>
 <p><code>local/app.py</code>는 Python 표준 라이브러리 <code>ThreadingHTTPServer</code>를 루프백 주소에 바인딩한다. <code>/api/kanban</code>은 <code>hermes kanban list --json</code>을 호출해 결과를 변환하고 5초 메모리 캐시를 둔다. <code>/api/agents</code>는 프로필의 SOUL 문서에서 표시 정보를 읽고, <code>/api/coral</code>, <code>/api/logs</code> 등의 로컬 조회 경로가 있다. 일부 API는 로컬 JSON을 POST로 저장하며 허용된 Hermes 명령을 실행하는 경로도 있다. 이 코드는 개인 PC 자료를 다루므로 Pages 데모의 공개 데이터와 혼동해서는 안 된다. <a href="https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/local/app.py">로컬 HTTP 서버</a> · <a href="https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/README.md">README의 API 설명</a></p>
 <p><code>local/team_hub.py</code>는 <code>log</code>, <code>view</code>, <code>timeline</code>, <code>report</code>, <code>reset</code> 명령을 분기한다. 공통 모델의 <code>append_activity</code>는 역할을 검사하고 시각을 채워 <code>activities.jsonl</code>에 기록하며 <code>load_activities</code>는 날짜·역할·카드·태그 필터로 읽는다. JSONL 모델과 정적 Pages의 localStorage는 별도 저장 방식이다. <a href="https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/local/team_hub.py">CLI</a> · <a href="https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/local/team_hub/model.py">JSONL 모델</a></p>
-<h2 id="section-4">아직 확인하지 않은 연결</h2>
+<h2 id="section-5">아직 확인하지 않은 연결</h2>
 <p>README는 <a href="hermes-env.html">hermes-env</a>의 SOUL 파일로 소개 카드를 생성하는 연계를 예정이라고 표현한다. 이것은 완료된 자동 동기화의 근거가 아니다. 로컬 서버를 실행해 실제 Hermes·Coral 연결을 확인하지 않았고, 다른 기기 사이의 동기화도 검증하지 않았다. <a href="https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/README.md">연계 상태 원문</a></p>
 <p>기준 커밋은 <code>1406ee05e3ea21a9e0c53aa0856879c976cd3ac5</code>다. 역할·데이터 분리는 코드로 확인했지만, 김동기의 개인 담당 범위와 설계 선택 이유·운영 성과는 확인하지 못했다.</p></article><section class="wiki-evidence"><h2>이 문서의 등록 근거</h2><ul><li><a href="https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/README.md">hermes-team-hub · README.md · 1406ee0</a></li>
 <li><a href="https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/js/app.js">hermes-team-hub · js/app.js · 1406ee0</a></li>
@@ -95,9 +104,10 @@
 <li><a href="https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/local/app.py">hermes-team-hub · local/app.py · 1406ee0</a></li>
 <li><a href="https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/local/team_hub.py">hermes-team-hub · local/team_hub.py · 1406ee0</a></li>
 <li><a href="https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/local/team_hub/model.py">hermes-team-hub · local/team_hub/model.py · 1406ee0</a></li></ul><p><a href="markdown/hermes-team-hub.md">Markdown 원문 보기</a> · 문장과 원본 파일을 사람이 대조했습니다.</p></section></main>
-    <aside class="wiki-outline" aria-label="본문 목차"><p class="eyebrow">ON THIS PAGE</p><nav><a href="#section-2">Pages 쪽의 기록 흐름</a>
-<a href="#section-3">로컬 실행형의 데이터 흐름</a>
-<a href="#section-4">아직 확인하지 않은 연결</a></nav></aside>
+    <aside class="wiki-outline" aria-label="본문 목차"><p class="eyebrow">ON THIS PAGE</p><nav><a href="#section-2">냉정한 기술 평가</a>
+<a href="#section-3">Pages 쪽의 기록 흐름</a>
+<a href="#section-4">로컬 실행형의 데이터 흐름</a>
+<a href="#section-5">아직 확인하지 않은 연결</a></nav></aside>
   </div>
   <footer>김동기 · 공개 근거 기반 개인 위키 <span>Graphify 분석 미실행</span></footer>
 </body>

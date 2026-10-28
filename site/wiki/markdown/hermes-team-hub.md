@@ -5,6 +5,17 @@
 
 이 저장소는 PM·Dev·Infra·QA·Ops 역할별 입력 화면과 팀 로그를 보여 준다. 공개 README는 Pages를 **정적 데모**, `local/app.py`를 Hermes 칸반·프로필·Coral 상태를 읽는 **로컬 실행형**으로 구분한다. 같은 이름의 허브라도 데이터 출처가 다르므로 두 경로를 합쳐 실시간 서비스로 설명하지 않는다. [README](https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/README.md)
 
+## 냉정한 기술 평가
+
+**평가일:** 2026-10-28 · **근거 커밋:** `1406ee05e3ea21a9e0c53aa0856879c976cd3ac5`. 공개 소스의 정적 평가이며 실제 운영 결과나 개인의 기여 범위를 확정하지 않는다.
+
+- **구조·설계 — 양호** Pages의 브라우저 저장 기록과 로컬 서버의 Hermes 조회를 별도 경로로 둔다. [js/store.js 1–18행](https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/js/store.js) [local/app.py 1–17행](https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/local/app.py)
+- **구현 품질 — 보완 필요** 정적 화면의 칸반 검색·상태 필터가 단일 전역 객체를 공유한다. 역할별 검색값을 저장해도 다른 역할로 이동할 때 필터 상태가 섞일 수 있다. [js/app.js 128–185행](https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/js/app.js)
+- **운영 준비 — 미확인** 로컬 서버의 프로필 기본 위치가 특정 PC 경로로 고정돼 있다. 다른 기기에서 실제 데이터를 읽을지는 설정과 실행 환경을 확인해야 한다. [local/app.py 29–31·233–239행](https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/local/app.py)
+- **유지보수 — 보완 필요** 정적 기록은 한 브라우저의 localStorage에만 저장된다. 팀 공유 기록으로 해석하지 않도록 데이터 범위와 백업 방법을 유지해야 한다. [js/store.js 6–31행](https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/js/store.js)
+
+**좋은 점:** 정적 기록과 로컬 실시간 조회의 데이터 경계를 나눴다. **개선 우선순위:** P2 — 역할별 필터 상태를 분리하고 로컬 프로필 위치를 설정값으로 옮겨 화면 결과의 재현성을 높인다.
+
 ## Pages 쪽의 기록 흐름
 
 `js/app.js`는 역할 탭과 대시보드를 렌더링한다. `js/store.js`의 `HubStore`는 `hermes-team-hub.logs.v1` 키로 입력한 기록을 브라우저 `localStorage`에 추가·조회·삭제하고 날짜·역할로 정렬한다. 이 데이터는 브라우저별 로컬 상태다. 다른 팀원의 기기와 자동 공유되는 DB가 아니다. [화면 로직](https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/js/app.js) · [브라우저 저장소](https://github.com/kdkrkwhr/hermes-team-hub/blob/1406ee05e3ea21a9e0c53aa0856879c976cd3ac5/js/store.js)

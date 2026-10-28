@@ -5,6 +5,17 @@
 
 이 저장소는 옥션스팟의 Flutter 클라이언트 코드를 담는다. **루트 README는 기본 Flutter 시작 문구**라 서비스 기능의 증거로 쓰기 어렵다. 실제 구현은 루트 `lib/`와 `pubspec.yaml`에서 확인했다. 저장소 안의 `auction_spot/lib/main.dart`에는 별도의 기본 카운터 예제가 남아 있다. 어느 디렉터리를 실제 빌드·배포했는지는 정적 파일만으로 확정할 수 없으므로, 아래는 **루트 앱 코드의 흐름**이다. [루트 README](https://github.com/kdkrkwhr/auction-spot-front/blob/abb91bc2abe406e821c55f362e9f209ea61c2db9/README.md) · [루트 main.dart](https://github.com/kdkrkwhr/auction-spot-front/blob/abb91bc2abe406e821c55f362e9f209ea61c2db9/lib/main.dart) · [내부 시작 예제](https://github.com/kdkrkwhr/auction-spot-front/blob/abb91bc2abe406e821c55f362e9f209ea61c2db9/auction_spot/lib/main.dart)
 
+## 냉정한 기술 평가
+
+**평가일:** 2026-10-28 · **근거 커밋:** `abb91bc2abe406e821c55f362e9f209ea61c2db9`. 공개 소스의 정적 평가이며 실제 운영 결과나 개인의 기여 범위를 확정하지 않는다.
+
+- **구조·설계 — 양호** 라우터, 인증 HTTP 클라이언트, 경매 REST 저장소, STOMP 채널이 별도 파일로 분리돼 있다. [app_router.dart 15–72행](https://github.com/kdkrkwhr/auction-spot-front/blob/abb91bc2abe406e821c55f362e9f209ea61c2db9/lib/core/router/app_router.dart) [auction_repository.dart 8–72행](https://github.com/kdkrkwhr/auction-spot-front/blob/abb91bc2abe406e821c55f362e9f209ea61c2db9/lib/features/auction/data/auction_repository.dart)
+- **구현 품질 — 위험** 401 처리에서 같은 Dio 인스턴스로 토큰 갱신을 보내므로 갱신 요청도 같은 오류 인터셉터를 통과할 수 있다. 갱신 자체가 401인 경우 재진입·반복 요청 가능성을 코드에서 배제하지 못한다. [dio_client.dart의 onError, 46–77행](https://github.com/kdkrkwhr/auction-spot-front/blob/abb91bc2abe406e821c55f362e9f209ea61c2db9/lib/core/network/dio_client.dart)
+- **운영 준비 — 보완 필요** 요청·응답 본문 로깅이 실행 모드 조건 없이 등록된다. 인증 응답이나 사용 데이터가 진단 로그에 남을 수 있으므로 배포 설정에서 분리할 필요가 있다. 실제 로그 노출은 확인하지 않았다. [dio_client.dart 17–21행](https://github.com/kdkrkwhr/auction-spot-front/blob/abb91bc2abe406e821c55f362e9f209ea61c2db9/lib/core/network/dio_client.dart)
+- **유지보수 — 양호** API 경로와 응답 변환이 기능별 저장소에 모여 있다. [auction_repository.dart 13–67행](https://github.com/kdkrkwhr/auction-spot-front/blob/abb91bc2abe406e821c55f362e9f209ea61c2db9/lib/features/auction/data/auction_repository.dart)
+
+**좋은 점:** 화면·네트워크·실시간 이벤트의 모듈 경계가 읽힌다. **개선 우선순위:** P1 — 갱신 전용 클라이언트 또는 갱신 경로 제외·동시 요청 조정을 넣고, 본문 로그를 개발 모드로 제한한다. 이는 만료 시 요청 폭주와 민감 데이터 기록 가능성을 줄인다.
+
 ## 앱 진입과 화면 경로
 
 루트 `main.dart`는 Flutter 바인딩을 준비하고 Firebase 초기화를 시도한 뒤 Riverpod `ProviderScope`에서 앱을 시작한다. 초기화 오류는 debug 모드에서 기록하고 계속 진행한다. `app_router.dart`는 splash·onboarding·login과 홈, 물품 등록, 채팅, 마이페이지를 배치하며 `/item/:itemId`, `/auction/:auctionId`, `/chat/:roomId` 상세 경로를 둔다. 이는 화면 이동을 위한 코드 구조이지 각 기능의 실제 서비스 성공을 검증했다는 뜻은 아니다. [앱 진입](https://github.com/kdkrkwhr/auction-spot-front/blob/abb91bc2abe406e821c55f362e9f209ea61c2db9/lib/main.dart) · [라우터](https://github.com/kdkrkwhr/auction-spot-front/blob/abb91bc2abe406e821c55f362e9f209ea61c2db9/lib/core/router/app_router.dart)

@@ -39,6 +39,17 @@ AGENT HUB RADIO는 설치·로그인된 Claude Code, Codex CLI, Cursor Agent를 
 
 이 글은 README와 주요 코드를 `cfe0ac6b341f6edebbf25655fc2e7867492740bd`에서 정적으로 읽은 결과다. 설치·실행·실제 CLI 통합 테스트를 수행했다는 뜻은 아니다. 저장소의 공개 여부만으로 개인 담당 범위나 단독 기여를 추정하지 않는다.
 
+## 냉정한 기술 평가
+
+**평가일:** 2026-10-28 · **근거 커밋:** `cfe0ac6b341f6edebbf25655fc2e7867492740bd`. 공개 소스의 정적 평가이며 실제 운영 결과나 개인의 기여 범위를 확정하지 않는다.
+
+- **구조·설계 — 양호** 진입점, HTTP 경계, 지속 작업 엔진, CLI 어댑터가 분리돼 있다. [__main__.py 26–65행](https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/__main__.py) [server.py 11–21행](https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/server.py)
+- **구현 품질 — 양호** 서버는 루프백에 바인딩하고 Host·Origin·CSRF를 확인하며 요청 크기도 제한한다. 이는 로컬 사용 경계에 맞는 방어다. [server.py 15–26·68–75·114행](https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/server.py)
+- **운영 준비 — 양호** 로컬 도구라는 목적에 맞게 루프백 접근과 원격 인증 부재를 명시한다. 공개 프록시나 다중 사용자 서비스로 확장할 때는 인증·권한 경계를 새로 설계해야 한다. 현재 그런 운영을 한다는 뜻은 아니다. [SECURITY.md](https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/SECURITY.md)
+- **유지보수 — 보완 필요** 하나의 POST 분기에서 설정·토론·파이프라인·투표·메시지까지 처리해 기능 추가 시 변경 범위가 넓다. [server.py의 do_POST, 68–113행](https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/server.py)
+
+**좋은 점:** 실행 경계와 로컬 보안 가정이 코드에 드러난다. **개선 우선순위:** P2 — API 요청 검증과 라우트 처리기를 기능별로 나눠 변경 영향을 줄인다. 원격 제공은 별도 인증 설계 전까지 현재의 루프백 범위를 유지한다.
+
 ## 해결하려는 흐름과 모듈 경계
 
 `__main__.py`가 `chat` 명령, 데이터 위치, 인스턴스 잠금과 서버 시작을 다룬다. `server.py`는 정적 웹 화면과 JSON API를 제공하고 요청 출처와 CSRF 토큰을 검사한다. 작업의 지속 상태는 `engine.py`의 SQLite 큐에 저장된다. `adapters.py`는 사용 가능한 CLI를 찾고 공급자별 인자를 구성해 프로세스를 실행·취소하며 응답을 해석한다. [진입점](https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/__main__.py) · [HTTP 서버](https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/server.py) · [작업 엔진](https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/engine.py) · [CLI 어댑터](https://github.com/kdkrkwhr/agent-hub/blob/cfe0ac6b341f6edebbf25655fc2e7867492740bd/src/agent_hub/adapters.py)

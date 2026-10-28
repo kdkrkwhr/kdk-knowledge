@@ -5,6 +5,17 @@
 
 **분석 기준:** `9ea8df12f3c3becc5d9b66c4e3b8d796ca5b9645`. 이 문서는 공개 원본 파일을 정적으로 읽어 작성했다. 해당 프로젝트의 설치·실행·테스트를 수행하거나 개인 담당 범위·성과를 확인한 것은 아니다.
 
+## 냉정한 기술 평가
+
+**평가일:** 2026-10-28 · **근거 커밋:** `9ea8df12f3c3becc5d9b66c4e3b8d796ca5b9645`. 공개 소스의 정적 평가이며 실제 운영 결과나 개인의 기여 범위를 확정하지 않는다.
+
+- **구조·설계 — 미확인** Harbor 에이전트와 메시지 서버를 묶는 구조는 upstream 연구 코드다. 이 fork에서 계정 소유자의 별도 설계 변경을 확인하지 않았으므로 개인 구현 품질로 귀속하지 않는다. [coral_multi_agent.py 23–36·51–77행](https://github.com/kdkrkwhr/AgentRadio/blob/9ea8df12f3c3becc5d9b66c4e3b8d796ca5b9645/multi_agent/coral_multi_agent.py)
+- **구현 품질 — 미확인** 중단된 CLI를 답변 파일 기준으로 재개하는 래퍼는 읽었지만 이 fork의 독자 변경이나 실험 재현 결과는 확인되지 않았다. [resume_guard.py 29–53행](https://github.com/kdkrkwhr/AgentRadio/blob/9ea8df12f3c3becc5d9b66c4e3b8d796ca5b9645/multi_agent/resume_guard.py)
+- **운영 준비 — 미확인** 연구 재현 경로는 컨테이너·외부 CLI·메시지 서버를 요구한다. 포크 참조를 개인 서비스 운영으로 평가하지 않는다. [coral_multi_agent.py 51–115행](https://github.com/kdkrkwhr/AgentRadio/blob/9ea8df12f3c3becc5d9b66c4e3b8d796ca5b9645/multi_agent/coral_multi_agent.py)
+- **유지보수 — 미확인** 기본 브랜치의 독자 커밋이 확인되지 않은 참조 fork라 계정 고유 유지보수 경로를 판정할 근거가 없다. [README.md 1–25행](https://github.com/kdkrkwhr/AgentRadio/blob/9ea8df12f3c3becc5d9b66c4e3b8d796ca5b9645/README.md)
+
+**좋은 점:** 연구 코드와 별도 [AGENT HUB](agent-hub.md)를 구분해 읽을 수 있다. **개선 우선순위:** P3 — 실제 활용 목적이 생기면 upstream 기준 버전·재현 범위·fork 변경분을 별도 기록한다. 이는 확인된 결함이 아니라 귀속 오류를 막는 제안이다.
+
 ## 원본 연구와 코드
 
 GitHub fork 메타데이터의 원본은 `Coral-Protocol/AgentRadio`다. README는 여러 코딩 에이전트의 수동적 메시지 수신을 평가하는 연구 코드와 데이터라고 설명한다. `multi_agent/coral_multi_agent.py`는 Harbor 에이전트로 메시지 서버·다중 CLI를 설치하고 실행하는 경로를 정의하며 `resume_guard.py`는 중단된 CLI를 답변 파일이 생길 때까지 재개하는 래퍼를 만든다. 이 코드는 읽기만 했고 실험 결과를 재현하지 않았다.

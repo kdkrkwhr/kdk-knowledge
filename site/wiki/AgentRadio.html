@@ -82,23 +82,33 @@
 <a href="AgentRadio.html" aria-current="page">AgentRadio fork 참조</a></nav></details></aside>
     <main id="article" class="wiki-main"><div class="search" aria-label="문서 검색"><label for="wiki-search">문서 검색</label><div class="search-row"><input id="wiki-search" type="search" placeholder="프로젝트, 기술, 근거 검색" aria-controls="search-results"><button id="clear-search" type="button">지우기</button></div><p id="search-status" class="muted" role="status" aria-live="polite">문서 본문에서 검색합니다. / 키로 검색창에 이동할 수 있어요.</p><ol id="search-results" hidden></ol></div><article class="wiki-article"><h1 id="section-1">AgentRadio fork 참조</h1>
 <p><strong>분석 기준:</strong> <code>9ea8df12f3c3becc5d9b66c4e3b8d796ca5b9645</code>. 이 문서는 공개 원본 파일을 정적으로 읽어 작성했다. 해당 프로젝트의 설치·실행·테스트를 수행하거나 개인 담당 범위·성과를 확인한 것은 아니다.</p>
-<h2 id="section-2">원본 연구와 코드</h2>
+<h2 id="section-2">냉정한 기술 평가</h2>
+<p><strong>평가일:</strong> 2026-10-28 · <strong>근거 커밋:</strong> <code>9ea8df12f3c3becc5d9b66c4e3b8d796ca5b9645</code>. 공개 소스의 정적 평가이며 실제 운영 결과나 개인의 기여 범위를 확정하지 않는다.</p>
+<ul>
+<li><strong>구조·설계 — 미확인</strong> Harbor 에이전트와 메시지 서버를 묶는 구조는 upstream 연구 코드다. 이 fork에서 계정 소유자의 별도 설계 변경을 확인하지 않았으므로 개인 구현 품질로 귀속하지 않는다. <a href="https://github.com/kdkrkwhr/AgentRadio/blob/9ea8df12f3c3becc5d9b66c4e3b8d796ca5b9645/multi_agent/coral_multi_agent.py">coral_multi_agent.py 23–36·51–77행</a></li>
+<li><strong>구현 품질 — 미확인</strong> 중단된 CLI를 답변 파일 기준으로 재개하는 래퍼는 읽었지만 이 fork의 독자 변경이나 실험 재현 결과는 확인되지 않았다. <a href="https://github.com/kdkrkwhr/AgentRadio/blob/9ea8df12f3c3becc5d9b66c4e3b8d796ca5b9645/multi_agent/resume_guard.py">resume_guard.py 29–53행</a></li>
+<li><strong>운영 준비 — 미확인</strong> 연구 재현 경로는 컨테이너·외부 CLI·메시지 서버를 요구한다. 포크 참조를 개인 서비스 운영으로 평가하지 않는다. <a href="https://github.com/kdkrkwhr/AgentRadio/blob/9ea8df12f3c3becc5d9b66c4e3b8d796ca5b9645/multi_agent/coral_multi_agent.py">coral_multi_agent.py 51–115행</a></li>
+<li><strong>유지보수 — 미확인</strong> 기본 브랜치의 독자 커밋이 확인되지 않은 참조 fork라 계정 고유 유지보수 경로를 판정할 근거가 없다. <a href="https://github.com/kdkrkwhr/AgentRadio/blob/9ea8df12f3c3becc5d9b66c4e3b8d796ca5b9645/README.md">README.md 1–25행</a></li>
+</ul>
+<p><strong>좋은 점:</strong> 연구 코드와 별도 <a href="agent-hub.html">AGENT HUB</a>를 구분해 읽을 수 있다. <strong>개선 우선순위:</strong> P3 — 실제 활용 목적이 생기면 upstream 기준 버전·재현 범위·fork 변경분을 별도 기록한다. 이는 확인된 결함이 아니라 귀속 오류를 막는 제안이다.</p>
+<h2 id="section-3">원본 연구와 코드</h2>
 <p>GitHub fork 메타데이터의 원본은 <code>Coral-Protocol/AgentRadio</code>다. README는 여러 코딩 에이전트의 수동적 메시지 수신을 평가하는 연구 코드와 데이터라고 설명한다. <code>multi_agent/coral_multi_agent.py</code>는 Harbor 에이전트로 메시지 서버·다중 CLI를 설치하고 실행하는 경로를 정의하며 <code>resume_guard.py</code>는 중단된 CLI를 답변 파일이 생길 때까지 재개하는 래퍼를 만든다. 이 코드는 읽기만 했고 실험 결과를 재현하지 않았다. <a href="https://github.com/kdkrkwhr/AgentRadio/blob/9ea8df12f3c3becc5d9b66c4e3b8d796ca5b9645/README.md">원본: `README.md`</a> <a href="https://github.com/kdkrkwhr/AgentRadio/blob/9ea8df12f3c3becc5d9b66c4e3b8d796ca5b9645/multi_agent/coral_multi_agent.py">원본: `multi_agent/coral_multi_agent.py`</a> <a href="https://github.com/kdkrkwhr/AgentRadio/blob/9ea8df12f3c3becc5d9b66c4e3b8d796ca5b9645/multi_agent/resume_guard.py">원본: `multi_agent/resume_guard.py`</a></p>
-<h2 id="section-3">기여 구분</h2>
+<h2 id="section-4">기여 구분</h2>
 <p>2026-10-27 공개 GitHub compare에서는 fork 기본 브랜치가 upstream <code>main</code>보다 뒤에 있고 앞선 커밋은 0개였다. fork 자체나 원본 README에 인용된 수치를 계정 소유자의 직접 기여·실험 성과로 귀속하지 않는다. 다른 브랜치·PR 활동은 이 비교만으로 배제할 수 없다. <a href="https://github.com/kdkrkwhr/AgentRadio/blob/9ea8df12f3c3becc5d9b66c4e3b8d796ca5b9645/README.md">원본: `README.md`</a></p>
-<h2 id="section-4">사용 경계</h2>
+<h2 id="section-5">사용 경계</h2>
 <p>재현 스크립트는 컨테이너·외부 모델·서비스 자격 증명 등을 요구할 수 있다. 이 위키 문서 작성을 위해 설치하거나 실행하지 않았다. <a href="https://github.com/kdkrkwhr/AgentRadio/blob/9ea8df12f3c3becc5d9b66c4e3b8d796ca5b9645/multi_agent/coral_multi_agent.py">원본: `multi_agent/coral_multi_agent.py`</a></p>
-<h2 id="section-5">연결해서 읽기</h2>
+<h2 id="section-6">연결해서 읽기</h2>
 <p><a href="agent-hub.html">AGENT HUB</a>는 별도 로컬 협업 프로젝트이며 연구 fork의 수치와 혼동하지 않는다.</p>
-<h2 id="section-6">확인 범위와 미확인 사항</h2>
+<h2 id="section-7">확인 범위와 미확인 사항</h2>
 <p>위 구현 설명은 표시한 커밋의 파일에서 확인한 사실과 정적 해석이다. 현재 배포·운영 상태, 실행 성공, 실제 사용량, 개인 선택 이유와 기여 범위는 확인하지 않았다.</p></article><section class="wiki-evidence"><h2>이 문서의 등록 근거</h2><ul><li><a href="https://github.com/kdkrkwhr/AgentRadio/blob/9ea8df12f3c3becc5d9b66c4e3b8d796ca5b9645/README.md">AgentRadio: README.md · 9ea8df1</a></li>
 <li><a href="https://github.com/kdkrkwhr/AgentRadio/blob/9ea8df12f3c3becc5d9b66c4e3b8d796ca5b9645/multi_agent/coral_multi_agent.py">AgentRadio: multi_agent/coral_multi_agent.py · 9ea8df1</a></li>
 <li><a href="https://github.com/kdkrkwhr/AgentRadio/blob/9ea8df12f3c3becc5d9b66c4e3b8d796ca5b9645/multi_agent/resume_guard.py">AgentRadio: multi_agent/resume_guard.py · 9ea8df1</a></li></ul><p><a href="markdown/AgentRadio.md">Markdown 원문 보기</a> · 문장과 원본 파일을 사람이 대조했습니다.</p></section></main>
-    <aside class="wiki-outline" aria-label="본문 목차"><p class="eyebrow">ON THIS PAGE</p><nav><a href="#section-2">원본 연구와 코드</a>
-<a href="#section-3">기여 구분</a>
-<a href="#section-4">사용 경계</a>
-<a href="#section-5">연결해서 읽기</a>
-<a href="#section-6">확인 범위와 미확인 사항</a></nav></aside>
+    <aside class="wiki-outline" aria-label="본문 목차"><p class="eyebrow">ON THIS PAGE</p><nav><a href="#section-2">냉정한 기술 평가</a>
+<a href="#section-3">원본 연구와 코드</a>
+<a href="#section-4">기여 구분</a>
+<a href="#section-5">사용 경계</a>
+<a href="#section-6">연결해서 읽기</a>
+<a href="#section-7">확인 범위와 미확인 사항</a></nav></aside>
   </div>
   <footer>김동기 · 공개 근거 기반 개인 위키 <span>Graphify 분석 미실행</span></footer>
 </body>

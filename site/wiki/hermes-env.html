@@ -82,21 +82,31 @@
 <a href="AgentRadio.html">AgentRadio fork 참조</a></nav></details></aside>
     <main id="article" class="wiki-main"><div class="search" aria-label="문서 검색"><label for="wiki-search">문서 검색</label><div class="search-row"><input id="wiki-search" type="search" placeholder="프로젝트, 기술, 근거 검색" aria-controls="search-results"><button id="clear-search" type="button">지우기</button></div><p id="search-status" class="muted" role="status" aria-live="polite">문서 본문에서 검색합니다. / 키로 검색창에 이동할 수 있어요.</p><ol id="search-results" hidden></ol></div><article class="wiki-article"><h1 id="section-1">hermes-env: 작업 환경을 다시 구성하는 부트스트랩</h1>
 <p>이 저장소는 제품 코드나 개인 메모리의 복사본이 아니라 Hermes 작업 환경의 <strong>디렉터리 구조, 프로필 설정 템플릿, 스킬, 운영 규칙</strong>을 담는다. README는 프로젝트 코드·SSoT 본문·시크릿 값은 포함하지 않는다고 구분한다. 이 문서는 <code>bootstrap.sh</code>가 실제로 어떤 파일을 만들거나 보존하는지 읽었다. 스크립트는 실행하지 않았다. <a href="https://github.com/kdkrkwhr/hermes-env/blob/ecf8b93ec6e7003bfd640f67b3cb90e25ad61b39/README.md">저장소 설명</a> · <a href="https://github.com/kdkrkwhr/hermes-env/blob/ecf8b93ec6e7003bfd640f67b3cb90e25ad61b39/bootstrap.sh">부트스트랩 코드</a></p>
-<h2 id="section-2">입력과 배치 경계</h2>
+<h2 id="section-2">냉정한 기술 평가</h2>
+<p><strong>평가일:</strong> 2026-10-28 · <strong>근거 커밋:</strong> <code>ecf8b93ec6e7003bfd640f67b3cb90e25ad61b39</code>. 공개 소스의 정적 평가이며 실제 운영 결과나 개인의 기여 범위를 확정하지 않는다.</p>
+<ul>
+<li><strong>구조·설계 — 양호</strong> 입력 경로·선택 기능·확인 전용 모드를 구분하고 기존 설정과 시크릿 파일은 기본적으로 보존한다. <a href="https://github.com/kdkrkwhr/hermes-env/blob/ecf8b93ec6e7003bfd640f67b3cb90e25ad61b39/bootstrap.sh">bootstrap.sh 17–47·128–185행</a></li>
+<li><strong>구현 품질 — 보완 필요</strong> 경로를 sed 치환식에 그대로 넣고 확인 모드에서 경로를 포함한 문자열을 eval로 실행한다. 구분자나 따옴표가 들어간 경로에서는 치환·검사가 깨질 수 있다. <a href="https://github.com/kdkrkwhr/hermes-env/blob/ecf8b93ec6e7003bfd640f67b3cb90e25ad61b39/bootstrap.sh">bootstrap.sh의 subst·doctor, 69–115행</a></li>
+<li><strong>운영 준비 — 미확인</strong> 일반 실행은 Hermes 설치 스크립트를 호출하며 선택 옵션은 추가 설치·연동을 수행한다. 실제 Mac 환경에서의 완료 상태는 이 정적 평가로 확인하지 않는다. <a href="https://github.com/kdkrkwhr/hermes-env/blob/ecf8b93ec6e7003bfd640f67b3cb90e25ad61b39/bootstrap.sh">bootstrap.sh 134–140·187–205행</a></li>
+<li><strong>유지보수 — 양호</strong> 단계별 출력과 완료/미완료 판정이 있어 구성 절차를 추적하기 쉽다. <a href="https://github.com/kdkrkwhr/hermes-env/blob/ecf8b93ec6e7003bfd640f67b3cb90e25ad61b39/bootstrap.sh">bootstrap.sh의 doctor, 95–115·204–208행</a></li>
+</ul>
+<p><strong>좋은 점:</strong> 선택 기능을 명시적 플래그로 제한하고 기존 파일 보존을 기본으로 삼았다. <strong>개선 우선순위:</strong> P2 — 경로 치환을 문자열 대체 API로 바꾸고 eval 없는 파일 검사를 사용하면 특수문자 경로에서도 예측 가능해진다.</p>
+<h2 id="section-3">입력과 배치 경계</h2>
 <p>스크립트는 프로젝트 코드 루트와 E2E 루트를 받고, Hermes 홈은 기본값을 둘 수 있다. 비대화형 환경에서 필수 경로가 없으면 실패한다. 정상 실행 경로에서는 디렉터리를 만들고, Hermes CLI가 없다면 설치 래퍼를 호출한다. 그 뒤 config 템플릿의 경로 플레이스홀더를 치환하고, 역할별 <code>pm/dev/infra/qa/ops</code> 설정을 배치한다. <code>--ssot-url</code>이 지정되고 대상 폴더가 비어 있을 때만 별도 SSoT를 clone한다. <a href="https://github.com/kdkrkwhr/hermes-env/blob/ecf8b93ec6e7003bfd640f67b3cb90e25ad61b39/bootstrap.sh">옵션·단계 구현</a> · <a href="https://github.com/kdkrkwhr/hermes-env/blob/ecf8b93ec6e7003bfd640f67b3cb90e25ad61b39/AGENT_BOOTSTRAP.md">에이전트용 절차</a></p>
 <p>기존 <code>config.yaml</code>, 역할 config, <code>.env.local</code>은 건너뛰도록 구현돼 있다. 반면 <code>--with-souls</code>는 SOUL 파일 덮어쓰기를 명시적으로 선택하고, 스킬 복사는 <code>cp -r</code>로 진행한다. 따라서 README의 멱등 설명을 <strong>모든 파일이 변경되지 않는다는 뜻</strong>으로 확대하지 않는다. <code>--with-coral</code>은 선택적 설치·셋업 경로이며 기본 실행과 구분한다. <a href="https://github.com/kdkrkwhr/hermes-env/blob/ecf8b93ec6e7003bfd640f67b3cb90e25ad61b39/bootstrap.sh">파일 복사 조건</a></p>
-<h2 id="section-3">검증 모드와 설정의 역할</h2>
+<h2 id="section-4">검증 모드와 설정의 역할</h2>
 <p><code>--check</code>는 설치·복사 단계 전에 <code>doctor</code>를 실행하고, 지정 디렉터리, CLI, config, 스킬, <code>.env.local</code>, 역할별 config의 존재를 확인한다. 실제 기능 통합 테스트가 아니라 로컬 파일 상태 점검이다. <code>hermes/config.yaml.template</code>는 모델·프로바이더·API 키 값 대신 워크플로 설정과 경로 힌트를 제공한다. <a href="https://github.com/kdkrkwhr/hermes-env/blob/ecf8b93ec6e7003bfd640f67b3cb90e25ad61b39/bootstrap.sh">검증 구현</a> · <a href="https://github.com/kdkrkwhr/hermes-env/blob/ecf8b93ec6e7003bfd640f67b3cb90e25ad61b39/hermes/config.yaml.template">설정 템플릿</a></p>
 <p><a href="https://github.com/kdkrkwhr/hermes-env/blob/ecf8b93ec6e7003bfd640f67b3cb90e25ad61b39/docs/conventions.md">컨벤션 문서</a>는 코드 저장소, SSoT, 보고서, 시크릿 파일의 위치를 구분한다. 이것은 다른 도구가 자동으로 강제하는 보안 경계가 아니라, 부트스트랩과 사용자가 유지해야 할 운영 규칙이다. <a href="agent-hub.html">AGENT HUB</a>처럼 CLI 작업을 수행하는 도구와 달리, 이 저장소의 중심 기능은 환경을 구성하는 과정이다.</p>
-<h2 id="section-4">확인 범위와 미확인 사항</h2>
+<h2 id="section-5">확인 범위와 미확인 사항</h2>
 <p>검토한 판은 <code>ecf8b93ec6e7003bfd640f67b3cb90e25ad61b39</code>다. 머신에서 부트스트랩·Hermes CLI 설치·Coral 연결을 실행하거나 확인하지 않았다. 개인이 이 구조를 택한 이유, 여러 머신에서의 재현 성공률, 실제 시크릿 관리 상태도 공개 파일만으로 확정할 수 없다. 원본의 경로 예시는 이 공개 위키에 재노출하지 않는다.</p></article><section class="wiki-evidence"><h2>이 문서의 등록 근거</h2><ul><li><a href="https://github.com/kdkrkwhr/hermes-env/blob/ecf8b93ec6e7003bfd640f67b3cb90e25ad61b39/README.md">hermes-env · README.md · ecf8b93</a></li>
 <li><a href="https://github.com/kdkrkwhr/hermes-env/blob/ecf8b93ec6e7003bfd640f67b3cb90e25ad61b39/bootstrap.sh">hermes-env · bootstrap.sh · ecf8b93</a></li>
 <li><a href="https://github.com/kdkrkwhr/hermes-env/blob/ecf8b93ec6e7003bfd640f67b3cb90e25ad61b39/AGENT_BOOTSTRAP.md">hermes-env · AGENT_BOOTSTRAP.md · ecf8b93</a></li>
 <li><a href="https://github.com/kdkrkwhr/hermes-env/blob/ecf8b93ec6e7003bfd640f67b3cb90e25ad61b39/hermes/config.yaml.template">hermes-env · hermes/config.yaml.template · ecf8b93</a></li>
 <li><a href="https://github.com/kdkrkwhr/hermes-env/blob/ecf8b93ec6e7003bfd640f67b3cb90e25ad61b39/docs/conventions.md">hermes-env · docs/conventions.md · ecf8b93</a></li></ul><p><a href="markdown/hermes-env.md">Markdown 원문 보기</a> · 문장과 원본 파일을 사람이 대조했습니다.</p></section></main>
-    <aside class="wiki-outline" aria-label="본문 목차"><p class="eyebrow">ON THIS PAGE</p><nav><a href="#section-2">입력과 배치 경계</a>
-<a href="#section-3">검증 모드와 설정의 역할</a>
-<a href="#section-4">확인 범위와 미확인 사항</a></nav></aside>
+    <aside class="wiki-outline" aria-label="본문 목차"><p class="eyebrow">ON THIS PAGE</p><nav><a href="#section-2">냉정한 기술 평가</a>
+<a href="#section-3">입력과 배치 경계</a>
+<a href="#section-4">검증 모드와 설정의 역할</a>
+<a href="#section-5">확인 범위와 미확인 사항</a></nav></aside>
   </div>
   <footer>김동기 · 공개 근거 기반 개인 위키 <span>Graphify 분석 미실행</span></footer>
 </body>

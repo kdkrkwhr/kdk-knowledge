@@ -81,24 +81,34 @@
 <a href="hermes-agent.html">Hermes Agent fork 변경 범위</a>
 <a href="AgentRadio.html">AgentRadio fork 참조</a></nav></details></aside>
     <main id="article" class="wiki-main"><div class="search" aria-label="문서 검색"><label for="wiki-search">문서 검색</label><div class="search-row"><input id="wiki-search" type="search" placeholder="프로젝트, 기술, 근거 검색" aria-controls="search-results"><button id="clear-search" type="button">지우기</button></div><p id="search-status" class="muted" role="status" aria-live="polite">문서 본문에서 검색합니다. / 키로 검색창에 이동할 수 있어요.</p><ol id="search-results" hidden></ol></div><article class="wiki-article"><h1 id="section-1">중앙 지식 허브 구현</h1>
-<p><strong>분석 기준:</strong> <code>518ccf03c2b798b64e628eb7e3332561345155ef</code>. 이 문서는 공개 원본 파일을 정적으로 읽어 작성했다. 해당 프로젝트의 설치·실행·테스트를 수행하거나 개인 담당 범위·성과를 확인한 것은 아니다.</p>
-<h2 id="section-2">편집 원본과 생성물</h2>
-<p>README는 <code>docs/wiki/*.md</code>를 사람이 읽고 수정하는 원본으로 지정한다. <code>scripts/build_wiki.py</code>가 front matter와 본문을 읽어 정적 HTML·Markdown 원본 복사·검색 인덱스·관계 JSON을 생성한다. 현재 문서와 지도는 원본 저장소의 동작에 대한 사람이 쓴 설명이며 원본 저장소를 자동 변경하지 않는다. <a href="https://github.com/kdkrkwhr/kdk-knowledge/blob/518ccf03c2b798b64e628eb7e3332561345155ef/README.md">원본: `README.md`</a> <a href="https://github.com/kdkrkwhr/kdk-knowledge/blob/518ccf03c2b798b64e628eb7e3332561345155ef/scripts/build_wiki.py">원본: `scripts/build_wiki.py`</a></p>
-<h2 id="section-3">검증 경계</h2>
-<p><code>scripts/validate.py</code>는 등록된 근거 URL의 저장소·커밋·경로 일치, 공개 여부, 문서 링크와 관계 근거를 검사한다. 이 검사는 원본 코드 실행이나 진술의 의미적 진실 전체를 자동 판정하지 않는다. 관계는 편집 데이터이며 Graphify 추출은 아직 수행하지 않았다. <a href="https://github.com/kdkrkwhr/kdk-knowledge/blob/518ccf03c2b798b64e628eb7e3332561345155ef/scripts/validate.py">원본: `scripts/validate.py`</a> <a href="https://github.com/kdkrkwhr/kdk-knowledge/blob/518ccf03c2b798b64e628eb7e3332561345155ef/README.md">원본: `README.md`</a></p>
-<h2 id="section-4">버전 기준</h2>
-<p>이 문서는 허브 자체의 첫 공개 Markdown 빌드 시점인 고정 커밋을 근거로 한다. 이후 문서가 늘어나더라도 기존 커밋의 구현 설명과 현재 사이트 산출물은 별도 시점일 수 있다. <a href="https://github.com/kdkrkwhr/kdk-knowledge/blob/518ccf03c2b798b64e628eb7e3332561345155ef/README.md">원본: `README.md`</a> <a href="https://github.com/kdkrkwhr/kdk-knowledge/blob/518ccf03c2b798b64e628eb7e3332561345155ef/scripts/build_wiki.py">원본: `scripts/build_wiki.py`</a></p>
-<h2 id="section-5">연결해서 읽기</h2>
+<p><strong>분석 기준:</strong> <code>300e554c442c86522e121f7b17dd3ba738fcacd4</code>. 이 문서는 공개 원본 파일을 정적으로 읽어 작성했다. 해당 프로젝트의 설치·실행·테스트를 수행하거나 개인 담당 범위·성과를 확인한 것은 아니다.</p>
+<h2 id="section-2">냉정한 기술 평가</h2>
+<p><strong>평가일:</strong> 2026-10-28 · <strong>근거 커밋:</strong> <code>300e554c442c86522e121f7b17dd3ba738fcacd4</code>. 공개 소스의 정적 평가이며 실제 운영 결과나 개인의 기여 범위를 확정하지 않는다.</p>
+<ul>
+<li><strong>구조·설계 — 양호</strong> Markdown 원본에서 HTML·검색 색인·관계 데이터를 함께 만들어 서로 다른 화면의 내용 기준을 맞춘다. <a href="https://github.com/kdkrkwhr/kdk-knowledge/blob/300e554c442c86522e121f7b17dd3ba738fcacd4/scripts/build_wiki.py">build_wiki.py의 build, 121–183행</a></li>
+<li><strong>구현 품질 — 보완 필요</strong> 간단한 Markdown 파서는 제목·평면 목록·링크·코드만 처리한다. 중첩 목록이나 표를 추가하면 구조가 예상과 다르게 평문 처리될 수 있다. 현재 문서의 지원 구문은 README에 명시돼 있다. <a href="https://github.com/kdkrkwhr/kdk-knowledge/blob/300e554c442c86522e121f7b17dd3ba738fcacd4/scripts/build_wiki.py">build_wiki.py의 render_markdown, 54–118행</a></li>
+<li><strong>운영 준비 — 양호</strong> 공개 산출물 범위를 제한하고 등록 근거의 커밋·경로·공개 여부를 검사하는 경계가 있다. 이는 서술의 의미적 정확성까지 보증하지는 않는다. <a href="https://github.com/kdkrkwhr/kdk-knowledge/blob/300e554c442c86522e121f7b17dd3ba738fcacd4/scripts/validate.py">validate.py 18–69행</a></li>
+<li><strong>유지보수 — 보완 필요</strong> 근거 ID·본문 링크·관계는 사람이 같이 갱신해야 하므로 원본 변경 후 문장 대조를 놓칠 수 있다. 자동 생성은 편집의 대체가 아니다. <a href="https://github.com/kdkrkwhr/kdk-knowledge/blob/300e554c442c86522e121f7b17dd3ba738fcacd4/README.md">README.md 16–24행</a></li>
+</ul>
+<p><strong>좋은 점:</strong> 출처 고정과 사람의 해설을 분리한 구조가 명확하다. <strong>개선 우선순위:</strong> P2 — 지원하지 않는 Markdown 구조를 빌드에서 명확히 거부하고, 원본 커밋 변경 시 문장 대조 항목을 기록하면 조용한 표시 오류와 낡은 설명을 줄인다.</p>
+<h2 id="section-3">편집 원본과 생성물</h2>
+<p>README는 <code>docs/wiki/*.md</code>를 사람이 읽고 수정하는 원본으로 지정한다. <code>scripts/build_wiki.py</code>가 front matter와 본문을 읽어 정적 HTML·Markdown 원본 복사·검색 인덱스·관계 JSON을 생성한다. 현재 문서와 지도는 원본 저장소의 동작에 대한 사람이 쓴 설명이며 원본 저장소를 자동 변경하지 않는다. <a href="https://github.com/kdkrkwhr/kdk-knowledge/blob/300e554c442c86522e121f7b17dd3ba738fcacd4/README.md">원본: `README.md`</a> <a href="https://github.com/kdkrkwhr/kdk-knowledge/blob/300e554c442c86522e121f7b17dd3ba738fcacd4/scripts/build_wiki.py">원본: `scripts/build_wiki.py`</a></p>
+<h2 id="section-4">검증 경계</h2>
+<p><code>scripts/validate.py</code>는 등록된 근거 URL의 저장소·커밋·경로 일치, 공개 여부, 문서 링크와 관계 근거를 검사한다. 이 검사는 원본 코드 실행이나 진술의 의미적 진실 전체를 자동 판정하지 않는다. 관계는 편집 데이터이며 Graphify 추출은 아직 수행하지 않았다. <a href="https://github.com/kdkrkwhr/kdk-knowledge/blob/300e554c442c86522e121f7b17dd3ba738fcacd4/scripts/validate.py">원본: `scripts/validate.py`</a> <a href="https://github.com/kdkrkwhr/kdk-knowledge/blob/300e554c442c86522e121f7b17dd3ba738fcacd4/README.md">원본: `README.md`</a></p>
+<h2 id="section-5">버전 기준</h2>
+<p>이 문서는 평가 작성 직전 공개된 고정 커밋을 근거로 한다. 이후 문서가 늘어나더라도 이 커밋의 구현 설명과 현재 사이트 산출물은 별도 시점일 수 있다. <a href="https://github.com/kdkrkwhr/kdk-knowledge/blob/300e554c442c86522e121f7b17dd3ba738fcacd4/README.md">원본: `README.md`</a> <a href="https://github.com/kdkrkwhr/kdk-knowledge/blob/300e554c442c86522e121f7b17dd3ba738fcacd4/scripts/build_wiki.py">원본: `scripts/build_wiki.py`</a></p>
+<h2 id="section-6">연결해서 읽기</h2>
 <p><a href="maintenance.html">문서 갱신 절차</a>가 새로운 근거를 등록하는 방법을, <a href="repositories.html">공개 저장소 목록</a>이 범위를 설명한다.</p>
-<h2 id="section-6">확인 범위와 미확인 사항</h2>
-<p>위 구현 설명은 표시한 커밋의 파일에서 확인한 사실과 정적 해석이다. 현재 배포·운영 상태, 실행 성공, 실제 사용량, 개인 선택 이유와 기여 범위는 확인하지 않았다.</p></article><section class="wiki-evidence"><h2>이 문서의 등록 근거</h2><ul><li><a href="https://github.com/kdkrkwhr/kdk-knowledge/blob/518ccf03c2b798b64e628eb7e3332561345155ef/README.md">kdk-knowledge: README.md · 518ccf0</a></li>
-<li><a href="https://github.com/kdkrkwhr/kdk-knowledge/blob/518ccf03c2b798b64e628eb7e3332561345155ef/scripts/build_wiki.py">kdk-knowledge: scripts/build_wiki.py · 518ccf0</a></li>
-<li><a href="https://github.com/kdkrkwhr/kdk-knowledge/blob/518ccf03c2b798b64e628eb7e3332561345155ef/scripts/validate.py">kdk-knowledge: scripts/validate.py · 518ccf0</a></li></ul><p><a href="markdown/kdk-knowledge.md">Markdown 원문 보기</a> · 문장과 원본 파일을 사람이 대조했습니다.</p></section></main>
-    <aside class="wiki-outline" aria-label="본문 목차"><p class="eyebrow">ON THIS PAGE</p><nav><a href="#section-2">편집 원본과 생성물</a>
-<a href="#section-3">검증 경계</a>
-<a href="#section-4">버전 기준</a>
-<a href="#section-5">연결해서 읽기</a>
-<a href="#section-6">확인 범위와 미확인 사항</a></nav></aside>
+<h2 id="section-7">확인 범위와 미확인 사항</h2>
+<p>위 구현 설명은 표시한 커밋의 파일에서 확인한 사실과 정적 해석이다. 현재 배포·운영 상태, 실행 성공, 실제 사용량, 개인 선택 이유와 기여 범위는 확인하지 않았다.</p></article><section class="wiki-evidence"><h2>이 문서의 등록 근거</h2><ul><li><a href="https://github.com/kdkrkwhr/kdk-knowledge/blob/300e554c442c86522e121f7b17dd3ba738fcacd4/README.md">kdk-knowledge: README.md · 300e554</a></li>
+<li><a href="https://github.com/kdkrkwhr/kdk-knowledge/blob/300e554c442c86522e121f7b17dd3ba738fcacd4/scripts/build_wiki.py">kdk-knowledge: scripts/build_wiki.py · 300e554</a></li>
+<li><a href="https://github.com/kdkrkwhr/kdk-knowledge/blob/300e554c442c86522e121f7b17dd3ba738fcacd4/scripts/validate.py">kdk-knowledge: scripts/validate.py · 300e554</a></li></ul><p><a href="markdown/kdk-knowledge.md">Markdown 원문 보기</a> · 문장과 원본 파일을 사람이 대조했습니다.</p></section></main>
+    <aside class="wiki-outline" aria-label="본문 목차"><p class="eyebrow">ON THIS PAGE</p><nav><a href="#section-2">냉정한 기술 평가</a>
+<a href="#section-3">편집 원본과 생성물</a>
+<a href="#section-4">검증 경계</a>
+<a href="#section-5">버전 기준</a>
+<a href="#section-6">연결해서 읽기</a>
+<a href="#section-7">확인 범위와 미확인 사항</a></nav></aside>
   </div>
   <footer>김동기 · 공개 근거 기반 개인 위키 <span>Graphify 분석 미실행</span></footer>
 </body>

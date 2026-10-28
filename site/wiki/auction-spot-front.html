@@ -82,14 +82,23 @@
 <a href="AgentRadio.html">AgentRadio fork 참조</a></nav></details></aside>
     <main id="article" class="wiki-main"><div class="search" aria-label="문서 검색"><label for="wiki-search">문서 검색</label><div class="search-row"><input id="wiki-search" type="search" placeholder="프로젝트, 기술, 근거 검색" aria-controls="search-results"><button id="clear-search" type="button">지우기</button></div><p id="search-status" class="muted" role="status" aria-live="polite">문서 본문에서 검색합니다. / 키로 검색창에 이동할 수 있어요.</p><ol id="search-results" hidden></ol></div><article class="wiki-article"><h1 id="section-1">옥션스팟 Flutter: 경매 화면에서 API와 실시간 채널까지</h1>
 <p>이 저장소는 옥션스팟의 Flutter 클라이언트 코드를 담는다. <strong>루트 README는 기본 Flutter 시작 문구</strong>라 서비스 기능의 증거로 쓰기 어렵다. 실제 구현은 루트 <code>lib/</code>와 <code>pubspec.yaml</code>에서 확인했다. 저장소 안의 <code>auction_spot/lib/main.dart</code>에는 별도의 기본 카운터 예제가 남아 있다. 어느 디렉터리를 실제 빌드·배포했는지는 정적 파일만으로 확정할 수 없으므로, 아래는 <strong>루트 앱 코드의 흐름</strong>이다. <a href="https://github.com/kdkrkwhr/auction-spot-front/blob/abb91bc2abe406e821c55f362e9f209ea61c2db9/README.md">루트 README</a> · <a href="https://github.com/kdkrkwhr/auction-spot-front/blob/abb91bc2abe406e821c55f362e9f209ea61c2db9/lib/main.dart">루트 main.dart</a> · <a href="https://github.com/kdkrkwhr/auction-spot-front/blob/abb91bc2abe406e821c55f362e9f209ea61c2db9/auction_spot/lib/main.dart">내부 시작 예제</a></p>
-<h2 id="section-2">앱 진입과 화면 경로</h2>
+<h2 id="section-2">냉정한 기술 평가</h2>
+<p><strong>평가일:</strong> 2026-10-28 · <strong>근거 커밋:</strong> <code>abb91bc2abe406e821c55f362e9f209ea61c2db9</code>. 공개 소스의 정적 평가이며 실제 운영 결과나 개인의 기여 범위를 확정하지 않는다.</p>
+<ul>
+<li><strong>구조·설계 — 양호</strong> 라우터, 인증 HTTP 클라이언트, 경매 REST 저장소, STOMP 채널이 별도 파일로 분리돼 있다. <a href="https://github.com/kdkrkwhr/auction-spot-front/blob/abb91bc2abe406e821c55f362e9f209ea61c2db9/lib/core/router/app_router.dart">app_router.dart 15–72행</a> <a href="https://github.com/kdkrkwhr/auction-spot-front/blob/abb91bc2abe406e821c55f362e9f209ea61c2db9/lib/features/auction/data/auction_repository.dart">auction_repository.dart 8–72행</a></li>
+<li><strong>구현 품질 — 위험</strong> 401 처리에서 같은 Dio 인스턴스로 토큰 갱신을 보내므로 갱신 요청도 같은 오류 인터셉터를 통과할 수 있다. 갱신 자체가 401인 경우 재진입·반복 요청 가능성을 코드에서 배제하지 못한다. <a href="https://github.com/kdkrkwhr/auction-spot-front/blob/abb91bc2abe406e821c55f362e9f209ea61c2db9/lib/core/network/dio_client.dart">dio_client.dart의 onError, 46–77행</a></li>
+<li><strong>운영 준비 — 보완 필요</strong> 요청·응답 본문 로깅이 실행 모드 조건 없이 등록된다. 인증 응답이나 사용 데이터가 진단 로그에 남을 수 있으므로 배포 설정에서 분리할 필요가 있다. 실제 로그 노출은 확인하지 않았다. <a href="https://github.com/kdkrkwhr/auction-spot-front/blob/abb91bc2abe406e821c55f362e9f209ea61c2db9/lib/core/network/dio_client.dart">dio_client.dart 17–21행</a></li>
+<li><strong>유지보수 — 양호</strong> API 경로와 응답 변환이 기능별 저장소에 모여 있다. <a href="https://github.com/kdkrkwhr/auction-spot-front/blob/abb91bc2abe406e821c55f362e9f209ea61c2db9/lib/features/auction/data/auction_repository.dart">auction_repository.dart 13–67행</a></li>
+</ul>
+<p><strong>좋은 점:</strong> 화면·네트워크·실시간 이벤트의 모듈 경계가 읽힌다. <strong>개선 우선순위:</strong> P1 — 갱신 전용 클라이언트 또는 갱신 경로 제외·동시 요청 조정을 넣고, 본문 로그를 개발 모드로 제한한다. 이는 만료 시 요청 폭주와 민감 데이터 기록 가능성을 줄인다.</p>
+<h2 id="section-3">앱 진입과 화면 경로</h2>
 <p>루트 <code>main.dart</code>는 Flutter 바인딩을 준비하고 Firebase 초기화를 시도한 뒤 Riverpod <code>ProviderScope</code>에서 앱을 시작한다. 초기화 오류는 debug 모드에서 기록하고 계속 진행한다. <code>app_router.dart</code>는 splash·onboarding·login과 홈, 물품 등록, 채팅, 마이페이지를 배치하며 <code>/item/:itemId</code>, <code>/auction/:auctionId</code>, <code>/chat/:roomId</code> 상세 경로를 둔다. 이는 화면 이동을 위한 코드 구조이지 각 기능의 실제 서비스 성공을 검증했다는 뜻은 아니다. <a href="https://github.com/kdkrkwhr/auction-spot-front/blob/abb91bc2abe406e821c55f362e9f209ea61c2db9/lib/main.dart">앱 진입</a> · <a href="https://github.com/kdkrkwhr/auction-spot-front/blob/abb91bc2abe406e821c55f362e9f209ea61c2db9/lib/core/router/app_router.dart">라우터</a></p>
-<h2 id="section-3">REST 요청과 입찰 이벤트</h2>
+<h2 id="section-4">REST 요청과 입찰 이벤트</h2>
 <p><code>DioClient</code>는 API 기본 URL과 10초 연결·응답 제한을 설정한다. 요청 인터셉터가 저장된 액세스 토큰을 Bearer 헤더에 넣고, 401 응답에서 리프레시 토큰이 있으면 갱신 뒤 원래 요청을 재시도한다. 로그 인터셉터는 요청·응답 본문 출력으로 설정돼 있다. 이 코드만으로 토큰 갱신 동시성이나 운영 로그의 안전성을 보장할 수 없다. <a href="https://github.com/kdkrkwhr/auction-spot-front/blob/abb91bc2abe406e821c55f362e9f209ea61c2db9/lib/core/network/dio_client.dart">HTTP 클라이언트</a></p>
 <p><code>AuctionRepository</code>는 오늘의 경매, 상세, 입찰 목록·제출, 결과를 <code>/auctions/...</code> REST 경로로 요청하고 응답 모델로 변환한다. <code>AuctionWsClient</code>는 STOMP로 <code>/topic/auctions/{auctionId}</code>를 구독해 이벤트 스트림에 전달하며 3초 재연결 간격을 설정한다. 경매 결과와 실시간 이벤트가 화면에 어떻게 합쳐지는지는 이 두 파일만으로 모두 확인하지 않았다. <a href="https://github.com/kdkrkwhr/auction-spot-front/blob/abb91bc2abe406e821c55f362e9f209ea61c2db9/lib/features/auction/data/auction_repository.dart">REST 경매 저장소</a> · <a href="https://github.com/kdkrkwhr/auction-spot-front/blob/abb91bc2abe406e821c55f362e9f209ea61c2db9/lib/features/auction/data/auction_ws_client.dart">STOMP 클라이언트</a></p>
-<h2 id="section-4">이미지 업로드와 백엔드 연결</h2>
+<h2 id="section-5">이미지 업로드와 백엔드 연결</h2>
 <p><code>StorageRepository.uploadItemImage</code>는 파일 바이트를 multipart <code>file</code> 필드에 담아 <code>/storage/upload</code>로 POST하고 응답의 <code>url</code>을 돌려준다. 파일 확장자로 JPEG·PNG·WebP·GIF MIME을 정한다. <code>AppConstants.baseUrl</code>은 로컬 API의 <code>/api/v1</code>이고 Android 에뮬레이터에서는 호스트 주소를 <code>10.0.2.2</code>로 바꾼다. 따라서 클라이언트가 만드는 전체 경로는 <a href="auction-spot.html">옥션스팟 API</a>의 업로드 컨트롤러 경로와 대응한다. <strong>요청·응답 계약의 정적 대응</strong>을 확인한 것이며 두 저장소의 실제 통합 실행을 확인한 것은 아니다. <a href="https://github.com/kdkrkwhr/auction-spot-front/blob/abb91bc2abe406e821c55f362e9f209ea61c2db9/lib/features/storage/data/storage_repository.dart">업로드 호출</a> · <a href="https://github.com/kdkrkwhr/auction-spot-front/blob/abb91bc2abe406e821c55f362e9f209ea61c2db9/lib/core/constants/app_constants.dart">API 주소</a> · <a href="https://github.com/kdkrkwhr/auction-spot-api/blob/7c2d9496a5ae0f1dcd0345196483c2674ecff140/src/main/java/com/auctionspot/infra/storage/LocalUploadController.java">서버 컨트롤러</a></p>
-<h2 id="section-5">확인한 기술과 한계</h2>
+<h2 id="section-6">확인한 기술과 한계</h2>
 <p>루트 <code>pubspec.yaml</code>에는 Flutter·Riverpod·go_router·Dio·secure storage·geolocator·STOMP·Firebase Messaging 의존성이 선언돼 있다. 선언은 실제 사용 여부를 각각 증명하지 않으므로 위에서 읽은 코드의 Flutter, Riverpod, Dio, STOMP만 구체적 흐름으로 설명했다. <a href="https://github.com/kdkrkwhr/auction-spot-front/blob/abb91bc2abe406e821c55f362e9f209ea61c2db9/pubspec.yaml">루트 의존성</a></p>
 <p>검토 기준은 <code>abb91bc2abe406e821c55f362e9f209ea61c2db9</code>의 위 파일이다. 앱 빌드, 서버 통합, 입찰 실시간 전달, 푸시 수신은 실행하지 않았다. 개인 담당 범위와 기술 선택 이유·성과도 확인하지 못했다. 루트 README와 실제 앱 코드의 정보량 차이를 남겨 향후 문서 갱신 때 확인할 수 있게 한다.</p></article><section class="wiki-evidence"><h2>이 문서의 등록 근거</h2><ul><li><a href="https://github.com/kdkrkwhr/auction-spot-front/blob/abb91bc2abe406e821c55f362e9f209ea61c2db9/README.md">auction-spot-front · README.md · abb91bc</a></li>
 <li><a href="https://github.com/kdkrkwhr/auction-spot-front/blob/abb91bc2abe406e821c55f362e9f209ea61c2db9/lib/main.dart">auction-spot-front · lib/main.dart · abb91bc</a></li>
@@ -102,10 +111,11 @@
 <li><a href="https://github.com/kdkrkwhr/auction-spot-front/blob/abb91bc2abe406e821c55f362e9f209ea61c2db9/auction_spot/lib/main.dart">auction-spot-front · auction_spot/lib/main.dart · abb91bc</a></li>
 <li><a href="https://github.com/kdkrkwhr/auction-spot-front/blob/abb91bc2abe406e821c55f362e9f209ea61c2db9/lib/core/constants/app_constants.dart">auction-spot-front · lib/core/constants/app_constants.dart · abb91bc</a></li>
 <li><a href="https://github.com/kdkrkwhr/auction-spot-api/blob/7c2d9496a5ae0f1dcd0345196483c2674ecff140/src/main/java/com/auctionspot/infra/storage/LocalUploadController.java">Auction Spot upload controller · 7c2d949</a></li></ul><p><a href="markdown/auction-spot-front.md">Markdown 원문 보기</a> · 문장과 원본 파일을 사람이 대조했습니다.</p></section></main>
-    <aside class="wiki-outline" aria-label="본문 목차"><p class="eyebrow">ON THIS PAGE</p><nav><a href="#section-2">앱 진입과 화면 경로</a>
-<a href="#section-3">REST 요청과 입찰 이벤트</a>
-<a href="#section-4">이미지 업로드와 백엔드 연결</a>
-<a href="#section-5">확인한 기술과 한계</a></nav></aside>
+    <aside class="wiki-outline" aria-label="본문 목차"><p class="eyebrow">ON THIS PAGE</p><nav><a href="#section-2">냉정한 기술 평가</a>
+<a href="#section-3">앱 진입과 화면 경로</a>
+<a href="#section-4">REST 요청과 입찰 이벤트</a>
+<a href="#section-5">이미지 업로드와 백엔드 연결</a>
+<a href="#section-6">확인한 기술과 한계</a></nav></aside>
   </div>
   <footer>김동기 · 공개 근거 기반 개인 위키 <span>Graphify 분석 미실행</span></footer>
 </body>

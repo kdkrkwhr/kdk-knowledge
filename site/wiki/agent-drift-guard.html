@@ -82,21 +82,31 @@
 <a href="AgentRadio.html">AgentRadio fork 참조</a></nav></details></aside>
     <main id="article" class="wiki-main"><div class="search" aria-label="문서 검색"><label for="wiki-search">문서 검색</label><div class="search-row"><input id="wiki-search" type="search" placeholder="프로젝트, 기술, 근거 검색" aria-controls="search-results"><button id="clear-search" type="button">지우기</button></div><p id="search-status" class="muted" role="status" aria-live="polite">문서 본문에서 검색합니다. / 키로 검색창에 이동할 수 있어요.</p><ol id="search-results" hidden></ol></div><article class="wiki-article"><h1 id="section-1">agent-drift-guard: 단계 경계에 메시지를 전달하는 연구 코드</h1>
 <p>README는 이 저장소의 상태를 <strong>SHELVED</strong>라고 명시한다. Hermes에는 <code>AIAgent.steer()</code>와 busy 입력 경로가 이미 있어, Hermes 대상의 별도 0-turn 메커니즘 개발을 중단했다고 설명한다. 따라서 이 문서는 현재 운영 중인 Hermes 필수 구성요소를 소개하는 글이 아니라, 공개된 실험 코드와 중단 판단을 정리한다. <a href="https://github.com/kdkrkwhr/agent-drift-guard/blob/7b655505e4c893590b02f7f391e3bba7f73275be/README.md">상태와 배경</a></p>
-<h2 id="section-2">어떤 문제를 코드로 다루나</h2>
+<h2 id="section-2">냉정한 기술 평가</h2>
+<p><strong>평가일:</strong> 2026-10-28 · <strong>근거 커밋:</strong> <code>7b655505e4c893590b02f7f391e3bba7f73275be</code>. 공개 소스의 정적 평가이며 실제 운영 결과나 개인의 기여 범위를 확정하지 않는다.</p>
+<ul>
+<li><strong>구조·설계 — 양호</strong> 메시지 수신과 단계 종료 시 방출을 작은 버퍼 계약으로 분리했다. <a href="https://github.com/kdkrkwhr/agent-drift-guard/blob/7b655505e4c893590b02f7f391e3bba7f73275be/src/drift_guard/buffer.py">buffer.py의 DriftGuardBuffer, 10–40행</a></li>
+<li><strong>구현 품질 — 보완 필요</strong> 수신 메시지는 제한 없이 목록에 쌓인다. 단계 종료가 오래 오지 않는 실행 환경에서는 메모리 사용과 한 번에 주입할 문맥 크기가 늘 수 있다. <a href="https://github.com/kdkrkwhr/agent-drift-guard/blob/7b655505e4c893590b02f7f391e3bba7f73275be/src/drift_guard/buffer.py">buffer.py 17–36행</a></li>
+<li><strong>운영 준비 — 미확인</strong> README가 Hermes 핵심 기능으로 대체되어 보류 상태라고 명시한다. 현재 서비스 운영 준비도를 억지로 판정할 대상이 아니다. <a href="https://github.com/kdkrkwhr/agent-drift-guard/blob/7b655505e4c893590b02f7f391e3bba7f73275be/README.md">README.md 1–10행</a></li>
+<li><strong>유지보수 — 양호</strong> 보류 이유와 재개 조건을 문서에 남겨 중복 구현을 피할 수 있다. <a href="https://github.com/kdkrkwhr/agent-drift-guard/blob/7b655505e4c893590b02f7f391e3bba7f73275be/README.md">README.md 3–10행</a></li>
+</ul>
+<p><strong>좋은 점:</strong> 동시 수신과 방출을 잠금 안의 목록 교체로 처리한다. <strong>개선 우선순위:</strong> P2 — 다른 런타임을 대상으로 재개할 때 큐 상한·중복 처리·과부하 정책을 먼저 정한다. 보류 중인 Hermes용 구현에 즉시 운영 감점을 주지는 않는다.</p>
+<h2 id="section-3">어떤 문제를 코드로 다루나</h2>
 <p>다른 에이전트의 메시지가 추론이나 도구 호출 중간에 도착하면 현재 흐름을 흐트러뜨릴 수 있다는 가설에서 출발한다. <code>DriftGuardBuffer.on_message</code>는 메시지를 잠금 아래 대기 목록에 넣고 모델을 호출하지 않는다. <code>on_step_end</code>는 현재 목록을 교체해 돌려주므로 경계 뒤에 도착한 메시지가 다음 회차로 남는다. <code>pending_count</code>는 남은 수를 읽는다. <a href="https://github.com/kdkrkwhr/agent-drift-guard/blob/7b655505e4c893590b02f7f391e3bba7f73275be/src/drift_guard/buffer.py">버퍼 구현</a></p>
 <p><code>format_injection</code>은 메시지 타입을 검사하고 발신자·본문을 텍스트 블록으로 만든다. 기본 위치는 도구 결과의 뒤다. <code>inject_at_boundary</code>는 Hermes 어댑터의 대기 블록을 꺼내 도구 결과에 덧붙인다. <strong>메시지를 같은 턴에 실제로 넣고 새 LLM 턴을 열지 않는 것은 연결한 런타임의 책임</strong>이다. 핵심 함수만으로 모든 에이전트 런타임의 0-turn 동작을 보장하지 않는다. <a href="https://github.com/kdkrkwhr/agent-drift-guard/blob/7b655505e4c893590b02f7f391e3bba7f73275be/src/drift_guard/inject.py">포맷터</a> · <a href="https://github.com/kdkrkwhr/agent-drift-guard/blob/7b655505e4c893590b02f7f391e3bba7f73275be/hermes_plugin/agent-drift-guard/inject_hook.py">Hermes 훅</a></p>
-<h2 id="section-3">세션과 검증 코드</h2>
+<h2 id="section-4">세션과 검증 코드</h2>
 <p>Hermes 플러그인 쪽 <code>SessionGuards</code>는 세션 ID별 버퍼와 라디오 watcher를 관리하고 종료 시 제거한다. watcher는 선택적이고, 없으면 수동으로 넣은 메시지만 다룬다. <code>tests/test_buffer.py</code>는 메시지를 넣어도 즉시 비워지지 않는 경우, 단계 종료 후 두 메시지 flush, 빈 flush를 정의한다. <strong>테스트 파일을 읽었지만 실행하지 않았다.</strong> <a href="https://github.com/kdkrkwhr/agent-drift-guard/blob/7b655505e4c893590b02f7f391e3bba7f73275be/hermes_plugin/agent-drift-guard/session_guards.py">세션 관리</a> · <a href="https://github.com/kdkrkwhr/agent-drift-guard/blob/7b655505e4c893590b02f7f391e3bba7f73275be/tests/test_buffer.py">버퍼 테스트</a></p>
-<h2 id="section-4">이 기록의 상태</h2>
+<h2 id="section-5">이 기록의 상태</h2>
 <p>검토 기준은 <code>7b655505e4c893590b02f7f391e3bba7f73275be</code>다. README가 언급한 Hermes 본체 구현을 이 문서에서 독립적으로 재검증하지 않았고, 벤치마크나 다른 런타임 어댑터 성과도 확인하지 않았다. <a href="agent-hub.html">AGENT HUB</a>와 같은 멀티 에이전트 영역의 문제를 다루지만 실제 통합 관계를 주장하지 않는다. 개인의 기여 범위·선택 이유는 별도 근거가 필요하다.</p></article><section class="wiki-evidence"><h2>이 문서의 등록 근거</h2><ul><li><a href="https://github.com/kdkrkwhr/agent-drift-guard/blob/7b655505e4c893590b02f7f391e3bba7f73275be/README.md">agent-drift-guard · README.md · 7b65550</a></li>
 <li><a href="https://github.com/kdkrkwhr/agent-drift-guard/blob/7b655505e4c893590b02f7f391e3bba7f73275be/src/drift_guard/buffer.py">agent-drift-guard · src/drift_guard/buffer.py · 7b65550</a></li>
 <li><a href="https://github.com/kdkrkwhr/agent-drift-guard/blob/7b655505e4c893590b02f7f391e3bba7f73275be/src/drift_guard/inject.py">agent-drift-guard · src/drift_guard/inject.py · 7b65550</a></li>
 <li><a href="https://github.com/kdkrkwhr/agent-drift-guard/blob/7b655505e4c893590b02f7f391e3bba7f73275be/tests/test_buffer.py">agent-drift-guard · tests/test_buffer.py · 7b65550</a></li>
 <li><a href="https://github.com/kdkrkwhr/agent-drift-guard/blob/7b655505e4c893590b02f7f391e3bba7f73275be/hermes_plugin/agent-drift-guard/inject_hook.py">agent-drift-guard · hermes_plugin/agent-drift-guard/inject_hook.py · 7b65550</a></li>
 <li><a href="https://github.com/kdkrkwhr/agent-drift-guard/blob/7b655505e4c893590b02f7f391e3bba7f73275be/hermes_plugin/agent-drift-guard/session_guards.py">agent-drift-guard · hermes_plugin/agent-drift-guard/session_guards.py · 7b65550</a></li></ul><p><a href="markdown/agent-drift-guard.md">Markdown 원문 보기</a> · 문장과 원본 파일을 사람이 대조했습니다.</p></section></main>
-    <aside class="wiki-outline" aria-label="본문 목차"><p class="eyebrow">ON THIS PAGE</p><nav><a href="#section-2">어떤 문제를 코드로 다루나</a>
-<a href="#section-3">세션과 검증 코드</a>
-<a href="#section-4">이 기록의 상태</a></nav></aside>
+    <aside class="wiki-outline" aria-label="본문 목차"><p class="eyebrow">ON THIS PAGE</p><nav><a href="#section-2">냉정한 기술 평가</a>
+<a href="#section-3">어떤 문제를 코드로 다루나</a>
+<a href="#section-4">세션과 검증 코드</a>
+<a href="#section-5">이 기록의 상태</a></nav></aside>
   </div>
   <footer>김동기 · 공개 근거 기반 개인 위키 <span>Graphify 분석 미실행</span></footer>
 </body>

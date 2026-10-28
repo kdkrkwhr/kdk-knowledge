@@ -82,7 +82,10 @@
 <a href="AgentRadio.html">AgentRadio fork 참조</a></nav></details></aside>
     <main id="article" class="wiki-main"><div class="search" aria-label="문서 검색"><label for="wiki-search">문서 검색</label><div class="search-row"><input id="wiki-search" type="search" placeholder="프로젝트, 기술, 근거 검색" aria-controls="search-results"><button id="clear-search" type="button">지우기</button></div><p id="search-status" class="muted" role="status" aria-live="polite">문서 본문에서 검색합니다. / 키로 검색창에 이동할 수 있어요.</p><ol id="search-results" hidden></ol></div><article class="wiki-article"><h1 id="section-1">공개 저장소 목록과 문서 작성 상태</h1>
 <p>2026-10-27에 <a href="https://github.com/kdkrkwhr?tab=repositories">공개 저장소 목록</a>에서 <code>kdkrkwhr</code> 계정의 공개 저장소 28개를 확인했다. 25개 non-fork와 3개 fork 모두 고정 커밋에서 실제 소스·설정 중 핵심 파일을 읽고, README가 있는 경우 안내와 대조해 문서를 작성했다. <strong>정적 분석은 실행 검증이나 개인 기여 검증이 아니다.</strong> 특히 큰 기술 모음과 upstream fork는 문서에 적힌 파일 범위만 조사했다. non-fork도 단독 저작을 뜻하지 않는다.</p>
-<h2 id="section-2">문서 작성 완료 · non-fork 25</h2>
+<h2 id="section-2">기술 평가를 읽는 법</h2>
+<p>각 저장소 문서의 앞부분에는 2026-10-28에 작성한 <strong>냉정한 기술 평가</strong>가 있다. 평가 기준은 구조·설계, 구현 품질, 운영 준비, 유지보수다. <code>양호</code>는 확인한 범위에서 유효한 설계나 구현, <code>보완 필요</code>는 구체적인 개선 여지, <code>위험</code>은 코드상 영향이 큰 조건부 위험, <code>미확인</code>은 판단 근거가 부족하거나 프로젝트 목적에 맞지 않는 항목을 뜻한다. 숫자 총점이나 프로젝트 간 순위는 매기지 않았다.</p>
+<p><code>P1</code>은 공개 실행이나 주요 흐름에 앞서 우선 다룰 문제, <code>P2</code>는 다음 변경 때 바로잡을 문제, <code>P3</code>은 기록·정리 차원의 제안이다. 제안은 현재 장애나 실제 운영 상태를 증명하지 않는다. 링크의 파일·행 범위와 각 글에 적힌 근거 커밋을 함께 읽어야 한다. fork의 upstream 구현은 계정 소유자의 독자 기여로 평가하지 않았다.</p>
+<h2 id="section-3">문서 작성 완료 · non-fork 25</h2>
 <ul>
 <li><code>notebook-pets</code> → <a href="notebuddy.html">노트버디</a>: README와 Python·JavaScript 파일을 고정 커밋에서 대조했다.</li>
 <li><code>auction-spot-api</code> → <a href="auction-spot.html">옥션스팟 API</a>: README와 Java 이미지 저장 경로를 고정 커밋에서 대조했다.</li>
@@ -111,7 +114,7 @@
 <li><code>kdk-knowledge</code> → <a href="kdk-knowledge.html">중앙 허브 구현</a>: Markdown 빌드와 검증 흐름을 기록했다.</li>
 </ul>
 <p><code>agent-drift-guard</code>의 공개 README는 중단된 상태와 대체 경로를 설명하므로 현재 운영 프로젝트처럼 다루지 않는다. <code>resume</code>, 프로필, 웹사이트 자료를 살필 때 공개돼 있다는 이유만으로 연락처 등 불필요한 개인정보를 이 위키에 다시 싣지 않는다.</p>
-<h2 id="section-3">Fork 문서 · 3</h2>
+<h2 id="section-4">Fork 문서 · 3</h2>
 <ul>
 <li><a href="spring-ai.html">spring-ai</a> (원본: <code>spring-projects/spring-ai</code>): 기본 브랜치의 fork 고유 커밋 확인되지 않음.</li>
 <li><a href="hermes-agent.html">hermes-agent</a> (원본: <code>NousResearch/hermes-agent</code>): 기본 브랜치의 두 변경 커밋·파일 범위를 분리해 기록.</li>
@@ -119,8 +122,9 @@
 </ul>
 <p>fork 관계는 GitHub 저장소 메타데이터에서 확인했다. 기본 브랜치 비교만으로 다른 브랜치나 외부 PR 기여까지 배제할 수 없다. upstream README의 기능·성과를 fork 계정 소유자의 성과로 옮기지 않았다.</p>
 <p>새 문서를 작성하는 순서와 공개 검증은 <a href="maintenance.html">문서 갱신 절차</a>를 따른다.</p></article><section class="wiki-evidence"><h2>이 문서의 등록 근거</h2><ul><li>이 안내 문서에는 별도 원본 코드 근거가 없습니다.</li></ul><p><a href="markdown/repositories.md">Markdown 원문 보기</a> · 문장과 원본 파일을 사람이 대조했습니다.</p></section></main>
-    <aside class="wiki-outline" aria-label="본문 목차"><p class="eyebrow">ON THIS PAGE</p><nav><a href="#section-2">문서 작성 완료 · non-fork 25</a>
-<a href="#section-3">Fork 문서 · 3</a></nav></aside>
+    <aside class="wiki-outline" aria-label="본문 목차"><p class="eyebrow">ON THIS PAGE</p><nav><a href="#section-2">기술 평가를 읽는 법</a>
+<a href="#section-3">문서 작성 완료 · non-fork 25</a>
+<a href="#section-4">Fork 문서 · 3</a></nav></aside>
   </div>
   <footer>김동기 · 공개 근거 기반 개인 위키 <span>Graphify 분석 미실행</span></footer>
 </body>

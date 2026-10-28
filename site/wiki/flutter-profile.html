@@ -82,25 +82,35 @@
 <a href="AgentRadio.html">AgentRadio fork 참조</a></nav></details></aside>
     <main id="article" class="wiki-main"><div class="search" aria-label="문서 검색"><label for="wiki-search">문서 검색</label><div class="search-row"><input id="wiki-search" type="search" placeholder="프로젝트, 기술, 근거 검색" aria-controls="search-results"><button id="clear-search" type="button">지우기</button></div><p id="search-status" class="muted" role="status" aria-live="polite">문서 본문에서 검색합니다. / 키로 검색창에 이동할 수 있어요.</p><ol id="search-results" hidden></ol></div><article class="wiki-article"><h1 id="section-1">Flutter 프로필 예제</h1>
 <p><strong>분석 기준:</strong> <code>9e396bbddaa0178e2ccb99bebdad2ac27b4726ea</code>. 이 문서는 공개 원본 파일을 정적으로 읽어 작성했다. 해당 프로젝트의 설치·실행·테스트를 수행하거나 개인 담당 범위·성과를 확인한 것은 아니다.</p>
-<h2 id="section-2">진입과 라우팅</h2>
+<h2 id="section-2">냉정한 기술 평가</h2>
+<p><strong>평가일:</strong> 2026-10-28 · <strong>근거 커밋:</strong> <code>9e396bbddaa0178e2ccb99bebdad2ac27b4726ea</code>. 공개 소스의 정적 평가이며 실제 운영 결과나 개인의 기여 범위를 확정하지 않는다.</p>
+<ul>
+<li><strong>구조·설계 — 양호</strong> 시작점·테마·포트폴리오 섹션을 나누고 화면 크기별 위젯을 선택한다. <a href="https://github.com/kdkrkwhr/flutter-profile/blob/9e396bbddaa0178e2ccb99bebdad2ac27b4726ea/lib/main.dart">main.dart 10–53행</a> <a href="https://github.com/kdkrkwhr/flutter-profile/blob/9e396bbddaa0178e2ccb99bebdad2ac27b4726ea/lib/sections/portfolio/portfolio.dart">portfolio.dart 5–12행</a></li>
+<li><strong>구현 품질 — 보완 필요</strong> 저장된 테마를 비동기로 읽어 State 필드에 넣지만 setState 호출이 없고 Provider에도 별도 ThemeProvider를 만든다. 첫 화면이 저장 테마를 반영하지 못할 가능성이 있다. 실제 화면 결과는 실행 확인하지 않았다. <a href="https://github.com/kdkrkwhr/flutter-profile/blob/9e396bbddaa0178e2ccb99bebdad2ac27b4726ea/lib/main.dart">main.dart 21–43행</a></li>
+<li><strong>운영 준비 — 미확인</strong> 정적 프로필 예제이며 현재 공개 사이트의 배포·사용 상태는 이 코드만으로 확인할 수 없다. 서버 운영 항목은 적용 대상이 아니다. <a href="https://github.com/kdkrkwhr/flutter-profile/blob/9e396bbddaa0178e2ccb99bebdad2ac27b4726ea/pubspec.yaml">pubspec.yaml 1–10행</a></li>
+<li><strong>유지보수 — 보완 필요</strong> 일부 의존성이 범위가 넓고 Flutter/Dart SDK 범위가 오래된 예제 시점에 묶여 있다. 새 환경으로 옮길 때 호환성 확인이 필요하다. <a href="https://github.com/kdkrkwhr/flutter-profile/blob/9e396bbddaa0178e2ccb99bebdad2ac27b4726ea/pubspec.yaml">pubspec.yaml 8–27행</a></li>
+</ul>
+<p><strong>좋은 점:</strong> 소개 화면을 섹션으로 나눠 수정 위치를 찾기 쉽다. <strong>개선 우선순위:</strong> P2 — 테마 상태를 한 Provider로 통일하고 비동기 로드 완료 시 화면을 갱신해 사용자 설정과 표시의 불일치를 줄인다.</p>
+<h2 id="section-3">진입과 라우팅</h2>
 <p>README는 Dart·Flutter 프로필 프로젝트이고 DevFolio을 참고했다고 밝힌다. <code>main.dart</code>는 URL path 전략을 설정하고 Provider를 주입해 홈·협업 문의·상세 화면의 라우트를 등록한다. 참조한 템플릿의 존재 때문에 전체 화면을 독자 설계·구현이라고 단정하지 않는다. <a href="https://github.com/kdkrkwhr/flutter-profile/blob/9e396bbddaa0178e2ccb99bebdad2ac27b4726ea/README.md">원본: `README.md`</a> <a href="https://github.com/kdkrkwhr/flutter-profile/blob/9e396bbddaa0178e2ccb99bebdad2ac27b4726ea/lib/main.dart">원본: `lib/main.dart`</a></p>
-<h2 id="section-3">화면 구조</h2>
+<h2 id="section-4">화면 구조</h2>
 <p>포트폴리오 섹션은 <code>responsive_builder</code>의 <code>ScreenTypeLayout</code>으로 모바일·태블릿 화면을 선택한다. 공개 코드에 프로필 문구와 연락 링크가 있지만 이 위키는 연락처나 개인 이력을 재게시하지 않는다. <a href="https://github.com/kdkrkwhr/flutter-profile/blob/9e396bbddaa0178e2ccb99bebdad2ac27b4726ea/lib/sections/portfolio/portfolio.dart">원본: `lib/sections/portfolio/portfolio.dart`</a> <a href="https://github.com/kdkrkwhr/flutter-profile/blob/9e396bbddaa0178e2ccb99bebdad2ac27b4726ea/pubspec.yaml">원본: `pubspec.yaml`</a></p>
-<h2 id="section-4">검증 한계</h2>
+<h2 id="section-5">검증 한계</h2>
 <p><code>test/widget_test.dart</code>는 Flutter 기본 위젯 테스트 형태로 보인다. 테스트 파일이 있다는 사실과 현재 프로필의 모든 라우트·반응형 화면이 정상 동작한다는 주장은 다르다. <a href="https://github.com/kdkrkwhr/flutter-profile/blob/9e396bbddaa0178e2ccb99bebdad2ac27b4726ea/test/widget_test.dart">원본: `test/widget_test.dart`</a></p>
-<h2 id="section-5">연결해서 읽기</h2>
+<h2 id="section-6">연결해서 읽기</h2>
 <p>정적 이력서 페이지 <a href="resume.html">resume</a>와 다른 Flutter 구현이다.</p>
-<h2 id="section-6">확인 범위와 미확인 사항</h2>
+<h2 id="section-7">확인 범위와 미확인 사항</h2>
 <p>위 구현 설명은 표시한 커밋의 파일에서 확인한 사실과 정적 해석이다. 현재 배포·운영 상태, 실행 성공, 실제 사용량, 개인 선택 이유와 기여 범위는 확인하지 않았다.</p></article><section class="wiki-evidence"><h2>이 문서의 등록 근거</h2><ul><li><a href="https://github.com/kdkrkwhr/flutter-profile/blob/9e396bbddaa0178e2ccb99bebdad2ac27b4726ea/README.md">flutter-profile: README.md · 9e396bb</a></li>
 <li><a href="https://github.com/kdkrkwhr/flutter-profile/blob/9e396bbddaa0178e2ccb99bebdad2ac27b4726ea/lib/main.dart">flutter-profile: lib/main.dart · 9e396bb</a></li>
 <li><a href="https://github.com/kdkrkwhr/flutter-profile/blob/9e396bbddaa0178e2ccb99bebdad2ac27b4726ea/lib/sections/portfolio/portfolio.dart">flutter-profile: lib/sections/portfolio/portfolio.dart · 9e396bb</a></li>
 <li><a href="https://github.com/kdkrkwhr/flutter-profile/blob/9e396bbddaa0178e2ccb99bebdad2ac27b4726ea/pubspec.yaml">flutter-profile: pubspec.yaml · 9e396bb</a></li>
 <li><a href="https://github.com/kdkrkwhr/flutter-profile/blob/9e396bbddaa0178e2ccb99bebdad2ac27b4726ea/test/widget_test.dart">flutter-profile: test/widget_test.dart · 9e396bb</a></li></ul><p><a href="markdown/flutter-profile.md">Markdown 원문 보기</a> · 문장과 원본 파일을 사람이 대조했습니다.</p></section></main>
-    <aside class="wiki-outline" aria-label="본문 목차"><p class="eyebrow">ON THIS PAGE</p><nav><a href="#section-2">진입과 라우팅</a>
-<a href="#section-3">화면 구조</a>
-<a href="#section-4">검증 한계</a>
-<a href="#section-5">연결해서 읽기</a>
-<a href="#section-6">확인 범위와 미확인 사항</a></nav></aside>
+    <aside class="wiki-outline" aria-label="본문 목차"><p class="eyebrow">ON THIS PAGE</p><nav><a href="#section-2">냉정한 기술 평가</a>
+<a href="#section-3">진입과 라우팅</a>
+<a href="#section-4">화면 구조</a>
+<a href="#section-5">검증 한계</a>
+<a href="#section-6">연결해서 읽기</a>
+<a href="#section-7">확인 범위와 미확인 사항</a></nav></aside>
   </div>
   <footer>김동기 · 공개 근거 기반 개인 위키 <span>Graphify 분석 미실행</span></footer>
 </body>

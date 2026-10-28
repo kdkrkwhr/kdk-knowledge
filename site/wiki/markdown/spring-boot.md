@@ -5,6 +5,17 @@
 
 **분석 기준:** `b0a8b227af8ed65ef684a5950d0c97d42bf13d41`. 이 문서는 공개 원본 파일을 정적으로 읽어 작성했다. 해당 프로젝트의 설치·실행·테스트를 수행하거나 개인 담당 범위·성과를 확인한 것은 아니다.
 
+## 냉정한 기술 평가
+
+**평가일:** 2026-10-28 · **근거 커밋:** `b0a8b227af8ed65ef684a5950d0c97d42bf13d41`. 공개 소스의 정적 평가이며 실제 운영 결과나 개인의 기여 범위를 확정하지 않는다.
+
+- **구조·설계 — 양호** Kafka·JWT·검색·FCM 등 관심 주제별 예제를 하위 프로젝트로 분리해 학습 자료의 경계를 찾기 쉽다. [README.md 1–35행](https://github.com/kdkrkwhr/spring-boot/blob/b0a8b227af8ed65ef684a5950d0c97d42bf13d41/README.md) [spring-kafka/build.gradle 1–30행](https://github.com/kdkrkwhr/spring-boot/blob/b0a8b227af8ed65ef684a5950d0c97d42bf13d41/spring-kafka/build.gradle)
+- **구현 품질 — 보완 필요** 크롤러 유틸은 외부 HTML 조회 실패를 스택 출력 후 빈 결과로 돌린다. 호출자가 원격 오류와 실제 빈 페이지를 구분하기 어렵다. [CrawlerUtil.java 20–40행](https://github.com/kdkrkwhr/spring-boot/blob/b0a8b227af8ed65ef684a5950d0c97d42bf13d41/spring-crawling/src/main/java/com/kdk/util/CrawlerUtil.java)
+- **운영 준비 — 미확인** 여러 독립 기술 예제의 모음이므로 한 운영 서비스의 배포 준비도로 점수화하지 않는다. [README.md 1–35행](https://github.com/kdkrkwhr/spring-boot/blob/b0a8b227af8ed65ef684a5950d0c97d42bf13d41/README.md)
+- **유지보수 — 보완 필요** 하위 프로젝트에 오래된 Gradle 의존성 표기와 서로 다른 버전이 섞여 새 도구 환경에서 재사용할 때 조정이 필요할 수 있다. 빌드 결과를 단정하지 않는다. [spring-kafka/build.gradle 1–30행](https://github.com/kdkrkwhr/spring-boot/blob/b0a8b227af8ed65ef684a5950d0c97d42bf13d41/spring-kafka/build.gradle) [spring-security-jwt/build.gradle 1–48행](https://github.com/kdkrkwhr/spring-boot/blob/b0a8b227af8ed65ef684a5950d0c97d42bf13d41/spring-security-jwt/build.gradle)
+
+**좋은 점:** 기술별 예제를 서로 독립적으로 읽을 수 있다. **개선 우선순위:** P2 — 크롤러의 오류를 명시적 결과로 돌리고, 재사용할 예제부터 의존성·도구 버전을 정리해 실패 원인을 숨기지 않는다.
+
 ## 하나의 서비스가 아닌 예제 모음
 
 README는 Spring Boot 기술 모음이라고 소개한다. 루트 아래에는 admin, crawling, Elasticsearch, FCM 클라이언트·서버, JPA, Kafka, MyBatis, Redis, Security 등 별도 Gradle 프로젝트가 있다. 따라서 이 저장소의 기능을 하나의 배포 서비스가 모두 제공한다고 읽지 않는다.
