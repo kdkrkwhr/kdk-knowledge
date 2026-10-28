@@ -1,6 +1,6 @@
 """Copy the Graphify build into docs/graph/ so the wiki build can read it from git.
 
-Run after `/graphify docs/wiki` (or `--update`). graphify-out/ is ignored by git;
+Run after `/graphify docs/wiki` (or `--update`) and `graphify export html`. graphify-out/ is ignored by git;
 docs/graph/graph.json is the committed input for scripts/build_wiki.py.
 """
 
@@ -42,6 +42,12 @@ def main() -> None:
     (TARGET / "graph.json").write_text(json.dumps(graph, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
     if (OUT / "GRAPH_REPORT.md").exists():
         shutil.copy(OUT / "GRAPH_REPORT.md", TARGET / "GRAPH_REPORT.md")
+    viewer = OUT / "graph.html"  # from `graphify export html`
+    if viewer.exists():
+        page = viewer.read_text(encoding="utf-8").replace("<html lang=\"en\">", "<html lang=\"ko\">", 1)
+        page = page.replace("<title>graphify - graphify-out/graph.html</title>", "<title>지식 그래프 · kdk knowledge</title>", 1)
+        (ROOT / "site/graph").mkdir(exist_ok=True)
+        (ROOT / "site/graph/index.html").write_text(page, encoding="utf-8")
     kept = sum(1 for n in graph["nodes"] if n.get("rationale"))
     print(f"docs/graph/graph.json: {len(graph['nodes'])} nodes, {len(graph['links'])} links, rationale on {kept}")
 

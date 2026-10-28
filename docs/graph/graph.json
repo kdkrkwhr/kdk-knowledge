@@ -9598,21 +9598,6 @@
  ],
  "hyperedges": [
   {
-   "id": "hermes_ecosystem_repos",
-   "label": "Hermes 에이전트 생태계 저장소군",
-   "nodes": [
-    "agent_drift_guard_agent_drift_guard",
-    "hermes_agent_area_hermes_agent_area",
-    "hermes_agent_hermes_agent",
-    "hermes_env_hermes_env",
-    "concept_hermes"
-   ],
-   "relation": "participate_in",
-   "confidence": "EXTRACTED",
-   "confidence_score": 1.0,
-   "source_file": "hermes-agent.md"
-  },
-  {
    "id": "auction_spot_bid_flow",
    "label": "옥션스팟 입찰 요청-처리-이벤트 흐름 (클라이언트↔서버)",
    "nodes": [
@@ -9629,36 +9614,19 @@
    "source_file": "auction-spot-front.md"
   },
   {
-   "id": "vehicle_vision_experiments",
-   "label": "차량 영상 딥러닝 실험군 (분류·검출·추적·OCR)",
+   "id": "hermes_ecosystem_repos",
+   "label": "Hermes 에이전트 생태계 저장소군",
    "nodes": [
-    "dl_data_training_dl_data_training",
-    "dl_object_detecting_dl_object_detecting",
-    "dl_object_tracking_dl_object_tracking",
-    "dl_tesseract_dl_tesseract",
-    "concept_opencv",
-    "concept_tensorflow"
-   ],
-   "relation": "participate_in",
-   "confidence": "INFERRED",
-   "confidence_score": 0.85,
-   "source_file": "dl-object-tracking.md"
-  },
-  {
-   "id": "notebuddy_transition_call_flow",
-   "label": "노트버디 transition 호출·저장 흐름",
-   "nodes": [
-    "notebuddy_web_worker",
-    "notebuddy_anna_game_worker",
-    "notebuddy_gameservice_invoke",
-    "notebuddy_gameapplication",
-    "notebuddy_transition",
-    "notebuddy_web_store"
+    "agent_drift_guard_agent_drift_guard",
+    "hermes_agent_area_hermes_agent_area",
+    "hermes_agent_hermes_agent",
+    "hermes_env_hermes_env",
+    "concept_hermes"
    ],
    "relation": "participate_in",
    "confidence": "EXTRACTED",
    "confidence_score": 1.0,
-   "source_file": "notebuddy.md"
+   "source_file": "hermes-agent.md"
   },
   {
    "id": "hermes_team_hub_local_runtime",
@@ -9687,6 +9655,38 @@
    "confidence": "EXTRACTED",
    "confidence_score": 1.0,
    "source_file": "maintenance.md"
+  },
+  {
+   "id": "notebuddy_transition_call_flow",
+   "label": "노트버디 transition 호출·저장 흐름",
+   "nodes": [
+    "notebuddy_web_worker",
+    "notebuddy_anna_game_worker",
+    "notebuddy_gameservice_invoke",
+    "notebuddy_gameapplication",
+    "notebuddy_transition",
+    "notebuddy_web_store"
+   ],
+   "relation": "participate_in",
+   "confidence": "EXTRACTED",
+   "confidence_score": 1.0,
+   "source_file": "notebuddy.md"
+  },
+  {
+   "id": "vehicle_vision_experiments",
+   "label": "차량 영상 딥러닝 실험군 (분류·검출·추적·OCR)",
+   "nodes": [
+    "dl_data_training_dl_data_training",
+    "dl_object_detecting_dl_object_detecting",
+    "dl_object_tracking_dl_object_tracking",
+    "dl_tesseract_dl_tesseract",
+    "concept_opencv",
+    "concept_tensorflow"
+   ],
+   "relation": "participate_in",
+   "confidence": "INFERRED",
+   "confidence_score": 0.85,
+   "source_file": "dl-object-tracking.md"
   }
  ],
  "built_at_commit": "288c50ffe4f8928a1b7f8ef7ec1f4536a8af4eec",

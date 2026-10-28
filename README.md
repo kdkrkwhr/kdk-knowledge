@@ -13,7 +13,7 @@
 
 현재 확인한 공개 저장소 28개 모두 문서를 작성했습니다. 작은 저장소는 단일 파일, 큰 저장소는 대표 구현 파일로 범위를 제한했습니다. 전체 과거 프로젝트·경력 자료의 수집이나 원본 프로젝트의 실행 검증을 마친 상태는 아닙니다. 개인 역할·성과·선택 이유는 별도 근거가 생길 때 보강합니다.
 
-`docs/wiki/*.md`가 해설의 편집 원본입니다. 문서 머리의 메타데이터가 출처·관계를 등록하고, `docs/wiki/sources.json`에 고정 커밋의 공개 URL을 보관합니다. `scripts/build_wiki.py`가 HTML, 원본 Markdown 사본, 본문 검색 색인과 `site/knowledge.json`을 함께 생성합니다. `site/index.html`은 프로젝트 진입 화면이고, `site/architecture/`는 문서에서 파생한 편집 관계를 탐색합니다. Graphify는 `docs/wiki/*.md`만 입력으로 실행하며 결과를 `docs/graph/graph.json`에 커밋합니다(`scripts/sync_graph.py`). 빌드는 이 파일에서 개념 항목·자동 추출 관계·`site/wiki/topics.html`(주제 지도)을 만들고, 편집 관계와 `origin`으로 구분합니다.
+`docs/wiki/*.md`가 해설의 편집 원본입니다. 문서 머리의 메타데이터가 출처·관계를 등록하고, `docs/wiki/sources.json`에 고정 커밋의 공개 URL을 보관합니다. `scripts/build_wiki.py`가 HTML, 원본 Markdown 사본, 본문 검색 색인과 `site/knowledge.json`을 함께 생성합니다. `site/index.html`은 프로젝트 진입 화면이고, `site/architecture/`는 문서에서 파생한 편집 관계를 탐색합니다. Graphify는 `docs/wiki/*.md`만 입력으로 실행하며 결과를 `docs/graph/graph.json`에 커밋합니다(`scripts/sync_graph.py`). 빌드는 이 파일에서 개념 항목·자동 추출 관계·`site/wiki/topics.html`(주제 지도)을 만들고, 편집 관계와 `origin`으로 구분합니다. Graphify의 대화형 뷰어는 `site/graph/`에 그대로 싣습니다(vis-network CDN 사용).
 
 ## 추가와 검증
 

@@ -8,7 +8,7 @@ from pathlib import Path
 
 STATIC_SITE_FILES = {
     "index.html", "style.css", "wiki.js", "knowledge.json", "search-index.json",
-    "architecture/index.html", "architecture/map.js", "wiki/topics.html",
+    "architecture/index.html", "architecture/map.js", "wiki/topics.html", "graph/index.html",
 }
 SHA = re.compile(r"^[0-9a-f]{40}$")
 EMAIL = re.compile(r"\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b", re.I)
