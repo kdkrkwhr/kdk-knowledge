@@ -107,6 +107,7 @@
 /* Markdown wiki: project index, full text, and in-page outline. */
 .read-document{display:inline-block;font-size:14px;font-weight:750;padding:7px 11px;border:1px solid #587879;border-radius:5px;text-decoration:none;background:#183138}
 #search-results small{display:block;color:var(--muted);font-size:13px;font-weight:400;line-height:1.55;margin-top:2px}
+.wiki-layout{word-break:keep-all}
 .wiki-layout{max-width:1300px;margin:auto;display:grid;grid-template-columns:218px minmax(0,700px) 175px;gap:clamp(22px,2.5vw,34px);padding:27px 34px 75px}
 .wiki-sidebar,.wiki-outline{position:sticky;top:22px;align-self:start;max-height:calc(100vh - 44px);overflow:auto}
 .wiki-sidebar nav,.wiki-outline nav{display:grid;gap:4px}
@@ -120,15 +121,15 @@
 .wiki-article h1{font-size:clamp(29px,2.9vw,38px);line-height:1.3;letter-spacing:-.045em;margin:0 0 18px}
 .wiki-article h2{font-size:clamp(22px,2vw,26px);line-height:1.4;letter-spacing:-.035em;margin:30px 0 13px;padding-top:14px;border-top:1px solid var(--line);scroll-margin-top:22px}
 .wiki-article h3{font-size:19px;margin:24px 0 8px;scroll-margin-top:22px}
-.wiki-article p,.wiki-article li{font-size:16px;line-height:1.8;overflow-wrap:anywhere}
+.wiki-article p,.wiki-article li{font-size:16px;line-height:1.8;overflow-wrap:anywhere;color:#cfdad8}
 .wiki-article p{margin:0 0 16px}
 .wiki-article ol,.wiki-article ul{padding-left:24px;margin:8px 0 20px}
 .wiki-article li{padding-left:4px;margin:6px 0}
 .wiki-article p a[href^="https://github.com/"]{font-size:.94em;text-decoration-style:dotted}
 .wiki-article strong{color:#f1dfc8}
-.wiki-article code{background:#1b3440;color:#d0efdc;font-size:.89em;border-radius:3px;padding:2px 4px;overflow-wrap:anywhere}
+.wiki-article code{background:#1b3440;color:#d0efdc;font-size:.89em;line-height:1;border-radius:3px;padding:2px 4px;overflow-wrap:anywhere}
 .wiki-article pre{overflow:auto;padding:17px;background:#14242e;border:1px solid var(--line);border-radius:5px}
-.wiki-article pre code{background:transparent;padding:0}
+.wiki-article pre code{background:transparent;padding:0;line-height:1.6}
 .wiki-evidence{border-top:1px solid var(--line);margin-top:36px;padding-top:18px;font-size:13px;color:var(--muted)}
 .wiki-evidence h2{font-size:17px;color:var(--ink)}
 .wiki-evidence ul{padding-left:20px;overflow-wrap:anywhere}
