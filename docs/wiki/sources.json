@@ -520,6 +520,16 @@
     "visibility": "public"
   },
   {
+    "id": "area-scene",
+    "title": "hermes-agent-area · src/scenes/OfficeScene.js",
+    "kind": "code",
+    "repository": "kdkrkwhr/hermes-agent-area",
+    "path": "src/scenes/OfficeScene.js",
+    "revision": "e3e118fa7eb3fcfcd1fd8ca1d88d63763ddb67a5",
+    "url": "https://github.com/kdkrkwhr/hermes-agent-area/blob/e3e118fa7eb3fcfcd1fd8ca1d88d63763ddb67a5/src/scenes/OfficeScene.js",
+    "visibility": "public"
+  },
+  {
     "id": "area-server",
     "title": "hermes-agent-area · server/main.py",
     "kind": "code",

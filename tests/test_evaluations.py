@@ -34,7 +34,11 @@ class PublicEvaluationTest(unittest.TestCase):
                 self.assertIn("**평가일:** 2026-10-28", section)
                 self.assertRegex(section, r"\*\*근거 커밋:\*\* `[0-9a-f]{40}`")
                 for criterion in CRITERIA:
-                    self.assertRegex(section, rf"- \*\*{re.escape(criterion)} — ({RATINGS})\*\*")
+                    self.assertRegex(
+                        section,
+                        rf"- \*\*(?:{re.escape(criterion)} — (?:{RATINGS})|"
+                        rf"(?:{RATINGS}) · {re.escape(criterion)})\*\*",
+                    )
                 self.assertIn("**좋은 점:**", section)
                 self.assertIn("**개선 우선순위:**", section)
                 self.assertRegex(section, r"P[123]")
