@@ -47,3 +47,13 @@ class CareerTest(unittest.TestCase):
             for fragment in fragments:
                 self.assertIn(fragment, outputs[f'wiki/{slug}.html'])
         self.assertIn('실무 RAG·모델 서빙 경험을 교육생 프로젝트에서 그대로 수행한 것처럼 연결하지 않습니다', outputs['wiki/ai-experience.html'])
+
+    def test_hereotta_operating_experience_keeps_scope_explicit(self):
+        outputs = build(ROOT)
+        page = outputs['wiki/backend-experience.html']
+        for fragment in ('Kafka: 메시지 전달과 업무 처리의 차이',
+                         'MSA: 서비스 경계와 변경 영향 이해하기',
+                         '안정적인 운영을 위한 인프라와 배포 작업',
+                         '전체 플랫폼 인프라를 단독 설계·운영했다는 뜻이 아니며'):
+            self.assertIn(fragment, page)
+        self.assertIn('Kafka·MSA', outputs['wiki/career.html'])

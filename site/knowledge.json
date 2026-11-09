@@ -1443,7 +1443,7 @@
       "id": "backend-experience",
       "type": "career",
       "title": "백엔드 설계와 운영 경험",
-      "summary": "서비스 전환·캐시·이벤트·운영에서 정리한 경험과 설계 관점",
+      "summary": "여기어때에서의 Kafka·MSA·운영 인프라 경험과 서비스 전환·데이터 설계 관점",
       "evidence": [],
       "document": "wiki/backend-experience.html",
       "provenance": "self-reported"
