@@ -1461,7 +1461,7 @@
       "id": "mentoring-experience",
       "type": "career",
       "title": "멘토링과 지식 공유",
-      "summary": "설계 선택·담당 범위·검증 결과를 설명하고 기록하는 관점",
+      "summary": "백엔드 동시성·데이터·배포 리뷰부터 AI 프롬프트·개발 규칙까지, 멘토링에서 다룬 주요 경험",
       "evidence": [],
       "document": "wiki/mentoring-experience.html",
       "provenance": "self-reported"

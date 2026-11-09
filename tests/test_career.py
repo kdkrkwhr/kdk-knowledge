@@ -34,3 +34,16 @@ class CareerTest(unittest.TestCase):
             self.assertEqual(entity['provenance'], 'self-reported')
             self.assertIn('본인 제공·공개 확인', outputs[f'wiki/{slug}.html'])
         self.assertIn('신규 경력 문서 미포함', knowledge['analysis']['scope'])
+
+    def test_expanded_experience_scope_and_boundaries(self):
+        outputs = build(ROOT)
+        expectations = {
+            'backend-experience': ('기존 계약을 유지하는 서비스 전환', '사용자 알림과 이벤트 처리', 'IoT와 실시간 관제'),
+            'ai-experience': ('Dense·sparse 검색과 저장소 전환', 'LoRA 학습과 추론 서빙', '일치율은 전체 AI 서비스의 정확도와 다릅니다'),
+            'mentoring-experience': ('백엔드: 동시 요청', 'AI: 생성 결과', 'AGENTS.md', '교육생이 모든 제안을 구현했다거나'),
+            'career': ('업무 경험의 흐름', '프로젝트 밖에서 경험을 공유하는 방식'),
+        }
+        for slug, fragments in expectations.items():
+            for fragment in fragments:
+                self.assertIn(fragment, outputs[f'wiki/{slug}.html'])
+        self.assertIn('실무 RAG·모델 서빙 경험을 교육생 프로젝트에서 그대로 수행한 것처럼 연결하지 않습니다', outputs['wiki/ai-experience.html'])
