@@ -123,7 +123,7 @@ RELATION_LABELS = {"references": "참조", "implements": "구현", "cites": "인
                    "semantically_similar_to": "유사 구조", "rationale_for": "설계 근거"}
 ENTITY_TYPES = {"concept": "concept", "rationale": "design"}
 KIND_NAMES = {"project": "프로젝트", "resource": "공개 자료", "reference": "Fork / 참조", "criteria": "참고 기준",
-              "technology": "기술", "implementation": "구현", "guide": "안내"}
+              "technology": "기술", "implementation": "구현", "guide": "안내", "career": "경력·경험"}
 GUIDE_GROUP = "안내·기준"
 UPDATED = "2026-10-28"
 
@@ -224,6 +224,8 @@ def related_html(layer, doc_id):
 
 
 def group_of(layer, meta):
+    if meta.get("type") == "career":
+        return "경력·경험"
     if layer and meta["id"] in layer["doc_community"]:
         return layer["labels"].get(layer["doc_community"][meta["id"]], GUIDE_GROUP)
     return GUIDE_GROUP
@@ -267,7 +269,7 @@ def info_card(meta, group, layer, titles, evidence_count):
     card = (f'<div class="card"><div class="k">주제</div><div class="v">{html.escape(group)}</div>'
             f'<div class="k">근거 파일</div><div class="big">{evidence_count}<span> 건</span></div>'
             f'<div class="k">관련 개념</div><div class="big">{len(concepts)}<span> 개</span></div>'
-            f'<div class="k">작성</div><div class="v">LLM 초안 · 사람 대조 · {UPDATED}</div></div>')
+            f'<div class="k">작성</div><div class="v">LLM 초안 · 사람 대조 · {meta.get("reviewedAt", UPDATED)}</div></div>')
     if chips:
         card += f'<div class="card"><div class="k">같은 개념을 다루는 문서</div><div class="chips">{chips}</div></div>'
     return card
@@ -299,6 +301,8 @@ def build(root: Path) -> dict[str, str]:
         grouped.setdefault(group_of(layer, meta), []).append(meta["id"])
     groups = sorted(grouped.items(), key=lambda item: (item[0] == GUIDE_GROUP, -len(item[1]), item[0]))
     navigation = nav_html(groups, titles, layer)
+    # Keep code-review snapshots unchanged; new self-reported pages have their own navigation.
+    code_navigation = nav_html([(group, docs) for group, docs in groups if group != "경력·경험"], titles, layer)
     for meta, body, raw in documents:
         for sid in meta["sources"]:
             if sid not in source_by_id:
@@ -322,7 +326,9 @@ def build(root: Path) -> dict[str, str]:
             f'{html.escape(source_by_id[sid]["path"])}</span></span><span class="pill ok">커밋 {source_by_id[sid]["revision"][:7]}</span></li>'
             for n, sid in enumerate(meta["sources"], 1)
         ) or '<li><span class="n">-</span><span>이 안내 문서에는 별도 원본 코드 근거가 없습니다.</span><span></span></li>'
-        page = template.replace("{{TITLE}}", html.escape(title)).replace("{{NAV}}", navigation)
+        if meta.get("provenance") == "self-reported":
+            evidence_html = '<li><span class="n">-</span><span>본인 제공·공개 확인 경력 설명 (2026-11-09). 공개 코드의 독립 검증과 구분하며 비공개 원본은 제공하지 않습니다.</span><span></span></li>'
+        page = template.replace("{{TITLE}}", html.escape(title)).replace("{{NAV}}", navigation if meta.get("type") == "career" else code_navigation)
         page = page.replace("{{GROUP}}", html.escape(group)).replace("{{KIND}}", KIND_NAMES.get(meta["type"], meta["type"]))
         page = page.replace("{{BODY}}", rendered).replace("{{RELATED}}", related_html(layer, meta["id"]) if layer else "")
         page = page.replace("{{EVIDENCE}}", evidence_html).replace("{{SOURCE_MD}}", f'markdown/{meta["id"]}.md')
@@ -334,7 +340,8 @@ def build(root: Path) -> dict[str, str]:
         if meta["type"] not in {"guide"}:
             entities.append({"id": meta["id"], "type": meta["type"], "title": meta.get("mapTitle", title),
                              "summary": meta["summary"], "evidence": meta["sources"],
-                             "document": f'wiki/{meta["id"]}.html'})
+                             "document": f'wiki/{meta["id"]}.html',
+                             **({"provenance": "self-reported"} if meta.get("provenance") == "self-reported" else {})})
         for relation in meta["relations"]:
             if relation["to"] not in ids or relation["to"] == meta["id"]:
                 raise ValueError(f"missing relation target: {relation['to']}")
@@ -351,16 +358,17 @@ def build(root: Path) -> dict[str, str]:
         relations.extend(relation for relation in layer["relations"]
                          if relation["from"] in entity_ids and relation["to"] in entity_ids and relation["evidence"])
         analysis = {"tool": "Graphify", "status": "run", "revision": layer["revision"],
-                    "scope": f"docs/wiki Markdown {len(documents)}개를 입력으로 추출. 노드 {len(graph['nodes'])}, "
+                    "scope": f"기존 Graphify 스냅샷의 docs/wiki 문서에서 추출(신규 경력 문서 미포함). 노드 {len(graph['nodes'])}, "
                              f"관계 {len(graph['links'])}, 주제 {len(layer['labels'])}. 코드 노드는 문서로 접었고 "
                              "개념·설계 노드만 항목으로 실었다."}
     index = index_template.replace("{{GRID}}", index_grid(groups, documents, titles, layer))
     index = index.replace("{{DOC_COUNT}}", str(len(documents))).replace("{{TOPIC_COUNT}}", str(len(groups)))
     index = index.replace("{{CONCEPT_COUNT}}", str(len(layer["entities"]) if layer else 0))
-    index = index.replace("{{SOURCE_COUNT}}", str(len(sources))).replace("{{UPDATED}}", UPDATED)
+    updated = max([UPDATED] + [meta.get("reviewedAt", UPDATED) for meta, _, _ in documents])
+    index = index.replace("{{SOURCE_COUNT}}", str(len(sources))).replace("{{UPDATED}}", updated)
     outputs["index.html"] = index
     outputs["search-index.json"] = json.dumps(search, ensure_ascii=False, indent=2) + "\n"
-    knowledge = {"schemaVersion": 1, "updatedAt": UPDATED, "analysis": analysis,
+    knowledge = {"schemaVersion": 1, "updatedAt": updated, "analysis": analysis,
                  "sources": sources, "entities": entities, "relations": relations}
     outputs["knowledge.json"] = json.dumps(knowledge, ensure_ascii=False, indent=2) + "\n"
     return outputs

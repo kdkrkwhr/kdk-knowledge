@@ -1,11 +1,11 @@
 {
   "schemaVersion": 1,
-  "updatedAt": "2026-10-28",
+  "updatedAt": "2026-11-09",
   "analysis": {
     "tool": "Graphify",
     "status": "run",
     "revision": "288c50ffe4f8928a1b7f8ef7ec1f4536a8af4eec",
-    "scope": "docs/wiki Markdown 34개를 입력으로 추출. 노드 264, 관계 491, 주제 11. 코드 노드는 문서로 접었고 개념·설계 노드만 항목으로 실었다."
+    "scope": "기존 Graphify 스냅샷의 docs/wiki 문서에서 추출(신규 경력 문서 미포함). 노드 264, 관계 491, 주제 11. 코드 노드는 문서로 접었고 개념·설계 노드만 항목으로 실었다."
   },
   "sources": [
     {
@@ -1430,6 +1430,42 @@
     }
   ],
   "entities": [
+    {
+      "id": "career",
+      "type": "career",
+      "title": "경력 개요",
+      "summary": "회사·재직 기간·담당 영역을 정리한 본인 제공 경력 설명",
+      "evidence": [],
+      "document": "wiki/career.html",
+      "provenance": "self-reported"
+    },
+    {
+      "id": "backend-experience",
+      "type": "career",
+      "title": "백엔드 설계와 운영 경험",
+      "summary": "서비스 전환·캐시·이벤트·운영에서 정리한 경험과 설계 관점",
+      "evidence": [],
+      "document": "wiki/backend-experience.html",
+      "provenance": "self-reported"
+    },
+    {
+      "id": "ai-experience",
+      "type": "career",
+      "title": "AI 기능을 서비스에 연결한 경험",
+      "summary": "RAG·검색 전환·모델 서빙과 확정적 규칙의 분리를 정리한 경험",
+      "evidence": [],
+      "document": "wiki/ai-experience.html",
+      "provenance": "self-reported"
+    },
+    {
+      "id": "mentoring-experience",
+      "type": "career",
+      "title": "멘토링과 지식 공유",
+      "summary": "설계 선택·담당 범위·검증 결과를 설명하고 기록하는 관점",
+      "evidence": [],
+      "document": "wiki/mentoring-experience.html",
+      "provenance": "self-reported"
+    },
     {
       "id": "notebuddy",
       "type": "project",

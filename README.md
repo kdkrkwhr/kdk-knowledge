@@ -1,6 +1,6 @@
 # kdk-knowledge
 
-김동기의 프로젝트, 경력과 역할, 기술 선택과 배움, 경험에서 나온 개발 기준을 **공개 근거와 연결**하기 위한 개인 지식 허브입니다. 개발 기준은 한 영역입니다. 아직 근거가 등록되지 않은 경력·성과·기술 선택은 공개 위키에 빈 상태로 남깁니다.
+김동기의 프로젝트, 경력과 역할, 기술 선택과 배움, 경험에서 나온 개발 기준을 **공개 근거와 연결**하기 위한 개인 지식 허브입니다. 개발 기준은 한 영역입니다. [경력 개요](docs/wiki/career.md)와 경험 문서는 본인이 공개를 확인한 설명으로, 공개 코드의 독립 검증과 구분합니다. 확인되지 않은 성과·기술 선택은 추측하지 않습니다.
 
 - [위키 목차](https://kdkrkwhr.github.io/kdk-knowledge/) — 주제별 문서 목록과 검색
 - [지식 그래프](https://kdkrkwhr.github.io/kdk-knowledge/graph/) — 검색 패널이 붙은 Graphify 그래프
@@ -11,7 +11,7 @@
 
 첫 대표 사례는 공개 [Notebook Pets](docs/wiki/notebuddy.md), [Auction Spot API](docs/wiki/auction-spot.md), [AGENT HUB](docs/wiki/agent-hub.md)입니다. [공개 저장소 28개의 문서 목록](docs/wiki/repositories.md)에 각 저장소의 정적 검토 범위와 fork 구분을 기록했습니다. 다른 저장소에 위키가 있어야 연결되는 구조가 아닙니다. 원본 저장소는 수정하거나 자동 동기화하지 않습니다. [Engineering Standards](docs/wiki/standards.md)는 참고할 개발 기준으로 별도 기록했으며, 사례 프로젝트에 실제 적용됐다고 표시하지 않습니다.
 
-현재 확인한 공개 저장소 28개 모두 문서를 작성했습니다. 작은 저장소는 단일 파일, 큰 저장소는 대표 구현 파일로 범위를 제한했습니다. 전체 과거 프로젝트·경력 자료의 수집이나 원본 프로젝트의 실행 검증을 마친 상태는 아닙니다. 개인 역할·성과·선택 이유는 별도 근거가 생길 때 보강합니다.
+현재 확인한 공개 저장소 28개 모두 문서를 작성했습니다. 작은 저장소는 단일 파일, 큰 저장소는 대표 구현 파일로 범위를 제한했습니다. 전체 과거 프로젝트·경력 자료의 수집이나 원본 프로젝트의 실행 검증을 마친 상태는 아닙니다. 공개를 확인한 경력·경험 문서 4개를 추가했습니다(기준일 2026-11-09). 비공개 이력서 원본은 저장하지 않으며, 출처 유형을 본문과 메타데이터에 표시합니다. 성과 수치와 내부 정보는 제외했습니다. 기존 Graphify 추출은 재실행하지 않았습니다.
 
 `docs/wiki/*.md`가 해설의 편집 원본입니다. 문서 머리의 메타데이터가 출처·관계를 등록하고, `docs/wiki/sources.json`에 고정 커밋의 공개 URL을 보관합니다. `scripts/build_wiki.py`가 HTML, 원본 Markdown 사본, 본문 검색 색인과 `site/knowledge.json`을 함께 생성합니다. 공개 화면은 둘입니다. `site/index.html`(위키 목차: Graphify 주제별 문서 묶음·검색)과 `site/wiki/*.html`(문서: 사이드바 목차·본문·관련 개념·근거 문서), 그리고 `site/graph/`(검색 패널이 붙은 Graphify 그래프: 추출 요약·출처·위키 미리보기). Graphify는 `docs/wiki/*.md`만 입력으로 실행하며 결과를 `docs/graph/graph.json`에 커밋합니다(`scripts/sync_graph.py`). 빌드는 이 파일에서 주제 묶음·개념 항목·자동 추출 관계를 만들고, 편집 관계와 `origin`으로 구분합니다. Graphify 뷰어는 `scripts/sync_graph.py`가 패널을 덧붙여 `site/graph/`에 싣습니다(vis-network CDN, 글꼴은 Google Fonts).
 
